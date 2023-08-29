@@ -192,8 +192,8 @@
         <Param val="for (var square, _pj_c = 0, _pj_a = squares, _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    square = _pj_a[_pj_c];&amp;#10;    square.draw();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="if (((row_new === col_new) &amp;&amp; (col_new === 0))) {&amp;#10;    trials.finished = true;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="if row_new == col_new == 0:&amp;#10;    trials.finished = True" valType="extendedCode" updates="constant" name="End Routine"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="npc_code" valType="code" updates="None" name="name"/>
       </CodeComponent>
@@ -203,15 +203,15 @@
         <Param val="1" valType="num" updates="constant" name="contrast"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
-        <Param val="orange" valType="color" updates="constant" name="fillColor"/>
+        <Param val="gray" valType="color" updates="constant" name="fillColor"/>
         <Param val="linear" valType="str" updates="constant" name="interpolate"/>
-        <Param val="orange" valType="color" updates="constant" name="lineColor"/>
+        <Param val="gray" valType="color" updates="constant" name="lineColor"/>
         <Param val="1" valType="num" updates="constant" name="lineWidth"/>
         <Param val="4" valType="int" updates="constant" name="nVertices"/>
         <Param val="moving_npc" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="((col_new-6.5)/16, (14-row_new-7.5)/16)" valType="list" updates="set every frame" name="pos"/>
+        <Param val="((((1-t)*col+t*col_new)-6.5)/16, (14-((1-t)*row+t*row_new)-7.5)/16)" valType="list" updates="set every frame" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="circle" valType="str" updates="None" name="shape"/>
         <Param val="(1/18, 1/18)" valType="list" updates="constant" name="size"/>
@@ -231,8 +231,8 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="import * as random from 'random';&amp;#10;row = row_new;&amp;#10;col = col_new;&amp;#10;moves = [];&amp;#10;for (var r, _pj_c = 0, _pj_a = util.range(row), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    r = _pj_a[_pj_c];&amp;#10;    moves.push([r, col]);&amp;#10;}&amp;#10;for (var c, _pj_c = 0, _pj_a = util.range(col), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    c = _pj_a[_pj_c];&amp;#10;    moves.push([row, c]);&amp;#10;}&amp;#10;for (var d, _pj_c = 0, _pj_a = util.range(1, (Math.min(row, col) + 1)), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    d = _pj_a[_pj_c];&amp;#10;    moves.push([(row - d), (col - d)]);&amp;#10;}&amp;#10;[row_new, col_new] = Math.random.choice(moves);&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="row = row_new&amp;#10;col = col_new&amp;#10;&amp;#10;# select random opponent move&amp;#10;moves = []&amp;#10;&amp;#10;for r in range (row): # vertical moves&amp;#10;    moves.append((r, col))&amp;#10;    &amp;#10;for c in range (col): # horiz moves&amp;#10;    moves.append((row, c))&amp;#10;    &amp;#10;for d in range(1, min(row, col) + 1): # diag moves&amp;#10;    moves.append((row - d, col - d))&amp;#10;&amp;#10;import random&amp;#10;&amp;#10;(row_new, col_new) = random.choice(moves)" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="for square in squares:&amp;#10;    square.draw()" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="for (var square, _pj_c = 0, _pj_a = squares, _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    square = _pj_a[_pj_c];&amp;#10;    square.draw();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -249,15 +249,15 @@
         <Param val="1" valType="num" updates="constant" name="contrast"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
-        <Param val="red" valType="color" updates="constant" name="fillColor"/>
+        <Param val="gray" valType="color" updates="constant" name="fillColor"/>
         <Param val="linear" valType="str" updates="constant" name="interpolate"/>
-        <Param val="red" valType="color" updates="constant" name="lineColor"/>
+        <Param val="gray" valType="color" updates="constant" name="lineColor"/>
         <Param val="1" valType="num" updates="constant" name="lineWidth"/>
         <Param val="4" valType="int" updates="constant" name="nVertices"/>
         <Param val="npc" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="((col_new-6.5)/16, (14-row_new-7.5)/16)" valType="list" updates="set every repeat" name="pos"/>
+        <Param val="((col-6.5)/16, (14-row-7.5)/16)" valType="list" updates="set every repeat" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="circle" valType="str" updates="None" name="shape"/>
         <Param val="(1/18, 1/18)" valType="list" updates="constant" name="size"/>
