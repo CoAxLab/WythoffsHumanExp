@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Tue Aug 29 15:09:54 2023
+    on Wed Aug 30 12:23:22 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -36,10 +36,17 @@ from psychopy.hardware import keyboard
 # Run 'Before Experiment' code from code
 # board starting spot initialization
 
-row = 13
-col = 13
-row_new = 13
-col_new = 13
+import random
+
+row = random.randint(0,13)
+col = random.randint(0,13)
+
+while row == col == 0:
+    row = random.randint(0,13)
+    col = random.randint(0,13)
+
+row_new = row
+col_new = col
 
 
 # Ensure that relative paths start from the same directory as this script
