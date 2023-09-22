@@ -73,8 +73,8 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="if (npc_start) {&amp;#10;    npc_start = false;&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="if npc_start:&amp;#10;    npc_start = False&amp;#10;    continueRoutine = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="for square in squares:&amp;#10;    square.draw()" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="for (var square, _pj_c = 0, _pj_a = squares, _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    square = _pj_a[_pj_c];&amp;#10;    square.draw();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -91,9 +91,9 @@
         <Param val="1" valType="num" updates="constant" name="contrast"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
-        <Param val="black" valType="color" updates="constant" name="fillColor"/>
+        <Param val="dodgerblue" valType="color" updates="constant" name="fillColor"/>
         <Param val="linear" valType="str" updates="constant" name="interpolate"/>
-        <Param val="black" valType="color" updates="constant" name="lineColor"/>
+        <Param val="dodgerblue" valType="color" updates="constant" name="lineColor"/>
         <Param val="1" valType="num" updates="constant" name="lineWidth"/>
         <Param val="4" valType="int" updates="constant" name="nVertices"/>
         <Param val="moving_piece" valType="code" updates="None" name="name"/>
@@ -115,12 +115,12 @@
     </Routine>
     <Routine name="select_move">
       <CodeComponent name="code" plugin="None">
-        <Param val="# board starting spot initialization&amp;#10;&amp;#10;import random&amp;#10;&amp;#10;row = random.randint(0,13)&amp;#10;col = random.randint(0,13)&amp;#10;&amp;#10;while row == col == 0:&amp;#10;    row = random.randint(0,13)&amp;#10;    col = random.randint(0,13)&amp;#10;&amp;#10;row_new = row&amp;#10;col_new = col" valType="extendedCode" updates="constant" name="Before Experiment"/>
-        <Param val="import * as random from 'random';&amp;#10;row = Math.random.randint(0, 13);&amp;#10;col = Math.random.randint(0, 13);&amp;#10;while (((row === col) &amp;&amp; (col === 0))) {&amp;#10;    row = Math.random.randint(0, 13);&amp;#10;    col = Math.random.randint(0, 13);&amp;#10;}&amp;#10;row_new = row;&amp;#10;col_new = col;&amp;#10;" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="# board starting spot initialization&amp;#10;&amp;#10;import random&amp;#10;&amp;#10;row = random.randint(0,13)&amp;#10;col = random.randint(0,13)&amp;#10;&amp;#10;while row == col == 0:&amp;#10;    row = random.randint(0,13)&amp;#10;    col = random.randint(0,13)&amp;#10;&amp;#10;row_new = row&amp;#10;col_new = col&amp;#10;&amp;#10;npc_start = random.choice([True, False])" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="import * as random from 'random';&amp;#10;row = Math.random.randint(0, 13);&amp;#10;col = Math.random.randint(0, 13);&amp;#10;while (((row === col) &amp;&amp; (col === 0))) {&amp;#10;    row = Math.random.randint(0, 13);&amp;#10;    col = Math.random.randint(0, 13);&amp;#10;}&amp;#10;row_new = row;&amp;#10;col_new = col;&amp;#10;npc_start = Math.random.choice([true, false]);&amp;#10;" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="# Make game board tiles for rendering later&amp;#10;&amp;#10;squares = []&amp;#10;&amp;#10;for row in range(14):&amp;#10;    for col in range(14):&amp;#10;        &amp;#10;        if (row + col) % 2 == 0:&amp;#10;            color = 'lightgray'&amp;#10;        else:&amp;#10;            color = 'darkgray'&amp;#10;        &amp;#10;        x_loc = ((14 - row) - 7.5) / 16&amp;#10;        y_loc = (col - 6.5) / 16&amp;#10;        &amp;#10;        squares.append(&amp;#10;            visual.Rect(&amp;#10;                win = win,&amp;#10;                width = 1/16,&amp;#10;                height = 1/16,&amp;#10;                pos = (x_loc, y_loc),&amp;#10;                fillColor = color))" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="squares = [];&amp;#10;for (var row, _pj_c = 0, _pj_a = util.range(14), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    row = _pj_a[_pj_c];&amp;#10;    for (var col, _pj_f = 0, _pj_d = util.range(14), _pj_e = _pj_d.length; (_pj_f &lt; _pj_e); _pj_f += 1) {&amp;#10;        col = _pj_d[_pj_f];&amp;#10;        if ((((row + col) % 2) === 0)) {&amp;#10;            color = &quot;lightgray&quot;;&amp;#10;        } else {&amp;#10;            color = &quot;darkgray&quot;;&amp;#10;        }&amp;#10;        x_loc = (((14 - row) - 7.5) / 16);&amp;#10;        y_loc = ((col - 6.5) / 16);&amp;#10;        squares.push(new visual.Rect({&quot;win&quot;: psychoJS.window, &quot;width&quot;: (1 / 16), &quot;height&quot;: (1 / 16), &quot;pos&quot;: [x_loc, y_loc], &quot;fillColor&quot;: color}));&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="row = row_new;&amp;#10;col = col_new;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="row = row_new&amp;#10;col = col_new" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="if (npc_start) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;row = row_new;&amp;#10;col = col_new;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="if npc_start:&amp;#10;    continueRoutine = False&amp;#10;&amp;#10;row = row_new&amp;#10;col = col_new" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="if mouse.getPressed()[0] == 1:&amp;#10;    mouse_x, mouse_y = mouse.getPos()&amp;#10;    row_new = round(0 - ((mouse_y * 16) + 7.5 - 14))&amp;#10;    col_new = round((mouse_x * 16) + 6.5)&amp;#10;    if row_new &lt;= row and col_new &lt;= col:&amp;#10;        if row_new &gt;= 0 and col_new &gt;= 0:&amp;#10;            if row_new==row or col_new==col or row-row_new == col-col_new:&amp;#10;                continueRoutine = False&amp;#10;&amp;#10;for square in squares:&amp;#10;    square.draw()" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="if ((mouse.getPressed()[0] === 1)) {&amp;#10;    [mouse_x, mouse_y] = mouse.getPos();&amp;#10;    row_new = util.round((0 - (((mouse_y * 16) + 7.5) - 14)));&amp;#10;    col_new = util.round(((mouse_x * 16) + 6.5));&amp;#10;    if (((row_new &lt;= row) &amp;&amp; (col_new &lt;= col))) {&amp;#10;        if (((row_new &gt;= 0) &amp;&amp; (col_new &gt;= 0))) {&amp;#10;            if ((((row_new === row) || (col_new === col)) || ((row - row_new) === (col - col_new)))) {&amp;#10;                continueRoutine = false;&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;for (var square, _pj_c = 0, _pj_a = squares, _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    square = _pj_a[_pj_c];&amp;#10;    square.draw();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -137,9 +137,9 @@
         <Param val="1" valType="num" updates="constant" name="contrast"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
-        <Param val="black" valType="color" updates="constant" name="fillColor"/>
+        <Param val="dodgerblue" valType="color" updates="constant" name="fillColor"/>
         <Param val="linear" valType="str" updates="constant" name="interpolate"/>
-        <Param val="black" valType="color" updates="constant" name="lineColor"/>
+        <Param val="dodgerblue" valType="color" updates="constant" name="lineColor"/>
         <Param val="1" valType="num" updates="constant" name="lineWidth"/>
         <Param val="4" valType="int" updates="constant" name="nVertices"/>
         <Param val="piece" valType="code" updates="None" name="name"/>
@@ -178,6 +178,31 @@
         <Param val="False" valType="bool" updates="None" name="syncScreenRefresh"/>
         <Param val="mouse onset" valType="str" updates="constant" name="timeRelativeTo"/>
       </MouseComponent>
+      <TextComponent name="text" plugin="None">
+        <Param val="white" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Open Sans" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="0.05" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="text" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, 0.465)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="Your turn" valType="str" updates="constant" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
     </Routine>
     <Routine name="npc_move">
       <CodeComponent name="npc_code" plugin="None">
@@ -203,9 +228,9 @@
         <Param val="1" valType="num" updates="constant" name="contrast"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
-        <Param val="gray" valType="color" updates="constant" name="fillColor"/>
+        <Param val="chestnut" valType="color" updates="constant" name="fillColor"/>
         <Param val="linear" valType="str" updates="constant" name="interpolate"/>
-        <Param val="gray" valType="color" updates="constant" name="lineColor"/>
+        <Param val="chestnut" valType="color" updates="constant" name="lineColor"/>
         <Param val="1" valType="num" updates="constant" name="lineWidth"/>
         <Param val="4" valType="int" updates="constant" name="nVertices"/>
         <Param val="moving_npc" valType="code" updates="None" name="name"/>
@@ -249,9 +274,9 @@
         <Param val="1" valType="num" updates="constant" name="contrast"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
-        <Param val="gray" valType="color" updates="constant" name="fillColor"/>
+        <Param val="chestnut" valType="color" updates="constant" name="fillColor"/>
         <Param val="linear" valType="str" updates="constant" name="interpolate"/>
-        <Param val="gray" valType="color" updates="constant" name="lineColor"/>
+        <Param val="chestnut" valType="color" updates="constant" name="lineColor"/>
         <Param val="1" valType="num" updates="constant" name="lineWidth"/>
         <Param val="4" valType="int" updates="constant" name="nVertices"/>
         <Param val="npc" valType="code" updates="None" name="name"/>
@@ -265,7 +290,7 @@
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
-        <Param val="1.0" valType="code" updates="constant" name="stopVal"/>
+        <Param val="1.25" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="list" updates="constant" name="vertices"/>

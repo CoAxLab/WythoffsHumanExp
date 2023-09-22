@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Wed Aug 30 12:23:22 2023
+    on Fri Sep 22 16:10:18 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -47,6 +47,8 @@ while row == col == 0:
 
 row_new = row
 col_new = col
+
+npc_start = random.choice([True, False])
 
 
 # Ensure that relative paths start from the same directory as this script
@@ -143,18 +145,25 @@ piece = visual.ShapeStim(
     win=win, name='piece',
     size=(1/18, 1/18), vertices='circle',
     ori=0.0, pos=[0,0], anchor='center',
-    lineWidth=1.0,     colorSpace='rgb',  lineColor='black', fillColor='black',
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='dodgerblue', fillColor='dodgerblue',
     opacity=None, depth=-1.0, interpolate=True)
 mouse = event.Mouse(win=win)
 x, y = [None, None]
 mouse.mouseClock = core.Clock()
+text = visual.TextStim(win=win, name='text',
+    text='Your turn',
+    font='Open Sans',
+    pos=(0, 0.465), height=0.05, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-3.0);
 
 # --- Initialize components for Routine "make_move" ---
 moving_piece = visual.ShapeStim(
     win=win, name='moving_piece',
     size=(1/18, 1/18), vertices='circle',
     ori=0.0, pos=[0,0], anchor='center',
-    lineWidth=1.0,     colorSpace='rgb',  lineColor='black', fillColor='black',
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='dodgerblue', fillColor='dodgerblue',
     opacity=None, depth=-1.0, interpolate=True)
 
 # --- Initialize components for Routine "npc_wait" ---
@@ -162,7 +171,7 @@ npc = visual.ShapeStim(
     win=win, name='npc',
     size=(1/18, 1/18), vertices='circle',
     ori=0.0, pos=[0,0], anchor='center',
-    lineWidth=1.0,     colorSpace='rgb',  lineColor='gray', fillColor='gray',
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='chestnut', fillColor='chestnut',
     opacity=None, depth=-1.0, interpolate=True)
 
 # --- Initialize components for Routine "npc_move" ---
@@ -170,7 +179,7 @@ moving_npc = visual.ShapeStim(
     win=win, name='moving_npc',
     size=(1/18, 1/18), vertices='circle',
     ori=0.0, pos=[0,0], anchor='center',
-    lineWidth=1.0,     colorSpace='rgb',  lineColor='gray', fillColor='gray',
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='chestnut', fillColor='chestnut',
     opacity=None, depth=-1.0, interpolate=True)
 
 # Create some handy timers
@@ -200,13 +209,16 @@ for thisTrial in trials:
     continueRoutine = True
     # update component parameters for each repeat
     # Run 'Begin Routine' code from code
+    if npc_start:
+        continueRoutine = False
+    
     row = row_new
     col = col_new
     piece.setPos(((col-6.5)/16, (14-row-7.5)/16))
     # setup some python lists for storing info about the mouse
     gotValidClick = False  # until a click is received
     # keep track of which components have finished
-    select_moveComponents = [piece, mouse]
+    select_moveComponents = [piece, mouse, text]
     for thisComponent in select_moveComponents:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -274,6 +286,26 @@ for thisTrial in trials:
             mouse.mouseClock.reset()
             prevButtonState = mouse.getPressed()  # if button is down already this ISN'T a new click
         
+        # *text* updates
+        
+        # if text is starting this frame...
+        if text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            text.frameNStart = frameN  # exact frame index
+            text.tStart = t  # local t and not account for scr refresh
+            text.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(text, 'tStartRefresh')  # time at next scr refresh
+            # add timestamp to datafile
+            thisExp.timestampOnFlip(win, 'text.started')
+            # update status
+            text.status = STARTED
+            text.setAutoDraw(True)
+        
+        # if text is active this frame...
+        if text.status == STARTED:
+            # update params
+            pass
+        
         # check for quit (typically the Esc key)
         if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
             core.quit()
@@ -305,6 +337,10 @@ for thisTrial in trials:
     # --- Prepare to start Routine "make_move" ---
     continueRoutine = True
     # update component parameters for each repeat
+    # Run 'Begin Routine' code from move_code
+    if npc_start:
+        npc_start = False
+        continueRoutine = False
     # keep track of which components have finished
     make_moveComponents = [moving_piece]
     for thisComponent in make_moveComponents:
@@ -437,7 +473,7 @@ for thisTrial in trials:
     
     # --- Run Routine "npc_wait" ---
     routineForceEnded = not continueRoutine
-    while continueRoutine and routineTimer.getTime() < 1.0:
+    while continueRoutine and routineTimer.getTime() < 1.25:
         # get current time
         t = routineTimer.getTime()
         tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -471,7 +507,7 @@ for thisTrial in trials:
         # if npc is stopping this frame...
         if npc.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > npc.tStartRefresh + 1.0-frameTolerance:
+            if tThisFlipGlobal > npc.tStartRefresh + 1.25-frameTolerance:
                 # keep track of stop time/frame for later
                 npc.tStop = t  # not accounting for scr refresh
                 npc.frameNStop = frameN  # exact frame index
@@ -509,7 +545,7 @@ for thisTrial in trials:
     if routineForceEnded:
         routineTimer.reset()
     else:
-        routineTimer.addTime(-1.000000)
+        routineTimer.addTime(-1.250000)
     
     # --- Prepare to start Routine "npc_move" ---
     continueRoutine = True
