@@ -1,0 +1,4 @@
+﻿trials.thisRepN,trials.thisTrialN,trials.thisN,trials.thisIndex,countdown_text.started,blue_piece.started,red_piece.started,npc.started,moving_npc.started,piece.started,text.started,moving_piece.started,participant,session,date,expName,psychopyVersion,frameRate,
+0,0,0,0,8.642394749971572,8.642394749971572,8.642394749971572,11.625749416009057,12.889894915977493,,,,982741,001,2023-09-25_12h26.43.252,WythoffsHumanExp,2023.1.3,None,
+1,0,1,0,,,,17.833070749999024,19.079542457999196,13.879267000011168,13.879267000011168,16.798308458004612,982741,001,2023-09-25_12h26.43.252,WythoffsHumanExp,2023.1.3,None,
+,,,,,,,,,20.073223249986768,20.073223249986768,22.549223582958803,,,,,,,

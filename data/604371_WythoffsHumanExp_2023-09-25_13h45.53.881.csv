@@ -1,0 +1,6 @@
+﻿games.thisRepN,games.thisTrialN,games.thisN,games.thisIndex,turns.thisRepN,turns.thisTrialN,turns.thisN,turns.thisIndex,countdown_text.started,blue_piece.started,red_piece.started,piece.started,text.started,moving_piece.started,end_blue.started,end_red.started,end_blue.stopped,end_red.stopped,npc.started,moving_npc.started,participant,session,date,expName,psychopyVersion,frameRate,
+0,0,0,0,0,0,0,0,9.298750457994174,9.298750457994174,9.298750457994174,12.326009583019186,12.326009583019186,13.589982667006552,,,,,,,604371,001,2023-09-25_13h45.53.881,WythoffsHumanExp,2023.1.3,None,
+0,0,0,0,,,,,,,,,,,14.566970708023291,14.566970708023291,15.620913124992512,15.620913124992512,,,604371,001,2023-09-25_13h45.53.881,WythoffsHumanExp,2023.1.3,None,
+1,0,1,0,0,0,0,0,15.620913124992512,15.620913124992512,15.620913124992512,,,,,,,,18.609061042021494,19.9004520829767,604371,001,2023-09-25_13h45.53.881,WythoffsHumanExp,2023.1.3,None,
+1,0,1,0,1,0,1,0,,,,20.884771417011507,20.884771417011507,22.43634470802499,,,,,,,604371,001,2023-09-25_13h45.53.881,WythoffsHumanExp,2023.1.3,None,
+1,0,1,0,,,,,,,,,,,23.433718500018585,23.433718500018585,24.421756082971115,24.421756082971115,,,604371,001,2023-09-25_13h45.53.881,WythoffsHumanExp,2023.1.3,None,
