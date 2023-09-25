@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Mon Sep 25 14:31:00 2023
+    on Mon Sep 25 15:00:15 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -202,6 +202,22 @@ end_red = visual.ShapeStim(
     ori=0.0, pos=[0,0], anchor='center',
     lineWidth=1.0,     colorSpace='rgb',  lineColor='chestnut', fillColor='chestnut',
     opacity=1.0, depth=-2.0, interpolate=True)
+
+# --- Initialize components for Routine "feedback" ---
+feedback_win = visual.TextStim(win=win, name='feedback_win',
+    text='You won!',
+    font='Open Sans',
+    pos=(0, 0.25), height=0.05, wrapWidth=None, ori=0.0, 
+    color='gold', colorSpace='rgb', opacity=1.0, 
+    languageStyle='LTR',
+    depth=0.0);
+feedback_lose = visual.TextStim(win=win, name='feedback_lose',
+    text='You lost!',
+    font='Open Sans',
+    pos=(0, 0.25), height=0.05, wrapWidth=None, ori=0.0, 
+    color='orange', colorSpace='rgb', opacity=1.0, 
+    languageStyle='LTR',
+    depth=-1.0);
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -967,7 +983,7 @@ for thisGame in games:
     
     # --- Run Routine "end_pause" ---
     routineForceEnded = not continueRoutine
-    while continueRoutine and routineTimer.getTime() < 1.0:
+    while continueRoutine and routineTimer.getTime() < 0.75:
         # get current time
         t = routineTimer.getTime()
         tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -1001,7 +1017,7 @@ for thisGame in games:
         # if end_blue is stopping this frame...
         if end_blue.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > end_blue.tStartRefresh + 1-frameTolerance:
+            if tThisFlipGlobal > end_blue.tStartRefresh + 0.75-frameTolerance:
                 # keep track of stop time/frame for later
                 end_blue.tStop = t  # not accounting for scr refresh
                 end_blue.frameNStop = frameN  # exact frame index
@@ -1034,7 +1050,7 @@ for thisGame in games:
         # if end_red is stopping this frame...
         if end_red.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > end_red.tStartRefresh + 1.0-frameTolerance:
+            if tThisFlipGlobal > end_red.tStartRefresh + 0.75-frameTolerance:
                 # keep track of stop time/frame for later
                 end_red.tStop = t  # not accounting for scr refresh
                 end_red.frameNStop = frameN  # exact frame index
@@ -1072,7 +1088,132 @@ for thisGame in games:
     if routineForceEnded:
         routineTimer.reset()
     else:
-        routineTimer.addTime(-1.000000)
+        routineTimer.addTime(-0.750000)
+    
+    # --- Prepare to start Routine "feedback" ---
+    continueRoutine = True
+    # update component parameters for each repeat
+    feedback_win.setOpacity(player_won)
+    feedback_lose.setOpacity(1 - player_won)
+    # keep track of which components have finished
+    feedbackComponents = [feedback_win, feedback_lose]
+    for thisComponent in feedbackComponents:
+        thisComponent.tStart = None
+        thisComponent.tStop = None
+        thisComponent.tStartRefresh = None
+        thisComponent.tStopRefresh = None
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    # reset timers
+    t = 0
+    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+    frameN = -1
+    
+    # --- Run Routine "feedback" ---
+    routineForceEnded = not continueRoutine
+    while continueRoutine and routineTimer.getTime() < 2.0:
+        # get current time
+        t = routineTimer.getTime()
+        tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        
+        # *feedback_win* updates
+        
+        # if feedback_win is starting this frame...
+        if feedback_win.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            feedback_win.frameNStart = frameN  # exact frame index
+            feedback_win.tStart = t  # local t and not account for scr refresh
+            feedback_win.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(feedback_win, 'tStartRefresh')  # time at next scr refresh
+            # add timestamp to datafile
+            thisExp.timestampOnFlip(win, 'feedback_win.started')
+            # update status
+            feedback_win.status = STARTED
+            feedback_win.setAutoDraw(True)
+        
+        # if feedback_win is active this frame...
+        if feedback_win.status == STARTED:
+            # update params
+            pass
+        
+        # if feedback_win is stopping this frame...
+        if feedback_win.status == STARTED:
+            # is it time to stop? (based on global clock, using actual start)
+            if tThisFlipGlobal > feedback_win.tStartRefresh + 2.0-frameTolerance:
+                # keep track of stop time/frame for later
+                feedback_win.tStop = t  # not accounting for scr refresh
+                feedback_win.frameNStop = frameN  # exact frame index
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'feedback_win.stopped')
+                # update status
+                feedback_win.status = FINISHED
+                feedback_win.setAutoDraw(False)
+        
+        # *feedback_lose* updates
+        
+        # if feedback_lose is starting this frame...
+        if feedback_lose.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            feedback_lose.frameNStart = frameN  # exact frame index
+            feedback_lose.tStart = t  # local t and not account for scr refresh
+            feedback_lose.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(feedback_lose, 'tStartRefresh')  # time at next scr refresh
+            # add timestamp to datafile
+            thisExp.timestampOnFlip(win, 'feedback_lose.started')
+            # update status
+            feedback_lose.status = STARTED
+            feedback_lose.setAutoDraw(True)
+        
+        # if feedback_lose is active this frame...
+        if feedback_lose.status == STARTED:
+            # update params
+            pass
+        
+        # if feedback_lose is stopping this frame...
+        if feedback_lose.status == STARTED:
+            # is it time to stop? (based on global clock, using actual start)
+            if tThisFlipGlobal > feedback_lose.tStartRefresh + 2.0-frameTolerance:
+                # keep track of stop time/frame for later
+                feedback_lose.tStop = t  # not accounting for scr refresh
+                feedback_lose.frameNStop = frameN  # exact frame index
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'feedback_lose.stopped')
+                # update status
+                feedback_lose.status = FINISHED
+                feedback_lose.setAutoDraw(False)
+        
+        # check for quit (typically the Esc key)
+        if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+            core.quit()
+            if eyetracker:
+                eyetracker.setConnectionState(False)
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            routineForceEnded = True
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in feedbackComponents:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    # --- Ending Routine "feedback" ---
+    for thisComponent in feedbackComponents:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
+    # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
+    if routineForceEnded:
+        routineTimer.reset()
+    else:
+        routineTimer.addTime(-2.000000)
     thisExp.nextEntry()
     
 # completed 2.0 repeats of 'games'
