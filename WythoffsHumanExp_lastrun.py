@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Mon Sep 25 13:51:07 2023
+    on Mon Sep 25 14:31:00 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -210,6 +210,13 @@ routineTimer = core.Clock()  # to track time remaining of each (possibly non-sli
 # --- Prepare to start Routine "setup_instruct" ---
 continueRoutine = True
 # update component parameters for each repeat
+# Run 'Begin Routine' code from setup_code
+import random
+
+game = 0
+
+npc_starts = [True, False]
+random.shuffle(npc_starts)
 # keep track of which components have finished
 setup_instructComponents = []
 for thisComponent in setup_instructComponents:
@@ -290,7 +297,8 @@ for thisGame in games:
     import math
     
     player_won = None
-    npc_start = random.choice([True, False])
+    npc_start = npc_starts[game]
+    game = game + 1
     
     row = random.randint(0,13)
     col = random.randint(0,13)
