@@ -115,10 +115,10 @@
     </Routine>
     <Routine name="select_move">
       <CodeComponent name="code" plugin="None">
-        <Param val="# board starting spot initialization&amp;#10;&amp;#10;import random&amp;#10;&amp;#10;row = random.randint(0,13)&amp;#10;col = random.randint(0,13)&amp;#10;&amp;#10;while row == col == 0:&amp;#10;    row = random.randint(0,13)&amp;#10;    col = random.randint(0,13)&amp;#10;&amp;#10;row_new = row&amp;#10;col_new = col&amp;#10;&amp;#10;npc_start = random.choice([True, False])" valType="extendedCode" updates="constant" name="Before Experiment"/>
-        <Param val="import * as random from 'random';&amp;#10;row = Math.random.randint(0, 13);&amp;#10;col = Math.random.randint(0, 13);&amp;#10;while (((row === col) &amp;&amp; (col === 0))) {&amp;#10;    row = Math.random.randint(0, 13);&amp;#10;    col = Math.random.randint(0, 13);&amp;#10;}&amp;#10;row_new = row;&amp;#10;col_new = col;&amp;#10;npc_start = Math.random.choice([true, false]);&amp;#10;" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
-        <Param val="# Make game board tiles for rendering later&amp;#10;&amp;#10;squares = []&amp;#10;&amp;#10;for row in range(14):&amp;#10;    for col in range(14):&amp;#10;        &amp;#10;        if (row + col) % 2 == 0:&amp;#10;            color = 'lightgray'&amp;#10;        else:&amp;#10;            color = 'darkgray'&amp;#10;        &amp;#10;        x_loc = ((14 - row) - 7.5) / 16&amp;#10;        y_loc = (col - 6.5) / 16&amp;#10;        &amp;#10;        squares.append(&amp;#10;            visual.Rect(&amp;#10;                win = win,&amp;#10;                width = 1/16,&amp;#10;                height = 1/16,&amp;#10;                pos = (x_loc, y_loc),&amp;#10;                fillColor = color))" valType="extendedCode" updates="constant" name="Begin Experiment"/>
-        <Param val="squares = [];&amp;#10;for (var row, _pj_c = 0, _pj_a = util.range(14), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    row = _pj_a[_pj_c];&amp;#10;    for (var col, _pj_f = 0, _pj_d = util.range(14), _pj_e = _pj_d.length; (_pj_f &lt; _pj_e); _pj_f += 1) {&amp;#10;        col = _pj_d[_pj_f];&amp;#10;        if ((((row + col) % 2) === 0)) {&amp;#10;            color = &quot;lightgray&quot;;&amp;#10;        } else {&amp;#10;            color = &quot;darkgray&quot;;&amp;#10;        }&amp;#10;        x_loc = (((14 - row) - 7.5) / 16);&amp;#10;        y_loc = ((col - 6.5) / 16);&amp;#10;        squares.push(new visual.Rect({&quot;win&quot;: psychoJS.window, &quot;width&quot;: (1 / 16), &quot;height&quot;: (1 / 16), &quot;pos&quot;: [x_loc, y_loc], &quot;fillColor&quot;: color}));&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
         <Param val="if (npc_start) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;row = row_new;&amp;#10;col = col_new;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="if npc_start:&amp;#10;    continueRoutine = False&amp;#10;&amp;#10;row = row_new&amp;#10;col = col_new" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
@@ -296,8 +296,127 @@
         <Param val="" valType="list" updates="constant" name="vertices"/>
       </PolygonComponent>
     </Routine>
+    <Routine name="countdown">
+      <CodeComponent name="countdown_code" plugin="None">
+        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="row = row_new;&amp;#10;col = col_new;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="row = row_new&amp;#10;col = col_new" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
+        <Param val="for square in squares:&amp;#10;    square.draw()" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="for (var square, _pj_c = 0, _pj_a = squares, _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    square = _pj_a[_pj_c];&amp;#10;    square.draw();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="countdown_code" valType="code" updates="None" name="name"/>
+      </CodeComponent>
+      <TextComponent name="countdown_text" plugin="None">
+        <Param val="white" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Open Sans" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="0.05" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="countdown_text" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, -0.47)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="3" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="$(3 - math.floor(t))" valType="str" updates="set every frame" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
+      <PolygonComponent name="blue_piece" plugin="None">
+        <Param val="center" valType="str" updates="constant" name="anchor"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="dodgerblue" valType="color" updates="constant" name="fillColor"/>
+        <Param val="linear" valType="str" updates="constant" name="interpolate"/>
+        <Param val="dodgerblue" valType="color" updates="constant" name="lineColor"/>
+        <Param val="1" valType="num" updates="constant" name="lineWidth"/>
+        <Param val="4" valType="int" updates="constant" name="nVertices"/>
+        <Param val="blue_piece" valType="code" updates="None" name="name"/>
+        <Param val="1 - npc_start" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="((col-6.5)/16, (14-row-7.5)/16)" valType="list" updates="set every repeat" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="circle" valType="str" updates="None" name="shape"/>
+        <Param val="(1/18, 1/18)" valType="list" updates="constant" name="size"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="3" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="list" updates="constant" name="vertices"/>
+      </PolygonComponent>
+      <PolygonComponent name="red_piece" plugin="None">
+        <Param val="center" valType="str" updates="constant" name="anchor"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="chestnut" valType="color" updates="constant" name="fillColor"/>
+        <Param val="linear" valType="str" updates="constant" name="interpolate"/>
+        <Param val="chestnut" valType="color" updates="constant" name="lineColor"/>
+        <Param val="1" valType="num" updates="constant" name="lineWidth"/>
+        <Param val="4" valType="int" updates="constant" name="nVertices"/>
+        <Param val="red_piece" valType="code" updates="None" name="name"/>
+        <Param val="npc_start" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="((col-6.5)/16, (14-row-7.5)/16)" valType="list" updates="set every repeat" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="circle" valType="str" updates="None" name="shape"/>
+        <Param val="(1/18, 1/18)" valType="list" updates="constant" name="size"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="3.0" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="list" updates="constant" name="vertices"/>
+      </PolygonComponent>
+    </Routine>
+    <Routine name="setup_instruct">
+      <CodeComponent name="setup_code" plugin="None">
+        <Param val="# board starting spot initialization&amp;#10;&amp;#10;import random&amp;#10;import math&amp;#10;&amp;#10;row = random.randint(0,13)&amp;#10;col = random.randint(0,13)&amp;#10;&amp;#10;while row == col == 0:&amp;#10;    row = random.randint(0,13)&amp;#10;    col = random.randint(0,13)&amp;#10;&amp;#10;row_new = row&amp;#10;col_new = col&amp;#10;&amp;#10;npc_start = random.choice([True, False])" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="import * as random from 'random';&amp;#10;import * as math from 'math';&amp;#10;row = Math.random.randint(0, 13);&amp;#10;col = Math.random.randint(0, 13);&amp;#10;while (((row === col) &amp;&amp; (col === 0))) {&amp;#10;    row = Math.random.randint(0, 13);&amp;#10;    col = Math.random.randint(0, 13);&amp;#10;}&amp;#10;row_new = row;&amp;#10;col_new = col;&amp;#10;npc_start = Math.random.choice([true, false]);&amp;#10;" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="# Make game board tiles for rendering later&amp;#10;&amp;#10;squares = []&amp;#10;&amp;#10;for row in range(14):&amp;#10;    for col in range(14):&amp;#10;        &amp;#10;        if (row + col) % 2 == 0:&amp;#10;            color = 'lightgray'&amp;#10;        else:&amp;#10;            color = 'darkgray'&amp;#10;        &amp;#10;        x_loc = ((14 - row) - 7.5) / 16&amp;#10;        y_loc = (col - 6.5) / 16&amp;#10;        &amp;#10;        squares.append(&amp;#10;            visual.Rect(&amp;#10;                win = win,&amp;#10;                width = 1/16,&amp;#10;                height = 1/16,&amp;#10;                pos = (x_loc, y_loc),&amp;#10;                fillColor = color))" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="squares = [];&amp;#10;for (var row, _pj_c = 0, _pj_a = util.range(14), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    row = _pj_a[_pj_c];&amp;#10;    for (var col, _pj_f = 0, _pj_d = util.range(14), _pj_e = _pj_d.length; (_pj_f &lt; _pj_e); _pj_f += 1) {&amp;#10;        col = _pj_d[_pj_f];&amp;#10;        if ((((row + col) % 2) === 0)) {&amp;#10;            color = &quot;lightgray&quot;;&amp;#10;        } else {&amp;#10;            color = &quot;darkgray&quot;;&amp;#10;        }&amp;#10;        x_loc = (((14 - row) - 7.5) / 16);&amp;#10;        y_loc = ((col - 6.5) / 16);&amp;#10;        squares.push(new visual.Rect({&quot;win&quot;: psychoJS.window, &quot;width&quot;: (1 / 16), &quot;height&quot;: (1 / 16), &quot;pos&quot;: [x_loc, y_loc], &quot;fillColor&quot;: color}));&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="setup_code" valType="code" updates="None" name="name"/>
+      </CodeComponent>
+    </Routine>
   </Routines>
   <Flow>
+    <Routine name="setup_instruct"/>
+    <Routine name="countdown"/>
     <LoopInitiator loopType="TrialHandler" name="trials">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="None" valType="str"/>

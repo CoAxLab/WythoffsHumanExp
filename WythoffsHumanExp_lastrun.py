@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Fri Sep 22 16:10:18 2023
+    on Mon Sep 25 11:04:17 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -33,10 +33,11 @@ import sys  # to get file system encoding
 import psychopy.iohub as io
 from psychopy.hardware import keyboard
 
-# Run 'Before Experiment' code from code
+# Run 'Before Experiment' code from setup_code
 # board starting spot initialization
 
 import random
+import math
 
 row = random.randint(0,13)
 col = random.randint(0,13)
@@ -117,8 +118,8 @@ eyetracker = None
 # create a default keyboard (e.g. to check for escape)
 defaultKeyboard = keyboard.Keyboard(backend='iohub')
 
-# --- Initialize components for Routine "select_move" ---
-# Run 'Begin Experiment' code from code
+# --- Initialize components for Routine "setup_instruct" ---
+# Run 'Begin Experiment' code from setup_code
 # Make game board tiles for rendering later
 
 squares = []
@@ -141,6 +142,29 @@ for row in range(14):
                 height = 1/16,
                 pos = (x_loc, y_loc),
                 fillColor = color))
+
+# --- Initialize components for Routine "countdown" ---
+countdown_text = visual.TextStim(win=win, name='countdown_text',
+    text='',
+    font='Open Sans',
+    pos=(0, -0.47), height=0.05, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-1.0);
+blue_piece = visual.ShapeStim(
+    win=win, name='blue_piece',
+    size=(1/18, 1/18), vertices='circle',
+    ori=0.0, pos=[0,0], anchor='center',
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='dodgerblue', fillColor='dodgerblue',
+    opacity=1 - npc_start, depth=-2.0, interpolate=True)
+red_piece = visual.ShapeStim(
+    win=win, name='red_piece',
+    size=(1/18, 1/18), vertices='circle',
+    ori=0.0, pos=[0,0], anchor='center',
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='chestnut', fillColor='chestnut',
+    opacity=npc_start, depth=-3.0, interpolate=True)
+
+# --- Initialize components for Routine "select_move" ---
 piece = visual.ShapeStim(
     win=win, name='piece',
     size=(1/18, 1/18), vertices='circle',
@@ -185,6 +209,224 @@ moving_npc = visual.ShapeStim(
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
 routineTimer = core.Clock()  # to track time remaining of each (possibly non-slip) routine 
+
+# --- Prepare to start Routine "setup_instruct" ---
+continueRoutine = True
+# update component parameters for each repeat
+# keep track of which components have finished
+setup_instructComponents = []
+for thisComponent in setup_instructComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+frameN = -1
+
+# --- Run Routine "setup_instruct" ---
+routineForceEnded = not continueRoutine
+while continueRoutine:
+    # get current time
+    t = routineTimer.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+        if eyetracker:
+            eyetracker.setConnectionState(False)
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        routineForceEnded = True
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in setup_instructComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# --- Ending Routine "setup_instruct" ---
+for thisComponent in setup_instructComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+# the Routine "setup_instruct" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
+
+# --- Prepare to start Routine "countdown" ---
+continueRoutine = True
+# update component parameters for each repeat
+# Run 'Begin Routine' code from countdown_code
+row = row_new
+col = col_new
+blue_piece.setPos(((col-6.5)/16, (14-row-7.5)/16))
+red_piece.setPos(((col-6.5)/16, (14-row-7.5)/16))
+# keep track of which components have finished
+countdownComponents = [countdown_text, blue_piece, red_piece]
+for thisComponent in countdownComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+frameN = -1
+
+# --- Run Routine "countdown" ---
+routineForceEnded = not continueRoutine
+while continueRoutine and routineTimer.getTime() < 3.0:
+    # get current time
+    t = routineTimer.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    # Run 'Each Frame' code from countdown_code
+    for square in squares:
+        square.draw()
+    
+    # *countdown_text* updates
+    
+    # if countdown_text is starting this frame...
+    if countdown_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        countdown_text.frameNStart = frameN  # exact frame index
+        countdown_text.tStart = t  # local t and not account for scr refresh
+        countdown_text.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(countdown_text, 'tStartRefresh')  # time at next scr refresh
+        # add timestamp to datafile
+        thisExp.timestampOnFlip(win, 'countdown_text.started')
+        # update status
+        countdown_text.status = STARTED
+        countdown_text.setAutoDraw(True)
+    
+    # if countdown_text is active this frame...
+    if countdown_text.status == STARTED:
+        # update params
+        countdown_text.setText((3 - math.floor(t)), log=False)
+    
+    # if countdown_text is stopping this frame...
+    if countdown_text.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > countdown_text.tStartRefresh + 3-frameTolerance:
+            # keep track of stop time/frame for later
+            countdown_text.tStop = t  # not accounting for scr refresh
+            countdown_text.frameNStop = frameN  # exact frame index
+            # add timestamp to datafile
+            thisExp.timestampOnFlip(win, 'countdown_text.stopped')
+            # update status
+            countdown_text.status = FINISHED
+            countdown_text.setAutoDraw(False)
+    
+    # *blue_piece* updates
+    
+    # if blue_piece is starting this frame...
+    if blue_piece.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        blue_piece.frameNStart = frameN  # exact frame index
+        blue_piece.tStart = t  # local t and not account for scr refresh
+        blue_piece.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(blue_piece, 'tStartRefresh')  # time at next scr refresh
+        # add timestamp to datafile
+        thisExp.timestampOnFlip(win, 'blue_piece.started')
+        # update status
+        blue_piece.status = STARTED
+        blue_piece.setAutoDraw(True)
+    
+    # if blue_piece is active this frame...
+    if blue_piece.status == STARTED:
+        # update params
+        pass
+    
+    # if blue_piece is stopping this frame...
+    if blue_piece.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > blue_piece.tStartRefresh + 3-frameTolerance:
+            # keep track of stop time/frame for later
+            blue_piece.tStop = t  # not accounting for scr refresh
+            blue_piece.frameNStop = frameN  # exact frame index
+            # add timestamp to datafile
+            thisExp.timestampOnFlip(win, 'blue_piece.stopped')
+            # update status
+            blue_piece.status = FINISHED
+            blue_piece.setAutoDraw(False)
+    
+    # *red_piece* updates
+    
+    # if red_piece is starting this frame...
+    if red_piece.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        red_piece.frameNStart = frameN  # exact frame index
+        red_piece.tStart = t  # local t and not account for scr refresh
+        red_piece.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(red_piece, 'tStartRefresh')  # time at next scr refresh
+        # add timestamp to datafile
+        thisExp.timestampOnFlip(win, 'red_piece.started')
+        # update status
+        red_piece.status = STARTED
+        red_piece.setAutoDraw(True)
+    
+    # if red_piece is active this frame...
+    if red_piece.status == STARTED:
+        # update params
+        pass
+    
+    # if red_piece is stopping this frame...
+    if red_piece.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > red_piece.tStartRefresh + 3.0-frameTolerance:
+            # keep track of stop time/frame for later
+            red_piece.tStop = t  # not accounting for scr refresh
+            red_piece.frameNStop = frameN  # exact frame index
+            # add timestamp to datafile
+            thisExp.timestampOnFlip(win, 'red_piece.stopped')
+            # update status
+            red_piece.status = FINISHED
+            red_piece.setAutoDraw(False)
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+        if eyetracker:
+            eyetracker.setConnectionState(False)
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        routineForceEnded = True
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in countdownComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# --- Ending Routine "countdown" ---
+for thisComponent in countdownComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+# using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
+if routineForceEnded:
+    routineTimer.reset()
+else:
+    routineTimer.addTime(-3.000000)
 
 # set up handler to look after randomisation of conditions etc
 trials = data.TrialHandler(nReps=13.0, method='random', 

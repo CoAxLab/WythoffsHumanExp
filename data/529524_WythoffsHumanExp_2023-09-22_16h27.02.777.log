@@ -1,0 +1,17 @@
+5.5592 	WARNING 	Couldn't measure a consistent frame rate!
+  - Is your graphics card set to sync to vertical blank?
+  - Are you running other processes on your computer?
+
+5.5605 	EXP 	Created window1 = Window(allowGUI=True, allowStencil=False, autoLog=True, backendConf=UNKNOWN, backgroundFit=<method-wrapper '__getattribute__' of attributeSetter object at 0x7fa351e7b5e0>, backgroundImage=<method-wrapper '__getattribute__' of attributeSetter object at 0x7fa351e7b550>, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0, 0, 0]), colorSpace='rgb', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x7fa351e7b430>, gamma=None, gammaErrorPolicy='raise', lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x7fa372abc1f0>, multiSample=False, name='window1', numSamples=2, pos=[360.0, 225.0], screen=0, size=array([2880, 1800]), stencilBits=0, stereo=False, units='height', useFBO=True, useRetina=True, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+5.5610 	EXP 	window1: mouseVisible = True
+5.5610 	EXP 	window1: backgroundImage = ''
+5.5610 	EXP 	window1: backgroundFit = 'none'
+5.5620 	EXP 	window1: mouseVisible = False
+5.5620 	EXP 	window1: Attempting to measure frame rate of screen (0) ...
+5.5621 	EXP 	window1: recordFrameIntervals = False
+5.6427 	EXP 	window1: recordFrameIntervals = True
+6.4760 	WARNING 	Couldn't measure a consistent frame rate!
+  - Is your graphics card set to sync to vertical blank?
+  - Are you running other processes on your computer?
+
+8.5059 	EXP 	window1: mouseVisible = True
