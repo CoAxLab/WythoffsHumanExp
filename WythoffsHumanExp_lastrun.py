@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Mon Sep 25 15:00:15 2023
+    on Tue Sep 26 14:26:10 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -205,19 +205,42 @@ end_red = visual.ShapeStim(
 
 # --- Initialize components for Routine "feedback" ---
 feedback_win = visual.TextStim(win=win, name='feedback_win',
-    text='You won!',
+    text='YOU WON!',
     font='Open Sans',
-    pos=(0, 0.25), height=0.05, wrapWidth=None, ori=0.0, 
+    pos=(0, 0.3), height=0.1, wrapWidth=None, ori=0.0, 
     color='gold', colorSpace='rgb', opacity=1.0, 
     languageStyle='LTR',
     depth=0.0);
 feedback_lose = visual.TextStim(win=win, name='feedback_lose',
-    text='You lost!',
+    text='YOU LOST!',
     font='Open Sans',
-    pos=(0, 0.25), height=0.05, wrapWidth=None, ori=0.0, 
+    pos=(0, 0.3), height=0.1, wrapWidth=None, ori=0.0, 
     color='orange', colorSpace='rgb', opacity=1.0, 
     languageStyle='LTR',
     depth=-1.0);
+status_text = visual.TextStim(win=win, name='status_text',
+    text='',
+    font='Open Sans',
+    pos=(0, 0.15), height=0.05, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-2.0);
+button = visual.Rect(
+    win=win, name='button',
+    width=(0.25, 0.1)[0], height=(0.25, 0.1)[1],
+    ori=0.0, pos=(0, 0), anchor='center',
+    lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
+    opacity=None, depth=-3.0, interpolate=True)
+button_text = visual.TextStim(win=win, name='button_text',
+    text='proceed',
+    font='Open Sans',
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
+    color='gray', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-4.0);
+next_mouse = event.Mouse(win=win)
+x, y = [None, None]
+next_mouse.mouseClock = core.Clock()
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -229,10 +252,18 @@ continueRoutine = True
 # Run 'Begin Routine' code from setup_code
 import random
 
-game = 0
+num_games = 4 # must be even
+assert(num_games % 2 == 0)
 
-npc_starts = [True, False]
+# generate shuffled list of who starts each game
+npc_starts = []
+for game in range(int(num_games/2)):
+    npc_starts.append(True)
+    npc_starts.append(False)
 random.shuffle(npc_starts)
+
+game = 0 # initialize game counter
+num_wins = 0 #initialize win counter
 # keep track of which components have finished
 setup_instructComponents = []
 for thisComponent in setup_instructComponents:
@@ -285,7 +316,7 @@ for thisComponent in setup_instructComponents:
 routineTimer.reset()
 
 # set up handler to look after randomisation of conditions etc
-games = data.TrialHandler(nReps=2.0, method='random', 
+games = data.TrialHandler(nReps=num_games, method='random', 
     extraInfo=expInfo, originPath=-1,
     trialList=[None],
     seed=None, name='games')
@@ -365,8 +396,6 @@ for thisGame in games:
             countdown_text.tStart = t  # local t and not account for scr refresh
             countdown_text.tStartRefresh = tThisFlipGlobal  # on global time
             win.timeOnFlip(countdown_text, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'countdown_text.started')
             # update status
             countdown_text.status = STARTED
             countdown_text.setAutoDraw(True)
@@ -383,8 +412,6 @@ for thisGame in games:
                 # keep track of stop time/frame for later
                 countdown_text.tStop = t  # not accounting for scr refresh
                 countdown_text.frameNStop = frameN  # exact frame index
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'countdown_text.stopped')
                 # update status
                 countdown_text.status = FINISHED
                 countdown_text.setAutoDraw(False)
@@ -398,8 +425,6 @@ for thisGame in games:
             blue_piece.tStart = t  # local t and not account for scr refresh
             blue_piece.tStartRefresh = tThisFlipGlobal  # on global time
             win.timeOnFlip(blue_piece, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'blue_piece.started')
             # update status
             blue_piece.status = STARTED
             blue_piece.setAutoDraw(True)
@@ -416,8 +441,6 @@ for thisGame in games:
                 # keep track of stop time/frame for later
                 blue_piece.tStop = t  # not accounting for scr refresh
                 blue_piece.frameNStop = frameN  # exact frame index
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'blue_piece.stopped')
                 # update status
                 blue_piece.status = FINISHED
                 blue_piece.setAutoDraw(False)
@@ -431,8 +454,6 @@ for thisGame in games:
             red_piece.tStart = t  # local t and not account for scr refresh
             red_piece.tStartRefresh = tThisFlipGlobal  # on global time
             win.timeOnFlip(red_piece, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'red_piece.started')
             # update status
             red_piece.status = STARTED
             red_piece.setAutoDraw(True)
@@ -449,8 +470,6 @@ for thisGame in games:
                 # keep track of stop time/frame for later
                 red_piece.tStop = t  # not accounting for scr refresh
                 red_piece.frameNStop = frameN  # exact frame index
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'red_piece.stopped')
                 # update status
                 red_piece.status = FINISHED
                 red_piece.setAutoDraw(False)
@@ -561,8 +580,6 @@ for thisGame in games:
                 piece.tStart = t  # local t and not account for scr refresh
                 piece.tStartRefresh = tThisFlipGlobal  # on global time
                 win.timeOnFlip(piece, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'piece.started')
                 # update status
                 piece.status = STARTED
                 piece.setAutoDraw(True)
@@ -594,8 +611,6 @@ for thisGame in games:
                 text.tStart = t  # local t and not account for scr refresh
                 text.tStartRefresh = tThisFlipGlobal  # on global time
                 win.timeOnFlip(text, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'text.started')
                 # update status
                 text.status = STARTED
                 text.setAutoDraw(True)
@@ -676,8 +691,6 @@ for thisGame in games:
                 moving_piece.tStart = t  # local t and not account for scr refresh
                 moving_piece.tStartRefresh = tThisFlipGlobal  # on global time
                 win.timeOnFlip(moving_piece, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'moving_piece.started')
                 # update status
                 moving_piece.status = STARTED
                 moving_piece.setAutoDraw(True)
@@ -694,8 +707,6 @@ for thisGame in games:
                     # keep track of stop time/frame for later
                     moving_piece.tStop = t  # not accounting for scr refresh
                     moving_piece.frameNStop = frameN  # exact frame index
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'moving_piece.stopped')
                     # update status
                     moving_piece.status = FINISHED
                     moving_piece.setAutoDraw(False)
@@ -727,6 +738,7 @@ for thisGame in games:
         # Run 'End Routine' code from move_code
         if row_new == col_new == 0:
             player_won = True
+            num_wins = num_wins + 1
             turns.finished = True
             continueRoutine = False
         # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
@@ -798,8 +810,6 @@ for thisGame in games:
                 npc.tStart = t  # local t and not account for scr refresh
                 npc.tStartRefresh = tThisFlipGlobal  # on global time
                 win.timeOnFlip(npc, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'npc.started')
                 # update status
                 npc.status = STARTED
                 npc.setAutoDraw(True)
@@ -816,8 +826,6 @@ for thisGame in games:
                     # keep track of stop time/frame for later
                     npc.tStop = t  # not accounting for scr refresh
                     npc.frameNStop = frameN  # exact frame index
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'npc.stopped')
                     # update status
                     npc.status = FINISHED
                     npc.setAutoDraw(False)
@@ -894,8 +902,6 @@ for thisGame in games:
                 moving_npc.tStart = t  # local t and not account for scr refresh
                 moving_npc.tStartRefresh = tThisFlipGlobal  # on global time
                 win.timeOnFlip(moving_npc, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'moving_npc.started')
                 # update status
                 moving_npc.status = STARTED
                 moving_npc.setAutoDraw(True)
@@ -912,8 +918,6 @@ for thisGame in games:
                     # keep track of stop time/frame for later
                     moving_npc.tStop = t  # not accounting for scr refresh
                     moving_npc.frameNStop = frameN  # exact frame index
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'moving_npc.stopped')
                     # update status
                     moving_npc.status = FINISHED
                     moving_npc.setAutoDraw(False)
@@ -1003,8 +1007,6 @@ for thisGame in games:
             end_blue.tStart = t  # local t and not account for scr refresh
             end_blue.tStartRefresh = tThisFlipGlobal  # on global time
             win.timeOnFlip(end_blue, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'end_blue.started')
             # update status
             end_blue.status = STARTED
             end_blue.setAutoDraw(True)
@@ -1021,8 +1023,6 @@ for thisGame in games:
                 # keep track of stop time/frame for later
                 end_blue.tStop = t  # not accounting for scr refresh
                 end_blue.frameNStop = frameN  # exact frame index
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'end_blue.stopped')
                 # update status
                 end_blue.status = FINISHED
                 end_blue.setAutoDraw(False)
@@ -1036,8 +1036,6 @@ for thisGame in games:
             end_red.tStart = t  # local t and not account for scr refresh
             end_red.tStartRefresh = tThisFlipGlobal  # on global time
             win.timeOnFlip(end_red, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'end_red.started')
             # update status
             end_red.status = STARTED
             end_red.setAutoDraw(True)
@@ -1054,8 +1052,6 @@ for thisGame in games:
                 # keep track of stop time/frame for later
                 end_red.tStop = t  # not accounting for scr refresh
                 end_red.frameNStop = frameN  # exact frame index
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'end_red.stopped')
                 # update status
                 end_red.status = FINISHED
                 end_red.setAutoDraw(False)
@@ -1095,8 +1091,18 @@ for thisGame in games:
     # update component parameters for each repeat
     feedback_win.setOpacity(player_won)
     feedback_lose.setOpacity(1 - player_won)
+    status_text.setText('games played: ' + str(game) + ' of ' + str(num_games) + '\nwin percentage: ' + str(round (num_wins / game * 100)) + '%')
+    # setup some python lists for storing info about the next_mouse
+    next_mouse.x = []
+    next_mouse.y = []
+    next_mouse.leftButton = []
+    next_mouse.midButton = []
+    next_mouse.rightButton = []
+    next_mouse.time = []
+    next_mouse.clicked_name = []
+    gotValidClick = False  # until a click is received
     # keep track of which components have finished
-    feedbackComponents = [feedback_win, feedback_lose]
+    feedbackComponents = [feedback_win, feedback_lose, status_text, button, button_text, next_mouse]
     for thisComponent in feedbackComponents:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -1111,7 +1117,7 @@ for thisGame in games:
     
     # --- Run Routine "feedback" ---
     routineForceEnded = not continueRoutine
-    while continueRoutine and routineTimer.getTime() < 2.0:
+    while continueRoutine:
         # get current time
         t = routineTimer.getTime()
         tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -1128,8 +1134,6 @@ for thisGame in games:
             feedback_win.tStart = t  # local t and not account for scr refresh
             feedback_win.tStartRefresh = tThisFlipGlobal  # on global time
             win.timeOnFlip(feedback_win, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'feedback_win.started')
             # update status
             feedback_win.status = STARTED
             feedback_win.setAutoDraw(True)
@@ -1138,19 +1142,6 @@ for thisGame in games:
         if feedback_win.status == STARTED:
             # update params
             pass
-        
-        # if feedback_win is stopping this frame...
-        if feedback_win.status == STARTED:
-            # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > feedback_win.tStartRefresh + 2.0-frameTolerance:
-                # keep track of stop time/frame for later
-                feedback_win.tStop = t  # not accounting for scr refresh
-                feedback_win.frameNStop = frameN  # exact frame index
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'feedback_win.stopped')
-                # update status
-                feedback_win.status = FINISHED
-                feedback_win.setAutoDraw(False)
         
         # *feedback_lose* updates
         
@@ -1161,8 +1152,6 @@ for thisGame in games:
             feedback_lose.tStart = t  # local t and not account for scr refresh
             feedback_lose.tStartRefresh = tThisFlipGlobal  # on global time
             win.timeOnFlip(feedback_lose, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'feedback_lose.started')
             # update status
             feedback_lose.status = STARTED
             feedback_lose.setAutoDraw(True)
@@ -1172,18 +1161,99 @@ for thisGame in games:
             # update params
             pass
         
-        # if feedback_lose is stopping this frame...
-        if feedback_lose.status == STARTED:
-            # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > feedback_lose.tStartRefresh + 2.0-frameTolerance:
-                # keep track of stop time/frame for later
-                feedback_lose.tStop = t  # not accounting for scr refresh
-                feedback_lose.frameNStop = frameN  # exact frame index
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'feedback_lose.stopped')
-                # update status
-                feedback_lose.status = FINISHED
-                feedback_lose.setAutoDraw(False)
+        # *status_text* updates
+        
+        # if status_text is starting this frame...
+        if status_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            status_text.frameNStart = frameN  # exact frame index
+            status_text.tStart = t  # local t and not account for scr refresh
+            status_text.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(status_text, 'tStartRefresh')  # time at next scr refresh
+            # add timestamp to datafile
+            thisExp.timestampOnFlip(win, 'status_text.started')
+            # update status
+            status_text.status = STARTED
+            status_text.setAutoDraw(True)
+        
+        # if status_text is active this frame...
+        if status_text.status == STARTED:
+            # update params
+            pass
+        
+        # *button* updates
+        
+        # if button is starting this frame...
+        if button.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            button.frameNStart = frameN  # exact frame index
+            button.tStart = t  # local t and not account for scr refresh
+            button.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(button, 'tStartRefresh')  # time at next scr refresh
+            # update status
+            button.status = STARTED
+            button.setAutoDraw(True)
+        
+        # if button is active this frame...
+        if button.status == STARTED:
+            # update params
+            pass
+        
+        # *button_text* updates
+        
+        # if button_text is starting this frame...
+        if button_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            button_text.frameNStart = frameN  # exact frame index
+            button_text.tStart = t  # local t and not account for scr refresh
+            button_text.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(button_text, 'tStartRefresh')  # time at next scr refresh
+            # update status
+            button_text.status = STARTED
+            button_text.setAutoDraw(True)
+        
+        # if button_text is active this frame...
+        if button_text.status == STARTED:
+            # update params
+            pass
+        # *next_mouse* updates
+        
+        # if next_mouse is starting this frame...
+        if next_mouse.status == NOT_STARTED and t >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            next_mouse.frameNStart = frameN  # exact frame index
+            next_mouse.tStart = t  # local t and not account for scr refresh
+            next_mouse.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(next_mouse, 'tStartRefresh')  # time at next scr refresh
+            # add timestamp to datafile
+            thisExp.addData('next_mouse.started', t)
+            # update status
+            next_mouse.status = STARTED
+            next_mouse.mouseClock.reset()
+            prevButtonState = next_mouse.getPressed()  # if button is down already this ISN'T a new click
+        if next_mouse.status == STARTED:  # only update if started and not finished!
+            buttons = next_mouse.getPressed()
+            if buttons != prevButtonState:  # button state changed?
+                prevButtonState = buttons
+                if sum(buttons) > 0:  # state changed to a new click
+                    # check if the mouse was inside our 'clickable' objects
+                    gotValidClick = False
+                    clickableList = environmenttools.getFromNames(button, namespace=locals())
+                    for obj in clickableList:
+                        # is this object clicked on?
+                        if obj.contains(next_mouse):
+                            gotValidClick = True
+                            next_mouse.clicked_name.append(obj.name)
+                    x, y = next_mouse.getPos()
+                    next_mouse.x.append(x)
+                    next_mouse.y.append(y)
+                    buttons = next_mouse.getPressed()
+                    next_mouse.leftButton.append(buttons[0])
+                    next_mouse.midButton.append(buttons[1])
+                    next_mouse.rightButton.append(buttons[2])
+                    next_mouse.time.append(next_mouse.mouseClock.getTime())
+                    if gotValidClick:
+                        continueRoutine = False  # end routine on response
         
         # check for quit (typically the Esc key)
         if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -1209,14 +1279,19 @@ for thisGame in games:
     for thisComponent in feedbackComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
-    if routineForceEnded:
-        routineTimer.reset()
-    else:
-        routineTimer.addTime(-2.000000)
+    # store data for games (TrialHandler)
+    games.addData('next_mouse.x', next_mouse.x)
+    games.addData('next_mouse.y', next_mouse.y)
+    games.addData('next_mouse.leftButton', next_mouse.leftButton)
+    games.addData('next_mouse.midButton', next_mouse.midButton)
+    games.addData('next_mouse.rightButton', next_mouse.rightButton)
+    games.addData('next_mouse.time', next_mouse.time)
+    games.addData('next_mouse.clicked_name', next_mouse.clicked_name)
+    # the Routine "feedback" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
     thisExp.nextEntry()
     
-# completed 2.0 repeats of 'games'
+# completed num_games repeats of 'games'
 
 
 # --- End experiment ---

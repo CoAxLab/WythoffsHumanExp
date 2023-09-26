@@ -1,0 +1,7 @@
+﻿games.thisRepN,games.thisTrialN,games.thisN,games.thisIndex,turns.thisRepN,turns.thisTrialN,turns.thisN,turns.thisIndex,status_text.started,next_mouse.started,next_mouse.x,next_mouse.y,next_mouse.leftButton,next_mouse.midButton,next_mouse.rightButton,next_mouse.time,next_mouse.clicked_name,participant,session,date,expName,psychopyVersion,frameRate,
+0,0,0,0,0,0,0,0,,,,,,,,,,056923,001,2023-09-26_13h43.39.934,WythoffsHumanExp,2023.1.3,None,
+0,0,0,0,1,0,1,0,,,,,,,,,,056923,001,2023-09-26_13h43.39.934,WythoffsHumanExp,2023.1.3,None,
+0,0,0,0,2,0,2,0,,,,,,,,,,056923,001,2023-09-26_13h43.39.934,WythoffsHumanExp,2023.1.3,None,
+0,0,0,0,,,,,22.423233457957394,0.023226041987072676,[-0.07444444444444444],[0.028888888888888888],[1],[0],[0],[9.567407458031084],['button'],056923,001,2023-09-26_13h43.39.934,WythoffsHumanExp,2023.1.3,None,
+1,0,1,0,0,0,0,0,,,,,,,,,,056923,001,2023-09-26_13h43.39.934,WythoffsHumanExp,2023.1.3,None,
+1,0,1,0,,,,,39.5107441250002,0.022441792010795325,[-0.18333333333333332],[0.023333333333333334],[1],[0],[0],[35.230812457972206],['button'],056923,001,2023-09-26_13h43.39.934,WythoffsHumanExp,2023.1.3,None,
