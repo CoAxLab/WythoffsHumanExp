@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Tue Sep 26 14:26:10 2023
+    on Tue Sep 26 15:34:00 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -125,6 +125,36 @@ for row in range(14):
                 height = 1/16,
                 pos = (x_loc, y_loc),
                 fillColor = color))
+title_text = visual.TextStim(win=win, name='title_text',
+    text="Wythoff's Game Experiment",
+    font='Open Sans',
+    pos=(0, 0.3), height=0.1, wrapWidth=1.3, ori=0.0, 
+    color='gold', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-1.0);
+overview_text = visual.TextStim(win=win, name='overview_text',
+    text='Welcome! Please read all instructions carefully.\n\nThis experiment will have 3 sections.\nYou will be playing a virtual board game.\nClick the button below for the tutorial.',
+    font='Open Sans',
+    pos=(0, 0), height=0.05, wrapWidth=1.2, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-2.0);
+start_button = visual.Rect(
+    win=win, name='start_button',
+    width=(0.2, 0.1)[0], height=(0.2, 0.1)[1],
+    ori=0.0, pos=(0, -0.3), anchor='center',
+    lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
+    opacity=None, depth=-3.0, interpolate=True)
+button_label = visual.TextStim(win=win, name='button_label',
+    text='begin',
+    font='Open Sans',
+    pos=(0, -0.3), height=0.05, wrapWidth=None, ori=0.0, 
+    color='grey', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-4.0);
+start_mouse = event.Mouse(win=win)
+x, y = [None, None]
+start_mouse.mouseClock = core.Clock()
 
 # --- Initialize components for Routine "countdown" ---
 countdown_text = visual.TextStim(win=win, name='countdown_text',
@@ -264,8 +294,11 @@ random.shuffle(npc_starts)
 
 game = 0 # initialize game counter
 num_wins = 0 #initialize win counter
+# setup some python lists for storing info about the start_mouse
+start_mouse.clicked_name = []
+gotValidClick = False  # until a click is received
 # keep track of which components have finished
-setup_instructComponents = []
+setup_instructComponents = [title_text, overview_text, start_button, button_label, start_mouse]
 for thisComponent in setup_instructComponents:
     thisComponent.tStart = None
     thisComponent.tStop = None
@@ -287,6 +320,106 @@ while continueRoutine:
     tThisFlipGlobal = win.getFutureFlipTime(clock=None)
     frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
     # update/draw components on each frame
+    
+    # *title_text* updates
+    
+    # if title_text is starting this frame...
+    if title_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        title_text.frameNStart = frameN  # exact frame index
+        title_text.tStart = t  # local t and not account for scr refresh
+        title_text.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(title_text, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        title_text.status = STARTED
+        title_text.setAutoDraw(True)
+    
+    # if title_text is active this frame...
+    if title_text.status == STARTED:
+        # update params
+        pass
+    
+    # *overview_text* updates
+    
+    # if overview_text is starting this frame...
+    if overview_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        overview_text.frameNStart = frameN  # exact frame index
+        overview_text.tStart = t  # local t and not account for scr refresh
+        overview_text.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(overview_text, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        overview_text.status = STARTED
+        overview_text.setAutoDraw(True)
+    
+    # if overview_text is active this frame...
+    if overview_text.status == STARTED:
+        # update params
+        pass
+    
+    # *start_button* updates
+    
+    # if start_button is starting this frame...
+    if start_button.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        start_button.frameNStart = frameN  # exact frame index
+        start_button.tStart = t  # local t and not account for scr refresh
+        start_button.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(start_button, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        start_button.status = STARTED
+        start_button.setAutoDraw(True)
+    
+    # if start_button is active this frame...
+    if start_button.status == STARTED:
+        # update params
+        pass
+    
+    # *button_label* updates
+    
+    # if button_label is starting this frame...
+    if button_label.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        button_label.frameNStart = frameN  # exact frame index
+        button_label.tStart = t  # local t and not account for scr refresh
+        button_label.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(button_label, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        button_label.status = STARTED
+        button_label.setAutoDraw(True)
+    
+    # if button_label is active this frame...
+    if button_label.status == STARTED:
+        # update params
+        pass
+    # *start_mouse* updates
+    
+    # if start_mouse is starting this frame...
+    if start_mouse.status == NOT_STARTED and t >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        start_mouse.frameNStart = frameN  # exact frame index
+        start_mouse.tStart = t  # local t and not account for scr refresh
+        start_mouse.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(start_mouse, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        start_mouse.status = STARTED
+        start_mouse.mouseClock.reset()
+        prevButtonState = start_mouse.getPressed()  # if button is down already this ISN'T a new click
+    if start_mouse.status == STARTED:  # only update if started and not finished!
+        buttons = start_mouse.getPressed()
+        if buttons != prevButtonState:  # button state changed?
+            prevButtonState = buttons
+            if sum(buttons) > 0:  # state changed to a new click
+                # check if the mouse was inside our 'clickable' objects
+                gotValidClick = False
+                clickableList = environmenttools.getFromNames(start_button, namespace=locals())
+                for obj in clickableList:
+                    # is this object clicked on?
+                    if obj.contains(start_mouse):
+                        gotValidClick = True
+                        start_mouse.clicked_name.append(obj.name)
+                if gotValidClick:  
+                    continueRoutine = False  # end routine on response
     
     # check for quit (typically the Esc key)
     if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -312,6 +445,8 @@ while continueRoutine:
 for thisComponent in setup_instructComponents:
     if hasattr(thisComponent, "setAutoDraw"):
         thisComponent.setAutoDraw(False)
+# store data for thisExp (ExperimentHandler)
+thisExp.nextEntry()
 # the Routine "setup_instruct" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
@@ -1093,12 +1228,6 @@ for thisGame in games:
     feedback_lose.setOpacity(1 - player_won)
     status_text.setText('games played: ' + str(game) + ' of ' + str(num_games) + '\nwin percentage: ' + str(round (num_wins / game * 100)) + '%')
     # setup some python lists for storing info about the next_mouse
-    next_mouse.x = []
-    next_mouse.y = []
-    next_mouse.leftButton = []
-    next_mouse.midButton = []
-    next_mouse.rightButton = []
-    next_mouse.time = []
     next_mouse.clicked_name = []
     gotValidClick = False  # until a click is received
     # keep track of which components have finished
@@ -1225,8 +1354,6 @@ for thisGame in games:
             next_mouse.tStart = t  # local t and not account for scr refresh
             next_mouse.tStartRefresh = tThisFlipGlobal  # on global time
             win.timeOnFlip(next_mouse, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.addData('next_mouse.started', t)
             # update status
             next_mouse.status = STARTED
             next_mouse.mouseClock.reset()
@@ -1244,15 +1371,7 @@ for thisGame in games:
                         if obj.contains(next_mouse):
                             gotValidClick = True
                             next_mouse.clicked_name.append(obj.name)
-                    x, y = next_mouse.getPos()
-                    next_mouse.x.append(x)
-                    next_mouse.y.append(y)
-                    buttons = next_mouse.getPressed()
-                    next_mouse.leftButton.append(buttons[0])
-                    next_mouse.midButton.append(buttons[1])
-                    next_mouse.rightButton.append(buttons[2])
-                    next_mouse.time.append(next_mouse.mouseClock.getTime())
-                    if gotValidClick:
+                    if gotValidClick:  
                         continueRoutine = False  # end routine on response
         
         # check for quit (typically the Esc key)
@@ -1280,13 +1399,6 @@ for thisGame in games:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     # store data for games (TrialHandler)
-    games.addData('next_mouse.x', next_mouse.x)
-    games.addData('next_mouse.y', next_mouse.y)
-    games.addData('next_mouse.leftButton', next_mouse.leftButton)
-    games.addData('next_mouse.midButton', next_mouse.midButton)
-    games.addData('next_mouse.rightButton', next_mouse.rightButton)
-    games.addData('next_mouse.time', next_mouse.time)
-    games.addData('next_mouse.clicked_name', next_mouse.clicked_name)
     # the Routine "feedback" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
     thisExp.nextEntry()
