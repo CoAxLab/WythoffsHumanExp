@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Wed Sep 27 14:06:47 2023
+    on Wed Sep 27 14:52:59 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -146,7 +146,7 @@ start_button = visual.Rect(
     lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
     opacity=None, depth=-3.0, interpolate=True)
 button_label = visual.TextStim(win=win, name='button_label',
-    text='begin',
+    text='begin!',
     font='Open Sans',
     pos=(0, -0.3), height=0.05, wrapWidth=None, ori=0.0, 
     color='grey', colorSpace='rgb', opacity=None, 
@@ -170,7 +170,7 @@ begin_button = visual.Rect(
     lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
     opacity=None, depth=-2.0, interpolate=True)
 begin_text = visual.TextStim(win=win, name='begin_text',
-    text='start',
+    text='ready!',
     font='Open Sans',
     pos=(0.6, -0.3), height=0.05, wrapWidth=None, ori=0.0, 
     color='grey', colorSpace='rgb', opacity=None, 
@@ -218,6 +218,30 @@ text_2 = visual.TextStim(win=win, name='text_2',
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-10.0);
+tutorial_piece = visual.ShapeStim(
+    win=win, name='tutorial_piece',
+    size=(1/19, 1/19), vertices='circle',
+    ori=0.0, pos=((7-7)/17, (15-4-8)/17), anchor='center',
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='dodgerblue', fillColor='dodgerblue',
+    opacity=None, depth=-11.0, interpolate=True)
+left_arrow = visual.ShapeStim(
+    win=win, name='left_arrow', vertices='arrow',
+    size=(1/20, 1/20),
+    ori=-90.0, pos=((5.75-7)/17, (15-4-8)/17), anchor='center',
+    lineWidth=1.0,     colorSpace='rgb',  lineColor=None, fillColor='black',
+    opacity=None, depth=-12.0, interpolate=True)
+up_arrow = visual.ShapeStim(
+    win=win, name='up_arrow', vertices='arrow',
+    size=(1/20, 1/20),
+    ori=0.0, pos=((7-7)/17, (15-2.75-8)/17), anchor='center',
+    lineWidth=1.0,     colorSpace='rgb',  lineColor=None, fillColor='black',
+    opacity=None, depth=-13.0, interpolate=True)
+up_left_arrow = visual.ShapeStim(
+    win=win, name='up_left_arrow', vertices='arrow',
+    size=(1/20, 1/20),
+    ori=-45.0, pos=((6.05-7)/17, (15-3.05-8)/17), anchor='center',
+    lineWidth=1.0,     colorSpace='rgb',  lineColor=None, fillColor='black',
+    opacity=None, depth=-14.0, interpolate=True)
 
 # --- Initialize components for Routine "countdown" ---
 countdown_text = visual.TextStim(win=win, name='countdown_text',
@@ -520,7 +544,7 @@ continueRoutine = True
 tutorial_mouse.clicked_name = []
 gotValidClick = False  # until a click is received
 # keep track of which components have finished
-tutorialComponents = [board_outline, begin_button, begin_text, tutorial_mouse, tutorial_title, box_1, text_1, arrow, box_2, text_2]
+tutorialComponents = [board_outline, begin_button, begin_text, tutorial_mouse, tutorial_title, box_1, text_1, arrow, box_2, text_2, tutorial_piece, left_arrow, up_arrow, up_left_arrow]
 for thisComponent in tutorialComponents:
     thisComponent.tStart = None
     thisComponent.tStop = None
@@ -745,6 +769,84 @@ while continueRoutine:
     
     # if text_2 is active this frame...
     if text_2.status == STARTED:
+        # update params
+        pass
+    
+    # *tutorial_piece* updates
+    
+    # if tutorial_piece is starting this frame...
+    if tutorial_piece.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        tutorial_piece.frameNStart = frameN  # exact frame index
+        tutorial_piece.tStart = t  # local t and not account for scr refresh
+        tutorial_piece.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(tutorial_piece, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        tutorial_piece.status = STARTED
+        tutorial_piece.setAutoDraw(True)
+    
+    # if tutorial_piece is active this frame...
+    if tutorial_piece.status == STARTED:
+        # update params
+        pass
+    
+    # *left_arrow* updates
+    
+    # if left_arrow is starting this frame...
+    if left_arrow.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        left_arrow.frameNStart = frameN  # exact frame index
+        left_arrow.tStart = t  # local t and not account for scr refresh
+        left_arrow.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(left_arrow, 'tStartRefresh')  # time at next scr refresh
+        # add timestamp to datafile
+        thisExp.timestampOnFlip(win, 'left_arrow.started')
+        # update status
+        left_arrow.status = STARTED
+        left_arrow.setAutoDraw(True)
+    
+    # if left_arrow is active this frame...
+    if left_arrow.status == STARTED:
+        # update params
+        pass
+    
+    # *up_arrow* updates
+    
+    # if up_arrow is starting this frame...
+    if up_arrow.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        up_arrow.frameNStart = frameN  # exact frame index
+        up_arrow.tStart = t  # local t and not account for scr refresh
+        up_arrow.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(up_arrow, 'tStartRefresh')  # time at next scr refresh
+        # add timestamp to datafile
+        thisExp.timestampOnFlip(win, 'up_arrow.started')
+        # update status
+        up_arrow.status = STARTED
+        up_arrow.setAutoDraw(True)
+    
+    # if up_arrow is active this frame...
+    if up_arrow.status == STARTED:
+        # update params
+        pass
+    
+    # *up_left_arrow* updates
+    
+    # if up_left_arrow is starting this frame...
+    if up_left_arrow.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        up_left_arrow.frameNStart = frameN  # exact frame index
+        up_left_arrow.tStart = t  # local t and not account for scr refresh
+        up_left_arrow.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(up_left_arrow, 'tStartRefresh')  # time at next scr refresh
+        # add timestamp to datafile
+        thisExp.timestampOnFlip(win, 'up_left_arrow.started')
+        # update status
+        up_left_arrow.status = STARTED
+        up_left_arrow.setAutoDraw(True)
+    
+    # if up_left_arrow is active this frame...
+    if up_left_arrow.status == STARTED:
         # update params
         pass
     
