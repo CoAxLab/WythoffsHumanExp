@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Wed Sep 27 12:41:41 2023
+    on Wed Sep 27 14:06:47 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -179,6 +179,45 @@ begin_text = visual.TextStim(win=win, name='begin_text',
 tutorial_mouse = event.Mouse(win=win)
 x, y = [None, None]
 tutorial_mouse.mouseClock = core.Clock()
+tutorial_title = visual.TextStim(win=win, name='tutorial_title',
+    text='Tutorial',
+    font='Open Sans',
+    pos=(0, 0.47), height=0.05, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-5.0);
+box_1 = visual.Rect(
+    win=win, name='box_1',
+    width=(0.3, 2/17)[0], height=(0.3, 2/17)[1],
+    ori=0.0, pos=(-15/17/2, 15/17/2), anchor='top-right',
+    lineWidth=20.0,     colorSpace='rgb',  lineColor='black', fillColor='black',
+    opacity=None, depth=-6.0, interpolate=True)
+text_1 = visual.TextStim(win=win, name='text_1',
+    text='1) This is the\ngame board.',
+    font='Open Sans',
+    pos=(-0.595, 13/17/2), height=0.05, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-7.0);
+arrow = visual.ShapeStim(
+    win=win, name='arrow', vertices='arrow',
+    size=(0.15, 0.15),
+    ori=-45.0, pos=(-13.25/17/2, 13.25/17/2), anchor='top-center',
+    lineWidth=1.0,     colorSpace='rgb',  lineColor=None, fillColor='black',
+    opacity=None, depth=-8.0, interpolate=True)
+box_2 = visual.Rect(
+    win=win, name='box_2',
+    width=(0.35, 2/17)[0], height=(0.35, 2/17)[1],
+    ori=0.0, pos=(-17.5/17/2, 7.5/17/2), anchor='center',
+    lineWidth=20.0,     colorSpace='rgb',  lineColor='black', fillColor='black',
+    opacity=None, depth=-9.0, interpolate=True)
+text_2 = visual.TextStim(win=win, name='text_2',
+    text='2) The top-left\nspot is the goal.',
+    font='Open Sans',
+    pos=(-17.5/17/2, 7.5/17/2), height=0.05, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-10.0);
 
 # --- Initialize components for Routine "countdown" ---
 countdown_text = visual.TextStim(win=win, name='countdown_text',
@@ -481,7 +520,7 @@ continueRoutine = True
 tutorial_mouse.clicked_name = []
 gotValidClick = False  # until a click is received
 # keep track of which components have finished
-tutorialComponents = [board_outline, begin_button, begin_text, tutorial_mouse]
+tutorialComponents = [board_outline, begin_button, begin_text, tutorial_mouse, tutorial_title, box_1, text_1, arrow, box_2, text_2]
 for thisComponent in tutorialComponents:
     thisComponent.tStart = None
     thisComponent.tStop = None
@@ -590,6 +629,124 @@ while continueRoutine:
                         tutorial_mouse.clicked_name.append(obj.name)
                 if gotValidClick:  
                     continueRoutine = False  # end routine on response
+    
+    # *tutorial_title* updates
+    
+    # if tutorial_title is starting this frame...
+    if tutorial_title.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        tutorial_title.frameNStart = frameN  # exact frame index
+        tutorial_title.tStart = t  # local t and not account for scr refresh
+        tutorial_title.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(tutorial_title, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        tutorial_title.status = STARTED
+        tutorial_title.setAutoDraw(True)
+    
+    # if tutorial_title is active this frame...
+    if tutorial_title.status == STARTED:
+        # update params
+        pass
+    
+    # *box_1* updates
+    
+    # if box_1 is starting this frame...
+    if box_1.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        box_1.frameNStart = frameN  # exact frame index
+        box_1.tStart = t  # local t and not account for scr refresh
+        box_1.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(box_1, 'tStartRefresh')  # time at next scr refresh
+        # add timestamp to datafile
+        thisExp.timestampOnFlip(win, 'box_1.started')
+        # update status
+        box_1.status = STARTED
+        box_1.setAutoDraw(True)
+    
+    # if box_1 is active this frame...
+    if box_1.status == STARTED:
+        # update params
+        pass
+    
+    # *text_1* updates
+    
+    # if text_1 is starting this frame...
+    if text_1.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        text_1.frameNStart = frameN  # exact frame index
+        text_1.tStart = t  # local t and not account for scr refresh
+        text_1.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(text_1, 'tStartRefresh')  # time at next scr refresh
+        # add timestamp to datafile
+        thisExp.timestampOnFlip(win, 'text_1.started')
+        # update status
+        text_1.status = STARTED
+        text_1.setAutoDraw(True)
+    
+    # if text_1 is active this frame...
+    if text_1.status == STARTED:
+        # update params
+        pass
+    
+    # *arrow* updates
+    
+    # if arrow is starting this frame...
+    if arrow.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        arrow.frameNStart = frameN  # exact frame index
+        arrow.tStart = t  # local t and not account for scr refresh
+        arrow.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(arrow, 'tStartRefresh')  # time at next scr refresh
+        # add timestamp to datafile
+        thisExp.timestampOnFlip(win, 'arrow.started')
+        # update status
+        arrow.status = STARTED
+        arrow.setAutoDraw(True)
+    
+    # if arrow is active this frame...
+    if arrow.status == STARTED:
+        # update params
+        pass
+    
+    # *box_2* updates
+    
+    # if box_2 is starting this frame...
+    if box_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        box_2.frameNStart = frameN  # exact frame index
+        box_2.tStart = t  # local t and not account for scr refresh
+        box_2.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(box_2, 'tStartRefresh')  # time at next scr refresh
+        # add timestamp to datafile
+        thisExp.timestampOnFlip(win, 'box_2.started')
+        # update status
+        box_2.status = STARTED
+        box_2.setAutoDraw(True)
+    
+    # if box_2 is active this frame...
+    if box_2.status == STARTED:
+        # update params
+        pass
+    
+    # *text_2* updates
+    
+    # if text_2 is starting this frame...
+    if text_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        text_2.frameNStart = frameN  # exact frame index
+        text_2.tStart = t  # local t and not account for scr refresh
+        text_2.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(text_2, 'tStartRefresh')  # time at next scr refresh
+        # add timestamp to datafile
+        thisExp.timestampOnFlip(win, 'text_2.started')
+        # update status
+        text_2.status = STARTED
+        text_2.setAutoDraw(True)
+    
+    # if text_2 is active this frame...
+    if text_2.status == STARTED:
+        # update params
+        pass
     
     # check for quit (typically the Esc key)
     if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
