@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Tue Sep 26 16:47:02 2023
+    on Wed Sep 27 12:41:41 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -107,22 +107,22 @@ defaultKeyboard = keyboard.Keyboard(backend='iohub')
 
 squares = []
 
-for row in range(14):
-    for col in range(14):
+for row in range(15):
+    for col in range(15):
         
         if (row + col) % 2 == 0:
             color = 'lightgray'
         else:
             color = 'darkgray'
         
-        x_loc = ((14 - row) - 7.5) / 16
-        y_loc = (col - 6.5) / 16
+        x_loc = ((15 - row) - 8) / 17
+        y_loc = (col - 7) / 17
         
         squares.append(
             visual.Rect(
                 win = win,
-                width = 1/16,
-                height = 1/16,
+                width = 1/17,
+                height = 1/17,
                 pos = (x_loc, y_loc),
                 fillColor = color))
 title_text = visual.TextStim(win=win, name='title_text',
@@ -159,7 +159,7 @@ start_mouse.mouseClock = core.Clock()
 # --- Initialize components for Routine "tutorial" ---
 board_outline = visual.Rect(
     win=win, name='board_outline',
-    width=(14/16, -14/16)[0], height=(14/16, -14/16)[1],
+    width=(15/17, -15/17)[0], height=(15/17, -15/17)[1],
     ori=0.0, pos=(0, 0), anchor='center',
     lineWidth=20.0,     colorSpace='rgb',  lineColor='black', fillColor=None,
     opacity=None, depth=-1.0, interpolate=True)
@@ -190,13 +190,13 @@ countdown_text = visual.TextStim(win=win, name='countdown_text',
     depth=-1.0);
 blue_piece = visual.ShapeStim(
     win=win, name='blue_piece',
-    size=(1/18, 1/18), vertices='circle',
+    size=(1/19, 1/19), vertices='circle',
     ori=0.0, pos=[0,0], anchor='center',
     lineWidth=1.0,     colorSpace='rgb',  lineColor='dodgerblue', fillColor='dodgerblue',
     opacity=1.0, depth=-2.0, interpolate=True)
 red_piece = visual.ShapeStim(
     win=win, name='red_piece',
-    size=(1/18, 1/18), vertices='circle',
+    size=(1/19, 1/19), vertices='circle',
     ori=0.0, pos=[0,0], anchor='center',
     lineWidth=1.0,     colorSpace='rgb',  lineColor='chestnut', fillColor='chestnut',
     opacity=1.0, depth=-3.0, interpolate=True)
@@ -204,7 +204,7 @@ red_piece = visual.ShapeStim(
 # --- Initialize components for Routine "select_move" ---
 piece = visual.ShapeStim(
     win=win, name='piece',
-    size=(1/18, 1/18), vertices='circle',
+    size=(1/19, 1/19), vertices='circle',
     ori=0.0, pos=[0,0], anchor='center',
     lineWidth=1.0,     colorSpace='rgb',  lineColor='dodgerblue', fillColor='dodgerblue',
     opacity=None, depth=-1.0, interpolate=True)
@@ -222,7 +222,7 @@ text = visual.TextStim(win=win, name='text',
 # --- Initialize components for Routine "make_move" ---
 moving_piece = visual.ShapeStim(
     win=win, name='moving_piece',
-    size=(1/18, 1/18), vertices='circle',
+    size=(1/19, 1/19), vertices='circle',
     ori=0.0, pos=[0,0], anchor='center',
     lineWidth=1.0,     colorSpace='rgb',  lineColor='dodgerblue', fillColor='dodgerblue',
     opacity=None, depth=-1.0, interpolate=True)
@@ -230,7 +230,7 @@ moving_piece = visual.ShapeStim(
 # --- Initialize components for Routine "npc_wait" ---
 npc = visual.ShapeStim(
     win=win, name='npc',
-    size=(1/18, 1/18), vertices='circle',
+    size=(1/19, 1/19), vertices='circle',
     ori=0.0, pos=[0,0], anchor='center',
     lineWidth=1.0,     colorSpace='rgb',  lineColor='chestnut', fillColor='chestnut',
     opacity=None, depth=-1.0, interpolate=True)
@@ -238,7 +238,7 @@ npc = visual.ShapeStim(
 # --- Initialize components for Routine "npc_move" ---
 moving_npc = visual.ShapeStim(
     win=win, name='moving_npc',
-    size=(1/18, 1/18), vertices='circle',
+    size=(1/19, 1/19), vertices='circle',
     ori=0.0, pos=[0,0], anchor='center',
     lineWidth=1.0,     colorSpace='rgb',  lineColor='chestnut', fillColor='chestnut',
     opacity=None, depth=-1.0, interpolate=True)
@@ -246,13 +246,13 @@ moving_npc = visual.ShapeStim(
 # --- Initialize components for Routine "end_pause" ---
 end_blue = visual.ShapeStim(
     win=win, name='end_blue',
-    size=(1/18, 1/18), vertices='circle',
+    size=(1/19, 1/19), vertices='circle',
     ori=0.0, pos=[0,0], anchor='center',
     lineWidth=1.0,     colorSpace='rgb',  lineColor='dodgerblue', fillColor='dodgerblue',
     opacity=1.0, depth=-1.0, interpolate=True)
 end_red = visual.ShapeStim(
     win=win, name='end_red',
-    size=(1/18, 1/18), vertices='circle',
+    size=(1/19, 1/19), vertices='circle',
     ori=0.0, pos=[0,0], anchor='center',
     lineWidth=1.0,     colorSpace='rgb',  lineColor='chestnut', fillColor='chestnut',
     opacity=1.0, depth=-2.0, interpolate=True)
@@ -652,19 +652,19 @@ for thisGame in games:
     npc_start = npc_starts[game]
     game = game + 1
     
-    row = random.randint(0,13)
-    col = random.randint(0,13)
+    row = random.randint(0,14)
+    col = random.randint(0,14)
     
     while row == col == 0:
-        row = random.randint(0,13)
-        col = random.randint(0,13)
+        row = random.randint(0,14)
+        col = random.randint(0,14)
     
     row_new = row
     col_new = col
     blue_piece.setOpacity(1 - npc_start)
-    blue_piece.setPos(((col-6.5)/16, (14-row-7.5)/16))
+    blue_piece.setPos(((col-7)/17, (15-row-8)/17))
     red_piece.setOpacity(npc_start)
-    red_piece.setPos(((col-6.5)/16, (14-row-7.5)/16))
+    red_piece.setPos(((col-7)/17, (15-row-8)/17))
     # keep track of which components have finished
     countdownComponents = [countdown_text, blue_piece, red_piece]
     for thisComponent in countdownComponents:
@@ -837,7 +837,7 @@ for thisGame in games:
         
         row = row_new
         col = col_new
-        piece.setPos(((col-6.5)/16, (14-row-7.5)/16))
+        piece.setPos(((col-7)/17, (15-row-8)/17))
         # setup some python lists for storing info about the mouse
         gotValidClick = False  # until a click is received
         # keep track of which components have finished
@@ -866,8 +866,8 @@ for thisGame in games:
             # Run 'Each Frame' code from code
             if mouse.getPressed()[0] == 1:
                 mouse_x, mouse_y = mouse.getPos()
-                row_new = round(0 - ((mouse_y * 16) + 7.5 - 14))
-                col_new = round((mouse_x * 16) + 6.5)
+                row_new = round(0 - ((mouse_y * 17) + 8 - 15))
+                col_new = round((mouse_x * 17) + 7)
                 if row_new <= row and col_new <= col:
                     if row_new >= 0 and col_new >= 0:
                         if row_new==row or col_new==col or row-row_new == col-col_new:
@@ -1003,7 +1003,7 @@ for thisGame in games:
             # if moving_piece is active this frame...
             if moving_piece.status == STARTED:
                 # update params
-                moving_piece.setPos(((((1-t)*col+t*col_new)-6.5)/16, (14-((1-t)*row+t*row_new)-7.5)/16), log=False)
+                moving_piece.setPos(((((1-t)*col+t*col_new)-7)/17, (15-((1-t)*row+t*row_new)-8)/17), log=False)
             
             # if moving_piece is stopping this frame...
             if moving_piece.status == STARTED:
@@ -1078,7 +1078,7 @@ for thisGame in games:
         
         if len(moves) > 0:
             (row_new, col_new) = random.choice(moves)
-        npc.setPos(((col-6.5)/16, (14-row-7.5)/16))
+        npc.setPos(((col-7)/17, (15-row-8)/17))
         # keep track of which components have finished
         npc_waitComponents = [npc]
         for thisComponent in npc_waitComponents:
@@ -1214,7 +1214,7 @@ for thisGame in games:
             # if moving_npc is active this frame...
             if moving_npc.status == STARTED:
                 # update params
-                moving_npc.setPos(((((1-t)*col+t*col_new)-6.5)/16, (14-((1-t)*row+t*row_new)-7.5)/16), log=False)
+                moving_npc.setPos(((((1-t)*col+t*col_new)-7)/17, (15-((1-t)*row+t*row_new)-8)/17), log=False)
             
             # if moving_npc is stopping this frame...
             if moving_npc.status == STARTED:
@@ -1273,9 +1273,9 @@ for thisGame in games:
     row = row_new
     col = col_new
     end_blue.setOpacity(player_won)
-    end_blue.setPos(((col-6.5)/16, (14-row-7.5)/16))
+    end_blue.setPos(((col-7)/17, (15-row-8)/17))
     end_red.setOpacity(1 - player_won)
-    end_red.setPos(((col-6.5)/16, (14-row-7.5)/16))
+    end_red.setPos(((col-7)/17, (15-row-8)/17))
     # keep track of which components have finished
     end_pauseComponents = [end_blue, end_red]
     for thisComponent in end_pauseComponents:

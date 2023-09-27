@@ -99,10 +99,10 @@
         <Param val="moving_piece" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="((((1-t)*col+t*col_new)-6.5)/16, (14-((1-t)*row+t*row_new)-7.5)/16)" valType="list" updates="set every frame" name="pos"/>
+        <Param val="((((1-t)*col+t*col_new)-7)/17, (15-((1-t)*row+t*row_new)-8)/17)" valType="list" updates="set every frame" name="pos"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="circle" valType="str" updates="None" name="shape"/>
-        <Param val="(1/18, 1/18)" valType="list" updates="constant" name="size"/>
+        <Param val="(1/19, 1/19)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -122,8 +122,8 @@
         <Param val="if (npc_start) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;row = row_new;&amp;#10;col = col_new;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="if npc_start:&amp;#10;    continueRoutine = False&amp;#10;&amp;#10;row = row_new&amp;#10;col = col_new" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="if mouse.getPressed()[0] == 1:&amp;#10;    mouse_x, mouse_y = mouse.getPos()&amp;#10;    row_new = round(0 - ((mouse_y * 16) + 7.5 - 14))&amp;#10;    col_new = round((mouse_x * 16) + 6.5)&amp;#10;    if row_new &lt;= row and col_new &lt;= col:&amp;#10;        if row_new &gt;= 0 and col_new &gt;= 0:&amp;#10;            if row_new==row or col_new==col or row-row_new == col-col_new:&amp;#10;                continueRoutine = False&amp;#10;&amp;#10;for square in squares:&amp;#10;    square.draw()" valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="if ((mouse.getPressed()[0] === 1)) {&amp;#10;    [mouse_x, mouse_y] = mouse.getPos();&amp;#10;    row_new = util.round((0 - (((mouse_y * 16) + 7.5) - 14)));&amp;#10;    col_new = util.round(((mouse_x * 16) + 6.5));&amp;#10;    if (((row_new &lt;= row) &amp;&amp; (col_new &lt;= col))) {&amp;#10;        if (((row_new &gt;= 0) &amp;&amp; (col_new &gt;= 0))) {&amp;#10;            if ((((row_new === row) || (col_new === col)) || ((row - row_new) === (col - col_new)))) {&amp;#10;                continueRoutine = false;&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;for (var square, _pj_c = 0, _pj_a = squares, _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    square = _pj_a[_pj_c];&amp;#10;    square.draw();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="if mouse.getPressed()[0] == 1:&amp;#10;    mouse_x, mouse_y = mouse.getPos()&amp;#10;    row_new = round(0 - ((mouse_y * 17) + 8 - 15))&amp;#10;    col_new = round((mouse_x * 17) + 7)&amp;#10;    if row_new &lt;= row and col_new &lt;= col:&amp;#10;        if row_new &gt;= 0 and col_new &gt;= 0:&amp;#10;            if row_new==row or col_new==col or row-row_new == col-col_new:&amp;#10;                continueRoutine = False&amp;#10;&amp;#10;for square in squares:&amp;#10;    square.draw()" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="if ((mouse.getPressed()[0] === 1)) {&amp;#10;    [mouse_x, mouse_y] = mouse.getPos();&amp;#10;    row_new = util.round((0 - (((mouse_y * 17) + 8) - 15)));&amp;#10;    col_new = util.round(((mouse_x * 17) + 7));&amp;#10;    if (((row_new &lt;= row) &amp;&amp; (col_new &lt;= col))) {&amp;#10;        if (((row_new &gt;= 0) &amp;&amp; (col_new &gt;= 0))) {&amp;#10;            if ((((row_new === row) || (col_new === col)) || ((row - row_new) === (col - col_new)))) {&amp;#10;                continueRoutine = false;&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;for (var square, _pj_c = 0, _pj_a = squares, _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    square = _pj_a[_pj_c];&amp;#10;    square.draw();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
@@ -145,10 +145,10 @@
         <Param val="piece" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="((col-6.5)/16, (14-row-7.5)/16)" valType="list" updates="set every repeat" name="pos"/>
+        <Param val="((col-7)/17, (15-row-8)/17)" valType="list" updates="set every repeat" name="pos"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="circle" valType="str" updates="None" name="shape"/>
-        <Param val="(1/18, 1/18)" valType="list" updates="constant" name="size"/>
+        <Param val="(1/19, 1/19)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -236,10 +236,10 @@
         <Param val="moving_npc" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="((((1-t)*col+t*col_new)-6.5)/16, (14-((1-t)*row+t*row_new)-7.5)/16)" valType="list" updates="set every frame" name="pos"/>
+        <Param val="((((1-t)*col+t*col_new)-7)/17, (15-((1-t)*row+t*row_new)-8)/17)" valType="list" updates="set every frame" name="pos"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="circle" valType="str" updates="None" name="shape"/>
-        <Param val="(1/18, 1/18)" valType="list" updates="constant" name="size"/>
+        <Param val="(1/19, 1/19)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -282,10 +282,10 @@
         <Param val="npc" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="((col-6.5)/16, (14-row-7.5)/16)" valType="list" updates="set every repeat" name="pos"/>
+        <Param val="((col-7)/17, (15-row-8)/17)" valType="list" updates="set every repeat" name="pos"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="circle" valType="str" updates="None" name="shape"/>
-        <Param val="(1/18, 1/18)" valType="list" updates="constant" name="size"/>
+        <Param val="(1/19, 1/19)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -300,8 +300,8 @@
       <CodeComponent name="setup_code" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
-        <Param val="# Make game board tiles for rendering later&amp;#10;&amp;#10;squares = []&amp;#10;&amp;#10;for row in range(14):&amp;#10;    for col in range(14):&amp;#10;        &amp;#10;        if (row + col) % 2 == 0:&amp;#10;            color = 'lightgray'&amp;#10;        else:&amp;#10;            color = 'darkgray'&amp;#10;        &amp;#10;        x_loc = ((14 - row) - 7.5) / 16&amp;#10;        y_loc = (col - 6.5) / 16&amp;#10;        &amp;#10;        squares.append(&amp;#10;            visual.Rect(&amp;#10;                win = win,&amp;#10;                width = 1/16,&amp;#10;                height = 1/16,&amp;#10;                pos = (x_loc, y_loc),&amp;#10;                fillColor = color))" valType="extendedCode" updates="constant" name="Begin Experiment"/>
-        <Param val="squares = [];&amp;#10;for (var row, _pj_c = 0, _pj_a = util.range(14), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    row = _pj_a[_pj_c];&amp;#10;    for (var col, _pj_f = 0, _pj_d = util.range(14), _pj_e = _pj_d.length; (_pj_f &lt; _pj_e); _pj_f += 1) {&amp;#10;        col = _pj_d[_pj_f];&amp;#10;        if ((((row + col) % 2) === 0)) {&amp;#10;            color = &quot;lightgray&quot;;&amp;#10;        } else {&amp;#10;            color = &quot;darkgray&quot;;&amp;#10;        }&amp;#10;        x_loc = (((14 - row) - 7.5) / 16);&amp;#10;        y_loc = ((col - 6.5) / 16);&amp;#10;        squares.push(new visual.Rect({&quot;win&quot;: psychoJS.window, &quot;width&quot;: (1 / 16), &quot;height&quot;: (1 / 16), &quot;pos&quot;: [x_loc, y_loc], &quot;fillColor&quot;: color}));&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="# Make game board tiles for rendering later&amp;#10;&amp;#10;squares = []&amp;#10;&amp;#10;for row in range(15):&amp;#10;    for col in range(15):&amp;#10;        &amp;#10;        if (row + col) % 2 == 0:&amp;#10;            color = 'lightgray'&amp;#10;        else:&amp;#10;            color = 'darkgray'&amp;#10;        &amp;#10;        x_loc = ((15 - row) - 8) / 17&amp;#10;        y_loc = (col - 7) / 17&amp;#10;        &amp;#10;        squares.append(&amp;#10;            visual.Rect(&amp;#10;                win = win,&amp;#10;                width = 1/17,&amp;#10;                height = 1/17,&amp;#10;                pos = (x_loc, y_loc),&amp;#10;                fillColor = color))" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="squares = [];&amp;#10;for (var row, _pj_c = 0, _pj_a = util.range(15), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    row = _pj_a[_pj_c];&amp;#10;    for (var col, _pj_f = 0, _pj_d = util.range(15), _pj_e = _pj_d.length; (_pj_f &lt; _pj_e); _pj_f += 1) {&amp;#10;        col = _pj_d[_pj_f];&amp;#10;        if ((((row + col) % 2) === 0)) {&amp;#10;            color = &quot;lightgray&quot;;&amp;#10;        } else {&amp;#10;            color = &quot;darkgray&quot;;&amp;#10;        }&amp;#10;        x_loc = (((15 - row) - 8) / 17);&amp;#10;        y_loc = ((col - 7) / 17);&amp;#10;        squares.push(new visual.Rect({&quot;win&quot;: psychoJS.window, &quot;width&quot;: (1 / 17), &quot;height&quot;: (1 / 17), &quot;pos&quot;: [x_loc, y_loc], &quot;fillColor&quot;: color}));&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
         <Param val="import * as random from 'random';&amp;#10;function _pj_snippets(container) {&amp;#10;    function _assert(comp, msg) {&amp;#10;        function PJAssertionError(message) {&amp;#10;            this.name = &quot;PJAssertionError&quot;;&amp;#10;            this.message = (message || &quot;Custom error PJAssertionError&quot;);&amp;#10;            if (((typeof Error.captureStackTrace) === &quot;function&quot;)) {&amp;#10;                Error.captureStackTrace(this, this.constructor);&amp;#10;            } else {&amp;#10;                this.stack = new Error(message).stack;&amp;#10;            }&amp;#10;        }&amp;#10;        PJAssertionError.prototype = Object.create(Error.prototype);&amp;#10;        PJAssertionError.prototype.constructor = PJAssertionError;&amp;#10;        msg = (msg || &quot;Assertion failed.&quot;);&amp;#10;        if ((! comp)) {&amp;#10;            throw new PJAssertionError(msg);&amp;#10;        }&amp;#10;    }&amp;#10;    container[&quot;_assert&quot;] = _assert;&amp;#10;    return container;&amp;#10;}&amp;#10;_pj = {};&amp;#10;_pj_snippets(_pj);&amp;#10;num_games = 4;&amp;#10;_pj._assert(((num_games % 2) === 0), null);&amp;#10;npc_starts = [];&amp;#10;for (var game, _pj_c = 0, _pj_a = util.range(Number.parseInt((num_games / 2))), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    game = _pj_a[_pj_c];&amp;#10;    npc_starts.push(true);&amp;#10;    npc_starts.push(false);&amp;#10;}&amp;#10;Math.random.shuffle(npc_starts);&amp;#10;game = 0;&amp;#10;num_wins = 0;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="import random&amp;#10;&amp;#10;num_games = 4 # must be even&amp;#10;assert(num_games % 2 == 0)&amp;#10;&amp;#10;# generate shuffled list of who starts each game&amp;#10;npc_starts = []&amp;#10;for game in range(int(num_games/2)):&amp;#10;    npc_starts.append(True)&amp;#10;    npc_starts.append(False)&amp;#10;random.shuffle(npc_starts)&amp;#10;&amp;#10;game = 0 # initialize game counter&amp;#10;num_wins = 0 #initialize win counter" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
@@ -443,8 +443,8 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="import * as random from 'random';&amp;#10;import * as math from 'math';&amp;#10;player_won = null;&amp;#10;npc_start = npc_starts[game];&amp;#10;game = (game + 1);&amp;#10;row = Math.random.randint(0, 13);&amp;#10;col = Math.random.randint(0, 13);&amp;#10;while (((row === col) &amp;&amp; (col === 0))) {&amp;#10;    row = Math.random.randint(0, 13);&amp;#10;    col = Math.random.randint(0, 13);&amp;#10;}&amp;#10;row_new = row;&amp;#10;col_new = col;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="# board starting spot initialization&amp;#10;&amp;#10;import random&amp;#10;import math&amp;#10;&amp;#10;player_won = None&amp;#10;npc_start = npc_starts[game]&amp;#10;game = game + 1&amp;#10;&amp;#10;row = random.randint(0,13)&amp;#10;col = random.randint(0,13)&amp;#10;&amp;#10;while row == col == 0:&amp;#10;    row = random.randint(0,13)&amp;#10;    col = random.randint(0,13)&amp;#10;&amp;#10;row_new = row&amp;#10;col_new = col" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="import * as random from 'random';&amp;#10;import * as math from 'math';&amp;#10;player_won = null;&amp;#10;npc_start = npc_starts[game];&amp;#10;game = (game + 1);&amp;#10;row = Math.random.randint(0, 14);&amp;#10;col = Math.random.randint(0, 14);&amp;#10;while (((row === col) &amp;&amp; (col === 0))) {&amp;#10;    row = Math.random.randint(0, 14);&amp;#10;    col = Math.random.randint(0, 14);&amp;#10;}&amp;#10;row_new = row;&amp;#10;col_new = col;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="# board starting spot initialization&amp;#10;&amp;#10;import random&amp;#10;import math&amp;#10;&amp;#10;player_won = None&amp;#10;npc_start = npc_starts[game]&amp;#10;game = game + 1&amp;#10;&amp;#10;row = random.randint(0,14)&amp;#10;col = random.randint(0,14)&amp;#10;&amp;#10;while row == col == 0:&amp;#10;    row = random.randint(0,14)&amp;#10;    col = random.randint(0,14)&amp;#10;&amp;#10;row_new = row&amp;#10;col_new = col" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="for square in squares:&amp;#10;    square.draw()" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="for (var square, _pj_c = 0, _pj_a = squares, _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    square = _pj_a[_pj_c];&amp;#10;    square.draw();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -494,10 +494,10 @@
         <Param val="blue_piece" valType="code" updates="None" name="name"/>
         <Param val="1 - npc_start" valType="num" updates="set every repeat" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="((col-6.5)/16, (14-row-7.5)/16)" valType="list" updates="set every repeat" name="pos"/>
+        <Param val="((col-7)/17, (15-row-8)/17)" valType="list" updates="set every repeat" name="pos"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="circle" valType="str" updates="None" name="shape"/>
-        <Param val="(1/18, 1/18)" valType="list" updates="constant" name="size"/>
+        <Param val="(1/19, 1/19)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -521,10 +521,10 @@
         <Param val="red_piece" valType="code" updates="None" name="name"/>
         <Param val="npc_start" valType="num" updates="set every repeat" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="((col-6.5)/16, (14-row-7.5)/16)" valType="list" updates="set every repeat" name="pos"/>
+        <Param val="((col-7)/17, (15-row-8)/17)" valType="list" updates="set every repeat" name="pos"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="circle" valType="str" updates="None" name="shape"/>
-        <Param val="(1/18, 1/18)" valType="list" updates="constant" name="size"/>
+        <Param val="(1/19, 1/19)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -567,10 +567,10 @@
         <Param val="end_blue" valType="code" updates="None" name="name"/>
         <Param val="player_won" valType="num" updates="set every repeat" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="((col-6.5)/16, (14-row-7.5)/16)" valType="list" updates="set every repeat" name="pos"/>
+        <Param val="((col-7)/17, (15-row-8)/17)" valType="list" updates="set every repeat" name="pos"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="circle" valType="str" updates="None" name="shape"/>
-        <Param val="(1/18, 1/18)" valType="list" updates="constant" name="size"/>
+        <Param val="(1/19, 1/19)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -594,10 +594,10 @@
         <Param val="end_red" valType="code" updates="None" name="name"/>
         <Param val="1 - player_won" valType="num" updates="set every repeat" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="((col-6.5)/16, (14-row-7.5)/16)" valType="list" updates="set every repeat" name="pos"/>
+        <Param val="((col-7)/17, (15-row-8)/17)" valType="list" updates="set every repeat" name="pos"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="circle" valType="str" updates="None" name="shape"/>
-        <Param val="(1/18, 1/18)" valType="list" updates="constant" name="size"/>
+        <Param val="(1/19, 1/19)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -792,7 +792,7 @@
         <Param val="(0, 0)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="rectangle" valType="str" updates="None" name="shape"/>
-        <Param val="(14/16, -14/16)" valType="list" updates="constant" name="size"/>
+        <Param val="(15/17, -15/17)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
