@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Wed Sep 27 14:52:59 2023
+    on Thu Sep 28 15:40:23 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -242,6 +242,19 @@ up_left_arrow = visual.ShapeStim(
     ori=-45.0, pos=((6.05-7)/17, (15-3.05-8)/17), anchor='center',
     lineWidth=1.0,     colorSpace='rgb',  lineColor=None, fillColor='black',
     opacity=None, depth=-14.0, interpolate=True)
+box_3 = visual.Rect(
+    win=win, name='box_3',
+    width=(6/17, 7/17)[0], height=(6/17, 7/17)[1],
+    ori=0.0, pos=(8/17/2, 1/17/2), anchor='center',
+    lineWidth=20.0,     colorSpace='rgb',  lineColor='black', fillColor='black',
+    opacity=None, depth=-15.0, interpolate=True)
+text_3 = visual.TextStim(win=win, name='text_3',
+    text='3) This is the\ngame piece. It\ncan move any\nnumber of spots\nup, left, or up-\nleft diagonally.\nBlue: your turn.\nRed: other turn.',
+    font='Open Sans',
+    pos=(8/17/2, 1/17/2), height=0.05, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-16.0);
 
 # --- Initialize components for Routine "countdown" ---
 countdown_text = visual.TextStim(win=win, name='countdown_text',
@@ -369,7 +382,7 @@ continueRoutine = True
 # Run 'Begin Routine' code from setup_code
 import random
 
-num_games = 4 # must be even
+num_games = 10 # must be even
 assert(num_games % 2 == 0)
 
 # generate shuffled list of who starts each game
@@ -544,7 +557,7 @@ continueRoutine = True
 tutorial_mouse.clicked_name = []
 gotValidClick = False  # until a click is received
 # keep track of which components have finished
-tutorialComponents = [board_outline, begin_button, begin_text, tutorial_mouse, tutorial_title, box_1, text_1, arrow, box_2, text_2, tutorial_piece, left_arrow, up_arrow, up_left_arrow]
+tutorialComponents = [board_outline, begin_button, begin_text, tutorial_mouse, tutorial_title, box_1, text_1, arrow, box_2, text_2, tutorial_piece, left_arrow, up_arrow, up_left_arrow, box_3, text_3]
 for thisComponent in tutorialComponents:
     thisComponent.tStart = None
     thisComponent.tStop = None
@@ -847,6 +860,46 @@ while continueRoutine:
     
     # if up_left_arrow is active this frame...
     if up_left_arrow.status == STARTED:
+        # update params
+        pass
+    
+    # *box_3* updates
+    
+    # if box_3 is starting this frame...
+    if box_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        box_3.frameNStart = frameN  # exact frame index
+        box_3.tStart = t  # local t and not account for scr refresh
+        box_3.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(box_3, 'tStartRefresh')  # time at next scr refresh
+        # add timestamp to datafile
+        thisExp.timestampOnFlip(win, 'box_3.started')
+        # update status
+        box_3.status = STARTED
+        box_3.setAutoDraw(True)
+    
+    # if box_3 is active this frame...
+    if box_3.status == STARTED:
+        # update params
+        pass
+    
+    # *text_3* updates
+    
+    # if text_3 is starting this frame...
+    if text_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        text_3.frameNStart = frameN  # exact frame index
+        text_3.tStart = t  # local t and not account for scr refresh
+        text_3.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(text_3, 'tStartRefresh')  # time at next scr refresh
+        # add timestamp to datafile
+        thisExp.timestampOnFlip(win, 'text_3.started')
+        # update status
+        text_3.status = STARTED
+        text_3.setAutoDraw(True)
+    
+    # if text_3 is active this frame...
+    if text_3.status == STARTED:
         # update params
         pass
     
