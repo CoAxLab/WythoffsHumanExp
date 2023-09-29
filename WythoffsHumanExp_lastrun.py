@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Fri Sep 29 12:22:28 2023
+    on Fri Sep 29 14:45:20 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -269,6 +269,38 @@ text_4 = visual.TextStim(win=win, name='text_4',
     languageStyle='LTR',
     depth=-18.0);
 
+# --- Initialize components for Routine "section_1" ---
+title_1 = visual.TextStim(win=win, name='title_1',
+    text='Starting Experiment Section 1',
+    font='Open Sans',
+    pos=(0, 0.3), height=0.1, wrapWidth=1.4, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=1.0, 
+    languageStyle='LTR',
+    depth=0.0);
+button_1 = visual.Rect(
+    win=win, name='button_1',
+    width=(0.25, 0.1)[0], height=(0.25, 0.1)[1],
+    ori=0.0, pos=(0, 0), anchor='center',
+    lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
+    opacity=None, depth=-1.0, interpolate=True)
+button_1_text = visual.TextStim(win=win, name='button_1_text',
+    text='proceed',
+    font='Open Sans',
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
+    color='gray', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-2.0);
+mouse_1 = event.Mouse(win=win)
+x, y = [None, None]
+mouse_1.mouseClock = core.Clock()
+section_1_text = visual.TextStim(win=win, name='section_1_text',
+    text='',
+    font='Open Sans',
+    pos=(0, 0.15), height=0.05, wrapWidth=0.75, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-4.0);
+
 # --- Initialize components for Routine "countdown" ---
 countdown_text = visual.TextStim(win=win, name='countdown_text',
     text='',
@@ -317,6 +349,8 @@ moving_piece = visual.ShapeStim(
     opacity=None, depth=-1.0, interpolate=True)
 
 # --- Initialize components for Routine "npc_wait" ---
+# Run 'Begin Experiment' code from wait_code
+optimal_moves = [(0,0),(1,2),(2,1),(3,5),(5,3),(4,7), (7,4),(6,10),(10,6),(8,13),(13,8)]
 npc = visual.ShapeStim(
     win=win, name='npc',
     size=(1/19, 1/19), vertices='circle',
@@ -605,8 +639,6 @@ while continueRoutine:
         board_outline.tStart = t  # local t and not account for scr refresh
         board_outline.tStartRefresh = tThisFlipGlobal  # on global time
         win.timeOnFlip(board_outline, 'tStartRefresh')  # time at next scr refresh
-        # add timestamp to datafile
-        thisExp.timestampOnFlip(win, 'board_outline.started')
         # update status
         board_outline.status = STARTED
         board_outline.setAutoDraw(True)
@@ -707,8 +739,6 @@ while continueRoutine:
         box_1.tStart = t  # local t and not account for scr refresh
         box_1.tStartRefresh = tThisFlipGlobal  # on global time
         win.timeOnFlip(box_1, 'tStartRefresh')  # time at next scr refresh
-        # add timestamp to datafile
-        thisExp.timestampOnFlip(win, 'box_1.started')
         # update status
         box_1.status = STARTED
         box_1.setAutoDraw(True)
@@ -727,8 +757,6 @@ while continueRoutine:
         text_1.tStart = t  # local t and not account for scr refresh
         text_1.tStartRefresh = tThisFlipGlobal  # on global time
         win.timeOnFlip(text_1, 'tStartRefresh')  # time at next scr refresh
-        # add timestamp to datafile
-        thisExp.timestampOnFlip(win, 'text_1.started')
         # update status
         text_1.status = STARTED
         text_1.setAutoDraw(True)
@@ -747,8 +775,6 @@ while continueRoutine:
         arrow.tStart = t  # local t and not account for scr refresh
         arrow.tStartRefresh = tThisFlipGlobal  # on global time
         win.timeOnFlip(arrow, 'tStartRefresh')  # time at next scr refresh
-        # add timestamp to datafile
-        thisExp.timestampOnFlip(win, 'arrow.started')
         # update status
         arrow.status = STARTED
         arrow.setAutoDraw(True)
@@ -767,8 +793,6 @@ while continueRoutine:
         box_2.tStart = t  # local t and not account for scr refresh
         box_2.tStartRefresh = tThisFlipGlobal  # on global time
         win.timeOnFlip(box_2, 'tStartRefresh')  # time at next scr refresh
-        # add timestamp to datafile
-        thisExp.timestampOnFlip(win, 'box_2.started')
         # update status
         box_2.status = STARTED
         box_2.setAutoDraw(True)
@@ -787,8 +811,6 @@ while continueRoutine:
         text_2.tStart = t  # local t and not account for scr refresh
         text_2.tStartRefresh = tThisFlipGlobal  # on global time
         win.timeOnFlip(text_2, 'tStartRefresh')  # time at next scr refresh
-        # add timestamp to datafile
-        thisExp.timestampOnFlip(win, 'text_2.started')
         # update status
         text_2.status = STARTED
         text_2.setAutoDraw(True)
@@ -825,8 +847,6 @@ while continueRoutine:
         left_arrow.tStart = t  # local t and not account for scr refresh
         left_arrow.tStartRefresh = tThisFlipGlobal  # on global time
         win.timeOnFlip(left_arrow, 'tStartRefresh')  # time at next scr refresh
-        # add timestamp to datafile
-        thisExp.timestampOnFlip(win, 'left_arrow.started')
         # update status
         left_arrow.status = STARTED
         left_arrow.setAutoDraw(True)
@@ -845,8 +865,6 @@ while continueRoutine:
         up_arrow.tStart = t  # local t and not account for scr refresh
         up_arrow.tStartRefresh = tThisFlipGlobal  # on global time
         win.timeOnFlip(up_arrow, 'tStartRefresh')  # time at next scr refresh
-        # add timestamp to datafile
-        thisExp.timestampOnFlip(win, 'up_arrow.started')
         # update status
         up_arrow.status = STARTED
         up_arrow.setAutoDraw(True)
@@ -865,8 +883,6 @@ while continueRoutine:
         up_left_arrow.tStart = t  # local t and not account for scr refresh
         up_left_arrow.tStartRefresh = tThisFlipGlobal  # on global time
         win.timeOnFlip(up_left_arrow, 'tStartRefresh')  # time at next scr refresh
-        # add timestamp to datafile
-        thisExp.timestampOnFlip(win, 'up_left_arrow.started')
         # update status
         up_left_arrow.status = STARTED
         up_left_arrow.setAutoDraw(True)
@@ -885,8 +901,6 @@ while continueRoutine:
         box_3.tStart = t  # local t and not account for scr refresh
         box_3.tStartRefresh = tThisFlipGlobal  # on global time
         win.timeOnFlip(box_3, 'tStartRefresh')  # time at next scr refresh
-        # add timestamp to datafile
-        thisExp.timestampOnFlip(win, 'box_3.started')
         # update status
         box_3.status = STARTED
         box_3.setAutoDraw(True)
@@ -905,8 +919,6 @@ while continueRoutine:
         text_3.tStart = t  # local t and not account for scr refresh
         text_3.tStartRefresh = tThisFlipGlobal  # on global time
         win.timeOnFlip(text_3, 'tStartRefresh')  # time at next scr refresh
-        # add timestamp to datafile
-        thisExp.timestampOnFlip(win, 'text_3.started')
         # update status
         text_3.status = STARTED
         text_3.setAutoDraw(True)
@@ -925,8 +937,6 @@ while continueRoutine:
         box_4.tStart = t  # local t and not account for scr refresh
         box_4.tStartRefresh = tThisFlipGlobal  # on global time
         win.timeOnFlip(box_4, 'tStartRefresh')  # time at next scr refresh
-        # add timestamp to datafile
-        thisExp.timestampOnFlip(win, 'box_4.started')
         # update status
         box_4.status = STARTED
         box_4.setAutoDraw(True)
@@ -945,8 +955,6 @@ while continueRoutine:
         text_4.tStart = t  # local t and not account for scr refresh
         text_4.tStartRefresh = tThisFlipGlobal  # on global time
         win.timeOnFlip(text_4, 'tStartRefresh')  # time at next scr refresh
-        # add timestamp to datafile
-        thisExp.timestampOnFlip(win, 'text_4.started')
         # update status
         text_4.status = STARTED
         text_4.setAutoDraw(True)
@@ -983,6 +991,168 @@ for thisComponent in tutorialComponents:
 # store data for thisExp (ExperimentHandler)
 thisExp.nextEntry()
 # the Routine "tutorial" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
+
+# --- Prepare to start Routine "section_1" ---
+continueRoutine = True
+# update component parameters for each repeat
+# setup some python lists for storing info about the mouse_1
+mouse_1.clicked_name = []
+gotValidClick = False  # until a click is received
+section_1_text.setText('Click the button below when you are ready to start playing.')
+# keep track of which components have finished
+section_1Components = [title_1, button_1, button_1_text, mouse_1, section_1_text]
+for thisComponent in section_1Components:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+frameN = -1
+
+# --- Run Routine "section_1" ---
+routineForceEnded = not continueRoutine
+while continueRoutine:
+    # get current time
+    t = routineTimer.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *title_1* updates
+    
+    # if title_1 is starting this frame...
+    if title_1.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        title_1.frameNStart = frameN  # exact frame index
+        title_1.tStart = t  # local t and not account for scr refresh
+        title_1.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(title_1, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        title_1.status = STARTED
+        title_1.setAutoDraw(True)
+    
+    # if title_1 is active this frame...
+    if title_1.status == STARTED:
+        # update params
+        pass
+    
+    # *button_1* updates
+    
+    # if button_1 is starting this frame...
+    if button_1.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        button_1.frameNStart = frameN  # exact frame index
+        button_1.tStart = t  # local t and not account for scr refresh
+        button_1.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(button_1, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        button_1.status = STARTED
+        button_1.setAutoDraw(True)
+    
+    # if button_1 is active this frame...
+    if button_1.status == STARTED:
+        # update params
+        pass
+    
+    # *button_1_text* updates
+    
+    # if button_1_text is starting this frame...
+    if button_1_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        button_1_text.frameNStart = frameN  # exact frame index
+        button_1_text.tStart = t  # local t and not account for scr refresh
+        button_1_text.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(button_1_text, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        button_1_text.status = STARTED
+        button_1_text.setAutoDraw(True)
+    
+    # if button_1_text is active this frame...
+    if button_1_text.status == STARTED:
+        # update params
+        pass
+    # *mouse_1* updates
+    
+    # if mouse_1 is starting this frame...
+    if mouse_1.status == NOT_STARTED and t >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        mouse_1.frameNStart = frameN  # exact frame index
+        mouse_1.tStart = t  # local t and not account for scr refresh
+        mouse_1.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(mouse_1, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        mouse_1.status = STARTED
+        mouse_1.mouseClock.reset()
+        prevButtonState = mouse_1.getPressed()  # if button is down already this ISN'T a new click
+    if mouse_1.status == STARTED:  # only update if started and not finished!
+        buttons = mouse_1.getPressed()
+        if buttons != prevButtonState:  # button state changed?
+            prevButtonState = buttons
+            if sum(buttons) > 0:  # state changed to a new click
+                # check if the mouse was inside our 'clickable' objects
+                gotValidClick = False
+                clickableList = environmenttools.getFromNames(button_1, namespace=locals())
+                for obj in clickableList:
+                    # is this object clicked on?
+                    if obj.contains(mouse_1):
+                        gotValidClick = True
+                        mouse_1.clicked_name.append(obj.name)
+                if gotValidClick:  
+                    continueRoutine = False  # end routine on response
+    
+    # *section_1_text* updates
+    
+    # if section_1_text is starting this frame...
+    if section_1_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        section_1_text.frameNStart = frameN  # exact frame index
+        section_1_text.tStart = t  # local t and not account for scr refresh
+        section_1_text.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(section_1_text, 'tStartRefresh')  # time at next scr refresh
+        # add timestamp to datafile
+        thisExp.timestampOnFlip(win, 'section_1_text.started')
+        # update status
+        section_1_text.status = STARTED
+        section_1_text.setAutoDraw(True)
+    
+    # if section_1_text is active this frame...
+    if section_1_text.status == STARTED:
+        # update params
+        pass
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+        if eyetracker:
+            eyetracker.setConnectionState(False)
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        routineForceEnded = True
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in section_1Components:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# --- Ending Routine "section_1" ---
+for thisComponent in section_1Components:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+# store data for thisExp (ExperimentHandler)
+thisExp.nextEntry()
+# the Routine "section_1" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
 # set up handler to look after randomisation of conditions etc
