@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Fri Sep 29 14:45:20 2023
+    on Fri Sep 29 16:17:24 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -33,6 +33,9 @@ import sys  # to get file system encoding
 import psychopy.iohub as io
 from psychopy.hardware import keyboard
 
+# Run 'Before Experiment' code from setup_code
+import random
+import numpy as np
 
 
 # Ensure that relative paths start from the same directory as this script
@@ -1599,20 +1602,48 @@ for thisGame in games:
         
         # select random opponent move
         moves = []
+        Q_table = []
         
         for r in range (row): # vertical moves
-            moves.append((r, col))
+            move = (r, col)
+            moves.append(move)
+            if move in optimal_moves:
+                Q_table.append(1)
+            else:
+                Q_table.append(0)
             
         for c in range (col): # horiz moves
-            moves.append((row, c))
+            move = (row, c)
+            moves.append(move)
+            if move in optimal_moves:
+                Q_table.append(1)
+            else:
+                Q_table.append(0)
             
         for d in range(1, min(row, col) + 1): # diag moves
-            moves.append((row - d, col - d))
+            move = (row - d, col - d)
+            moves.append(move)
+            if move in optimal_moves:
+                Q_table.append(1)
+            else:
+                Q_table.append(0)
         
-        import random
+        #import random
         
         if len(moves) > 0:
-            (row_new, col_new) = random.choice(moves)
+            
+            T = 0.005
+            
+            # calculate Boltzmann (softmax) action probs
+            probs = np.exp(np.true_divide(Q_table,T))
+            probs = np.true_divide(probs, sum(probs))
+            action = np.random.choice(len(moves),p=probs)
+            (row_new, col_new) = moves[action]
+        #    denominator = sum(np.exp(T * Q_table))
+        #        p = np.exp(Q_table/T) / denominator
+        #    
+        #    (row_new, col_new) = random.choice(moves)
+            # np.random.Generator.choice
         npc.setPos(((col-7)/17, (15-row-8)/17))
         # keep track of which components have finished
         npc_waitComponents = [npc]
