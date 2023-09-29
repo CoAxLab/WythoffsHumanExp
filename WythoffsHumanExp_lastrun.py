@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Thu Sep 28 15:40:23 2023
+    on Fri Sep 29 12:22:28 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -166,13 +166,13 @@ board_outline = visual.Rect(
 begin_button = visual.Rect(
     win=win, name='begin_button',
     width=(0.2, 0.1)[0], height=(0.2, 0.1)[1],
-    ori=0.0, pos=(0.6, -0.3), anchor='center',
+    ori=0.0, pos=(0.6, -0.35), anchor='center',
     lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
     opacity=None, depth=-2.0, interpolate=True)
 begin_text = visual.TextStim(win=win, name='begin_text',
     text='ready!',
     font='Open Sans',
-    pos=(0.6, -0.3), height=0.05, wrapWidth=None, ori=0.0, 
+    pos=(0.6, -0.35), height=0.05, wrapWidth=None, ori=0.0, 
     color='grey', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-3.0);
@@ -249,12 +249,25 @@ box_3 = visual.Rect(
     lineWidth=20.0,     colorSpace='rgb',  lineColor='black', fillColor='black',
     opacity=None, depth=-15.0, interpolate=True)
 text_3 = visual.TextStim(win=win, name='text_3',
-    text='3) This is the\ngame piece. It\ncan move any\nnumber of spots\nup, left, or up-\nleft diagonally.\nBlue: your turn.\nRed: other turn.',
+    text='3) This is the\ngame piece. It\ncan move any\nnumber of spots\nup, left, or up-\nleft diagonally.\nIt turns red for\nopponent turns.',
     font='Open Sans',
     pos=(8/17/2, 1/17/2), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-16.0);
+box_4 = visual.Rect(
+    win=win, name='box_4',
+    width=(4/17, 3.5/17)[0], height=(4/17, 3.5/17)[1],
+    ori=0.0, pos=(20/17/2, -4/17/2), anchor='center',
+    lineWidth=20.0,     colorSpace='rgb',  lineColor='black', fillColor='black',
+    opacity=None, depth=-17.0, interpolate=True)
+text_4 = visual.TextStim(win=win, name='text_4',
+    text='4) starting\nspot and\nplayer are\nrandom.',
+    font='Open Sans',
+    pos=(20/17/2, -4/17/2), height=0.05, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-18.0);
 
 # --- Initialize components for Routine "countdown" ---
 countdown_text = visual.TextStim(win=win, name='countdown_text',
@@ -557,7 +570,7 @@ continueRoutine = True
 tutorial_mouse.clicked_name = []
 gotValidClick = False  # until a click is received
 # keep track of which components have finished
-tutorialComponents = [board_outline, begin_button, begin_text, tutorial_mouse, tutorial_title, box_1, text_1, arrow, box_2, text_2, tutorial_piece, left_arrow, up_arrow, up_left_arrow, box_3, text_3]
+tutorialComponents = [board_outline, begin_button, begin_text, tutorial_mouse, tutorial_title, box_1, text_1, arrow, box_2, text_2, tutorial_piece, left_arrow, up_arrow, up_left_arrow, box_3, text_3, box_4, text_4]
 for thisComponent in tutorialComponents:
     thisComponent.tStart = None
     thisComponent.tStop = None
@@ -900,6 +913,46 @@ while continueRoutine:
     
     # if text_3 is active this frame...
     if text_3.status == STARTED:
+        # update params
+        pass
+    
+    # *box_4* updates
+    
+    # if box_4 is starting this frame...
+    if box_4.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        box_4.frameNStart = frameN  # exact frame index
+        box_4.tStart = t  # local t and not account for scr refresh
+        box_4.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(box_4, 'tStartRefresh')  # time at next scr refresh
+        # add timestamp to datafile
+        thisExp.timestampOnFlip(win, 'box_4.started')
+        # update status
+        box_4.status = STARTED
+        box_4.setAutoDraw(True)
+    
+    # if box_4 is active this frame...
+    if box_4.status == STARTED:
+        # update params
+        pass
+    
+    # *text_4* updates
+    
+    # if text_4 is starting this frame...
+    if text_4.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        text_4.frameNStart = frameN  # exact frame index
+        text_4.tStart = t  # local t and not account for scr refresh
+        text_4.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(text_4, 'tStartRefresh')  # time at next scr refresh
+        # add timestamp to datafile
+        thisExp.timestampOnFlip(win, 'text_4.started')
+        # update status
+        text_4.status = STARTED
+        text_4.setAutoDraw(True)
+    
+    # if text_4 is active this frame...
+    if text_4.status == STARTED:
         # update params
         pass
     
