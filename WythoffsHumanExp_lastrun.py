@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Mon Oct  2 13:39:45 2023
+    on Wed Oct  4 13:36:20 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -36,6 +36,26 @@ from psychopy.hardware import keyboard
 # Run 'Before Experiment' code from setup_code
 import numpy as np
 import pandas as pd
+
+# create tidy DataFrame to hold game record
+df = pd.DataFrame()
+df['session'] = []
+df['section'] = []
+df['type'] = []
+df['game'] = []
+df['ref_game'] = []
+df['move_num'] = []
+df['player'] = []
+df['start_row'] = []
+df['start_col'] = []
+df['end_row'] = []
+df['end_col'] = []
+df['RT'] = []
+df['DT'] = []
+df['winner'] = []
+df['chosen_winner'] = []
+df = df.astype('object')
+#print(df)
 
 
 # Ensure that relative paths start from the same directory as this script
@@ -1583,6 +1603,13 @@ for thisGame in games:
         for thisComponent in select_moveComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
+        # Run 'End Routine' code from code
+        if npc_start == False:
+            df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
+            df.loc[len(df) - 1, 'session'] = expInfo['session']
+            df.loc[len(df) - 1, 'section'] = 'pre'
+            df.loc[len(df) - 1, 'game'] = game
+            print(df)
         # store data for turns (TrialHandler)
         # the Routine "select_move" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
@@ -1814,6 +1841,11 @@ for thisGame in games:
         for thisComponent in npc_waitComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
+        # Run 'End Routine' code from wait_code
+        if turns.finished == False:
+            df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
+            df.loc[len(df) - 1, 'session'] = expInfo['session']
+            print(df)
         # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
         if routineForceEnded:
             routineTimer.reset()
