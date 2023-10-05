@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Wed Oct  4 13:36:20 2023
+    on Thu Oct  5 15:02:18 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -548,7 +548,7 @@ continueRoutine = True
 # Run 'Begin Routine' code from setup_code
 import random
 
-num_games = 2 # must be even
+num_games = 10 # must be even
 assert(num_games % 2 == 0)
 
 # generate shuffled list of who starts each game
@@ -1525,7 +1525,8 @@ for thisGame in games:
                 if row_new <= row and col_new <= col:
                     if row_new >= 0 and col_new >= 0:
                         if row_new==row or col_new==col or row-row_new == col-col_new:
-                            continueRoutine = False
+                            if row_new != row or col_new != col:
+                                continueRoutine = False
             
             for square in squares:
                 square.draw()
@@ -1754,7 +1755,7 @@ for thisGame in games:
         # action selection
         if len(moves) > 0:
             # calculate Boltzmann (softmax) action probs
-            T = 0.005 # temperature parameter
+            T = 0.5 # temperature parameter
             probs = np.exp(np.true_divide(Q_table,T))
             probs = np.true_divide(probs, sum(probs))
             action = np.random.choice(len(moves),p=probs)
