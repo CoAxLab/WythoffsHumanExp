@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Thu Oct  5 15:02:18 2023
+    on Thu Oct  5 16:39:05 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -1306,6 +1306,8 @@ for thisGame in games:
     npc_start = npc_starts[game]
     game = game + 1
     
+    move_num = 0 # initialize move counter
+    
     row = random.randint(0,14)
     col = random.randint(0,14)
     
@@ -1489,6 +1491,9 @@ for thisGame in games:
         if npc_start:
             continueRoutine = False
         
+        timer = core.Clock()
+        timer.reset()
+        
         row = row_new
         col = col_new
         piece.setPos(((col-7)/17, (15-row-8)/17))
@@ -1606,11 +1611,19 @@ for thisGame in games:
                 thisComponent.setAutoDraw(False)
         # Run 'End Routine' code from code
         if npc_start == False:
+            move_num = move_num + 1
             df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
             df.loc[len(df) - 1, 'session'] = expInfo['session']
             df.loc[len(df) - 1, 'section'] = 'pre'
             df.loc[len(df) - 1, 'game'] = game
-            print(df)
+            df.loc[len(df) - 1, 'move_num'] = move_num
+            df.loc[len(df) - 1, 'player'] = 'human'
+            df.loc[len(df) - 1, 'start_row'] = row
+            df.loc[len(df) - 1, 'start_col'] = col
+            df.loc[len(df) - 1, 'end_row'] = row_new
+            df.loc[len(df) - 1, 'end_col'] = col_new
+            df.loc[len(df) - 1, 'DT'] = timer.getTime()
+            print(df.to_string())
         # store data for turns (TrialHandler)
         # the Routine "select_move" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
@@ -1844,9 +1857,19 @@ for thisGame in games:
                 thisComponent.setAutoDraw(False)
         # Run 'End Routine' code from wait_code
         if turns.finished == False:
+            move_num = move_num + 1
             df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
             df.loc[len(df) - 1, 'session'] = expInfo['session']
-            print(df)
+            df.loc[len(df) - 1, 'section'] = 'pre'
+            df.loc[len(df) - 1, 'game'] = game
+            df.loc[len(df) - 1, 'move_num'] = move_num
+            df.loc[len(df) - 1, 'player'] = 'AI'
+            df.loc[len(df) - 1, 'start_row'] = row
+            df.loc[len(df) - 1, 'start_col'] = col
+            df.loc[len(df) - 1, 'end_row'] = row_new
+            df.loc[len(df) - 1, 'end_col'] = col_new
+            df.loc[len(df) - 1, 'DT'] = 1250
+            print(df.to_string())
         # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
         if routineForceEnded:
             routineTimer.reset()
