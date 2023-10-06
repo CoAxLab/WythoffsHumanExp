@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Fri Oct  6 10:50:07 2023
+    on Fri Oct  6 12:32:16 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -1496,6 +1496,9 @@ for thisGame in games:
         
         row = row_new
         col = col_new
+        
+        mouse_still = True
+        mouse_start = mouse.getPos()
         piece.setPos(((col-7)/17, (15-row-8)/17))
         # setup some python lists for storing info about the mouse
         mouse.x = []
@@ -1529,6 +1532,12 @@ for thisGame in games:
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
             # Run 'Each Frame' code from code
+            # record mouse move onset time (RT)
+            if mouse_still and any(mouse.getPos() != mouse_start):
+                RT = timer.getTime()
+                mouse_moved = True
+            
+            # on click, check for valid move selection
             if mouse.getPressed()[0] == 1:
                 mouse_x, mouse_y = mouse.getPos()
                 row_new = round(0 - ((mouse_y * 17) + 8 - 15))
@@ -1539,6 +1548,7 @@ for thisGame in games:
                             if row_new != row or col_new != col:
                                 continueRoutine = False
             
+            # draw game board
             for square in squares:
                 square.draw()
             
@@ -1639,6 +1649,7 @@ for thisGame in games:
             df.loc[len(df) - 1, 'start_col'] = col
             df.loc[len(df) - 1, 'end_row'] = row_new
             df.loc[len(df) - 1, 'end_col'] = col_new
+            df.loc[len(df) - 1, 'RT'] = RT
             df.loc[len(df) - 1, 'DT'] = timer.getTime()
             #print(df.to_string())
         # store data for turns (TrialHandler)
