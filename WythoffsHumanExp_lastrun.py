@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Fri Oct  6 12:32:16 2023
+    on Fri Oct  6 15:17:09 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -537,6 +537,26 @@ section_2_text = visual.TextStim(win=win, name='section_2_text',
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-4.0);
+
+# --- Initialize components for Routine "intervention_countdown" ---
+
+# --- Initialize components for Routine "intervention_countdown" ---
+
+# --- Initialize components for Routine "make_move" ---
+moving_piece = visual.ShapeStim(
+    win=win, name='moving_piece',
+    size=(1/19, 1/19), vertices='circle',
+    ori=0.0, pos=[0,0], anchor='center',
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='dodgerblue', fillColor='dodgerblue',
+    opacity=None, depth=-1.0, interpolate=True)
+
+# --- Initialize components for Routine "npc_move" ---
+moving_npc = visual.ShapeStim(
+    win=win, name='moving_npc',
+    size=(1/19, 1/19), vertices='circle',
+    ori=0.0, pos=[0,0], anchor='center',
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='chestnut', fillColor='chestnut',
+    opacity=None, depth=-1.0, interpolate=True)
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -1466,7 +1486,7 @@ for thisGame in games:
         routineTimer.addTime(-3.000000)
     
     # set up handler to look after randomisation of conditions etc
-    turns = data.TrialHandler(nReps=13.0, method='random', 
+    turns = data.TrialHandler(nReps=15.0, method='random', 
         extraInfo=expInfo, originPath=-1,
         trialList=[None],
         seed=None, name='turns')
@@ -2008,7 +2028,7 @@ for thisGame in games:
             routineTimer.addTime(-1.000000)
         thisExp.nextEntry()
         
-    # completed 13.0 repeats of 'turns'
+    # completed 15.0 repeats of 'turns'
     
     
     # --- Prepare to start Routine "end_pause" ---
@@ -2821,6 +2841,354 @@ for thisComponent in section_2Components:
 thisExp.nextEntry()
 # the Routine "section_2" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
+
+# --- Prepare to start Routine "intervention_countdown" ---
+continueRoutine = True
+# update component parameters for each repeat
+# keep track of which components have finished
+intervention_countdownComponents = []
+for thisComponent in intervention_countdownComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+frameN = -1
+
+# --- Run Routine "intervention_countdown" ---
+routineForceEnded = not continueRoutine
+while continueRoutine:
+    # get current time
+    t = routineTimer.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+        if eyetracker:
+            eyetracker.setConnectionState(False)
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        routineForceEnded = True
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in intervention_countdownComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# --- Ending Routine "intervention_countdown" ---
+for thisComponent in intervention_countdownComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+# the Routine "intervention_countdown" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
+
+# set up handler to look after randomisation of conditions etc
+intervention_games = data.TrialHandler(nReps=num_games, method='sequential', 
+    extraInfo=expInfo, originPath=-1,
+    trialList=[None],
+    seed=None, name='intervention_games')
+thisExp.addLoop(intervention_games)  # add the loop to the experiment
+thisIntervention_game = intervention_games.trialList[0]  # so we can initialise stimuli with some values
+# abbreviate parameter names if possible (e.g. rgb = thisIntervention_game.rgb)
+if thisIntervention_game != None:
+    for paramName in thisIntervention_game:
+        exec('{} = thisIntervention_game[paramName]'.format(paramName))
+
+for thisIntervention_game in intervention_games:
+    currentLoop = intervention_games
+    # abbreviate parameter names if possible (e.g. rgb = thisIntervention_game.rgb)
+    if thisIntervention_game != None:
+        for paramName in thisIntervention_game:
+            exec('{} = thisIntervention_game[paramName]'.format(paramName))
+    
+    # --- Prepare to start Routine "intervention_countdown" ---
+    continueRoutine = True
+    # update component parameters for each repeat
+    # keep track of which components have finished
+    intervention_countdownComponents = []
+    for thisComponent in intervention_countdownComponents:
+        thisComponent.tStart = None
+        thisComponent.tStop = None
+        thisComponent.tStartRefresh = None
+        thisComponent.tStopRefresh = None
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    # reset timers
+    t = 0
+    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+    frameN = -1
+    
+    # --- Run Routine "intervention_countdown" ---
+    routineForceEnded = not continueRoutine
+    while continueRoutine:
+        # get current time
+        t = routineTimer.getTime()
+        tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        
+        # check for quit (typically the Esc key)
+        if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+            core.quit()
+            if eyetracker:
+                eyetracker.setConnectionState(False)
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            routineForceEnded = True
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in intervention_countdownComponents:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    # --- Ending Routine "intervention_countdown" ---
+    for thisComponent in intervention_countdownComponents:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
+    # the Routine "intervention_countdown" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
+    
+    # set up handler to look after randomisation of conditions etc
+    intervention_moves = data.TrialHandler(nReps=15.0, method='sequential', 
+        extraInfo=expInfo, originPath=-1,
+        trialList=[None],
+        seed=None, name='intervention_moves')
+    thisExp.addLoop(intervention_moves)  # add the loop to the experiment
+    thisIntervention_move = intervention_moves.trialList[0]  # so we can initialise stimuli with some values
+    # abbreviate parameter names if possible (e.g. rgb = thisIntervention_move.rgb)
+    if thisIntervention_move != None:
+        for paramName in thisIntervention_move:
+            exec('{} = thisIntervention_move[paramName]'.format(paramName))
+    
+    for thisIntervention_move in intervention_moves:
+        currentLoop = intervention_moves
+        # abbreviate parameter names if possible (e.g. rgb = thisIntervention_move.rgb)
+        if thisIntervention_move != None:
+            for paramName in thisIntervention_move:
+                exec('{} = thisIntervention_move[paramName]'.format(paramName))
+        
+        # --- Prepare to start Routine "make_move" ---
+        continueRoutine = True
+        # update component parameters for each repeat
+        # Run 'Begin Routine' code from move_code
+        if npc_start:
+            npc_start = False
+            continueRoutine = False
+        # keep track of which components have finished
+        make_moveComponents = [moving_piece]
+        for thisComponent in make_moveComponents:
+            thisComponent.tStart = None
+            thisComponent.tStop = None
+            thisComponent.tStartRefresh = None
+            thisComponent.tStopRefresh = None
+            if hasattr(thisComponent, 'status'):
+                thisComponent.status = NOT_STARTED
+        # reset timers
+        t = 0
+        _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+        frameN = -1
+        
+        # --- Run Routine "make_move" ---
+        routineForceEnded = not continueRoutine
+        while continueRoutine and routineTimer.getTime() < 1.0:
+            # get current time
+            t = routineTimer.getTime()
+            tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+            tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+            frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+            # update/draw components on each frame
+            # Run 'Each Frame' code from move_code
+            for square in squares:
+                square.draw()
+            
+            # *moving_piece* updates
+            
+            # if moving_piece is starting this frame...
+            if moving_piece.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                moving_piece.frameNStart = frameN  # exact frame index
+                moving_piece.tStart = t  # local t and not account for scr refresh
+                moving_piece.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(moving_piece, 'tStartRefresh')  # time at next scr refresh
+                # update status
+                moving_piece.status = STARTED
+                moving_piece.setAutoDraw(True)
+            
+            # if moving_piece is active this frame...
+            if moving_piece.status == STARTED:
+                # update params
+                moving_piece.setPos(((((1-t)*col+t*col_new)-7)/17, (15-((1-t)*row+t*row_new)-8)/17), log=False)
+            
+            # if moving_piece is stopping this frame...
+            if moving_piece.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > moving_piece.tStartRefresh + 1.0-frameTolerance:
+                    # keep track of stop time/frame for later
+                    moving_piece.tStop = t  # not accounting for scr refresh
+                    moving_piece.frameNStop = frameN  # exact frame index
+                    # update status
+                    moving_piece.status = FINISHED
+                    moving_piece.setAutoDraw(False)
+            
+            # check for quit (typically the Esc key)
+            if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+                core.quit()
+                if eyetracker:
+                    eyetracker.setConnectionState(False)
+            
+            # check if all components have finished
+            if not continueRoutine:  # a component has requested a forced-end of Routine
+                routineForceEnded = True
+                break
+            continueRoutine = False  # will revert to True if at least one component still running
+            for thisComponent in make_moveComponents:
+                if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                    continueRoutine = True
+                    break  # at least one component has not yet finished
+            
+            # refresh the screen
+            if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+                win.flip()
+        
+        # --- Ending Routine "make_move" ---
+        for thisComponent in make_moveComponents:
+            if hasattr(thisComponent, "setAutoDraw"):
+                thisComponent.setAutoDraw(False)
+        # Run 'End Routine' code from move_code
+        if row_new == col_new == 0:
+            player_won = True
+            num_wins = num_wins + 1
+            turns.finished = True
+            continueRoutine = False
+        # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
+        if routineForceEnded:
+            routineTimer.reset()
+        else:
+            routineTimer.addTime(-1.000000)
+        
+        # --- Prepare to start Routine "npc_move" ---
+        continueRoutine = True
+        # update component parameters for each repeat
+        # Run 'Begin Routine' code from npc_code
+        if turns.finished:
+            continueRoutine = False
+        # keep track of which components have finished
+        npc_moveComponents = [moving_npc]
+        for thisComponent in npc_moveComponents:
+            thisComponent.tStart = None
+            thisComponent.tStop = None
+            thisComponent.tStartRefresh = None
+            thisComponent.tStopRefresh = None
+            if hasattr(thisComponent, 'status'):
+                thisComponent.status = NOT_STARTED
+        # reset timers
+        t = 0
+        _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+        frameN = -1
+        
+        # --- Run Routine "npc_move" ---
+        routineForceEnded = not continueRoutine
+        while continueRoutine and routineTimer.getTime() < 1.0:
+            # get current time
+            t = routineTimer.getTime()
+            tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+            tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+            frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+            # update/draw components on each frame
+            # Run 'Each Frame' code from npc_code
+            for square in squares:
+                square.draw()
+            
+            # *moving_npc* updates
+            
+            # if moving_npc is starting this frame...
+            if moving_npc.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                moving_npc.frameNStart = frameN  # exact frame index
+                moving_npc.tStart = t  # local t and not account for scr refresh
+                moving_npc.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(moving_npc, 'tStartRefresh')  # time at next scr refresh
+                # update status
+                moving_npc.status = STARTED
+                moving_npc.setAutoDraw(True)
+            
+            # if moving_npc is active this frame...
+            if moving_npc.status == STARTED:
+                # update params
+                moving_npc.setPos(((((1-t)*col+t*col_new)-7)/17, (15-((1-t)*row+t*row_new)-8)/17), log=False)
+            
+            # if moving_npc is stopping this frame...
+            if moving_npc.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > moving_npc.tStartRefresh + 1.0-frameTolerance:
+                    # keep track of stop time/frame for later
+                    moving_npc.tStop = t  # not accounting for scr refresh
+                    moving_npc.frameNStop = frameN  # exact frame index
+                    # update status
+                    moving_npc.status = FINISHED
+                    moving_npc.setAutoDraw(False)
+            
+            # check for quit (typically the Esc key)
+            if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+                core.quit()
+                if eyetracker:
+                    eyetracker.setConnectionState(False)
+            
+            # check if all components have finished
+            if not continueRoutine:  # a component has requested a forced-end of Routine
+                routineForceEnded = True
+                break
+            continueRoutine = False  # will revert to True if at least one component still running
+            for thisComponent in npc_moveComponents:
+                if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                    continueRoutine = True
+                    break  # at least one component has not yet finished
+            
+            # refresh the screen
+            if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+                win.flip()
+        
+        # --- Ending Routine "npc_move" ---
+        for thisComponent in npc_moveComponents:
+            if hasattr(thisComponent, "setAutoDraw"):
+                thisComponent.setAutoDraw(False)
+        # Run 'End Routine' code from npc_code
+        if row_new == col_new == 0:
+            if player_won == None:
+                player_won = False
+            turns.finished = True
+        # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
+        if routineForceEnded:
+            routineTimer.reset()
+        else:
+            routineTimer.addTime(-1.000000)
+    # completed 15.0 repeats of 'intervention_moves'
+    
+    thisExp.nextEntry()
+    
+# completed num_games repeats of 'intervention_games'
+
 
 # --- End experiment ---
 # Flip one final time so any remaining win.callOnFlip() 

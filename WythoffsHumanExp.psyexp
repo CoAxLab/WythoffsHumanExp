@@ -1773,6 +1773,7 @@
         <Param val="1.175" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
     </Routine>
+    <Routine name="intervention_countdown"/>
   </Routines>
   <Flow>
     <Routine name="setup_instruct"/>
@@ -1797,7 +1798,7 @@
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="loopType" updates="None" val="random" valType="str"/>
-      <Param name="nReps" updates="None" val="13" valType="num"/>
+      <Param name="nReps" updates="None" val="15" valType="num"/>
       <Param name="name" updates="None" val="turns" valType="code"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
     </LoopInitiator>
@@ -1812,5 +1813,33 @@
     <Routine name="instruct_recall"/>
     <Routine name="instruct_imagine"/>
     <Routine name="section_2"/>
+    <Routine name="intervention_countdown"/>
+    <LoopInitiator loopType="TrialHandler" name="intervention_games">
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+      <Param name="conditions" updates="None" val="None" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="" valType="file"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="isTrials" updates="None" val="True" valType="bool"/>
+      <Param name="loopType" updates="None" val="sequential" valType="str"/>
+      <Param name="nReps" updates="None" val="num_games" valType="num"/>
+      <Param name="name" updates="None" val="intervention_games" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+    </LoopInitiator>
+    <Routine name="intervention_countdown"/>
+    <LoopInitiator loopType="TrialHandler" name="intervention_moves">
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+      <Param name="conditions" updates="None" val="None" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="" valType="file"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="isTrials" updates="None" val="False" valType="bool"/>
+      <Param name="loopType" updates="None" val="sequential" valType="str"/>
+      <Param name="nReps" updates="None" val="15" valType="num"/>
+      <Param name="name" updates="None" val="intervention_moves" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+    </LoopInitiator>
+    <Routine name="make_move"/>
+    <Routine name="npc_move"/>
+    <LoopTerminator name="intervention_moves"/>
+    <LoopTerminator name="intervention_games"/>
   </Flow>
 </PsychoPy2experiment>
