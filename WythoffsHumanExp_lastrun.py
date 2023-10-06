@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Thu Oct  5 16:39:05 2023
+    on Fri Oct  6 10:50:07 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -1498,6 +1498,12 @@ for thisGame in games:
         col = col_new
         piece.setPos(((col-7)/17, (15-row-8)/17))
         # setup some python lists for storing info about the mouse
+        mouse.x = []
+        mouse.y = []
+        mouse.leftButton = []
+        mouse.midButton = []
+        mouse.rightButton = []
+        mouse.time = []
         gotValidClick = False  # until a click is received
         # keep track of which components have finished
         select_moveComponents = [piece, mouse, text]
@@ -1562,10 +1568,21 @@ for thisGame in games:
                 mouse.tStart = t  # local t and not account for scr refresh
                 mouse.tStartRefresh = tThisFlipGlobal  # on global time
                 win.timeOnFlip(mouse, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.addData('mouse.started', t)
                 # update status
                 mouse.status = STARTED
                 mouse.mouseClock.reset()
                 prevButtonState = mouse.getPressed()  # if button is down already this ISN'T a new click
+            if mouse.status == STARTED:  # only update if started and not finished!
+                x, y = mouse.getPos()
+                mouse.x.append(x)
+                mouse.y.append(y)
+                buttons = mouse.getPressed()
+                mouse.leftButton.append(buttons[0])
+                mouse.midButton.append(buttons[1])
+                mouse.rightButton.append(buttons[2])
+                mouse.time.append(mouse.mouseClock.getTime())
             
             # *text* updates
             
@@ -1623,8 +1640,14 @@ for thisGame in games:
             df.loc[len(df) - 1, 'end_row'] = row_new
             df.loc[len(df) - 1, 'end_col'] = col_new
             df.loc[len(df) - 1, 'DT'] = timer.getTime()
-            print(df.to_string())
+            #print(df.to_string())
         # store data for turns (TrialHandler)
+        turns.addData('mouse.x', mouse.x)
+        turns.addData('mouse.y', mouse.y)
+        turns.addData('mouse.leftButton', mouse.leftButton)
+        turns.addData('mouse.midButton', mouse.midButton)
+        turns.addData('mouse.rightButton', mouse.rightButton)
+        turns.addData('mouse.time', mouse.time)
         # the Routine "select_move" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         
@@ -1868,8 +1891,8 @@ for thisGame in games:
             df.loc[len(df) - 1, 'start_col'] = col
             df.loc[len(df) - 1, 'end_row'] = row_new
             df.loc[len(df) - 1, 'end_col'] = col_new
-            df.loc[len(df) - 1, 'DT'] = 1250
-            print(df.to_string())
+            df.loc[len(df) - 1, 'DT'] = 1.25
+            #print(df.to_string())
         # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
         if routineForceEnded:
             routineTimer.reset()
@@ -1983,6 +2006,13 @@ for thisGame in games:
     # Run 'Begin Routine' code from end_code
     row = row_new
     col = col_new
+    
+    if player_won:
+        df.loc[df.game==game, 'winner'] = 'human'
+    else:
+        df.loc[df.game==game, 'winner'] = 'AI'
+    
+    print(df.to_string())
     end_blue.setOpacity(player_won)
     end_blue.setPos(((col-7)/17, (15-row-8)/17))
     end_red.setOpacity(1 - player_won)
