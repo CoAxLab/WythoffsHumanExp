@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Thu Oct 12 14:17:44 2023
+    on Thu Oct 12 15:19:52 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -560,6 +560,12 @@ intervention_red_piece = visual.ShapeStim(
     opacity=1.0, depth=-3.0, interpolate=True)
 
 # --- Initialize components for Routine "intervention_player_wait" ---
+intervention_piece = visual.ShapeStim(
+    win=win, name='intervention_piece',
+    size=(1/19, 1/19), vertices='circle',
+    ori=0.0, pos=[0,0], anchor='center',
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='dodgerblue', fillColor='dodgerblue',
+    opacity=None, depth=-1.0, interpolate=True)
 
 # --- Initialize components for Routine "make_move" ---
 moving_piece = visual.ShapeStim(
@@ -570,6 +576,12 @@ moving_piece = visual.ShapeStim(
     opacity=1.0, depth=-1.0, interpolate=True)
 
 # --- Initialize components for Routine "intervention_npc_wait" ---
+intervention_npc = visual.ShapeStim(
+    win=win, name='intervention_npc',
+    size=(1/19, 1/19), vertices='circle',
+    ori=0.0, pos=[0,0], anchor='center',
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='chestnut', fillColor='chestnut',
+    opacity=None, depth=-1.0, interpolate=True)
 
 # --- Initialize components for Routine "npc_move" ---
 moving_npc = visual.ShapeStim(
@@ -2908,15 +2920,15 @@ for thisIntervention_game in intervention_games:
     ref_df = df[df.game == game_idxs[game_idx]]
     ref_df = ref_df.reset_index()
     print(ref_df.to_string())
-    print('move_idx: ' + str(move_idx))
+    #print('move_idx: ' + str(move_idx))
     
     # set starting position
     row = ref_df.loc[move_idx, 'start_row']
     col = ref_df.loc[move_idx, 'start_col']
     row_new = row
     col_new = col
-    print('row: '+ str(row))
-    print('col: '+ str(col))
+    #print('row: '+ str(row))
+    #print('col: '+ str(col))
     
     if ref_df.loc[move_idx, 'player'] == 'AI':
         npc_start = True
@@ -3095,8 +3107,28 @@ for thisIntervention_game in intervention_games:
         # --- Prepare to start Routine "intervention_player_wait" ---
         continueRoutine = True
         # update component parameters for each repeat
+        # Run 'Begin Routine' code from intervention_code
+        if npc_start:
+            continueRoutine = False
+        elif row_new == col_new == 0:
+            intervention_moves.finished = True
+            turns.finished = True
+            npc_start = True
+            continueRoutine = False
+        else:
+            print('move_idx: ' + str(move_idx))
+            
+            pause_duration = ref_df.loc[move_idx, 'DT']
+            
+            row = ref_df.loc[move_idx, 'start_row']
+            col = ref_df.loc[move_idx, 'start_col']
+            row_new = ref_df.loc[move_idx, 'end_row']
+            col_new = ref_df.loc[move_idx, 'end_col']
+            
+            move_idx = move_idx + 1
+        intervention_piece.setPos(((col-7)/17, (15-row-8)/17))
         # keep track of which components have finished
-        intervention_player_waitComponents = []
+        intervention_player_waitComponents = [intervention_piece]
         for thisComponent in intervention_player_waitComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -3118,6 +3150,38 @@ for thisIntervention_game in intervention_games:
             tThisFlipGlobal = win.getFutureFlipTime(clock=None)
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
+            # Run 'Each Frame' code from intervention_code
+            for square in squares:
+                square.draw()
+            
+            # *intervention_piece* updates
+            
+            # if intervention_piece is starting this frame...
+            if intervention_piece.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                intervention_piece.frameNStart = frameN  # exact frame index
+                intervention_piece.tStart = t  # local t and not account for scr refresh
+                intervention_piece.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(intervention_piece, 'tStartRefresh')  # time at next scr refresh
+                # update status
+                intervention_piece.status = STARTED
+                intervention_piece.setAutoDraw(True)
+            
+            # if intervention_piece is active this frame...
+            if intervention_piece.status == STARTED:
+                # update params
+                pass
+            
+            # if intervention_piece is stopping this frame...
+            if intervention_piece.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > intervention_piece.tStartRefresh + pause_duration-frameTolerance:
+                    # keep track of stop time/frame for later
+                    intervention_piece.tStop = t  # not accounting for scr refresh
+                    intervention_piece.frameNStop = frameN  # exact frame index
+                    # update status
+                    intervention_piece.status = FINISHED
+                    intervention_piece.setAutoDraw(False)
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -3249,8 +3313,28 @@ for thisIntervention_game in intervention_games:
         # --- Prepare to start Routine "intervention_npc_wait" ---
         continueRoutine = True
         # update component parameters for each repeat
+        # Run 'Begin Routine' code from intervention_wait_code
+        if turns.finished:
+            continueRoutine = False
+        elif row_new == col_new == 0:
+            intervention_moves.finished = True
+            turns.finished = True
+            npc_start = True
+            continueRoutine = False
+        else:
+            print('move_idx: ' + str(move_idx))
+            
+            pause_duration = ref_df.loc[move_idx, 'DT']
+            
+            row = ref_df.loc[move_idx, 'start_row']
+            col = ref_df.loc[move_idx, 'start_col']
+            row_new = ref_df.loc[move_idx, 'end_row']
+            col_new = ref_df.loc[move_idx, 'end_col']
+            
+            move_idx = move_idx + 1
+        intervention_npc.setPos(((col-7)/17, (15-row-8)/17))
         # keep track of which components have finished
-        intervention_npc_waitComponents = []
+        intervention_npc_waitComponents = [intervention_npc]
         for thisComponent in intervention_npc_waitComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -3272,6 +3356,38 @@ for thisIntervention_game in intervention_games:
             tThisFlipGlobal = win.getFutureFlipTime(clock=None)
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
+            # Run 'Each Frame' code from intervention_wait_code
+            for square in squares:
+                square.draw()
+            
+            # *intervention_npc* updates
+            
+            # if intervention_npc is starting this frame...
+            if intervention_npc.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                intervention_npc.frameNStart = frameN  # exact frame index
+                intervention_npc.tStart = t  # local t and not account for scr refresh
+                intervention_npc.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(intervention_npc, 'tStartRefresh')  # time at next scr refresh
+                # update status
+                intervention_npc.status = STARTED
+                intervention_npc.setAutoDraw(True)
+            
+            # if intervention_npc is active this frame...
+            if intervention_npc.status == STARTED:
+                # update params
+                pass
+            
+            # if intervention_npc is stopping this frame...
+            if intervention_npc.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > intervention_npc.tStartRefresh + pause_duration-frameTolerance:
+                    # keep track of stop time/frame for later
+                    intervention_npc.tStop = t  # not accounting for scr refresh
+                    intervention_npc.frameNStop = frameN  # exact frame index
+                    # update status
+                    intervention_npc.status = FINISHED
+                    intervention_npc.setAutoDraw(False)
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
