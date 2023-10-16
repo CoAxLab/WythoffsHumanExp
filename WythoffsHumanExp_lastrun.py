@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Mon Oct 16 11:04:33 2023
+    on Mon Oct 16 14:26:26 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -558,6 +558,14 @@ intervention_red_piece = visual.ShapeStim(
     ori=0.0, pos=[0,0], anchor='center',
     lineWidth=1.0,     colorSpace='rgb',  lineColor='chestnut', fillColor='chestnut',
     opacity=1.0, depth=-3.0, interpolate=True)
+
+# --- Initialize components for Routine "imagination_prompt" ---
+prompt_piece = visual.ShapeStim(
+    win=win, name='prompt_piece',
+    size=(1/19, 1/19), vertices='circle',
+    ori=0.0, pos=[0,0], anchor='center',
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=-1.0, interpolate=True)
 
 # --- Initialize components for Routine "intervention_player_wait" ---
 intervention_piece = visual.ShapeStim(
@@ -2286,6 +2294,9 @@ for thisGame in games:
     else:
         df.loc[df.game==game, 'winner'] = 'AI'
     
+    if visibility == 0:
+        continueRoutine = False
+    
     print(df.to_string())
     end_blue.setOpacity(player_won)
     end_blue.setPos(((col-7)/17, (15-row-8)/17))
@@ -3137,10 +3148,22 @@ for thisIntervention_game in intervention_games:
     #print('row: '+ str(row))
     #print('col: '+ str(col))
     
+    winner = ref_df.loc[len(ref_df) - 1, 'winner']
+    if winner == 'human':
+        player_won = 1
+    else:
+        player_won = 0
+    
+    if visibility == 0:
+        # we add 0.75 for the end_pause
+        whole_game_duration = sum(ref_df['DT']) + 0.75
+    
     if ref_df.loc[move_idx, 'player'] == 'AI':
         npc_start = True
+        piece_color = 'chestnut'
     else:
         npc_start = False
+        piece_color = 'dodgerblue'
     
     # advance game idx counter
     game_idx = game_idx + 1
@@ -3292,6 +3315,98 @@ for thisIntervention_game in intervention_games:
     else:
         routineTimer.addTime(-3.000000)
     
+    # --- Prepare to start Routine "imagination_prompt" ---
+    continueRoutine = True
+    # update component parameters for each repeat
+    # Run 'Begin Routine' code from prompt_code
+    if visibility == 1:
+        continueRoutine = False
+    prompt_piece.setFillColor(piece_color)
+    prompt_piece.setPos(((col-7)/17, (15-row-8)/17))
+    prompt_piece.setLineColor(piece_color)
+    # keep track of which components have finished
+    imagination_promptComponents = [prompt_piece]
+    for thisComponent in imagination_promptComponents:
+        thisComponent.tStart = None
+        thisComponent.tStop = None
+        thisComponent.tStartRefresh = None
+        thisComponent.tStopRefresh = None
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    # reset timers
+    t = 0
+    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+    frameN = -1
+    
+    # --- Run Routine "imagination_prompt" ---
+    routineForceEnded = not continueRoutine
+    while continueRoutine:
+        # get current time
+        t = routineTimer.getTime()
+        tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        # Run 'Each Frame' code from prompt_code
+        for square in squares:
+            square.draw()
+        
+        # *prompt_piece* updates
+        
+        # if prompt_piece is starting this frame...
+        if prompt_piece.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            prompt_piece.frameNStart = frameN  # exact frame index
+            prompt_piece.tStart = t  # local t and not account for scr refresh
+            prompt_piece.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(prompt_piece, 'tStartRefresh')  # time at next scr refresh
+            # update status
+            prompt_piece.status = STARTED
+            prompt_piece.setAutoDraw(True)
+        
+        # if prompt_piece is active this frame...
+        if prompt_piece.status == STARTED:
+            # update params
+            pass
+        
+        # if prompt_piece is stopping this frame...
+        if prompt_piece.status == STARTED:
+            # is it time to stop? (based on global clock, using actual start)
+            if tThisFlipGlobal > prompt_piece.tStartRefresh + whole_game_duration-frameTolerance:
+                # keep track of stop time/frame for later
+                prompt_piece.tStop = t  # not accounting for scr refresh
+                prompt_piece.frameNStop = frameN  # exact frame index
+                # update status
+                prompt_piece.status = FINISHED
+                prompt_piece.setAutoDraw(False)
+        
+        # check for quit (typically the Esc key)
+        if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+            core.quit()
+            if eyetracker:
+                eyetracker.setConnectionState(False)
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            routineForceEnded = True
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in imagination_promptComponents:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    # --- Ending Routine "imagination_prompt" ---
+    for thisComponent in imagination_promptComponents:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
+    # the Routine "imagination_prompt" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
+    
     # set up handler to look after randomisation of conditions etc
     intervention_moves = data.TrialHandler(nReps=15.0, method='sequential', 
         extraInfo=expInfo, originPath=-1,
@@ -3315,7 +3430,7 @@ for thisIntervention_game in intervention_games:
         continueRoutine = True
         # update component parameters for each repeat
         # Run 'Begin Routine' code from intervention_code
-        if npc_start:
+        if npc_start or visibility == 0:
             continueRoutine = False
         elif row_new == col_new == 0:
             intervention_moves.finished = True
@@ -3523,7 +3638,7 @@ for thisIntervention_game in intervention_games:
         continueRoutine = True
         # update component parameters for each repeat
         # Run 'Begin Routine' code from intervention_wait_code
-        if turns.finished:
+        if turns.finished or visibility == 0:
             continueRoutine = False
         elif row_new == col_new == 0:
             intervention_moves.finished = True
@@ -3738,6 +3853,9 @@ for thisIntervention_game in intervention_games:
         df.loc[df.game==game, 'winner'] = 'human'
     else:
         df.loc[df.game==game, 'winner'] = 'AI'
+    
+    if visibility == 0:
+        continueRoutine = False
     
     print(df.to_string())
     end_blue.setOpacity(player_won)
@@ -4967,6 +5085,9 @@ for thisMore_game in more_games:
         df.loc[df.game==game, 'winner'] = 'human'
     else:
         df.loc[df.game==game, 'winner'] = 'AI'
+    
+    if visibility == 0:
+        continueRoutine = False
     
     print(df.to_string())
     end_blue.setOpacity(player_won)
