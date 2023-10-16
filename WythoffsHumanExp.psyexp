@@ -80,8 +80,8 @@
         <Param val="for (var square, _pj_c = 0, _pj_a = squares, _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    square = _pj_a[_pj_c];&amp;#10;    square.draw();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="if (((row_new === col_new) &amp;&amp; (col_new === 0))) {&amp;#10;    player_won = true;&amp;#10;    num_wins = (num_wins + 1);&amp;#10;    turns.finished = true;&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="if row_new == col_new == 0:&amp;#10;    player_won = True&amp;#10;    num_wins = num_wins + 1&amp;#10;    turns.finished = True&amp;#10;    continueRoutine = False" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="if (((row_new === col_new) &amp;&amp; (col_new === 0))) {&amp;#10;    player_won = true;&amp;#10;    num_wins = (num_wins + 1);&amp;#10;    turns.finished = true;&amp;#10;    if ((section === 3)) {&amp;#10;        more_turns.finished = true;&amp;#10;    }&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="if row_new == col_new == 0:&amp;#10;    player_won = True&amp;#10;    num_wins = num_wins + 1&amp;#10;    turns.finished = True&amp;#10;    if section == 3:&amp;#10;        more_turns.finished = True&amp;#10;    continueRoutine = False" valType="extendedCode" updates="constant" name="End Routine"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="move_code" valType="code" updates="None" name="name"/>
       </CodeComponent>
@@ -126,8 +126,8 @@
         <Param val="if ((mouse_still &amp;&amp; any((mouse.getPos() !== mouse_start)))) {&amp;#10;    RT = timer.getTime();&amp;#10;    mouse_moved = true;&amp;#10;}&amp;#10;if ((mouse.getPressed()[0] === 1)) {&amp;#10;    [mouse_x, mouse_y] = mouse.getPos();&amp;#10;    row_new = util.round((0 - (((mouse_y * 17) + 8) - 15)));&amp;#10;    col_new = util.round(((mouse_x * 17) + 7));&amp;#10;    if (((row_new &lt;= row) &amp;&amp; (col_new &lt;= col))) {&amp;#10;        if (((row_new &gt;= 0) &amp;&amp; (col_new &gt;= 0))) {&amp;#10;            if ((((row_new === row) || (col_new === col)) || ((row - row_new) === (col - col_new)))) {&amp;#10;                if (((row_new !== row) || (col_new !== col))) {&amp;#10;                    continueRoutine = false;&amp;#10;                }&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;for (var square, _pj_c = 0, _pj_a = squares, _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    square = _pj_a[_pj_c];&amp;#10;    square.draw();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="if ((npc_start === false)) {&amp;#10;    move_num = (move_num + 1);&amp;#10;    df = df.push(new pd.Series({&quot;dtype&quot;: &quot;object&quot;}));&amp;#10;    df.loc[[(df.length - 1), &quot;session&quot;]] = expInfo[&quot;session&quot;];&amp;#10;    df.loc[[(df.length - 1), &quot;section&quot;]] = &quot;pre&quot;;&amp;#10;    df.loc[[(df.length - 1), &quot;game&quot;]] = game;&amp;#10;    df.loc[[(df.length - 1), &quot;move_num&quot;]] = move_num;&amp;#10;    df.loc[[(df.length - 1), &quot;player&quot;]] = &quot;human&quot;;&amp;#10;    df.loc[[(df.length - 1), &quot;start_row&quot;]] = row;&amp;#10;    df.loc[[(df.length - 1), &quot;start_col&quot;]] = col;&amp;#10;    df.loc[[(df.length - 1), &quot;end_row&quot;]] = row_new;&amp;#10;    df.loc[[(df.length - 1), &quot;end_col&quot;]] = col_new;&amp;#10;    df.loc[[(df.length - 1), &quot;RT&quot;]] = RT;&amp;#10;    df.loc[[(df.length - 1), &quot;DT&quot;]] = timer.getTime();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="if npc_start == False:&amp;#10;    move_num = move_num + 1&amp;#10;    df = df.append(pd.Series(dtype = 'object'), ignore_index = True)&amp;#10;    df.loc[len(df) - 1, 'session'] = expInfo['session']&amp;#10;    df.loc[len(df) - 1, 'section'] = 'pre'&amp;#10;    df.loc[len(df) - 1, 'game'] = game&amp;#10;    df.loc[len(df) - 1, 'move_num'] = move_num&amp;#10;    df.loc[len(df) - 1, 'player'] = 'human'&amp;#10;    df.loc[len(df) - 1, 'start_row'] = row&amp;#10;    df.loc[len(df) - 1, 'start_col'] = col&amp;#10;    df.loc[len(df) - 1, 'end_row'] = row_new&amp;#10;    df.loc[len(df) - 1, 'end_col'] = col_new&amp;#10;    df.loc[len(df) - 1, 'RT'] = RT&amp;#10;    df.loc[len(df) - 1, 'DT'] = timer.getTime()&amp;#10;    #print(df.to_string())" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="if ((npc_start === false)) {&amp;#10;    move_num = (move_num + 1);&amp;#10;    df = df.push(new pd.Series({&quot;dtype&quot;: &quot;object&quot;}));&amp;#10;    df.loc[[(df.length - 1), &quot;session&quot;]] = expInfo[&quot;session&quot;];&amp;#10;    df.loc[[(df.length - 1), &quot;section&quot;]] = section;&amp;#10;    df.loc[[(df.length - 1), &quot;game&quot;]] = game;&amp;#10;    df.loc[[(df.length - 1), &quot;move_num&quot;]] = move_num;&amp;#10;    df.loc[[(df.length - 1), &quot;player&quot;]] = &quot;human&quot;;&amp;#10;    df.loc[[(df.length - 1), &quot;start_row&quot;]] = row;&amp;#10;    df.loc[[(df.length - 1), &quot;start_col&quot;]] = col;&amp;#10;    df.loc[[(df.length - 1), &quot;end_row&quot;]] = row_new;&amp;#10;    df.loc[[(df.length - 1), &quot;end_col&quot;]] = col_new;&amp;#10;    df.loc[[(df.length - 1), &quot;RT&quot;]] = RT;&amp;#10;    df.loc[[(df.length - 1), &quot;DT&quot;]] = timer.getTime();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="if npc_start == False:&amp;#10;    move_num = move_num + 1&amp;#10;    df = df.append(pd.Series(dtype = 'object'), ignore_index = True)&amp;#10;    df.loc[len(df) - 1, 'session'] = expInfo['session']&amp;#10;    df.loc[len(df) - 1, 'section'] = section&amp;#10;    df.loc[len(df) - 1, 'game'] = game&amp;#10;    df.loc[len(df) - 1, 'move_num'] = move_num&amp;#10;    df.loc[len(df) - 1, 'player'] = 'human'&amp;#10;    df.loc[len(df) - 1, 'start_row'] = row&amp;#10;    df.loc[len(df) - 1, 'start_col'] = col&amp;#10;    df.loc[len(df) - 1, 'end_row'] = row_new&amp;#10;    df.loc[len(df) - 1, 'end_col'] = col_new&amp;#10;    df.loc[len(df) - 1, 'RT'] = RT&amp;#10;    df.loc[len(df) - 1, 'DT'] = timer.getTime()&amp;#10;    #print(df.to_string())" valType="extendedCode" updates="constant" name="End Routine"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="code" valType="code" updates="None" name="name"/>
       </CodeComponent>
@@ -217,8 +217,8 @@
         <Param val="for (var square, _pj_c = 0, _pj_a = squares, _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    square = _pj_a[_pj_c];&amp;#10;    square.draw();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="if (((row_new === col_new) &amp;&amp; (col_new === 0))) {&amp;#10;    if ((player_won === null)) {&amp;#10;        player_won = false;&amp;#10;    }&amp;#10;    turns.finished = true;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="if row_new == col_new == 0:&amp;#10;    if player_won == None:&amp;#10;        player_won = False&amp;#10;    turns.finished = True" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="if (((row_new === col_new) &amp;&amp; (col_new === 0))) {&amp;#10;    if ((player_won === null)) {&amp;#10;        player_won = false;&amp;#10;    }&amp;#10;    turns.finished = true;&amp;#10;    if ((section === 3)) {&amp;#10;        more_turns.finished = true;&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="if row_new == col_new == 0:&amp;#10;    if player_won == None:&amp;#10;        player_won = False&amp;#10;    turns.finished = True&amp;#10;    if section == 3:&amp;#10;        more_turns.finished = True" valType="extendedCode" updates="constant" name="End Routine"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="npc_code" valType="code" updates="None" name="name"/>
       </CodeComponent>
@@ -263,8 +263,8 @@
         <Param val="for (var square, _pj_c = 0, _pj_a = squares, _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    square = _pj_a[_pj_c];&amp;#10;    square.draw();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="if ((turns.finished === false)) {&amp;#10;    move_num = (move_num + 1);&amp;#10;    df = df.push(new pd.Series({&quot;dtype&quot;: &quot;object&quot;}));&amp;#10;    df.loc[[(df.length - 1), &quot;session&quot;]] = expInfo[&quot;session&quot;];&amp;#10;    df.loc[[(df.length - 1), &quot;section&quot;]] = &quot;pre&quot;;&amp;#10;    df.loc[[(df.length - 1), &quot;game&quot;]] = game;&amp;#10;    df.loc[[(df.length - 1), &quot;move_num&quot;]] = move_num;&amp;#10;    df.loc[[(df.length - 1), &quot;player&quot;]] = &quot;AI&quot;;&amp;#10;    df.loc[[(df.length - 1), &quot;start_row&quot;]] = row;&amp;#10;    df.loc[[(df.length - 1), &quot;start_col&quot;]] = col;&amp;#10;    df.loc[[(df.length - 1), &quot;end_row&quot;]] = row_new;&amp;#10;    df.loc[[(df.length - 1), &quot;end_col&quot;]] = col_new;&amp;#10;    df.loc[[(df.length - 1), &quot;DT&quot;]] = 1.25;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="if turns.finished == False:&amp;#10;    move_num = move_num + 1&amp;#10;    df = df.append(pd.Series(dtype = 'object'), ignore_index = True)&amp;#10;    df.loc[len(df) - 1, 'session'] = expInfo['session']&amp;#10;    df.loc[len(df) - 1, 'section'] = 'pre'&amp;#10;    df.loc[len(df) - 1, 'game'] = game&amp;#10;    df.loc[len(df) - 1, 'move_num'] = move_num&amp;#10;    df.loc[len(df) - 1, 'player'] = 'AI'&amp;#10;    df.loc[len(df) - 1, 'start_row'] = row&amp;#10;    df.loc[len(df) - 1, 'start_col'] = col&amp;#10;    df.loc[len(df) - 1, 'end_row'] = row_new&amp;#10;    df.loc[len(df) - 1, 'end_col'] = col_new&amp;#10;    df.loc[len(df) - 1, 'DT'] = 1.25&amp;#10;    #print(df.to_string())" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="if ((turns.finished === false)) {&amp;#10;    move_num = (move_num + 1);&amp;#10;    df = df.push(new pd.Series({&quot;dtype&quot;: &quot;object&quot;}));&amp;#10;    df.loc[[(df.length - 1), &quot;session&quot;]] = expInfo[&quot;session&quot;];&amp;#10;    df.loc[[(df.length - 1), &quot;section&quot;]] = section;&amp;#10;    df.loc[[(df.length - 1), &quot;game&quot;]] = game;&amp;#10;    df.loc[[(df.length - 1), &quot;move_num&quot;]] = move_num;&amp;#10;    df.loc[[(df.length - 1), &quot;player&quot;]] = &quot;AI&quot;;&amp;#10;    df.loc[[(df.length - 1), &quot;start_row&quot;]] = row;&amp;#10;    df.loc[[(df.length - 1), &quot;start_col&quot;]] = col;&amp;#10;    df.loc[[(df.length - 1), &quot;end_row&quot;]] = row_new;&amp;#10;    df.loc[[(df.length - 1), &quot;end_col&quot;]] = col_new;&amp;#10;    df.loc[[(df.length - 1), &quot;DT&quot;]] = 1.25;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="if turns.finished == False:&amp;#10;    move_num = move_num + 1&amp;#10;    df = df.append(pd.Series(dtype = 'object'), ignore_index = True)&amp;#10;    df.loc[len(df) - 1, 'session'] = expInfo['session']&amp;#10;    df.loc[len(df) - 1, 'section'] = section&amp;#10;    df.loc[len(df) - 1, 'game'] = game&amp;#10;    df.loc[len(df) - 1, 'move_num'] = move_num&amp;#10;    df.loc[len(df) - 1, 'player'] = 'AI'&amp;#10;    df.loc[len(df) - 1, 'start_row'] = row&amp;#10;    df.loc[len(df) - 1, 'start_col'] = col&amp;#10;    df.loc[len(df) - 1, 'end_row'] = row_new&amp;#10;    df.loc[len(df) - 1, 'end_col'] = col_new&amp;#10;    df.loc[len(df) - 1, 'DT'] = 1.25&amp;#10;    #print(df.to_string())" valType="extendedCode" updates="constant" name="End Routine"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="wait_code" valType="code" updates="None" name="name"/>
       </CodeComponent>
@@ -302,8 +302,8 @@
         <Param val="import * as np from 'numpy';&amp;#10;import * as pd from 'pandas';&amp;#10;df = new pd.DataFrame();&amp;#10;df[&quot;session&quot;] = [];&amp;#10;df[&quot;section&quot;] = [];&amp;#10;df[&quot;type&quot;] = [];&amp;#10;df[&quot;game&quot;] = [];&amp;#10;df[&quot;ref_game&quot;] = [];&amp;#10;df[&quot;move_num&quot;] = [];&amp;#10;df[&quot;player&quot;] = [];&amp;#10;df[&quot;start_row&quot;] = [];&amp;#10;df[&quot;start_col&quot;] = [];&amp;#10;df[&quot;end_row&quot;] = [];&amp;#10;df[&quot;end_col&quot;] = [];&amp;#10;df[&quot;RT&quot;] = [];&amp;#10;df[&quot;DT&quot;] = [];&amp;#10;df[&quot;winner&quot;] = [];&amp;#10;df[&quot;chosen_winner&quot;] = [];&amp;#10;df = df.astype(&quot;object&quot;);&amp;#10;" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="# Make game board tiles for rendering later&amp;#10;&amp;#10;squares = []&amp;#10;&amp;#10;for row in range(15):&amp;#10;    for col in range(15):&amp;#10;        &amp;#10;        if (row + col) % 2 == 0:&amp;#10;            color = 'lightgray'&amp;#10;        else:&amp;#10;            color = 'darkgray'&amp;#10;        &amp;#10;        x_loc = ((15 - row) - 8) / 17&amp;#10;        y_loc = (col - 7) / 17&amp;#10;        &amp;#10;        squares.append(&amp;#10;            visual.Rect(&amp;#10;                win = win,&amp;#10;                width = 1/17,&amp;#10;                height = 1/17,&amp;#10;                pos = (x_loc, y_loc),&amp;#10;                fillColor = color))" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="squares = [];&amp;#10;for (var row, _pj_c = 0, _pj_a = util.range(15), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    row = _pj_a[_pj_c];&amp;#10;    for (var col, _pj_f = 0, _pj_d = util.range(15), _pj_e = _pj_d.length; (_pj_f &lt; _pj_e); _pj_f += 1) {&amp;#10;        col = _pj_d[_pj_f];&amp;#10;        if ((((row + col) % 2) === 0)) {&amp;#10;            color = &quot;lightgray&quot;;&amp;#10;        } else {&amp;#10;            color = &quot;darkgray&quot;;&amp;#10;        }&amp;#10;        x_loc = (((15 - row) - 8) / 17);&amp;#10;        y_loc = ((col - 7) / 17);&amp;#10;        squares.push(new visual.Rect({&quot;win&quot;: psychoJS.window, &quot;width&quot;: (1 / 17), &quot;height&quot;: (1 / 17), &quot;pos&quot;: [x_loc, y_loc], &quot;fillColor&quot;: color}));&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="import * as random from 'random';&amp;#10;function _pj_snippets(container) {&amp;#10;    function _assert(comp, msg) {&amp;#10;        function PJAssertionError(message) {&amp;#10;            this.name = &quot;PJAssertionError&quot;;&amp;#10;            this.message = (message || &quot;Custom error PJAssertionError&quot;);&amp;#10;            if (((typeof Error.captureStackTrace) === &quot;function&quot;)) {&amp;#10;                Error.captureStackTrace(this, this.constructor);&amp;#10;            } else {&amp;#10;                this.stack = new Error(message).stack;&amp;#10;            }&amp;#10;        }&amp;#10;        PJAssertionError.prototype = Object.create(Error.prototype);&amp;#10;        PJAssertionError.prototype.constructor = PJAssertionError;&amp;#10;        msg = (msg || &quot;Assertion failed.&quot;);&amp;#10;        if ((! comp)) {&amp;#10;            throw new PJAssertionError(msg);&amp;#10;        }&amp;#10;    }&amp;#10;    container[&quot;_assert&quot;] = _assert;&amp;#10;    return container;&amp;#10;}&amp;#10;_pj = {};&amp;#10;_pj_snippets(_pj);&amp;#10;num_games = 2;&amp;#10;_pj._assert(((num_games % 2) === 0), null);&amp;#10;npc_starts = [];&amp;#10;for (var game, _pj_c = 0, _pj_a = util.range(Number.parseInt((num_games / 2))), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    game = _pj_a[_pj_c];&amp;#10;    npc_starts.push(true);&amp;#10;    npc_starts.push(false);&amp;#10;}&amp;#10;Math.random.shuffle(npc_starts);&amp;#10;game = 0;&amp;#10;num_wins = 0;&amp;#10;visibility = 1;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="import random&amp;#10;&amp;#10;num_games = 2 # must be even&amp;#10;assert(num_games % 2 == 0)&amp;#10;&amp;#10;# generate shuffled list of who starts each game&amp;#10;npc_starts = []&amp;#10;for game in range(int(num_games/2)):&amp;#10;    npc_starts.append(True)&amp;#10;    npc_starts.append(False)&amp;#10;random.shuffle(npc_starts)&amp;#10;&amp;#10;game = 0 # initialize game counter&amp;#10;num_wins = 0 # initialize win counter&amp;#10;visibility = 1 # pieces are visible for Section 1" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="import * as random from 'random';&amp;#10;function _pj_snippets(container) {&amp;#10;    function _assert(comp, msg) {&amp;#10;        function PJAssertionError(message) {&amp;#10;            this.name = &quot;PJAssertionError&quot;;&amp;#10;            this.message = (message || &quot;Custom error PJAssertionError&quot;);&amp;#10;            if (((typeof Error.captureStackTrace) === &quot;function&quot;)) {&amp;#10;                Error.captureStackTrace(this, this.constructor);&amp;#10;            } else {&amp;#10;                this.stack = new Error(message).stack;&amp;#10;            }&amp;#10;        }&amp;#10;        PJAssertionError.prototype = Object.create(Error.prototype);&amp;#10;        PJAssertionError.prototype.constructor = PJAssertionError;&amp;#10;        msg = (msg || &quot;Assertion failed.&quot;);&amp;#10;        if ((! comp)) {&amp;#10;            throw new PJAssertionError(msg);&amp;#10;        }&amp;#10;    }&amp;#10;    container[&quot;_assert&quot;] = _assert;&amp;#10;    return container;&amp;#10;}&amp;#10;_pj = {};&amp;#10;_pj_snippets(_pj);&amp;#10;num_games = 2;&amp;#10;_pj._assert(((num_games % 2) === 0), null);&amp;#10;npc_starts = [];&amp;#10;for (var game, _pj_c = 0, _pj_a = util.range(Number.parseInt((num_games / 2))), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    game = _pj_a[_pj_c];&amp;#10;    npc_starts.push(true);&amp;#10;    npc_starts.push(false);&amp;#10;}&amp;#10;Math.random.shuffle(npc_starts);&amp;#10;game = 0;&amp;#10;num_wins = 0;&amp;#10;visibility = 1;&amp;#10;section = 1;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="import random&amp;#10;&amp;#10;num_games = 2 # must be even&amp;#10;assert(num_games % 2 == 0)&amp;#10;&amp;#10;# generate shuffled list of who starts each game&amp;#10;npc_starts = []&amp;#10;for game in range(int(num_games/2)):&amp;#10;    npc_starts.append(True)&amp;#10;    npc_starts.append(False)&amp;#10;random.shuffle(npc_starts)&amp;#10;&amp;#10;game = 0 # initialize game counter&amp;#10;num_wins = 0 # initialize win counter&amp;#10;visibility = 1 # pieces are visible for Section 1&amp;#10;section = 1 # variable for experiment section" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -443,8 +443,8 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="import * as random from 'random';&amp;#10;import * as math from 'math';&amp;#10;player_won = null;&amp;#10;npc_start = npc_starts[game];&amp;#10;game = (game + 1);&amp;#10;move_num = 0;&amp;#10;row = Math.random.randint(0, 14);&amp;#10;col = Math.random.randint(0, 14);&amp;#10;while (((row === col) &amp;&amp; (col === 0))) {&amp;#10;    row = Math.random.randint(0, 14);&amp;#10;    col = Math.random.randint(0, 14);&amp;#10;}&amp;#10;row_new = row;&amp;#10;col_new = col;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="# board starting spot initialization&amp;#10;&amp;#10;import random&amp;#10;import math&amp;#10;&amp;#10;player_won = None&amp;#10;npc_start = npc_starts[game]&amp;#10;game = game + 1&amp;#10;&amp;#10;move_num = 0 # initialize move counter&amp;#10;&amp;#10;row = random.randint(0,14)&amp;#10;col = random.randint(0,14)&amp;#10;&amp;#10;while row == col == 0:&amp;#10;    row = random.randint(0,14)&amp;#10;    col = random.randint(0,14)&amp;#10;&amp;#10;row_new = row&amp;#10;col_new = col" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="import * as random from 'random';&amp;#10;import * as math from 'math';&amp;#10;if ((section === 3)) {&amp;#10;    turns.finished = false;&amp;#10;}&amp;#10;player_won = null;&amp;#10;npc_start = npc_starts[game];&amp;#10;game = (game + 1);&amp;#10;move_num = 0;&amp;#10;row = Math.random.randint(0, 14);&amp;#10;col = Math.random.randint(0, 14);&amp;#10;while (((row === col) &amp;&amp; (col === 0))) {&amp;#10;    row = Math.random.randint(0, 14);&amp;#10;    col = Math.random.randint(0, 14);&amp;#10;}&amp;#10;row_new = row;&amp;#10;col_new = col;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="import random&amp;#10;import math&amp;#10;&amp;#10;if section == 3: # not sure this is needed&amp;#10;    turns.finished = False&amp;#10;&amp;#10;player_won = None&amp;#10;npc_start = npc_starts[game]&amp;#10;game = game + 1&amp;#10;&amp;#10;move_num = 0 # initialize move counter&amp;#10;&amp;#10;row = random.randint(0,14)&amp;#10;col = random.randint(0,14)&amp;#10;&amp;#10;while row == col == 0:&amp;#10;    row = random.randint(0,14)&amp;#10;    col = random.randint(0,14)&amp;#10;&amp;#10;row_new = row&amp;#10;col_new = col" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="for square in squares:&amp;#10;    square.draw()" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="for (var square, _pj_c = 0, _pj_a = squares, _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    square = _pj_a[_pj_c];&amp;#10;    square.draw();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -1373,8 +1373,8 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="game_idxs = [];&amp;#10;for (var game, _pj_c = 0, _pj_a = util.range(num_games), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    game = _pj_a[_pj_c];&amp;#10;    game_idxs.push((game + 1));&amp;#10;}&amp;#10;Math.random.shuffle(game_idxs);&amp;#10;game_idx = 0;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="# shuffle order of reference games&amp;#10;game_idxs = []&amp;#10;for game in range(num_games):&amp;#10;    game_idxs.append(game + 1)&amp;#10;random.shuffle(game_idxs)&amp;#10;&amp;#10;game_idx = 0 # initialize game index counter" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="game_idxs = [];&amp;#10;for (var game, _pj_c = 0, _pj_a = util.range(num_games), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    game = _pj_a[_pj_c];&amp;#10;    game_idxs.push((game + 1));&amp;#10;}&amp;#10;Math.random.shuffle(game_idxs);&amp;#10;game_idx = 0;&amp;#10;section = 2;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="# shuffle order of reference games&amp;#10;game_idxs = []&amp;#10;for game in range(num_games):&amp;#10;    game_idxs.append(game + 1)&amp;#10;random.shuffle(game_idxs)&amp;#10;&amp;#10;game_idx = 0 # initialize game index counter&amp;#10;section = 2 # variable for experiment section" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -1624,7 +1624,7 @@
         <Param val="mouse onset" valType="str" updates="constant" name="timeRelativeTo"/>
       </MouseComponent>
       <TextComponent name="recall_text" plugin="None">
-        <Param val="white" valType="color" updates="constant" name="color"/>
+        <Param val="black" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
@@ -1765,7 +1765,7 @@
         <Param val="mouse onset" valType="str" updates="constant" name="timeRelativeTo"/>
       </MouseComponent>
       <TextComponent name="imagine_text" plugin="None">
-        <Param val="white" valType="color" updates="constant" name="color"/>
+        <Param val="black" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
@@ -1980,6 +1980,299 @@
         <Param val="" valType="list" updates="constant" name="vertices"/>
       </PolygonComponent>
     </Routine>
+    <Routine name="who_won_"/>
+    <Routine name="who_won">
+      <TextComponent name="who_won_title" plugin="None">
+        <Param val="white" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Open Sans" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="0.1" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="who_won_title" valType="code" updates="None" name="name"/>
+        <Param val="1" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, 0.3)" valType="list" updates="constant" name="pos"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="Who won?" valType="str" updates="constant" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
+      <PolygonComponent name="opponent_button" plugin="None">
+        <Param val="center" valType="str" updates="constant" name="anchor"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="white" valType="color" updates="constant" name="fillColor"/>
+        <Param val="linear" valType="str" updates="constant" name="interpolate"/>
+        <Param val="silver" valType="color" updates="constant" name="lineColor"/>
+        <Param val="8" valType="num" updates="constant" name="lineWidth"/>
+        <Param val="4" valType="int" updates="constant" name="nVertices"/>
+        <Param val="opponent_button" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(-0.3, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="rectangle" valType="str" updates="None" name="shape"/>
+        <Param val="(0.25, 0.1)" valType="list" updates="constant" name="size"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="list" updates="constant" name="vertices"/>
+      </PolygonComponent>
+      <TextComponent name="opponent_text" plugin="None">
+        <Param val="gray" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Open Sans" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="0.05" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="opponent_text" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(-0.3, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="opponent" valType="str" updates="constant" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
+      <PolygonComponent name="me_button" plugin="None">
+        <Param val="center" valType="str" updates="constant" name="anchor"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="white" valType="color" updates="constant" name="fillColor"/>
+        <Param val="linear" valType="str" updates="constant" name="interpolate"/>
+        <Param val="silver" valType="color" updates="constant" name="lineColor"/>
+        <Param val="8" valType="num" updates="constant" name="lineWidth"/>
+        <Param val="4" valType="int" updates="constant" name="nVertices"/>
+        <Param val="me_button" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0.3, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="rectangle" valType="str" updates="None" name="shape"/>
+        <Param val="(0.25, 0.1)" valType="list" updates="constant" name="size"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="list" updates="constant" name="vertices"/>
+      </PolygonComponent>
+      <TextComponent name="me_text" plugin="None">
+        <Param val="gray" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Open Sans" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="0.05" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="me_text" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0.3, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="me" valType="str" updates="constant" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
+      <MouseComponent name="choice_mouse" plugin="None">
+        <Param val="opponent_button, me_button" valType="list" updates="constant" name="clickable"/>
+        <Param val="" valType="list" updates="constant" name="correctAns"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="valid click" valType="str" updates="constant" name="forceEndRoutineOnPress"/>
+        <Param val="choice_mouse" valType="code" updates="None" name="name"/>
+        <Param val="True" valType="bool" updates="constant" name="newClicksOnly"/>
+        <Param val="never" valType="str" updates="None" name="saveMouseState"/>
+        <Param val="" valType="list" updates="constant" name="saveParamsClickable"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="False" valType="bool" updates="constant" name="storeCorrect"/>
+        <Param val="False" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="mouse onset" valType="str" updates="constant" name="timeRelativeTo"/>
+      </MouseComponent>
+    </Routine>
+    <Routine name="section_3">
+      <CodeComponent name="code_3" plugin="None">
+        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="section = 3;&amp;#10;npc_starts = [];&amp;#10;for (var game, _pj_c = 0, _pj_a = util.range(Number.parseInt((num_games / 2))), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    game = _pj_a[_pj_c];&amp;#10;    npc_starts.push(true);&amp;#10;    npc_starts.push(false);&amp;#10;}&amp;#10;Math.random.shuffle(npc_starts);&amp;#10;game = 0;&amp;#10;num_wins = 0;&amp;#10;visibility = 1;&amp;#10;section = 3;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="section = 3 # variable for experiment section&amp;#10;&amp;#10;# generate shuffled list of who starts each game&amp;#10;npc_starts = []&amp;#10;for game in range(int(num_games/2)):&amp;#10;    npc_starts.append(True)&amp;#10;    npc_starts.append(False)&amp;#10;random.shuffle(npc_starts)&amp;#10;&amp;#10;game = 0 # initialize game counter&amp;#10;num_wins = 0 # initialize win counter&amp;#10;visibility = 1 # pieces are visible for Section 3&amp;#10;section = 3 # variable for experiment section" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="code_3" valType="code" updates="None" name="name"/>
+      </CodeComponent>
+      <TextComponent name="title_3" plugin="None">
+        <Param val="white" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Open Sans" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="0.1" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="title_3" valType="code" updates="None" name="name"/>
+        <Param val="1" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, 0.3)" valType="list" updates="constant" name="pos"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="Starting Experiment Section 3" valType="str" updates="constant" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="1.4" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
+      <PolygonComponent name="button_3" plugin="None">
+        <Param val="center" valType="str" updates="constant" name="anchor"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="white" valType="color" updates="constant" name="fillColor"/>
+        <Param val="linear" valType="str" updates="constant" name="interpolate"/>
+        <Param val="silver" valType="color" updates="constant" name="lineColor"/>
+        <Param val="8" valType="num" updates="constant" name="lineWidth"/>
+        <Param val="4" valType="int" updates="constant" name="nVertices"/>
+        <Param val="button_3" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="rectangle" valType="str" updates="None" name="shape"/>
+        <Param val="(0.25, 0.1)" valType="list" updates="constant" name="size"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="list" updates="constant" name="vertices"/>
+      </PolygonComponent>
+      <TextComponent name="button_3_text" plugin="None">
+        <Param val="gray" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Open Sans" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="0.05" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="button_3_text" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="proceed" valType="str" updates="constant" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
+      <MouseComponent name="mouse_3" plugin="None">
+        <Param val="button_3" valType="list" updates="constant" name="clickable"/>
+        <Param val="" valType="list" updates="constant" name="correctAns"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="valid click" valType="str" updates="constant" name="forceEndRoutineOnPress"/>
+        <Param val="mouse_3" valType="code" updates="None" name="name"/>
+        <Param val="True" valType="bool" updates="constant" name="newClicksOnly"/>
+        <Param val="never" valType="str" updates="None" name="saveMouseState"/>
+        <Param val="" valType="list" updates="constant" name="saveParamsClickable"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="False" valType="bool" updates="constant" name="storeCorrect"/>
+        <Param val="False" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="mouse onset" valType="str" updates="constant" name="timeRelativeTo"/>
+      </MouseComponent>
+      <TextComponent name="section_3_text" plugin="None">
+        <Param val="white" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Open Sans" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="0.05" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="section_3_text" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, 0.15)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="In this last section you will play more games like in Section 1. Click the button below when you are ready to start." valType="str" updates="set every repeat" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="1" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
+    </Routine>
   </Routines>
   <Flow>
     <Routine name="setup_instruct"/>
@@ -2002,7 +2295,7 @@
       <Param name="conditions" updates="None" val="None" valType="str"/>
       <Param name="conditionsFile" updates="None" val="" valType="file"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
-      <Param name="isTrials" updates="None" val="True" valType="bool"/>
+      <Param name="isTrials" updates="None" val="False" valType="bool"/>
       <Param name="loopType" updates="None" val="random" valType="str"/>
       <Param name="nReps" updates="None" val="15" valType="num"/>
       <Param name="name" updates="None" val="turns" valType="code"/>
@@ -2024,7 +2317,7 @@
       <Param name="conditions" updates="None" val="None" valType="str"/>
       <Param name="conditionsFile" updates="None" val="" valType="file"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
-      <Param name="isTrials" updates="None" val="True" valType="bool"/>
+      <Param name="isTrials" updates="None" val="False" valType="bool"/>
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
       <Param name="nReps" updates="None" val="num_games" valType="num"/>
       <Param name="name" updates="None" val="intervention_games" valType="code"/>
@@ -2047,6 +2340,40 @@
     <Routine name="intervention_npc_wait"/>
     <Routine name="npc_move"/>
     <LoopTerminator name="intervention_moves"/>
+    <Routine name="end_pause"/>
+    <Routine name="who_won"/>
     <LoopTerminator name="intervention_games"/>
+    <Routine name="section_3"/>
+    <LoopInitiator loopType="TrialHandler" name="more_games">
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+      <Param name="conditions" updates="None" val="None" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="" valType="file"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="isTrials" updates="None" val="False" valType="bool"/>
+      <Param name="loopType" updates="None" val="random" valType="str"/>
+      <Param name="nReps" updates="None" val="num_games" valType="num"/>
+      <Param name="name" updates="None" val="more_games" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+    </LoopInitiator>
+    <Routine name="countdown"/>
+    <LoopInitiator loopType="TrialHandler" name="more_turns">
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+      <Param name="conditions" updates="None" val="None" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="" valType="file"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="isTrials" updates="None" val="False" valType="bool"/>
+      <Param name="loopType" updates="None" val="sequential" valType="str"/>
+      <Param name="nReps" updates="None" val="15" valType="num"/>
+      <Param name="name" updates="None" val="more_turns" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+    </LoopInitiator>
+    <Routine name="select_move"/>
+    <Routine name="make_move"/>
+    <Routine name="npc_wait"/>
+    <Routine name="npc_move"/>
+    <LoopTerminator name="more_turns"/>
+    <Routine name="end_pause"/>
+    <Routine name="feedback"/>
+    <LoopTerminator name="more_games"/>
   </Flow>
 </PsychoPy2experiment>
