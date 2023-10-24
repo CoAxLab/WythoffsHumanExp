@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Tue Oct 24 16:19:54 2023
+    on Tue Oct 24 16:49:48 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -620,33 +620,33 @@ who_won_title = visual.TextStim(win=win, name='who_won_title',
     pos=(0, 0.3), height=0.1, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=1.0, 
     languageStyle='LTR',
-    depth=0.0);
+    depth=-1.0);
 opponent_button = visual.Rect(
     win=win, name='opponent_button',
     width=(0.25, 0.1)[0], height=(0.25, 0.1)[1],
     ori=0.0, pos=(-0.3, 0), anchor='center',
     lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
-    opacity=None, depth=-1.0, interpolate=True)
+    opacity=None, depth=-2.0, interpolate=True)
 opponent_text = visual.TextStim(win=win, name='opponent_text',
     text='opponent',
     font='Open Sans',
     pos=(-0.3, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='gray', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
-    depth=-2.0);
+    depth=-3.0);
 me_button = visual.Rect(
     win=win, name='me_button',
     width=(0.25, 0.1)[0], height=(0.25, 0.1)[1],
     ori=0.0, pos=(0.3, 0), anchor='center',
     lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
-    opacity=None, depth=-3.0, interpolate=True)
+    opacity=None, depth=-4.0, interpolate=True)
 me_text = visual.TextStim(win=win, name='me_text',
     text='me',
     font='Open Sans',
     pos=(0.3, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='gray', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
-    depth=-4.0);
+    depth=-5.0);
 choice_mouse = event.Mouse(win=win)
 x, y = [None, None]
 choice_mouse.mouseClock = core.Clock()
@@ -1562,6 +1562,8 @@ for thisGame in games:
     continueRoutine = True
     # update component parameters for each repeat
     # Run 'Begin Routine' code from countdown_code
+    event.Mouse(visible=False)
+    
     import random
     import math
     
@@ -1754,6 +1756,8 @@ for thisGame in games:
         continueRoutine = True
         # update component parameters for each repeat
         # Run 'Begin Routine' code from code
+        event.Mouse(visible=True)
+        
         if npc_start:
             continueRoutine = False
         
@@ -1933,6 +1937,8 @@ for thisGame in games:
         continueRoutine = True
         # update component parameters for each repeat
         # Run 'Begin Routine' code from move_code
+        event.Mouse(visible=False)
+        
         if npc_start or visibility == 0:
             npc_start = False
             continueRoutine = False
@@ -2036,6 +2042,8 @@ for thisGame in games:
         continueRoutine = True
         # update component parameters for each repeat
         # Run 'Begin Routine' code from wait_code
+        event.Mouse(visible=False)
+        
         if turns.finished:
             continueRoutine = False
         
@@ -2185,6 +2193,8 @@ for thisGame in games:
         continueRoutine = True
         # update component parameters for each repeat
         # Run 'Begin Routine' code from npc_code
+        event.Mouse(visible=False)
+        
         if turns.finished or visibility == 0:
             continueRoutine = False
         moving_npc.setOpacity(visibility)
@@ -2287,6 +2297,8 @@ for thisGame in games:
     continueRoutine = True
     # update component parameters for each repeat
     # Run 'Begin Routine' code from end_code
+    event.Mouse(visible=False)
+    
     row = row_new
     col = col_new
     
@@ -2417,6 +2429,8 @@ for thisGame in games:
     continueRoutine = True
     # update component parameters for each repeat
     # Run 'Begin Routine' code from feedback_code
+    event.Mouse(visible=True)
+    
     if player_won:
         df.loc[(df.game==game) & (df.section==section), 'winner'] = 'human'
     else:
@@ -3129,6 +3143,8 @@ for thisIntervention_game in intervention_games:
     continueRoutine = True
     # update component parameters for each repeat
     # Run 'Begin Routine' code from intervention_countdown_code
+    event.Mouse(visible=False)
+    
     # Make sure replay/imagination shows correctly
     visibility = int(expInfo['session']) % 2
     turns.finished = False
@@ -3320,6 +3336,8 @@ for thisIntervention_game in intervention_games:
     continueRoutine = True
     # update component parameters for each repeat
     # Run 'Begin Routine' code from prompt_code
+    event.Mouse(visible=False)
+    
     if visibility == 1:
         continueRoutine = False
     prompt_piece.setFillColor(piece_color)
@@ -3431,6 +3449,8 @@ for thisIntervention_game in intervention_games:
         continueRoutine = True
         # update component parameters for each repeat
         # Run 'Begin Routine' code from intervention_code
+        event.Mouse(visible=False)
+        
         if npc_start or visibility == 0:
             continueRoutine = False
         elif row_new == col_new == 0:
@@ -3537,6 +3557,8 @@ for thisIntervention_game in intervention_games:
         continueRoutine = True
         # update component parameters for each repeat
         # Run 'Begin Routine' code from move_code
+        event.Mouse(visible=False)
+        
         if npc_start or visibility == 0:
             npc_start = False
             continueRoutine = False
@@ -3640,6 +3662,8 @@ for thisIntervention_game in intervention_games:
         continueRoutine = True
         # update component parameters for each repeat
         # Run 'Begin Routine' code from intervention_wait_code
+        event.Mouse(visible=False)
+        
         if turns.finished or visibility == 0:
             continueRoutine = False
         elif row_new == col_new == 0:
@@ -3746,6 +3770,8 @@ for thisIntervention_game in intervention_games:
         continueRoutine = True
         # update component parameters for each repeat
         # Run 'Begin Routine' code from npc_code
+        event.Mouse(visible=False)
+        
         if turns.finished or visibility == 0:
             continueRoutine = False
         moving_npc.setOpacity(visibility)
@@ -3848,6 +3874,8 @@ for thisIntervention_game in intervention_games:
     continueRoutine = True
     # update component parameters for each repeat
     # Run 'Begin Routine' code from end_code
+    event.Mouse(visible=False)
+    
     row = row_new
     col = col_new
     
@@ -3977,6 +4005,8 @@ for thisIntervention_game in intervention_games:
     # --- Prepare to start Routine "who_won" ---
     continueRoutine = True
     # update component parameters for each repeat
+    # Run 'Begin Routine' code from who_won_code
+    event.Mouse(visible=True)
     # setup some python lists for storing info about the choice_mouse
     choice_mouse.clicked_name = []
     gotValidClick = False  # until a click is received
@@ -4351,6 +4381,8 @@ for thisMore_game in more_games:
     continueRoutine = True
     # update component parameters for each repeat
     # Run 'Begin Routine' code from countdown_code
+    event.Mouse(visible=False)
+    
     import random
     import math
     
@@ -4543,6 +4575,8 @@ for thisMore_game in more_games:
         continueRoutine = True
         # update component parameters for each repeat
         # Run 'Begin Routine' code from code
+        event.Mouse(visible=True)
+        
         if npc_start:
             continueRoutine = False
         
@@ -4722,6 +4756,8 @@ for thisMore_game in more_games:
         continueRoutine = True
         # update component parameters for each repeat
         # Run 'Begin Routine' code from move_code
+        event.Mouse(visible=False)
+        
         if npc_start or visibility == 0:
             npc_start = False
             continueRoutine = False
@@ -4825,6 +4861,8 @@ for thisMore_game in more_games:
         continueRoutine = True
         # update component parameters for each repeat
         # Run 'Begin Routine' code from wait_code
+        event.Mouse(visible=False)
+        
         if turns.finished:
             continueRoutine = False
         
@@ -4974,6 +5012,8 @@ for thisMore_game in more_games:
         continueRoutine = True
         # update component parameters for each repeat
         # Run 'Begin Routine' code from npc_code
+        event.Mouse(visible=False)
+        
         if turns.finished or visibility == 0:
             continueRoutine = False
         moving_npc.setOpacity(visibility)
@@ -5076,6 +5116,8 @@ for thisMore_game in more_games:
     continueRoutine = True
     # update component parameters for each repeat
     # Run 'Begin Routine' code from end_code
+    event.Mouse(visible=False)
+    
     row = row_new
     col = col_new
     
@@ -5206,6 +5248,8 @@ for thisMore_game in more_games:
     continueRoutine = True
     # update component parameters for each repeat
     # Run 'Begin Routine' code from feedback_code
+    event.Mouse(visible=True)
+    
     if player_won:
         df.loc[(df.game==game) & (df.section==section), 'winner'] = 'human'
     else:
