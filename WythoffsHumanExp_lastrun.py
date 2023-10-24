@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Mon Oct 16 14:26:26 2023
+    on Tue Oct 24 13:20:08 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -410,34 +410,34 @@ feedback_win = visual.TextStim(win=win, name='feedback_win',
     pos=(0, 0.3), height=0.1, wrapWidth=None, ori=0.0, 
     color='gold', colorSpace='rgb', opacity=1.0, 
     languageStyle='LTR',
-    depth=0.0);
+    depth=-1.0);
 feedback_lose = visual.TextStim(win=win, name='feedback_lose',
     text='YOU LOST!',
     font='Open Sans',
     pos=(0, 0.3), height=0.1, wrapWidth=None, ori=0.0, 
     color='orange', colorSpace='rgb', opacity=1.0, 
     languageStyle='LTR',
-    depth=-1.0);
+    depth=-2.0);
 status_text = visual.TextStim(win=win, name='status_text',
     text='',
     font='Open Sans',
     pos=(0, 0.15), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
-    depth=-2.0);
+    depth=-3.0);
 button = visual.Rect(
     win=win, name='button',
     width=(0.25, 0.1)[0], height=(0.25, 0.1)[1],
     ori=0.0, pos=(0, 0), anchor='center',
     lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
-    opacity=None, depth=-3.0, interpolate=True)
+    opacity=None, depth=-4.0, interpolate=True)
 button_text = visual.TextStim(win=win, name='button_text',
     text='proceed',
     font='Open Sans',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='gray', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
-    depth=-4.0);
+    depth=-5.0);
 next_mouse = event.Mouse(win=win)
 x, y = [None, None]
 next_mouse.mouseClock = core.Clock()
@@ -769,34 +769,34 @@ feedback_win = visual.TextStim(win=win, name='feedback_win',
     pos=(0, 0.3), height=0.1, wrapWidth=None, ori=0.0, 
     color='gold', colorSpace='rgb', opacity=1.0, 
     languageStyle='LTR',
-    depth=0.0);
+    depth=-1.0);
 feedback_lose = visual.TextStim(win=win, name='feedback_lose',
     text='YOU LOST!',
     font='Open Sans',
     pos=(0, 0.3), height=0.1, wrapWidth=None, ori=0.0, 
     color='orange', colorSpace='rgb', opacity=1.0, 
     languageStyle='LTR',
-    depth=-1.0);
+    depth=-2.0);
 status_text = visual.TextStim(win=win, name='status_text',
     text='',
     font='Open Sans',
     pos=(0, 0.15), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
-    depth=-2.0);
+    depth=-3.0);
 button = visual.Rect(
     win=win, name='button',
     width=(0.25, 0.1)[0], height=(0.25, 0.1)[1],
     ori=0.0, pos=(0, 0), anchor='center',
     lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
-    opacity=None, depth=-3.0, interpolate=True)
+    opacity=None, depth=-4.0, interpolate=True)
 button_text = visual.TextStim(win=win, name='button_text',
     text='proceed',
     font='Open Sans',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='gray', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
-    depth=-4.0);
+    depth=-5.0);
 next_mouse = event.Mouse(win=win)
 x, y = [None, None]
 next_mouse.mouseClock = core.Clock()
@@ -2019,7 +2019,8 @@ for thisGame in games:
                 thisComponent.setAutoDraw(False)
         # Run 'End Routine' code from move_code
         if row_new == col_new == 0:
-            player_won = True
+            if player_won == None:
+                player_won = True
             num_wins = num_wins + 1
             turns.finished = True
             if section == 3:
@@ -2289,11 +2290,6 @@ for thisGame in games:
     row = row_new
     col = col_new
     
-    if player_won:
-        df.loc[df.game==game, 'winner'] = 'human'
-    else:
-        df.loc[df.game==game, 'winner'] = 'AI'
-    
     if visibility == 0:
         continueRoutine = False
     
@@ -2420,6 +2416,11 @@ for thisGame in games:
     # --- Prepare to start Routine "feedback" ---
     continueRoutine = True
     # update component parameters for each repeat
+    # Run 'Begin Routine' code from feedback_code
+    if player_won:
+        df.loc[df.game==game, 'winner'] = 'human'
+    else:
+        df.loc[df.game==game, 'winner'] = 'AI'
     feedback_win.setOpacity(player_won)
     feedback_lose.setOpacity(1 - player_won)
     status_text.setText('games played: ' + str(game) + ' of ' + str(num_games) + '\nwin percentage: ' + str(round (num_wins / game * 100)) + '%')
@@ -3150,9 +3151,9 @@ for thisIntervention_game in intervention_games:
     
     winner = ref_df.loc[len(ref_df) - 1, 'winner']
     if winner == 'human':
-        player_won = 1
+        player_won = True
     else:
-        player_won = 0
+        player_won = False
     
     if visibility == 0:
         # we add 0.75 for the end_pause
@@ -3622,7 +3623,8 @@ for thisIntervention_game in intervention_games:
                 thisComponent.setAutoDraw(False)
         # Run 'End Routine' code from move_code
         if row_new == col_new == 0:
-            player_won = True
+            if player_won == None:
+                player_won = True
             num_wins = num_wins + 1
             turns.finished = True
             if section == 3:
@@ -3848,11 +3850,6 @@ for thisIntervention_game in intervention_games:
     # Run 'Begin Routine' code from end_code
     row = row_new
     col = col_new
-    
-    if player_won:
-        df.loc[df.game==game, 'winner'] = 'human'
-    else:
-        df.loc[df.game==game, 'winner'] = 'AI'
     
     if visibility == 0:
         continueRoutine = False
@@ -4811,7 +4808,8 @@ for thisMore_game in more_games:
                 thisComponent.setAutoDraw(False)
         # Run 'End Routine' code from move_code
         if row_new == col_new == 0:
-            player_won = True
+            if player_won == None:
+                player_won = True
             num_wins = num_wins + 1
             turns.finished = True
             if section == 3:
@@ -5081,11 +5079,6 @@ for thisMore_game in more_games:
     row = row_new
     col = col_new
     
-    if player_won:
-        df.loc[df.game==game, 'winner'] = 'human'
-    else:
-        df.loc[df.game==game, 'winner'] = 'AI'
-    
     if visibility == 0:
         continueRoutine = False
     
@@ -5212,6 +5205,11 @@ for thisMore_game in more_games:
     # --- Prepare to start Routine "feedback" ---
     continueRoutine = True
     # update component parameters for each repeat
+    # Run 'Begin Routine' code from feedback_code
+    if player_won:
+        df.loc[df.game==game, 'winner'] = 'human'
+    else:
+        df.loc[df.game==game, 'winner'] = 'AI'
     feedback_win.setOpacity(player_won)
     feedback_lose.setOpacity(1 - player_won)
     status_text.setText('games played: ' + str(game) + ' of ' + str(num_games) + '\nwin percentage: ' + str(round (num_wins / game * 100)) + '%')
