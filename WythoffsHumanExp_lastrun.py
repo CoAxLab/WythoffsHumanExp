@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Tue Oct 24 13:20:08 2023
+    on Tue Oct 24 16:19:54 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -2073,7 +2073,7 @@ for thisGame in games:
         # action selection
         if len(moves) > 0:
             # calculate Boltzmann (softmax) action probs
-            T = 0.5 # temperature parameter
+            T = 0.6 # temperature parameter
             probs = np.exp(np.true_divide(Q_table,T))
             probs = np.true_divide(probs, sum(probs))
             action = np.random.choice(len(moves),p=probs)
@@ -2418,9 +2418,9 @@ for thisGame in games:
     # update component parameters for each repeat
     # Run 'Begin Routine' code from feedback_code
     if player_won:
-        df.loc[df.game==game, 'winner'] = 'human'
+        df.loc[(df.game==game) & (df.section==section), 'winner'] = 'human'
     else:
-        df.loc[df.game==game, 'winner'] = 'AI'
+        df.loc[(df.game==game) & (df.section==section), 'winner'] = 'AI'
     feedback_win.setOpacity(player_won)
     feedback_lose.setOpacity(1 - player_won)
     status_text.setText('games played: ' + str(game) + ' of ' + str(num_games) + '\nwin percentage: ' + str(round (num_wins / game * 100)) + '%')
@@ -4862,7 +4862,7 @@ for thisMore_game in more_games:
         # action selection
         if len(moves) > 0:
             # calculate Boltzmann (softmax) action probs
-            T = 0.5 # temperature parameter
+            T = 0.6 # temperature parameter
             probs = np.exp(np.true_divide(Q_table,T))
             probs = np.true_divide(probs, sum(probs))
             action = np.random.choice(len(moves),p=probs)
@@ -5207,9 +5207,9 @@ for thisMore_game in more_games:
     # update component parameters for each repeat
     # Run 'Begin Routine' code from feedback_code
     if player_won:
-        df.loc[df.game==game, 'winner'] = 'human'
+        df.loc[(df.game==game) & (df.section==section), 'winner'] = 'human'
     else:
-        df.loc[df.game==game, 'winner'] = 'AI'
+        df.loc[(df.game==game) & (df.section==section), 'winner'] = 'AI'
     feedback_win.setOpacity(player_won)
     feedback_lose.setOpacity(1 - player_won)
     status_text.setText('games played: ' + str(game) + ' of ' + str(num_games) + '\nwin percentage: ' + str(round (num_wins / game * 100)) + '%')
