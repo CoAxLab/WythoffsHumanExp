@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Tue Oct 24 16:49:48 2023
+    on Wed Oct 25 14:41:20 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -811,7 +811,7 @@ continueRoutine = True
 # Run 'Begin Routine' code from setup_code
 import random
 
-num_games = 2 # must be even
+num_games = 20 # must be even
 assert(num_games % 2 == 0)
 
 # generate shuffled list of who starts each game
@@ -1756,6 +1756,7 @@ for thisGame in games:
         continueRoutine = True
         # update component parameters for each repeat
         # Run 'Begin Routine' code from code
+        mouse.setPos(newPos=(0,0))
         event.Mouse(visible=True)
         
         if npc_start:
@@ -4006,6 +4007,7 @@ for thisIntervention_game in intervention_games:
     continueRoutine = True
     # update component parameters for each repeat
     # Run 'Begin Routine' code from who_won_code
+    choice_mouse.setPos(newPos=(0,0))
     event.Mouse(visible=True)
     # setup some python lists for storing info about the choice_mouse
     choice_mouse.clicked_name = []
@@ -4575,6 +4577,7 @@ for thisMore_game in more_games:
         continueRoutine = True
         # update component parameters for each repeat
         # Run 'Begin Routine' code from code
+        mouse.setPos(newPos=(0,0))
         event.Mouse(visible=True)
         
         if npc_start:
