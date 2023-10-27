@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Fri Oct 27 13:34:25 2023
+    on Fri Oct 27 15:24:39 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -292,6 +292,38 @@ text_4 = visual.TextStim(win=win, name='text_4',
     languageStyle='LTR',
     depth=-18.0);
 
+# --- Initialize components for Routine "practice_info" ---
+title_0 = visual.TextStim(win=win, name='title_0',
+    text='Starting three practice games',
+    font='Open Sans',
+    pos=(0, 0.3), height=0.1, wrapWidth=1.4, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=1.0, 
+    languageStyle='LTR',
+    depth=0.0);
+button_0 = visual.Rect(
+    win=win, name='button_0',
+    width=(0.25, 0.1)[0], height=(0.25, 0.1)[1],
+    ori=0.0, pos=(0, 0), anchor='center',
+    lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
+    opacity=None, depth=-1.0, interpolate=True)
+button_0_text = visual.TextStim(win=win, name='button_0_text',
+    text='proceed',
+    font='Open Sans',
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
+    color='gray', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-2.0);
+mouse_0 = event.Mouse(win=win)
+x, y = [None, None]
+mouse_0.mouseClock = core.Clock()
+section_0_text = visual.TextStim(win=win, name='section_0_text',
+    text='Click the button below to play three practice games before starting experiment section 1.',
+    font='Open Sans',
+    pos=(0, 0.15), height=0.05, wrapWidth=1.0, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-4.0);
+
 # --- Initialize components for Routine "countdown" ---
 countdown_text = visual.TextStim(win=win, name='countdown_text',
     text='',
@@ -421,13 +453,13 @@ title_1 = visual.TextStim(win=win, name='title_1',
 button_1 = visual.Rect(
     win=win, name='button_1',
     width=(0.25, 0.1)[0], height=(0.25, 0.1)[1],
-    ori=0.0, pos=(0, 0), anchor='center',
+    ori=0.0, pos=(0, -0.15), anchor='center',
     lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
     opacity=None, depth=-1.0, interpolate=True)
 button_1_text = visual.TextStim(win=win, name='button_1_text',
     text='proceed',
     font='Open Sans',
-    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
+    pos=(0, -0.15), height=0.05, wrapWidth=None, ori=0.0, 
     color='gray', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-2.0);
@@ -437,7 +469,7 @@ mouse_1.mouseClock = core.Clock()
 section_1_text = visual.TextStim(win=win, name='section_1_text',
     text='',
     font='Open Sans',
-    pos=(0, 0.15), height=0.05, wrapWidth=0.75, ori=0.0, 
+    pos=(0, 0.075), height=0.05, wrapWidth=0.75, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-4.0);
@@ -1486,6 +1518,167 @@ for thisComponent in tutorialComponents:
 # store data for thisExp (ExperimentHandler)
 thisExp.nextEntry()
 # the Routine "tutorial" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
+
+# --- Prepare to start Routine "practice_info" ---
+continueRoutine = True
+# update component parameters for each repeat
+# setup some python lists for storing info about the mouse_0
+mouse_0.clicked_name = []
+gotValidClick = False  # until a click is received
+# keep track of which components have finished
+practice_infoComponents = [title_0, button_0, button_0_text, mouse_0, section_0_text]
+for thisComponent in practice_infoComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+frameN = -1
+
+# --- Run Routine "practice_info" ---
+routineForceEnded = not continueRoutine
+while continueRoutine:
+    # get current time
+    t = routineTimer.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *title_0* updates
+    
+    # if title_0 is starting this frame...
+    if title_0.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        title_0.frameNStart = frameN  # exact frame index
+        title_0.tStart = t  # local t and not account for scr refresh
+        title_0.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(title_0, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        title_0.status = STARTED
+        title_0.setAutoDraw(True)
+    
+    # if title_0 is active this frame...
+    if title_0.status == STARTED:
+        # update params
+        pass
+    
+    # *button_0* updates
+    
+    # if button_0 is starting this frame...
+    if button_0.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        button_0.frameNStart = frameN  # exact frame index
+        button_0.tStart = t  # local t and not account for scr refresh
+        button_0.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(button_0, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        button_0.status = STARTED
+        button_0.setAutoDraw(True)
+    
+    # if button_0 is active this frame...
+    if button_0.status == STARTED:
+        # update params
+        pass
+    
+    # *button_0_text* updates
+    
+    # if button_0_text is starting this frame...
+    if button_0_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        button_0_text.frameNStart = frameN  # exact frame index
+        button_0_text.tStart = t  # local t and not account for scr refresh
+        button_0_text.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(button_0_text, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        button_0_text.status = STARTED
+        button_0_text.setAutoDraw(True)
+    
+    # if button_0_text is active this frame...
+    if button_0_text.status == STARTED:
+        # update params
+        pass
+    # *mouse_0* updates
+    
+    # if mouse_0 is starting this frame...
+    if mouse_0.status == NOT_STARTED and t >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        mouse_0.frameNStart = frameN  # exact frame index
+        mouse_0.tStart = t  # local t and not account for scr refresh
+        mouse_0.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(mouse_0, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        mouse_0.status = STARTED
+        mouse_0.mouseClock.reset()
+        prevButtonState = mouse_0.getPressed()  # if button is down already this ISN'T a new click
+    if mouse_0.status == STARTED:  # only update if started and not finished!
+        buttons = mouse_0.getPressed()
+        if buttons != prevButtonState:  # button state changed?
+            prevButtonState = buttons
+            if sum(buttons) > 0:  # state changed to a new click
+                # check if the mouse was inside our 'clickable' objects
+                gotValidClick = False
+                clickableList = environmenttools.getFromNames(button_0, namespace=locals())
+                for obj in clickableList:
+                    # is this object clicked on?
+                    if obj.contains(mouse_0):
+                        gotValidClick = True
+                        mouse_0.clicked_name.append(obj.name)
+                if gotValidClick:  
+                    continueRoutine = False  # end routine on response
+    
+    # *section_0_text* updates
+    
+    # if section_0_text is starting this frame...
+    if section_0_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        section_0_text.frameNStart = frameN  # exact frame index
+        section_0_text.tStart = t  # local t and not account for scr refresh
+        section_0_text.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(section_0_text, 'tStartRefresh')  # time at next scr refresh
+        # add timestamp to datafile
+        thisExp.timestampOnFlip(win, 'section_0_text.started')
+        # update status
+        section_0_text.status = STARTED
+        section_0_text.setAutoDraw(True)
+    
+    # if section_0_text is active this frame...
+    if section_0_text.status == STARTED:
+        # update params
+        pass
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+        if eyetracker:
+            eyetracker.setConnectionState(False)
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        routineForceEnded = True
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in practice_infoComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# --- Ending Routine "practice_info" ---
+for thisComponent in practice_infoComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+# store data for thisExp (ExperimentHandler)
+thisExp.nextEntry()
+# the Routine "practice_info" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
 # set up handler to look after randomisation of conditions etc

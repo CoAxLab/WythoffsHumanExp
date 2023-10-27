@@ -256,8 +256,8 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="optimal_moves = [(0,0),(1,2),(2,1),(3,5),(5,3),(4,7), (7,4),(6,10),(10,6),(8,13),(13,8)]" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="optimal_moves = [[0, 0], [1, 2], [2, 1], [3, 5], [5, 3], [4, 7], [7, 4], [6, 10], [10, 6], [8, 13], [13, 8]];&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="var _pj;&amp;#10;function _pj_snippets(container) {&amp;#10;    function in_es6(left, right) {&amp;#10;        if (((right instanceof Array) || ((typeof right) === &quot;string&quot;))) {&amp;#10;            return (right.indexOf(left) &gt; (- 1));&amp;#10;        } else {&amp;#10;            if (((right instanceof Map) || (right instanceof Set) || (right instanceof WeakMap) || (right instanceof WeakSet))) {&amp;#10;                return right.has(left);&amp;#10;            } else {&amp;#10;                return (left in right);&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;    container[&quot;in_es6&quot;] = in_es6;&amp;#10;    return container;&amp;#10;}&amp;#10;_pj = {};&amp;#10;_pj_snippets(_pj);&amp;#10;new psychoJS.eventManager.Mouse({&quot;visible&quot;: false});&amp;#10;if (practice_turns.finished) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;row = row_new;&amp;#10;col = col_new;&amp;#10;moves = [];&amp;#10;Q_table = [];&amp;#10;for (var r, _pj_c = 0, _pj_a = util.range(row), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    r = _pj_a[_pj_c];&amp;#10;    move = [r, col];&amp;#10;    moves.push(move);&amp;#10;    if (_pj.in_es6(move, optimal_moves)) {&amp;#10;        Q_table.push(1);&amp;#10;    } else {&amp;#10;        Q_table.push(0);&amp;#10;    }&amp;#10;}&amp;#10;for (var c, _pj_c = 0, _pj_a = util.range(col), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    c = _pj_a[_pj_c];&amp;#10;    move = [row, c];&amp;#10;    moves.push(move);&amp;#10;    if (_pj.in_es6(move, optimal_moves)) {&amp;#10;        Q_table.push(1);&amp;#10;    } else {&amp;#10;        Q_table.push(0);&amp;#10;    }&amp;#10;}&amp;#10;for (var d, _pj_c = 0, _pj_a = util.range(1, (Math.min(row, col) + 1)), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    d = _pj_a[_pj_c];&amp;#10;    move = [(row - d), (col - d)];&amp;#10;    moves.push(move);&amp;#10;    if (_pj.in_es6(move, optimal_moves)) {&amp;#10;        Q_table.push(1);&amp;#10;    } else {&amp;#10;        Q_table.push(0);&amp;#10;    }&amp;#10;}&amp;#10;if ((moves.length &gt; 0)) {&amp;#10;    T = 0.6;&amp;#10;    probs = np.exp(np.true_divide(Q_table, T));&amp;#10;    probs = np.true_divide(probs, util.sum(probs));&amp;#10;    action = np.random.choice(moves.length, {&quot;p&quot;: probs});&amp;#10;    [row_new, col_new] = moves[action];&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="event.Mouse(visible=False)&amp;#10;&amp;#10;if practice_turns.finished:&amp;#10;    continueRoutine = False&amp;#10;&amp;#10;row = row_new&amp;#10;col = col_new&amp;#10;&amp;#10;# select random opponent move&amp;#10;moves = []&amp;#10;Q_table = []&amp;#10;&amp;#10;for r in range (row): # vertical moves&amp;#10;    move = (r, col)&amp;#10;    moves.append(move)&amp;#10;    if move in optimal_moves:&amp;#10;        Q_table.append(1)&amp;#10;    else:&amp;#10;        Q_table.append(0)&amp;#10;    &amp;#10;for c in range (col): # horiz moves&amp;#10;    move = (row, c)&amp;#10;    moves.append(move)&amp;#10;    if move in optimal_moves:&amp;#10;        Q_table.append(1)&amp;#10;    else:&amp;#10;        Q_table.append(0)&amp;#10;    &amp;#10;for d in range(1, min(row, col) + 1): # diag moves&amp;#10;    move = (row - d, col - d)&amp;#10;    moves.append(move)&amp;#10;    if move in optimal_moves:&amp;#10;        Q_table.append(1)&amp;#10;    else:&amp;#10;        Q_table.append(0)&amp;#10;&amp;#10;# action selection&amp;#10;if len(moves) &gt; 0:&amp;#10;    # calculate Boltzmann (softmax) action probs&amp;#10;    T = 0.6 # temperature parameter&amp;#10;    probs = np.exp(np.true_divide(Q_table,T))&amp;#10;    probs = np.true_divide(probs, sum(probs))&amp;#10;    action = np.random.choice(len(moves),p=probs)&amp;#10;    (row_new, col_new) = moves[action]&amp;#10;    # better to use np.random.Generator.choice" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="var _pj;&amp;#10;function _pj_snippets(container) {&amp;#10;    function in_es6(left, right) {&amp;#10;        if (((right instanceof Array) || ((typeof right) === &quot;string&quot;))) {&amp;#10;            return (right.indexOf(left) &gt; (- 1));&amp;#10;        } else {&amp;#10;            if (((right instanceof Map) || (right instanceof Set) || (right instanceof WeakMap) || (right instanceof WeakSet))) {&amp;#10;                return right.has(left);&amp;#10;            } else {&amp;#10;                return (left in right);&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;    container[&quot;in_es6&quot;] = in_es6;&amp;#10;    return container;&amp;#10;}&amp;#10;_pj = {};&amp;#10;_pj_snippets(_pj);&amp;#10;new psychoJS.eventManager.Mouse({&quot;visible&quot;: false});&amp;#10;if (practice_turns.finished) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;row = row_new;&amp;#10;col = col_new;&amp;#10;moves = [];&amp;#10;Q_table = [];&amp;#10;for (var r, _pj_c = 0, _pj_a = util.range(row), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    r = _pj_a[_pj_c];&amp;#10;    move = [r, col];&amp;#10;    moves.push(move);&amp;#10;    if (_pj.in_es6(move, optimal_moves)) {&amp;#10;        Q_table.push(1);&amp;#10;    } else {&amp;#10;        Q_table.push(0);&amp;#10;    }&amp;#10;}&amp;#10;for (var c, _pj_c = 0, _pj_a = util.range(col), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    c = _pj_a[_pj_c];&amp;#10;    move = [row, c];&amp;#10;    moves.push(move);&amp;#10;    if (_pj.in_es6(move, optimal_moves)) {&amp;#10;        Q_table.push(1);&amp;#10;    } else {&amp;#10;        Q_table.push(0);&amp;#10;    }&amp;#10;}&amp;#10;for (var d, _pj_c = 0, _pj_a = util.range(1, (Math.min(row, col) + 1)), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    d = _pj_a[_pj_c];&amp;#10;    move = [(row - d), (col - d)];&amp;#10;    moves.push(move);&amp;#10;    if (_pj.in_es6(move, optimal_moves)) {&amp;#10;        Q_table.push(1);&amp;#10;    } else {&amp;#10;        Q_table.push(0);&amp;#10;    }&amp;#10;}&amp;#10;if ((moves.length &gt; 0)) {&amp;#10;    T = 0.55;&amp;#10;    probs = np.exp(np.true_divide(Q_table, T));&amp;#10;    probs = np.true_divide(probs, util.sum(probs));&amp;#10;    action = np.random.choice(moves.length, {&quot;p&quot;: probs});&amp;#10;    [row_new, col_new] = moves[action];&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="event.Mouse(visible=False)&amp;#10;&amp;#10;if practice_turns.finished:&amp;#10;    continueRoutine = False&amp;#10;&amp;#10;row = row_new&amp;#10;col = col_new&amp;#10;&amp;#10;# select random opponent move&amp;#10;moves = []&amp;#10;Q_table = []&amp;#10;&amp;#10;for r in range (row): # vertical moves&amp;#10;    move = (r, col)&amp;#10;    moves.append(move)&amp;#10;    if move in optimal_moves:&amp;#10;        Q_table.append(1)&amp;#10;    else:&amp;#10;        Q_table.append(0)&amp;#10;    &amp;#10;for c in range (col): # horiz moves&amp;#10;    move = (row, c)&amp;#10;    moves.append(move)&amp;#10;    if move in optimal_moves:&amp;#10;        Q_table.append(1)&amp;#10;    else:&amp;#10;        Q_table.append(0)&amp;#10;    &amp;#10;for d in range(1, min(row, col) + 1): # diag moves&amp;#10;    move = (row - d, col - d)&amp;#10;    moves.append(move)&amp;#10;    if move in optimal_moves:&amp;#10;        Q_table.append(1)&amp;#10;    else:&amp;#10;        Q_table.append(0)&amp;#10;&amp;#10;# action selection&amp;#10;if len(moves) &gt; 0:&amp;#10;    # calculate Boltzmann (softmax) action probs&amp;#10;    T = 0.55 # temperature parameter&amp;#10;    probs = np.exp(np.true_divide(Q_table,T))&amp;#10;    probs = np.true_divide(probs, sum(probs))&amp;#10;    action = np.random.choice(len(moves),p=probs)&amp;#10;    (row_new, col_new) = moves[action]&amp;#10;    # better to use np.random.Generator.choice" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="for square in squares:&amp;#10;    square.draw()" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="for (var square, _pj_c = 0, _pj_a = squares, _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    square = _pj_a[_pj_c];&amp;#10;    square.draw();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -1300,7 +1300,7 @@
         <Param val="button_1" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(0, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="(0, -0.15)" valType="list" updates="constant" name="pos"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="rectangle" valType="str" updates="None" name="shape"/>
         <Param val="(0.25, 0.1)" valType="list" updates="constant" name="size"/>
@@ -1326,7 +1326,7 @@
         <Param val="button_1_text" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(0, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="(0, -0.15)" valType="list" updates="constant" name="pos"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
@@ -1371,7 +1371,7 @@
         <Param val="section_1_text" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(0, 0.15)" valType="list" updates="constant" name="pos"/>
+        <Param val="(0, 0.075)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
@@ -2370,10 +2370,135 @@
         <Param val="" valType="list" updates="constant" name="vertices"/>
       </PolygonComponent>
     </Routine>
+    <Routine name="practice_info">
+      <TextComponent name="title_0" plugin="None">
+        <Param val="white" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Open Sans" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="0.1" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="title_0" valType="code" updates="None" name="name"/>
+        <Param val="1" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, 0.3)" valType="list" updates="constant" name="pos"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="Starting three practice games" valType="str" updates="constant" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="1.4" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
+      <PolygonComponent name="button_0" plugin="None">
+        <Param val="center" valType="str" updates="constant" name="anchor"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="white" valType="color" updates="constant" name="fillColor"/>
+        <Param val="linear" valType="str" updates="constant" name="interpolate"/>
+        <Param val="silver" valType="color" updates="constant" name="lineColor"/>
+        <Param val="8" valType="num" updates="constant" name="lineWidth"/>
+        <Param val="4" valType="int" updates="constant" name="nVertices"/>
+        <Param val="button_0" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="rectangle" valType="str" updates="None" name="shape"/>
+        <Param val="(0.25, 0.1)" valType="list" updates="constant" name="size"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="list" updates="constant" name="vertices"/>
+      </PolygonComponent>
+      <TextComponent name="button_0_text" plugin="None">
+        <Param val="gray" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Open Sans" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="0.05" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="button_0_text" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="proceed" valType="str" updates="constant" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
+      <MouseComponent name="mouse_0" plugin="None">
+        <Param val="button_0" valType="list" updates="constant" name="clickable"/>
+        <Param val="" valType="list" updates="constant" name="correctAns"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="valid click" valType="str" updates="constant" name="forceEndRoutineOnPress"/>
+        <Param val="mouse_0" valType="code" updates="None" name="name"/>
+        <Param val="True" valType="bool" updates="constant" name="newClicksOnly"/>
+        <Param val="never" valType="str" updates="None" name="saveMouseState"/>
+        <Param val="" valType="list" updates="constant" name="saveParamsClickable"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="False" valType="bool" updates="constant" name="storeCorrect"/>
+        <Param val="False" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="mouse onset" valType="str" updates="constant" name="timeRelativeTo"/>
+      </MouseComponent>
+      <TextComponent name="section_0_text" plugin="None">
+        <Param val="white" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Open Sans" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="0.05" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="section_0_text" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, 0.15)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="Click the button below to play three practice games before starting experiment section 1." valType="str" updates="constant" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="1.0" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
+    </Routine>
   </Routines>
   <Flow>
     <Routine name="setup_instruct"/>
     <Routine name="tutorial"/>
+    <Routine name="practice_info"/>
     <LoopInitiator loopType="TrialHandler" name="practice_games">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="None" valType="str"/>
