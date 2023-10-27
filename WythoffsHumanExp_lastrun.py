@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Thu Oct 26 16:45:19 2023
+    on Fri Oct 27 13:34:25 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -1516,8 +1516,8 @@ for thisPractice_game in practice_games:
     import random
     import math
     
-    if section == 3: # not sure this is needed
-        turns.finished = False
+    if section == 1 or section == 3:
+        practice_turns.finished = False
     
     player_won = None
     npc_start = npc_starts[game]
@@ -2591,6 +2591,8 @@ game = 0 # initialize game counter
 num_wins = 0 # initialize win counter
 visibility = 1 # pieces are visible for Section 1
 section = 1 # variable for experiment section
+
+practice_turns.finished = False
 # keep track of which components have finished
 section_1Components = [title_1, button_1, button_1_text, mouse_1, section_1_text]
 for thisComponent in section_1Components:
@@ -2774,8 +2776,8 @@ for thisGame in games:
     import random
     import math
     
-    if section == 3: # not sure this is needed
-        turns.finished = False
+    if section == 1 or section == 3:
+        practice_turns.finished = False
     
     player_won = None
     npc_start = npc_starts[game]
@@ -4359,12 +4361,13 @@ for thisIntervention_game in intervention_games:
     
     # Make sure replay/imagination shows correctly
     visibility = int(expInfo['session']) % 2
-    turns.finished = False
+    practice_turns.finished = False
     
     move_idx = 0
     
     # select reference game data frame
-    ref_df = df[df.game == game_idxs[game_idx]]
+    df_1 = df[df.section == 1]
+    ref_df = df_1[df_1.game == game_idxs[game_idx]]
     ref_df = ref_df.reset_index()
     print(ref_df.to_string())
     #print('move_idx: ' + str(move_idx))
@@ -4667,7 +4670,7 @@ for thisIntervention_game in intervention_games:
             continueRoutine = False
         elif row_new == col_new == 0:
             intervention_moves.finished = True
-            turns.finished = True
+            practice_turns.finished = True
             npc_start = True
             continueRoutine = False
         else:
@@ -4878,11 +4881,11 @@ for thisIntervention_game in intervention_games:
         # Run 'Begin Routine' code from intervention_wait_code
         event.Mouse(visible=False)
         
-        if turns.finished or visibility == 0:
+        if practice_turns.finished or visibility == 0:
             continueRoutine = False
         elif row_new == col_new == 0:
             intervention_moves.finished = True
-            turns.finished = True
+            practice_turns.finished = True
             npc_start = True
             continueRoutine = False
         else:
@@ -5603,8 +5606,8 @@ for thisMore_game in more_games:
     import random
     import math
     
-    if section == 3: # not sure this is needed
-        turns.finished = False
+    if section == 1 or section == 3:
+        practice_turns.finished = False
     
     player_won = None
     npc_start = npc_starts[game]
