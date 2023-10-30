@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Fri Oct 27 15:24:39 2023
+    on Mon Oct 30 14:39:26 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -950,6 +950,38 @@ button_text = visual.TextStim(win=win, name='button_text',
 next_mouse = event.Mouse(win=win)
 x, y = [None, None]
 next_mouse.mouseClock = core.Clock()
+
+# --- Initialize components for Routine "end_screen" ---
+end_title = visual.TextStim(win=win, name='end_title',
+    text='Experiment sections complete',
+    font='Open Sans',
+    pos=(0, 0.3), height=0.1, wrapWidth=1.4, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=1.0, 
+    languageStyle='LTR',
+    depth=0.0);
+end_button = visual.Rect(
+    win=win, name='end_button',
+    width=(0.25, 0.1)[0], height=(0.25, 0.1)[1],
+    ori=0.0, pos=(0, -0.35), anchor='center',
+    lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
+    opacity=None, depth=-1.0, interpolate=True)
+end_button_text = visual.TextStim(win=win, name='end_button_text',
+    text='done',
+    font='Open Sans',
+    pos=(0, -0.35), height=0.05, wrapWidth=None, ori=0.0, 
+    color='gray', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-2.0);
+end_text = visual.TextStim(win=win, name='end_text',
+    text='',
+    font='Open Sans',
+    pos=(0, 0), height=0.05, wrapWidth=1.2, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-3.0);
+end_mouse = event.Mouse(win=win)
+x, y = [None, None]
+end_mouse.mouseClock = core.Clock()
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -2226,7 +2258,7 @@ for thisPractice_game in practice_games:
         # action selection
         if len(moves) > 0:
             # calculate Boltzmann (softmax) action probs
-            T = 0.6 # temperature parameter
+            T = 0.55 # temperature parameter
             probs = np.exp(np.true_divide(Q_table,T))
             probs = np.true_divide(probs, sum(probs))
             action = np.random.choice(len(moves),p=probs)
@@ -3486,7 +3518,7 @@ for thisGame in games:
         # action selection
         if len(moves) > 0:
             # calculate Boltzmann (softmax) action probs
-            T = 0.6 # temperature parameter
+            T = 0.55 # temperature parameter
             probs = np.exp(np.true_divide(Q_table,T))
             probs = np.true_divide(probs, sum(probs))
             action = np.random.choice(len(moves),p=probs)
@@ -5420,6 +5452,9 @@ for thisIntervention_game in intervention_games:
     # Run 'Begin Routine' code from who_won_code
     choice_mouse.setPos(newPos=(0,0))
     event.Mouse(visible=True)
+    
+    timer = core.Clock()
+    timer.reset()
     # setup some python lists for storing info about the choice_mouse
     choice_mouse.clicked_name = []
     gotValidClick = False  # until a click is received
@@ -5589,6 +5624,24 @@ for thisIntervention_game in intervention_games:
     for thisComponent in who_wonComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
+    # Run 'End Routine' code from who_won_code
+    if npc_start == False:
+        df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
+        df.loc[len(df) - 1, 'session'] = expInfo['session']
+        df.loc[len(df) - 1, 'section'] = section
+        if visibility == 0:
+            df.loc[len(df) - 1, 'type'] = 'img'
+        else:
+            df.loc[len(df) - 1, 'type'] = 'mem'
+        df.loc[len(df) - 1, 'game'] = game_idx
+        df.loc[len(df) - 1, 'ref_game'] = game_idxs[game_idx - 1]
+        df.loc[len(df) - 1, 'start_row'] = ref_df.loc[0, 'start_row']
+        df.loc[len(df) - 1, 'start_col'] = ref_df.loc[0, 'start_col']
+        if choice_mouse.clicked_name[0] == 'me_button':
+            df.loc[len(df) - 1, 'chosen_winner'] = 'human'
+        else:
+            df.loc[len(df) - 1, 'chosen_winner'] = 'AI'
+        df.loc[len(df) - 1, 'DT'] = timer.getTime()
     # store data for intervention_games (TrialHandler)
     # the Routine "who_won" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
@@ -6316,7 +6369,7 @@ for thisMore_game in more_games:
         # action selection
         if len(moves) > 0:
             # calculate Boltzmann (softmax) action probs
-            T = 0.6 # temperature parameter
+            T = 0.55 # temperature parameter
             probs = np.exp(np.true_divide(Q_table,T))
             probs = np.true_divide(probs, sum(probs))
             action = np.random.choice(len(moves),p=probs)
@@ -6851,6 +6904,170 @@ for thisMore_game in more_games:
     routineTimer.reset()
 # completed num_games repeats of 'more_games'
 
+
+# --- Prepare to start Routine "end_screen" ---
+continueRoutine = True
+# update component parameters for each repeat
+end_text.setText('You have now completed all sections of the experiment.\n\nPlease alert the experimenter that you are finished.\n\nThank you!\n')
+# setup some python lists for storing info about the end_mouse
+end_mouse.clicked_name = []
+gotValidClick = False  # until a click is received
+# Run 'Begin Routine' code from code_2
+print(df.to_string())
+# keep track of which components have finished
+end_screenComponents = [end_title, end_button, end_button_text, end_text, end_mouse]
+for thisComponent in end_screenComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+frameN = -1
+
+# --- Run Routine "end_screen" ---
+routineForceEnded = not continueRoutine
+while continueRoutine:
+    # get current time
+    t = routineTimer.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *end_title* updates
+    
+    # if end_title is starting this frame...
+    if end_title.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        end_title.frameNStart = frameN  # exact frame index
+        end_title.tStart = t  # local t and not account for scr refresh
+        end_title.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(end_title, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        end_title.status = STARTED
+        end_title.setAutoDraw(True)
+    
+    # if end_title is active this frame...
+    if end_title.status == STARTED:
+        # update params
+        pass
+    
+    # *end_button* updates
+    
+    # if end_button is starting this frame...
+    if end_button.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        end_button.frameNStart = frameN  # exact frame index
+        end_button.tStart = t  # local t and not account for scr refresh
+        end_button.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(end_button, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        end_button.status = STARTED
+        end_button.setAutoDraw(True)
+    
+    # if end_button is active this frame...
+    if end_button.status == STARTED:
+        # update params
+        pass
+    
+    # *end_button_text* updates
+    
+    # if end_button_text is starting this frame...
+    if end_button_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        end_button_text.frameNStart = frameN  # exact frame index
+        end_button_text.tStart = t  # local t and not account for scr refresh
+        end_button_text.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(end_button_text, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        end_button_text.status = STARTED
+        end_button_text.setAutoDraw(True)
+    
+    # if end_button_text is active this frame...
+    if end_button_text.status == STARTED:
+        # update params
+        pass
+    
+    # *end_text* updates
+    
+    # if end_text is starting this frame...
+    if end_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        end_text.frameNStart = frameN  # exact frame index
+        end_text.tStart = t  # local t and not account for scr refresh
+        end_text.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(end_text, 'tStartRefresh')  # time at next scr refresh
+        # add timestamp to datafile
+        thisExp.timestampOnFlip(win, 'end_text.started')
+        # update status
+        end_text.status = STARTED
+        end_text.setAutoDraw(True)
+    
+    # if end_text is active this frame...
+    if end_text.status == STARTED:
+        # update params
+        pass
+    # *end_mouse* updates
+    
+    # if end_mouse is starting this frame...
+    if end_mouse.status == NOT_STARTED and t >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        end_mouse.frameNStart = frameN  # exact frame index
+        end_mouse.tStart = t  # local t and not account for scr refresh
+        end_mouse.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(end_mouse, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        end_mouse.status = STARTED
+        end_mouse.mouseClock.reset()
+        prevButtonState = end_mouse.getPressed()  # if button is down already this ISN'T a new click
+    if end_mouse.status == STARTED:  # only update if started and not finished!
+        buttons = end_mouse.getPressed()
+        if buttons != prevButtonState:  # button state changed?
+            prevButtonState = buttons
+            if sum(buttons) > 0:  # state changed to a new click
+                # check if the mouse was inside our 'clickable' objects
+                gotValidClick = False
+                clickableList = environmenttools.getFromNames(end_button, namespace=locals())
+                for obj in clickableList:
+                    # is this object clicked on?
+                    if obj.contains(end_mouse):
+                        gotValidClick = True
+                        end_mouse.clicked_name.append(obj.name)
+                if gotValidClick:  
+                    continueRoutine = False  # end routine on response
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+        if eyetracker:
+            eyetracker.setConnectionState(False)
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        routineForceEnded = True
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in end_screenComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# --- Ending Routine "end_screen" ---
+for thisComponent in end_screenComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+# store data for thisExp (ExperimentHandler)
+thisExp.nextEntry()
+# the Routine "end_screen" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
 
 # --- End experiment ---
 # Flip one final time so any remaining win.callOnFlip() 
