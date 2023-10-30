@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Mon Oct 30 14:39:26 2023
+    on Mon Oct 30 16:45:51 2023
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -6912,7 +6912,11 @@ end_text.setText('You have now completed all sections of the experiment.\n\nPlea
 # setup some python lists for storing info about the end_mouse
 end_mouse.clicked_name = []
 gotValidClick = False  # until a click is received
-# Run 'Begin Routine' code from code_2
+# Run 'Begin Routine' code from end_code_2
+filepath = 'tidy_tables/' + expInfo['session'] + '_' + expInfo['participant']
+
+df.to_csv(filepath)
+
 print(df.to_string())
 # keep track of which components have finished
 end_screenComponents = [end_title, end_button, end_button_text, end_text, end_mouse]
