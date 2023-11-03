@@ -1388,8 +1388,8 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="var _pj;&amp;#10;function _pj_snippets(container) {&amp;#10;    function _assert(comp, msg) {&amp;#10;        function PJAssertionError(message) {&amp;#10;            this.name = &quot;PJAssertionError&quot;;&amp;#10;            this.message = (message || &quot;Custom error PJAssertionError&quot;);&amp;#10;            if (((typeof Error.captureStackTrace) === &quot;function&quot;)) {&amp;#10;                Error.captureStackTrace(this, this.constructor);&amp;#10;            } else {&amp;#10;                this.stack = new Error(message).stack;&amp;#10;            }&amp;#10;        }&amp;#10;        PJAssertionError.prototype = Object.create(Error.prototype);&amp;#10;        PJAssertionError.prototype.constructor = PJAssertionError;&amp;#10;        msg = (msg || &quot;Assertion failed.&quot;);&amp;#10;        if ((! comp)) {&amp;#10;            throw new PJAssertionError(msg);&amp;#10;        }&amp;#10;    }&amp;#10;    container[&quot;_assert&quot;] = _assert;&amp;#10;    return container;&amp;#10;}&amp;#10;_pj = {};&amp;#10;_pj_snippets(_pj);&amp;#10;num_games = 2;&amp;#10;_pj._assert(((num_games % 2) === 0), null);&amp;#10;npc_starts = [];&amp;#10;for (var game, _pj_c = 0, _pj_a = util.range(Number.parseInt((num_games / 2))), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    game = _pj_a[_pj_c];&amp;#10;    npc_starts.push(true);&amp;#10;    npc_starts.push(false);&amp;#10;}&amp;#10;Math.random.shuffle(npc_starts);&amp;#10;game = 0;&amp;#10;num_wins = 0;&amp;#10;visibility = 1;&amp;#10;section = 1;&amp;#10;practice_turns.finished = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="num_games = 2 # must be even&amp;#10;assert(num_games % 2 == 0)&amp;#10;&amp;#10;# generate shuffled list of who starts each game&amp;#10;npc_starts = []&amp;#10;for game in range(int(num_games/2)):&amp;#10;    npc_starts.append(True)&amp;#10;    npc_starts.append(False)&amp;#10;random.shuffle(npc_starts)&amp;#10;&amp;#10;game = 0 # initialize game counter&amp;#10;num_wins = 0 # initialize win counter&amp;#10;visibility = 1 # pieces are visible for Section 1&amp;#10;section = 1 # variable for experiment section&amp;#10;&amp;#10;practice_turns.finished = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="var _pj;&amp;#10;function _pj_snippets(container) {&amp;#10;    function _assert(comp, msg) {&amp;#10;        function PJAssertionError(message) {&amp;#10;            this.name = &quot;PJAssertionError&quot;;&amp;#10;            this.message = (message || &quot;Custom error PJAssertionError&quot;);&amp;#10;            if (((typeof Error.captureStackTrace) === &quot;function&quot;)) {&amp;#10;                Error.captureStackTrace(this, this.constructor);&amp;#10;            } else {&amp;#10;                this.stack = new Error(message).stack;&amp;#10;            }&amp;#10;        }&amp;#10;        PJAssertionError.prototype = Object.create(Error.prototype);&amp;#10;        PJAssertionError.prototype.constructor = PJAssertionError;&amp;#10;        msg = (msg || &quot;Assertion failed.&quot;);&amp;#10;        if ((! comp)) {&amp;#10;            throw new PJAssertionError(msg);&amp;#10;        }&amp;#10;    }&amp;#10;    container[&quot;_assert&quot;] = _assert;&amp;#10;    return container;&amp;#10;}&amp;#10;_pj = {};&amp;#10;_pj_snippets(_pj);&amp;#10;num_games = 30;&amp;#10;_pj._assert(((num_games % 2) === 0), null);&amp;#10;npc_starts = [];&amp;#10;for (var game, _pj_c = 0, _pj_a = util.range(Number.parseInt((num_games / 2))), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    game = _pj_a[_pj_c];&amp;#10;    npc_starts.push(true);&amp;#10;    npc_starts.push(false);&amp;#10;}&amp;#10;Math.random.shuffle(npc_starts);&amp;#10;game = 0;&amp;#10;num_wins = 0;&amp;#10;visibility = 1;&amp;#10;section = 1;&amp;#10;practice_turns.finished = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="num_games = 30 # must be even&amp;#10;assert(num_games % 2 == 0)&amp;#10;&amp;#10;# generate shuffled list of who starts each game&amp;#10;npc_starts = []&amp;#10;for game in range(int(num_games/2)):&amp;#10;    npc_starts.append(True)&amp;#10;    npc_starts.append(False)&amp;#10;random.shuffle(npc_starts)&amp;#10;&amp;#10;game = 0 # initialize game counter&amp;#10;num_wins = 0 # initialize win counter&amp;#10;visibility = 1 # pieces are visible for Section 1&amp;#10;section = 1 # variable for experiment section&amp;#10;&amp;#10;practice_turns.finished = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -2617,13 +2617,13 @@
         <Param val="False" valType="bool" updates="None" name="syncScreenRefresh"/>
         <Param val="mouse onset" valType="str" updates="constant" name="timeRelativeTo"/>
       </MouseComponent>
-      <CodeComponent name="end_code" plugin="None">
+      <CodeComponent name="end_code_2" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="filepath = (((&quot;tidy_tables/&quot; + expInfo[&quot;session&quot;]) + &quot;_&quot;) + expInfo[&quot;participant&quot;]);&amp;#10;df.to_csv(filepath);&amp;#10;console.log(df.to_string());&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="filepath = 'tidy_tables/' + expInfo['session'] + '_' + expInfo['participant']&amp;#10;&amp;#10;df.to_csv(filepath)&amp;#10;&amp;#10;print(df.to_string())" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="filepath = ((((&quot;tidy_tables/&quot; + expInfo[&quot;session&quot;]) + &quot;_&quot;) + expInfo[&quot;participant&quot;]) + &quot;.csv&quot;);&amp;#10;df.to_csv(filepath);&amp;#10;console.log(df.to_string());&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="filepath = 'tidy_tables/' + expInfo['session'] + '_' + expInfo['participant'] + '.csv'&amp;#10;&amp;#10;df.to_csv(filepath)&amp;#10;&amp;#10;print(df.to_string())" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -2632,7 +2632,7 @@
         <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Routine"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
-        <Param val="end_code" valType="code" updates="None" name="name"/>
+        <Param val="end_code_2" valType="code" updates="None" name="name"/>
       </CodeComponent>
     </Routine>
   </Routines>
@@ -2671,7 +2671,19 @@
     <Routine name="end_pause"/>
     <Routine name="feedback"/>
     <LoopTerminator name="practice_games"/>
+    <LoopInitiator loopType="TrialHandler" name="double_click_1">
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+      <Param name="conditions" updates="None" val="None" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="" valType="file"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="isTrials" updates="None" val="False" valType="bool"/>
+      <Param name="loopType" updates="None" val="sequential" valType="str"/>
+      <Param name="nReps" updates="None" val="2" valType="num"/>
+      <Param name="name" updates="None" val="double_click_1" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+    </LoopInitiator>
     <Routine name="section_1"/>
+    <LoopTerminator name="double_click_1"/>
     <LoopInitiator loopType="TrialHandler" name="games">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="None" valType="str"/>
@@ -2705,7 +2717,19 @@
     <LoopTerminator name="games"/>
     <Routine name="instruct_recall"/>
     <Routine name="instruct_imagine"/>
+    <LoopInitiator loopType="TrialHandler" name="double_click_2">
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+      <Param name="conditions" updates="None" val="None" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="" valType="file"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="isTrials" updates="None" val="False" valType="bool"/>
+      <Param name="loopType" updates="None" val="sequential" valType="str"/>
+      <Param name="nReps" updates="None" val="2" valType="num"/>
+      <Param name="name" updates="None" val="double_click_2" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+    </LoopInitiator>
     <Routine name="section_2"/>
+    <LoopTerminator name="double_click_2"/>
     <LoopInitiator loopType="TrialHandler" name="intervention_games">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="None" valType="str"/>
@@ -2738,7 +2762,19 @@
     <Routine name="end_pause"/>
     <Routine name="who_won"/>
     <LoopTerminator name="intervention_games"/>
+    <LoopInitiator loopType="TrialHandler" name="double_click_3">
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+      <Param name="conditions" updates="None" val="None" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="" valType="file"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="isTrials" updates="None" val="False" valType="bool"/>
+      <Param name="loopType" updates="None" val="sequential" valType="str"/>
+      <Param name="nReps" updates="None" val="2" valType="num"/>
+      <Param name="name" updates="None" val="double_click_3" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+    </LoopInitiator>
     <Routine name="section_3"/>
+    <LoopTerminator name="double_click_3"/>
     <LoopInitiator loopType="TrialHandler" name="more_games">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="None" valType="str"/>
