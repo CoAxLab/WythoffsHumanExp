@@ -73,11 +73,11 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="new psychoJS.eventManager.Mouse({&quot;visible&quot;: false});&amp;#10;timer = new core.Clock();&amp;#10;timer.reset();&amp;#10;if ((npc_start || (visibility === 0))) {&amp;#10;    npc_start = false;&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="event.Mouse(visible=False)&amp;#10;&amp;#10;timer = core.Clock()&amp;#10;timer.reset()&amp;#10;&amp;#10;if npc_start or visibility == 0:&amp;#10;    npc_start = False&amp;#10;    continueRoutine = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="new psychoJS.eventManager.Mouse({&quot;visible&quot;: false});&amp;#10;if ((npc_start || (visibility === 0))) {&amp;#10;    npc_start = false;&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="event.Mouse(visible=False)&amp;#10;&amp;#10;#timer = core.Clock()&amp;#10;#timer.reset()&amp;#10;&amp;#10;if npc_start or visibility == 0:&amp;#10;    npc_start = False&amp;#10;    continueRoutine = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="for square in squares:&amp;#10;    square.draw()&amp;#10;&amp;#10;if timer.getTime() &gt; move_duration:&amp;#10;    continueRoutine = False" valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="for (var square, _pj_c = 0, _pj_a = squares, _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    square = _pj_a[_pj_c];&amp;#10;    square.draw();&amp;#10;}&amp;#10;if ((timer.getTime() &gt; move_duration)) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="for square in squares:&amp;#10;    square.draw()&amp;#10;&amp;#10;#if timer.getTime() &gt; move_duration:&amp;#10;#    continueRoutine = False" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="for (var square, _pj_c = 0, _pj_a = squares, _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    square = _pj_a[_pj_c];&amp;#10;    square.draw();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
         <Param val="if (((row_new === col_new) &amp;&amp; (col_new === 0))) {&amp;#10;    if ((player_won === null)) {&amp;#10;        player_won = true;&amp;#10;    }&amp;#10;    num_wins = (num_wins + 1);&amp;#10;    practice_turns.finished = true;&amp;#10;    if ((section === 1)) {&amp;#10;        turns.finished = true;&amp;#10;    }&amp;#10;    if ((section === 3)) {&amp;#10;        more_turns.finished = true;&amp;#10;    }&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
@@ -99,7 +99,7 @@
         <Param val="moving_piece" valType="code" updates="None" name="name"/>
         <Param val="visibility" valType="num" updates="set every repeat" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="((((1-t/move_duration)*col+t/move_duration*col_new)-7)/17, (15-((1-t/move_duration)*row+t/move_duration*row_new)-8)/17)" valType="list" updates="set every frame" name="pos"/>
+        <Param val="((((1-min(move_duration,t)/move_duration)*col+min(move_duration,t)/move_duration*col_new)-7)/17, (15-((1-min(move_duration,t)/move_duration)*row+min(move_duration,t)/move_duration*row_new)-8)/17)" valType="list" updates="set every frame" name="pos"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="circle" valType="str" updates="None" name="shape"/>
         <Param val="(1/19, 1/19)" valType="list" updates="constant" name="size"/>
@@ -210,11 +210,11 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="new psychoJS.eventManager.Mouse({&quot;visible&quot;: false});&amp;#10;timer = new core.Clock();&amp;#10;timer.reset();&amp;#10;if ((practice_turns.finished || (visibility === 0))) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="event.Mouse(visible=False)&amp;#10;&amp;#10;timer = core.Clock()&amp;#10;timer.reset()&amp;#10;&amp;#10;if practice_turns.finished or visibility == 0:&amp;#10;    continueRoutine = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="new psychoJS.eventManager.Mouse({&quot;visible&quot;: false});&amp;#10;if ((practice_turns.finished || (visibility === 0))) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="event.Mouse(visible=False)&amp;#10;&amp;#10;#timer = core.Clock()&amp;#10;#timer.reset()&amp;#10;&amp;#10;if practice_turns.finished or visibility == 0:&amp;#10;    continueRoutine = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="for square in squares:&amp;#10;    square.draw()&amp;#10;&amp;#10;if timer.getTime() &gt; move_duration:&amp;#10;    continueRoutine = False" valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="for (var square, _pj_c = 0, _pj_a = squares, _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    square = _pj_a[_pj_c];&amp;#10;    square.draw();&amp;#10;}&amp;#10;if ((timer.getTime() &gt; move_duration)) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="for square in squares:&amp;#10;    square.draw()&amp;#10;&amp;#10;#if timer.getTime() &gt; move_duration:&amp;#10;#    continueRoutine = False" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="for (var square, _pj_c = 0, _pj_a = squares, _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    square = _pj_a[_pj_c];&amp;#10;    square.draw();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
         <Param val="if (((row_new === col_new) &amp;&amp; (col_new === 0))) {&amp;#10;    if ((player_won === null)) {&amp;#10;        player_won = false;&amp;#10;    }&amp;#10;    practice_turns.finished = true;&amp;#10;    if ((section === 1)) {&amp;#10;        turns.finished = true;&amp;#10;    }&amp;#10;    if ((section === 3)) {&amp;#10;        more_turns.finished = true;&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
@@ -236,7 +236,7 @@
         <Param val="moving_npc" valType="code" updates="None" name="name"/>
         <Param val="visibility" valType="num" updates="set every repeat" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="((((1-t/move_duration)*col+t/move_duration*col_new)-7)/17, (15-((1-t/move_duration)*row+t/move_duration*row_new)-8)/17)" valType="list" updates="set every frame" name="pos"/>
+        <Param val="((((1-min(move_duration,t)/move_duration)*col+min(move_duration,t)/move_duration*col_new)-7)/17, (15-((1-min(move_duration,t)/move_duration)*row+min(move_duration,t)/move_duration*row_new)-8)/17)" valType="list" updates="set every frame" name="pos"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="circle" valType="str" updates="None" name="shape"/>
         <Param val="(1/19, 1/19)" valType="list" updates="constant" name="size"/>

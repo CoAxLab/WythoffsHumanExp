@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Thu Jan  4 15:31:49 2024
+    on Thu Jan  4 15:57:31 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -2116,8 +2116,8 @@ for thisPractice_game in practice_games:
         # Run 'Begin Routine' code from move_code
         event.Mouse(visible=False)
         
-        timer = core.Clock()
-        timer.reset()
+        #timer = core.Clock()
+        #timer.reset()
         
         if npc_start or visibility == 0:
             npc_start = False
@@ -2150,8 +2150,8 @@ for thisPractice_game in practice_games:
             for square in squares:
                 square.draw()
             
-            if timer.getTime() > move_duration:
-                continueRoutine = False
+            #if timer.getTime() > move_duration:
+            #    continueRoutine = False
             
             # *moving_piece* updates
             
@@ -2169,7 +2169,7 @@ for thisPractice_game in practice_games:
             # if moving_piece is active this frame...
             if moving_piece.status == STARTED:
                 # update params
-                moving_piece.setPos(((((1-t/move_duration)*col+t/move_duration*col_new)-7)/17, (15-((1-t/move_duration)*row+t/move_duration*row_new)-8)/17), log=False)
+                moving_piece.setPos(((((1-min(move_duration,t)/move_duration)*col+min(move_duration,t)/move_duration*col_new)-7)/17, (15-((1-min(move_duration,t)/move_duration)*row+min(move_duration,t)/move_duration*row_new)-8)/17), log=False)
             
             # if moving_piece is stopping this frame...
             if moving_piece.status == STARTED:
@@ -2377,8 +2377,8 @@ for thisPractice_game in practice_games:
         # Run 'Begin Routine' code from npc_code
         event.Mouse(visible=False)
         
-        timer = core.Clock()
-        timer.reset()
+        #timer = core.Clock()
+        #timer.reset()
         
         if practice_turns.finished or visibility == 0:
             continueRoutine = False
@@ -2410,8 +2410,8 @@ for thisPractice_game in practice_games:
             for square in squares:
                 square.draw()
             
-            if timer.getTime() > move_duration:
-                continueRoutine = False
+            #if timer.getTime() > move_duration:
+            #    continueRoutine = False
             
             # *moving_npc* updates
             
@@ -2429,7 +2429,7 @@ for thisPractice_game in practice_games:
             # if moving_npc is active this frame...
             if moving_npc.status == STARTED:
                 # update params
-                moving_npc.setPos(((((1-t/move_duration)*col+t/move_duration*col_new)-7)/17, (15-((1-t/move_duration)*row+t/move_duration*row_new)-8)/17), log=False)
+                moving_npc.setPos(((((1-min(move_duration,t)/move_duration)*col+min(move_duration,t)/move_duration*col_new)-7)/17, (15-((1-min(move_duration,t)/move_duration)*row+min(move_duration,t)/move_duration*row_new)-8)/17), log=False)
             
             # if moving_npc is stopping this frame...
             if moving_npc.status == STARTED:
@@ -3399,8 +3399,8 @@ for thisGame in games:
         # Run 'Begin Routine' code from move_code
         event.Mouse(visible=False)
         
-        timer = core.Clock()
-        timer.reset()
+        #timer = core.Clock()
+        #timer.reset()
         
         if npc_start or visibility == 0:
             npc_start = False
@@ -3433,8 +3433,8 @@ for thisGame in games:
             for square in squares:
                 square.draw()
             
-            if timer.getTime() > move_duration:
-                continueRoutine = False
+            #if timer.getTime() > move_duration:
+            #    continueRoutine = False
             
             # *moving_piece* updates
             
@@ -3452,7 +3452,7 @@ for thisGame in games:
             # if moving_piece is active this frame...
             if moving_piece.status == STARTED:
                 # update params
-                moving_piece.setPos(((((1-t/move_duration)*col+t/move_duration*col_new)-7)/17, (15-((1-t/move_duration)*row+t/move_duration*row_new)-8)/17), log=False)
+                moving_piece.setPos(((((1-min(move_duration,t)/move_duration)*col+min(move_duration,t)/move_duration*col_new)-7)/17, (15-((1-min(move_duration,t)/move_duration)*row+min(move_duration,t)/move_duration*row_new)-8)/17), log=False)
             
             # if moving_piece is stopping this frame...
             if moving_piece.status == STARTED:
@@ -3660,8 +3660,8 @@ for thisGame in games:
         # Run 'Begin Routine' code from npc_code
         event.Mouse(visible=False)
         
-        timer = core.Clock()
-        timer.reset()
+        #timer = core.Clock()
+        #timer.reset()
         
         if practice_turns.finished or visibility == 0:
             continueRoutine = False
@@ -3693,8 +3693,8 @@ for thisGame in games:
             for square in squares:
                 square.draw()
             
-            if timer.getTime() > move_duration:
-                continueRoutine = False
+            #if timer.getTime() > move_duration:
+            #    continueRoutine = False
             
             # *moving_npc* updates
             
@@ -3712,7 +3712,7 @@ for thisGame in games:
             # if moving_npc is active this frame...
             if moving_npc.status == STARTED:
                 # update params
-                moving_npc.setPos(((((1-t/move_duration)*col+t/move_duration*col_new)-7)/17, (15-((1-t/move_duration)*row+t/move_duration*row_new)-8)/17), log=False)
+                moving_npc.setPos(((((1-min(move_duration,t)/move_duration)*col+min(move_duration,t)/move_duration*col_new)-7)/17, (15-((1-min(move_duration,t)/move_duration)*row+min(move_duration,t)/move_duration*row_new)-8)/17), log=False)
             
             # if moving_npc is stopping this frame...
             if moving_npc.status == STARTED:
@@ -5049,8 +5049,8 @@ for thisIntervention_game in intervention_games:
         # Run 'Begin Routine' code from move_code
         event.Mouse(visible=False)
         
-        timer = core.Clock()
-        timer.reset()
+        #timer = core.Clock()
+        #timer.reset()
         
         if npc_start or visibility == 0:
             npc_start = False
@@ -5083,8 +5083,8 @@ for thisIntervention_game in intervention_games:
             for square in squares:
                 square.draw()
             
-            if timer.getTime() > move_duration:
-                continueRoutine = False
+            #if timer.getTime() > move_duration:
+            #    continueRoutine = False
             
             # *moving_piece* updates
             
@@ -5102,7 +5102,7 @@ for thisIntervention_game in intervention_games:
             # if moving_piece is active this frame...
             if moving_piece.status == STARTED:
                 # update params
-                moving_piece.setPos(((((1-t/move_duration)*col+t/move_duration*col_new)-7)/17, (15-((1-t/move_duration)*row+t/move_duration*row_new)-8)/17), log=False)
+                moving_piece.setPos(((((1-min(move_duration,t)/move_duration)*col+min(move_duration,t)/move_duration*col_new)-7)/17, (15-((1-min(move_duration,t)/move_duration)*row+min(move_duration,t)/move_duration*row_new)-8)/17), log=False)
             
             # if moving_piece is stopping this frame...
             if moving_piece.status == STARTED:
@@ -5267,8 +5267,8 @@ for thisIntervention_game in intervention_games:
         # Run 'Begin Routine' code from npc_code
         event.Mouse(visible=False)
         
-        timer = core.Clock()
-        timer.reset()
+        #timer = core.Clock()
+        #timer.reset()
         
         if practice_turns.finished or visibility == 0:
             continueRoutine = False
@@ -5300,8 +5300,8 @@ for thisIntervention_game in intervention_games:
             for square in squares:
                 square.draw()
             
-            if timer.getTime() > move_duration:
-                continueRoutine = False
+            #if timer.getTime() > move_duration:
+            #    continueRoutine = False
             
             # *moving_npc* updates
             
@@ -5319,7 +5319,7 @@ for thisIntervention_game in intervention_games:
             # if moving_npc is active this frame...
             if moving_npc.status == STARTED:
                 # update params
-                moving_npc.setPos(((((1-t/move_duration)*col+t/move_duration*col_new)-7)/17, (15-((1-t/move_duration)*row+t/move_duration*row_new)-8)/17), log=False)
+                moving_npc.setPos(((((1-min(move_duration,t)/move_duration)*col+min(move_duration,t)/move_duration*col_new)-7)/17, (15-((1-min(move_duration,t)/move_duration)*row+min(move_duration,t)/move_duration*row_new)-8)/17), log=False)
             
             # if moving_npc is stopping this frame...
             if moving_npc.status == STARTED:
@@ -6300,8 +6300,8 @@ for thisMore_game in more_games:
         # Run 'Begin Routine' code from move_code
         event.Mouse(visible=False)
         
-        timer = core.Clock()
-        timer.reset()
+        #timer = core.Clock()
+        #timer.reset()
         
         if npc_start or visibility == 0:
             npc_start = False
@@ -6334,8 +6334,8 @@ for thisMore_game in more_games:
             for square in squares:
                 square.draw()
             
-            if timer.getTime() > move_duration:
-                continueRoutine = False
+            #if timer.getTime() > move_duration:
+            #    continueRoutine = False
             
             # *moving_piece* updates
             
@@ -6353,7 +6353,7 @@ for thisMore_game in more_games:
             # if moving_piece is active this frame...
             if moving_piece.status == STARTED:
                 # update params
-                moving_piece.setPos(((((1-t/move_duration)*col+t/move_duration*col_new)-7)/17, (15-((1-t/move_duration)*row+t/move_duration*row_new)-8)/17), log=False)
+                moving_piece.setPos(((((1-min(move_duration,t)/move_duration)*col+min(move_duration,t)/move_duration*col_new)-7)/17, (15-((1-min(move_duration,t)/move_duration)*row+min(move_duration,t)/move_duration*row_new)-8)/17), log=False)
             
             # if moving_piece is stopping this frame...
             if moving_piece.status == STARTED:
@@ -6561,8 +6561,8 @@ for thisMore_game in more_games:
         # Run 'Begin Routine' code from npc_code
         event.Mouse(visible=False)
         
-        timer = core.Clock()
-        timer.reset()
+        #timer = core.Clock()
+        #timer.reset()
         
         if practice_turns.finished or visibility == 0:
             continueRoutine = False
@@ -6594,8 +6594,8 @@ for thisMore_game in more_games:
             for square in squares:
                 square.draw()
             
-            if timer.getTime() > move_duration:
-                continueRoutine = False
+            #if timer.getTime() > move_duration:
+            #    continueRoutine = False
             
             # *moving_npc* updates
             
@@ -6613,7 +6613,7 @@ for thisMore_game in more_games:
             # if moving_npc is active this frame...
             if moving_npc.status == STARTED:
                 # update params
-                moving_npc.setPos(((((1-t/move_duration)*col+t/move_duration*col_new)-7)/17, (15-((1-t/move_duration)*row+t/move_duration*row_new)-8)/17), log=False)
+                moving_npc.setPos(((((1-min(move_duration,t)/move_duration)*col+min(move_duration,t)/move_duration*col_new)-7)/17, (15-((1-min(move_duration,t)/move_duration)*row+min(move_duration,t)/move_duration*row_new)-8)/17), log=False)
             
             # if moving_npc is stopping this frame...
             if moving_npc.status == STARTED:
