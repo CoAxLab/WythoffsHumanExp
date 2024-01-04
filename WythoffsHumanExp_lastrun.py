@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Wed Nov  1 16:14:39 2023
+    on Thu Jan  4 15:31:49 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -1000,6 +1000,8 @@ game = 0 # initialize game counter
 num_wins = 0 # initialize win counter
 visibility = 1 # pieces are visible for Section 0/1
 section = 0 # variable for experiment section
+move_duration = 1 # how long moves take
+end_pause_duration = 0.75 # game-end pause amt
 # setup some python lists for storing info about the start_mouse
 start_mouse.clicked_name = []
 gotValidClick = False  # until a click is received
@@ -2114,6 +2116,9 @@ for thisPractice_game in practice_games:
         # Run 'Begin Routine' code from move_code
         event.Mouse(visible=False)
         
+        timer = core.Clock()
+        timer.reset()
+        
         if npc_start or visibility == 0:
             npc_start = False
             continueRoutine = False
@@ -2134,7 +2139,7 @@ for thisPractice_game in practice_games:
         
         # --- Run Routine "make_move" ---
         routineForceEnded = not continueRoutine
-        while continueRoutine and routineTimer.getTime() < 1.0:
+        while continueRoutine:
             # get current time
             t = routineTimer.getTime()
             tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -2144,6 +2149,9 @@ for thisPractice_game in practice_games:
             # Run 'Each Frame' code from move_code
             for square in squares:
                 square.draw()
+            
+            if timer.getTime() > move_duration:
+                continueRoutine = False
             
             # *moving_piece* updates
             
@@ -2161,12 +2169,12 @@ for thisPractice_game in practice_games:
             # if moving_piece is active this frame...
             if moving_piece.status == STARTED:
                 # update params
-                moving_piece.setPos(((((1-t)*col+t*col_new)-7)/17, (15-((1-t)*row+t*row_new)-8)/17), log=False)
+                moving_piece.setPos(((((1-t/move_duration)*col+t/move_duration*col_new)-7)/17, (15-((1-t/move_duration)*row+t/move_duration*row_new)-8)/17), log=False)
             
             # if moving_piece is stopping this frame...
             if moving_piece.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > moving_piece.tStartRefresh + 1.0-frameTolerance:
+                if tThisFlipGlobal > moving_piece.tStartRefresh + move_duration-frameTolerance:
                     # keep track of stop time/frame for later
                     moving_piece.tStop = t  # not accounting for scr refresh
                     moving_piece.frameNStop = frameN  # exact frame index
@@ -2209,11 +2217,8 @@ for thisPractice_game in practice_games:
             if section == 3:
                 more_turns.finished = True
             continueRoutine = False
-        # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
-        if routineForceEnded:
-            routineTimer.reset()
-        else:
-            routineTimer.addTime(-1.000000)
+        # the Routine "make_move" was not non-slip safe, so reset the non-slip timer
+        routineTimer.reset()
         
         # --- Prepare to start Routine "npc_wait" ---
         continueRoutine = True
@@ -2372,6 +2377,9 @@ for thisPractice_game in practice_games:
         # Run 'Begin Routine' code from npc_code
         event.Mouse(visible=False)
         
+        timer = core.Clock()
+        timer.reset()
+        
         if practice_turns.finished or visibility == 0:
             continueRoutine = False
         moving_npc.setOpacity(visibility)
@@ -2391,7 +2399,7 @@ for thisPractice_game in practice_games:
         
         # --- Run Routine "npc_move" ---
         routineForceEnded = not continueRoutine
-        while continueRoutine and routineTimer.getTime() < 1.0:
+        while continueRoutine:
             # get current time
             t = routineTimer.getTime()
             tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -2401,6 +2409,9 @@ for thisPractice_game in practice_games:
             # Run 'Each Frame' code from npc_code
             for square in squares:
                 square.draw()
+            
+            if timer.getTime() > move_duration:
+                continueRoutine = False
             
             # *moving_npc* updates
             
@@ -2418,12 +2429,12 @@ for thisPractice_game in practice_games:
             # if moving_npc is active this frame...
             if moving_npc.status == STARTED:
                 # update params
-                moving_npc.setPos(((((1-t)*col+t*col_new)-7)/17, (15-((1-t)*row+t*row_new)-8)/17), log=False)
+                moving_npc.setPos(((((1-t/move_duration)*col+t/move_duration*col_new)-7)/17, (15-((1-t/move_duration)*row+t/move_duration*row_new)-8)/17), log=False)
             
             # if moving_npc is stopping this frame...
             if moving_npc.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > moving_npc.tStartRefresh + 1.0-frameTolerance:
+                if tThisFlipGlobal > moving_npc.tStartRefresh + move_duration-frameTolerance:
                     # keep track of stop time/frame for later
                     moving_npc.tStop = t  # not accounting for scr refresh
                     moving_npc.frameNStop = frameN  # exact frame index
@@ -2464,11 +2475,8 @@ for thisPractice_game in practice_games:
                 turns.finished = True
             if section == 3:
                 more_turns.finished = True
-        # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
-        if routineForceEnded:
-            routineTimer.reset()
-        else:
-            routineTimer.addTime(-1.000000)
+        # the Routine "npc_move" was not non-slip safe, so reset the non-slip timer
+        routineTimer.reset()
     # completed 15.0 repeats of 'practice_turns'
     
     
@@ -2505,7 +2513,7 @@ for thisPractice_game in practice_games:
     
     # --- Run Routine "end_pause" ---
     routineForceEnded = not continueRoutine
-    while continueRoutine and routineTimer.getTime() < 0.75:
+    while continueRoutine:
         # get current time
         t = routineTimer.getTime()
         tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -2537,7 +2545,7 @@ for thisPractice_game in practice_games:
         # if end_blue is stopping this frame...
         if end_blue.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > end_blue.tStartRefresh + 0.75-frameTolerance:
+            if tThisFlipGlobal > end_blue.tStartRefresh + end_pause_duration-frameTolerance:
                 # keep track of stop time/frame for later
                 end_blue.tStop = t  # not accounting for scr refresh
                 end_blue.frameNStop = frameN  # exact frame index
@@ -2566,7 +2574,7 @@ for thisPractice_game in practice_games:
         # if end_red is stopping this frame...
         if end_red.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > end_red.tStartRefresh + 0.75-frameTolerance:
+            if tThisFlipGlobal > end_red.tStartRefresh + end_pause_duration-frameTolerance:
                 # keep track of stop time/frame for later
                 end_red.tStop = t  # not accounting for scr refresh
                 end_red.frameNStop = frameN  # exact frame index
@@ -2598,11 +2606,8 @@ for thisPractice_game in practice_games:
     for thisComponent in end_pauseComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
-    if routineForceEnded:
-        routineTimer.reset()
-    else:
-        routineTimer.addTime(-0.750000)
+    # the Routine "end_pause" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
     
     # --- Prepare to start Routine "feedback" ---
     continueRoutine = True
@@ -2821,7 +2826,7 @@ for thisDouble_click_1 in double_click_1:
     gotValidClick = False  # until a click is received
     section_1_text.setText('Click the button below when you are ready to start playing.')
     # Run 'Begin Routine' code from section_1_code
-    num_games = 30 # must be even
+    num_games = 2 # must be even
     assert(num_games % 2 == 0)
     
     # generate shuffled list of who starts each game
@@ -3394,6 +3399,9 @@ for thisGame in games:
         # Run 'Begin Routine' code from move_code
         event.Mouse(visible=False)
         
+        timer = core.Clock()
+        timer.reset()
+        
         if npc_start or visibility == 0:
             npc_start = False
             continueRoutine = False
@@ -3414,7 +3422,7 @@ for thisGame in games:
         
         # --- Run Routine "make_move" ---
         routineForceEnded = not continueRoutine
-        while continueRoutine and routineTimer.getTime() < 1.0:
+        while continueRoutine:
             # get current time
             t = routineTimer.getTime()
             tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -3424,6 +3432,9 @@ for thisGame in games:
             # Run 'Each Frame' code from move_code
             for square in squares:
                 square.draw()
+            
+            if timer.getTime() > move_duration:
+                continueRoutine = False
             
             # *moving_piece* updates
             
@@ -3441,12 +3452,12 @@ for thisGame in games:
             # if moving_piece is active this frame...
             if moving_piece.status == STARTED:
                 # update params
-                moving_piece.setPos(((((1-t)*col+t*col_new)-7)/17, (15-((1-t)*row+t*row_new)-8)/17), log=False)
+                moving_piece.setPos(((((1-t/move_duration)*col+t/move_duration*col_new)-7)/17, (15-((1-t/move_duration)*row+t/move_duration*row_new)-8)/17), log=False)
             
             # if moving_piece is stopping this frame...
             if moving_piece.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > moving_piece.tStartRefresh + 1.0-frameTolerance:
+                if tThisFlipGlobal > moving_piece.tStartRefresh + move_duration-frameTolerance:
                     # keep track of stop time/frame for later
                     moving_piece.tStop = t  # not accounting for scr refresh
                     moving_piece.frameNStop = frameN  # exact frame index
@@ -3489,11 +3500,8 @@ for thisGame in games:
             if section == 3:
                 more_turns.finished = True
             continueRoutine = False
-        # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
-        if routineForceEnded:
-            routineTimer.reset()
-        else:
-            routineTimer.addTime(-1.000000)
+        # the Routine "make_move" was not non-slip safe, so reset the non-slip timer
+        routineTimer.reset()
         
         # --- Prepare to start Routine "npc_wait" ---
         continueRoutine = True
@@ -3652,6 +3660,9 @@ for thisGame in games:
         # Run 'Begin Routine' code from npc_code
         event.Mouse(visible=False)
         
+        timer = core.Clock()
+        timer.reset()
+        
         if practice_turns.finished or visibility == 0:
             continueRoutine = False
         moving_npc.setOpacity(visibility)
@@ -3671,7 +3682,7 @@ for thisGame in games:
         
         # --- Run Routine "npc_move" ---
         routineForceEnded = not continueRoutine
-        while continueRoutine and routineTimer.getTime() < 1.0:
+        while continueRoutine:
             # get current time
             t = routineTimer.getTime()
             tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -3681,6 +3692,9 @@ for thisGame in games:
             # Run 'Each Frame' code from npc_code
             for square in squares:
                 square.draw()
+            
+            if timer.getTime() > move_duration:
+                continueRoutine = False
             
             # *moving_npc* updates
             
@@ -3698,12 +3712,12 @@ for thisGame in games:
             # if moving_npc is active this frame...
             if moving_npc.status == STARTED:
                 # update params
-                moving_npc.setPos(((((1-t)*col+t*col_new)-7)/17, (15-((1-t)*row+t*row_new)-8)/17), log=False)
+                moving_npc.setPos(((((1-t/move_duration)*col+t/move_duration*col_new)-7)/17, (15-((1-t/move_duration)*row+t/move_duration*row_new)-8)/17), log=False)
             
             # if moving_npc is stopping this frame...
             if moving_npc.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > moving_npc.tStartRefresh + 1.0-frameTolerance:
+                if tThisFlipGlobal > moving_npc.tStartRefresh + move_duration-frameTolerance:
                     # keep track of stop time/frame for later
                     moving_npc.tStop = t  # not accounting for scr refresh
                     moving_npc.frameNStop = frameN  # exact frame index
@@ -3744,11 +3758,8 @@ for thisGame in games:
                 turns.finished = True
             if section == 3:
                 more_turns.finished = True
-        # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
-        if routineForceEnded:
-            routineTimer.reset()
-        else:
-            routineTimer.addTime(-1.000000)
+        # the Routine "npc_move" was not non-slip safe, so reset the non-slip timer
+        routineTimer.reset()
     # completed 15.0 repeats of 'turns'
     
     
@@ -3785,7 +3796,7 @@ for thisGame in games:
     
     # --- Run Routine "end_pause" ---
     routineForceEnded = not continueRoutine
-    while continueRoutine and routineTimer.getTime() < 0.75:
+    while continueRoutine:
         # get current time
         t = routineTimer.getTime()
         tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -3817,7 +3828,7 @@ for thisGame in games:
         # if end_blue is stopping this frame...
         if end_blue.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > end_blue.tStartRefresh + 0.75-frameTolerance:
+            if tThisFlipGlobal > end_blue.tStartRefresh + end_pause_duration-frameTolerance:
                 # keep track of stop time/frame for later
                 end_blue.tStop = t  # not accounting for scr refresh
                 end_blue.frameNStop = frameN  # exact frame index
@@ -3846,7 +3857,7 @@ for thisGame in games:
         # if end_red is stopping this frame...
         if end_red.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > end_red.tStartRefresh + 0.75-frameTolerance:
+            if tThisFlipGlobal > end_red.tStartRefresh + end_pause_duration-frameTolerance:
                 # keep track of stop time/frame for later
                 end_red.tStop = t  # not accounting for scr refresh
                 end_red.frameNStop = frameN  # exact frame index
@@ -3878,11 +3889,8 @@ for thisGame in games:
     for thisComponent in end_pauseComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
-    if routineForceEnded:
-        routineTimer.reset()
-    else:
-        routineTimer.addTime(-0.750000)
+    # the Routine "end_pause" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
     
     # --- Prepare to start Routine "feedback" ---
     continueRoutine = True
@@ -4439,6 +4447,8 @@ for thisDouble_click_2 in double_click_2:
     
     game_idx = 0 # initialize game index counter
     section = 2 # variable for experiment section
+    move_duration = 0.75 # how long moves take
+    end_pause_duration = 0.75*0.75 # game-end pause amt
     # setup some python lists for storing info about the mouse_2
     mouse_2.clicked_name = []
     gotValidClick = False  # until a click is received
@@ -4871,7 +4881,7 @@ for thisIntervention_game in intervention_games:
         # if prompt_piece is stopping this frame...
         if prompt_piece.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > prompt_piece.tStartRefresh + whole_game_duration-frameTolerance:
+            if tThisFlipGlobal > prompt_piece.tStartRefresh + whole_game_duration * 0.75-frameTolerance:
                 # keep track of stop time/frame for later
                 prompt_piece.tStop = t  # not accounting for scr refresh
                 prompt_piece.frameNStop = frameN  # exact frame index
@@ -4998,7 +5008,7 @@ for thisIntervention_game in intervention_games:
             # if intervention_piece is stopping this frame...
             if intervention_piece.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > intervention_piece.tStartRefresh + pause_duration-frameTolerance:
+                if tThisFlipGlobal > intervention_piece.tStartRefresh + pause_duration * 0.75-frameTolerance:
                     # keep track of stop time/frame for later
                     intervention_piece.tStop = t  # not accounting for scr refresh
                     intervention_piece.frameNStop = frameN  # exact frame index
@@ -5039,6 +5049,9 @@ for thisIntervention_game in intervention_games:
         # Run 'Begin Routine' code from move_code
         event.Mouse(visible=False)
         
+        timer = core.Clock()
+        timer.reset()
+        
         if npc_start or visibility == 0:
             npc_start = False
             continueRoutine = False
@@ -5059,7 +5072,7 @@ for thisIntervention_game in intervention_games:
         
         # --- Run Routine "make_move" ---
         routineForceEnded = not continueRoutine
-        while continueRoutine and routineTimer.getTime() < 1.0:
+        while continueRoutine:
             # get current time
             t = routineTimer.getTime()
             tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -5069,6 +5082,9 @@ for thisIntervention_game in intervention_games:
             # Run 'Each Frame' code from move_code
             for square in squares:
                 square.draw()
+            
+            if timer.getTime() > move_duration:
+                continueRoutine = False
             
             # *moving_piece* updates
             
@@ -5086,12 +5102,12 @@ for thisIntervention_game in intervention_games:
             # if moving_piece is active this frame...
             if moving_piece.status == STARTED:
                 # update params
-                moving_piece.setPos(((((1-t)*col+t*col_new)-7)/17, (15-((1-t)*row+t*row_new)-8)/17), log=False)
+                moving_piece.setPos(((((1-t/move_duration)*col+t/move_duration*col_new)-7)/17, (15-((1-t/move_duration)*row+t/move_duration*row_new)-8)/17), log=False)
             
             # if moving_piece is stopping this frame...
             if moving_piece.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > moving_piece.tStartRefresh + 1.0-frameTolerance:
+                if tThisFlipGlobal > moving_piece.tStartRefresh + move_duration-frameTolerance:
                     # keep track of stop time/frame for later
                     moving_piece.tStop = t  # not accounting for scr refresh
                     moving_piece.frameNStop = frameN  # exact frame index
@@ -5134,11 +5150,8 @@ for thisIntervention_game in intervention_games:
             if section == 3:
                 more_turns.finished = True
             continueRoutine = False
-        # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
-        if routineForceEnded:
-            routineTimer.reset()
-        else:
-            routineTimer.addTime(-1.000000)
+        # the Routine "make_move" was not non-slip safe, so reset the non-slip timer
+        routineTimer.reset()
         
         # --- Prepare to start Routine "intervention_npc_wait" ---
         continueRoutine = True
@@ -5213,7 +5226,7 @@ for thisIntervention_game in intervention_games:
             # if intervention_npc is stopping this frame...
             if intervention_npc.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > intervention_npc.tStartRefresh + pause_duration-frameTolerance:
+                if tThisFlipGlobal > intervention_npc.tStartRefresh + pause_duration * 0.75-frameTolerance:
                     # keep track of stop time/frame for later
                     intervention_npc.tStop = t  # not accounting for scr refresh
                     intervention_npc.frameNStop = frameN  # exact frame index
@@ -5254,6 +5267,9 @@ for thisIntervention_game in intervention_games:
         # Run 'Begin Routine' code from npc_code
         event.Mouse(visible=False)
         
+        timer = core.Clock()
+        timer.reset()
+        
         if practice_turns.finished or visibility == 0:
             continueRoutine = False
         moving_npc.setOpacity(visibility)
@@ -5273,7 +5289,7 @@ for thisIntervention_game in intervention_games:
         
         # --- Run Routine "npc_move" ---
         routineForceEnded = not continueRoutine
-        while continueRoutine and routineTimer.getTime() < 1.0:
+        while continueRoutine:
             # get current time
             t = routineTimer.getTime()
             tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -5283,6 +5299,9 @@ for thisIntervention_game in intervention_games:
             # Run 'Each Frame' code from npc_code
             for square in squares:
                 square.draw()
+            
+            if timer.getTime() > move_duration:
+                continueRoutine = False
             
             # *moving_npc* updates
             
@@ -5300,12 +5319,12 @@ for thisIntervention_game in intervention_games:
             # if moving_npc is active this frame...
             if moving_npc.status == STARTED:
                 # update params
-                moving_npc.setPos(((((1-t)*col+t*col_new)-7)/17, (15-((1-t)*row+t*row_new)-8)/17), log=False)
+                moving_npc.setPos(((((1-t/move_duration)*col+t/move_duration*col_new)-7)/17, (15-((1-t/move_duration)*row+t/move_duration*row_new)-8)/17), log=False)
             
             # if moving_npc is stopping this frame...
             if moving_npc.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > moving_npc.tStartRefresh + 1.0-frameTolerance:
+                if tThisFlipGlobal > moving_npc.tStartRefresh + move_duration-frameTolerance:
                     # keep track of stop time/frame for later
                     moving_npc.tStop = t  # not accounting for scr refresh
                     moving_npc.frameNStop = frameN  # exact frame index
@@ -5346,11 +5365,8 @@ for thisIntervention_game in intervention_games:
                 turns.finished = True
             if section == 3:
                 more_turns.finished = True
-        # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
-        if routineForceEnded:
-            routineTimer.reset()
-        else:
-            routineTimer.addTime(-1.000000)
+        # the Routine "npc_move" was not non-slip safe, so reset the non-slip timer
+        routineTimer.reset()
     # completed 15.0 repeats of 'intervention_moves'
     
     
@@ -5387,7 +5403,7 @@ for thisIntervention_game in intervention_games:
     
     # --- Run Routine "end_pause" ---
     routineForceEnded = not continueRoutine
-    while continueRoutine and routineTimer.getTime() < 0.75:
+    while continueRoutine:
         # get current time
         t = routineTimer.getTime()
         tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -5419,7 +5435,7 @@ for thisIntervention_game in intervention_games:
         # if end_blue is stopping this frame...
         if end_blue.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > end_blue.tStartRefresh + 0.75-frameTolerance:
+            if tThisFlipGlobal > end_blue.tStartRefresh + end_pause_duration-frameTolerance:
                 # keep track of stop time/frame for later
                 end_blue.tStop = t  # not accounting for scr refresh
                 end_blue.frameNStop = frameN  # exact frame index
@@ -5448,7 +5464,7 @@ for thisIntervention_game in intervention_games:
         # if end_red is stopping this frame...
         if end_red.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > end_red.tStartRefresh + 0.75-frameTolerance:
+            if tThisFlipGlobal > end_red.tStartRefresh + end_pause_duration-frameTolerance:
                 # keep track of stop time/frame for later
                 end_red.tStop = t  # not accounting for scr refresh
                 end_red.frameNStop = frameN  # exact frame index
@@ -5480,11 +5496,8 @@ for thisIntervention_game in intervention_games:
     for thisComponent in end_pauseComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
-    if routineForceEnded:
-        routineTimer.reset()
-    else:
-        routineTimer.addTime(-0.750000)
+    # the Routine "end_pause" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
     
     # --- Prepare to start Routine "who_won" ---
     continueRoutine = True
@@ -5724,6 +5737,8 @@ for thisDouble_click_3 in double_click_3:
     num_wins = 0 # initialize win counter
     visibility = 1 # pieces are visible for Section 3
     section = 3 # variable for experiment section
+    move_duration = 1 # how long moves take
+    end_pause_duration = 0.75 # game-end pause amt
     # setup some python lists for storing info about the mouse_3
     mouse_3.clicked_name = []
     gotValidClick = False  # until a click is received
@@ -6285,6 +6300,9 @@ for thisMore_game in more_games:
         # Run 'Begin Routine' code from move_code
         event.Mouse(visible=False)
         
+        timer = core.Clock()
+        timer.reset()
+        
         if npc_start or visibility == 0:
             npc_start = False
             continueRoutine = False
@@ -6305,7 +6323,7 @@ for thisMore_game in more_games:
         
         # --- Run Routine "make_move" ---
         routineForceEnded = not continueRoutine
-        while continueRoutine and routineTimer.getTime() < 1.0:
+        while continueRoutine:
             # get current time
             t = routineTimer.getTime()
             tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -6315,6 +6333,9 @@ for thisMore_game in more_games:
             # Run 'Each Frame' code from move_code
             for square in squares:
                 square.draw()
+            
+            if timer.getTime() > move_duration:
+                continueRoutine = False
             
             # *moving_piece* updates
             
@@ -6332,12 +6353,12 @@ for thisMore_game in more_games:
             # if moving_piece is active this frame...
             if moving_piece.status == STARTED:
                 # update params
-                moving_piece.setPos(((((1-t)*col+t*col_new)-7)/17, (15-((1-t)*row+t*row_new)-8)/17), log=False)
+                moving_piece.setPos(((((1-t/move_duration)*col+t/move_duration*col_new)-7)/17, (15-((1-t/move_duration)*row+t/move_duration*row_new)-8)/17), log=False)
             
             # if moving_piece is stopping this frame...
             if moving_piece.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > moving_piece.tStartRefresh + 1.0-frameTolerance:
+                if tThisFlipGlobal > moving_piece.tStartRefresh + move_duration-frameTolerance:
                     # keep track of stop time/frame for later
                     moving_piece.tStop = t  # not accounting for scr refresh
                     moving_piece.frameNStop = frameN  # exact frame index
@@ -6380,11 +6401,8 @@ for thisMore_game in more_games:
             if section == 3:
                 more_turns.finished = True
             continueRoutine = False
-        # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
-        if routineForceEnded:
-            routineTimer.reset()
-        else:
-            routineTimer.addTime(-1.000000)
+        # the Routine "make_move" was not non-slip safe, so reset the non-slip timer
+        routineTimer.reset()
         
         # --- Prepare to start Routine "npc_wait" ---
         continueRoutine = True
@@ -6543,6 +6561,9 @@ for thisMore_game in more_games:
         # Run 'Begin Routine' code from npc_code
         event.Mouse(visible=False)
         
+        timer = core.Clock()
+        timer.reset()
+        
         if practice_turns.finished or visibility == 0:
             continueRoutine = False
         moving_npc.setOpacity(visibility)
@@ -6562,7 +6583,7 @@ for thisMore_game in more_games:
         
         # --- Run Routine "npc_move" ---
         routineForceEnded = not continueRoutine
-        while continueRoutine and routineTimer.getTime() < 1.0:
+        while continueRoutine:
             # get current time
             t = routineTimer.getTime()
             tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -6572,6 +6593,9 @@ for thisMore_game in more_games:
             # Run 'Each Frame' code from npc_code
             for square in squares:
                 square.draw()
+            
+            if timer.getTime() > move_duration:
+                continueRoutine = False
             
             # *moving_npc* updates
             
@@ -6589,12 +6613,12 @@ for thisMore_game in more_games:
             # if moving_npc is active this frame...
             if moving_npc.status == STARTED:
                 # update params
-                moving_npc.setPos(((((1-t)*col+t*col_new)-7)/17, (15-((1-t)*row+t*row_new)-8)/17), log=False)
+                moving_npc.setPos(((((1-t/move_duration)*col+t/move_duration*col_new)-7)/17, (15-((1-t/move_duration)*row+t/move_duration*row_new)-8)/17), log=False)
             
             # if moving_npc is stopping this frame...
             if moving_npc.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > moving_npc.tStartRefresh + 1.0-frameTolerance:
+                if tThisFlipGlobal > moving_npc.tStartRefresh + move_duration-frameTolerance:
                     # keep track of stop time/frame for later
                     moving_npc.tStop = t  # not accounting for scr refresh
                     moving_npc.frameNStop = frameN  # exact frame index
@@ -6635,11 +6659,8 @@ for thisMore_game in more_games:
                 turns.finished = True
             if section == 3:
                 more_turns.finished = True
-        # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
-        if routineForceEnded:
-            routineTimer.reset()
-        else:
-            routineTimer.addTime(-1.000000)
+        # the Routine "npc_move" was not non-slip safe, so reset the non-slip timer
+        routineTimer.reset()
     # completed 15.0 repeats of 'more_turns'
     
     
@@ -6676,7 +6697,7 @@ for thisMore_game in more_games:
     
     # --- Run Routine "end_pause" ---
     routineForceEnded = not continueRoutine
-    while continueRoutine and routineTimer.getTime() < 0.75:
+    while continueRoutine:
         # get current time
         t = routineTimer.getTime()
         tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -6708,7 +6729,7 @@ for thisMore_game in more_games:
         # if end_blue is stopping this frame...
         if end_blue.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > end_blue.tStartRefresh + 0.75-frameTolerance:
+            if tThisFlipGlobal > end_blue.tStartRefresh + end_pause_duration-frameTolerance:
                 # keep track of stop time/frame for later
                 end_blue.tStop = t  # not accounting for scr refresh
                 end_blue.frameNStop = frameN  # exact frame index
@@ -6737,7 +6758,7 @@ for thisMore_game in more_games:
         # if end_red is stopping this frame...
         if end_red.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > end_red.tStartRefresh + 0.75-frameTolerance:
+            if tThisFlipGlobal > end_red.tStartRefresh + end_pause_duration-frameTolerance:
                 # keep track of stop time/frame for later
                 end_red.tStop = t  # not accounting for scr refresh
                 end_red.frameNStop = frameN  # exact frame index
@@ -6769,11 +6790,8 @@ for thisMore_game in more_games:
     for thisComponent in end_pauseComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
-    if routineForceEnded:
-        routineTimer.reset()
-    else:
-        routineTimer.addTime(-0.750000)
+    # the Routine "end_pause" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
     
     # --- Prepare to start Routine "feedback" ---
     continueRoutine = True

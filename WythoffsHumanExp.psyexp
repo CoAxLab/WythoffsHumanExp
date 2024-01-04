@@ -73,11 +73,11 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="new psychoJS.eventManager.Mouse({&quot;visible&quot;: false});&amp;#10;if ((npc_start || (visibility === 0))) {&amp;#10;    npc_start = false;&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="event.Mouse(visible=False)&amp;#10;&amp;#10;if npc_start or visibility == 0:&amp;#10;    npc_start = False&amp;#10;    continueRoutine = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="new psychoJS.eventManager.Mouse({&quot;visible&quot;: false});&amp;#10;timer = new core.Clock();&amp;#10;timer.reset();&amp;#10;if ((npc_start || (visibility === 0))) {&amp;#10;    npc_start = false;&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="event.Mouse(visible=False)&amp;#10;&amp;#10;timer = core.Clock()&amp;#10;timer.reset()&amp;#10;&amp;#10;if npc_start or visibility == 0:&amp;#10;    npc_start = False&amp;#10;    continueRoutine = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="for square in squares:&amp;#10;    square.draw()" valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="for (var square, _pj_c = 0, _pj_a = squares, _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    square = _pj_a[_pj_c];&amp;#10;    square.draw();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="for square in squares:&amp;#10;    square.draw()&amp;#10;&amp;#10;if timer.getTime() &gt; move_duration:&amp;#10;    continueRoutine = False" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="for (var square, _pj_c = 0, _pj_a = squares, _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    square = _pj_a[_pj_c];&amp;#10;    square.draw();&amp;#10;}&amp;#10;if ((timer.getTime() &gt; move_duration)) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
         <Param val="if (((row_new === col_new) &amp;&amp; (col_new === 0))) {&amp;#10;    if ((player_won === null)) {&amp;#10;        player_won = true;&amp;#10;    }&amp;#10;    num_wins = (num_wins + 1);&amp;#10;    practice_turns.finished = true;&amp;#10;    if ((section === 1)) {&amp;#10;        turns.finished = true;&amp;#10;    }&amp;#10;    if ((section === 3)) {&amp;#10;        more_turns.finished = true;&amp;#10;    }&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
@@ -99,7 +99,7 @@
         <Param val="moving_piece" valType="code" updates="None" name="name"/>
         <Param val="visibility" valType="num" updates="set every repeat" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="((((1-t)*col+t*col_new)-7)/17, (15-((1-t)*row+t*row_new)-8)/17)" valType="list" updates="set every frame" name="pos"/>
+        <Param val="((((1-t/move_duration)*col+t/move_duration*col_new)-7)/17, (15-((1-t/move_duration)*row+t/move_duration*row_new)-8)/17)" valType="list" updates="set every frame" name="pos"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="circle" valType="str" updates="None" name="shape"/>
         <Param val="(1/19, 1/19)" valType="list" updates="constant" name="size"/>
@@ -107,7 +107,7 @@
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
-        <Param val="1.0" valType="code" updates="constant" name="stopVal"/>
+        <Param val="move_duration" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="list" updates="constant" name="vertices"/>
@@ -210,11 +210,11 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="new psychoJS.eventManager.Mouse({&quot;visible&quot;: false});&amp;#10;if ((practice_turns.finished || (visibility === 0))) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="event.Mouse(visible=False)&amp;#10;&amp;#10;if practice_turns.finished or visibility == 0:&amp;#10;    continueRoutine = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="new psychoJS.eventManager.Mouse({&quot;visible&quot;: false});&amp;#10;timer = new core.Clock();&amp;#10;timer.reset();&amp;#10;if ((practice_turns.finished || (visibility === 0))) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="event.Mouse(visible=False)&amp;#10;&amp;#10;timer = core.Clock()&amp;#10;timer.reset()&amp;#10;&amp;#10;if practice_turns.finished or visibility == 0:&amp;#10;    continueRoutine = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="for square in squares:&amp;#10;    square.draw()" valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="for (var square, _pj_c = 0, _pj_a = squares, _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    square = _pj_a[_pj_c];&amp;#10;    square.draw();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="for square in squares:&amp;#10;    square.draw()&amp;#10;&amp;#10;if timer.getTime() &gt; move_duration:&amp;#10;    continueRoutine = False" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="for (var square, _pj_c = 0, _pj_a = squares, _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    square = _pj_a[_pj_c];&amp;#10;    square.draw();&amp;#10;}&amp;#10;if ((timer.getTime() &gt; move_duration)) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
         <Param val="if (((row_new === col_new) &amp;&amp; (col_new === 0))) {&amp;#10;    if ((player_won === null)) {&amp;#10;        player_won = false;&amp;#10;    }&amp;#10;    practice_turns.finished = true;&amp;#10;    if ((section === 1)) {&amp;#10;        turns.finished = true;&amp;#10;    }&amp;#10;    if ((section === 3)) {&amp;#10;        more_turns.finished = true;&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
@@ -236,7 +236,7 @@
         <Param val="moving_npc" valType="code" updates="None" name="name"/>
         <Param val="visibility" valType="num" updates="set every repeat" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="((((1-t)*col+t*col_new)-7)/17, (15-((1-t)*row+t*row_new)-8)/17)" valType="list" updates="set every frame" name="pos"/>
+        <Param val="((((1-t/move_duration)*col+t/move_duration*col_new)-7)/17, (15-((1-t/move_duration)*row+t/move_duration*row_new)-8)/17)" valType="list" updates="set every frame" name="pos"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="circle" valType="str" updates="None" name="shape"/>
         <Param val="(1/19, 1/19)" valType="list" updates="constant" name="size"/>
@@ -244,7 +244,7 @@
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
-        <Param val="1.0" valType="code" updates="constant" name="stopVal"/>
+        <Param val="move_duration" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="list" updates="constant" name="vertices"/>
@@ -302,8 +302,8 @@
         <Param val="import * as np from 'numpy';&amp;#10;import * as pd from 'pandas';&amp;#10;df = new pd.DataFrame();&amp;#10;df[&quot;session&quot;] = [];&amp;#10;df[&quot;section&quot;] = [];&amp;#10;df[&quot;type&quot;] = [];&amp;#10;df[&quot;game&quot;] = [];&amp;#10;df[&quot;ref_game&quot;] = [];&amp;#10;df[&quot;move_num&quot;] = [];&amp;#10;df[&quot;player&quot;] = [];&amp;#10;df[&quot;start_row&quot;] = [];&amp;#10;df[&quot;start_col&quot;] = [];&amp;#10;df[&quot;end_row&quot;] = [];&amp;#10;df[&quot;end_col&quot;] = [];&amp;#10;df[&quot;RT&quot;] = [];&amp;#10;df[&quot;DT&quot;] = [];&amp;#10;df[&quot;winner&quot;] = [];&amp;#10;df[&quot;chosen_winner&quot;] = [];&amp;#10;df = df.astype(&quot;object&quot;);&amp;#10;" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="# Make game board tiles for rendering later&amp;#10;&amp;#10;squares = []&amp;#10;&amp;#10;for row in range(15):&amp;#10;    for col in range(15):&amp;#10;        &amp;#10;        if (row + col) % 2 == 0:&amp;#10;            color = 'lightgray'&amp;#10;        else:&amp;#10;            color = 'darkgray'&amp;#10;        &amp;#10;        x_loc = ((15 - row) - 8) / 17&amp;#10;        y_loc = (col - 7) / 17&amp;#10;        &amp;#10;        squares.append(&amp;#10;            visual.Rect(&amp;#10;                win = win,&amp;#10;                width = 1/17,&amp;#10;                height = 1/17,&amp;#10;                pos = (x_loc, y_loc),&amp;#10;                fillColor = color))" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="squares = [];&amp;#10;for (var row, _pj_c = 0, _pj_a = util.range(15), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    row = _pj_a[_pj_c];&amp;#10;    for (var col, _pj_f = 0, _pj_d = util.range(15), _pj_e = _pj_d.length; (_pj_f &lt; _pj_e); _pj_f += 1) {&amp;#10;        col = _pj_d[_pj_f];&amp;#10;        if ((((row + col) % 2) === 0)) {&amp;#10;            color = &quot;lightgray&quot;;&amp;#10;        } else {&amp;#10;            color = &quot;darkgray&quot;;&amp;#10;        }&amp;#10;        x_loc = (((15 - row) - 8) / 17);&amp;#10;        y_loc = ((col - 7) / 17);&amp;#10;        squares.push(new visual.Rect({&quot;win&quot;: psychoJS.window, &quot;width&quot;: (1 / 17), &quot;height&quot;: (1 / 17), &quot;pos&quot;: [x_loc, y_loc], &quot;fillColor&quot;: color}));&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="import * as random from 'random';&amp;#10;npc_starts = [false, true, false];&amp;#10;num_games = npc_starts.length;&amp;#10;game = 0;&amp;#10;num_wins = 0;&amp;#10;visibility = 1;&amp;#10;section = 0;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="import random&amp;#10;&amp;#10;npc_starts = [False, True, False]&amp;#10;num_games = len(npc_starts)&amp;#10;&amp;#10;game = 0 # initialize game counter&amp;#10;num_wins = 0 # initialize win counter&amp;#10;visibility = 1 # pieces are visible for Section 0/1&amp;#10;section = 0 # variable for experiment section" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="import * as random from 'random';&amp;#10;npc_starts = [false, true, false];&amp;#10;num_games = npc_starts.length;&amp;#10;game = 0;&amp;#10;num_wins = 0;&amp;#10;visibility = 1;&amp;#10;section = 0;&amp;#10;move_duration = 1;&amp;#10;end_pause_duration = 0.75;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="import random&amp;#10;&amp;#10;npc_starts = [False, True, False]&amp;#10;num_games = len(npc_starts)&amp;#10;&amp;#10;game = 0 # initialize game counter&amp;#10;num_wins = 0 # initialize win counter&amp;#10;visibility = 1 # pieces are visible for Section 0/1&amp;#10;section = 0 # variable for experiment section&amp;#10;move_duration = 1 # how long moves take&amp;#10;end_pause_duration = 0.75 # game-end pause amt" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -575,7 +575,7 @@
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
-        <Param val="0.75" valType="code" updates="constant" name="stopVal"/>
+        <Param val="end_pause_duration" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="list" updates="constant" name="vertices"/>
@@ -602,7 +602,7 @@
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
-        <Param val="0.75" valType="code" updates="constant" name="stopVal"/>
+        <Param val="end_pause_duration" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="list" updates="constant" name="vertices"/>
@@ -1388,8 +1388,8 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="var _pj;&amp;#10;function _pj_snippets(container) {&amp;#10;    function _assert(comp, msg) {&amp;#10;        function PJAssertionError(message) {&amp;#10;            this.name = &quot;PJAssertionError&quot;;&amp;#10;            this.message = (message || &quot;Custom error PJAssertionError&quot;);&amp;#10;            if (((typeof Error.captureStackTrace) === &quot;function&quot;)) {&amp;#10;                Error.captureStackTrace(this, this.constructor);&amp;#10;            } else {&amp;#10;                this.stack = new Error(message).stack;&amp;#10;            }&amp;#10;        }&amp;#10;        PJAssertionError.prototype = Object.create(Error.prototype);&amp;#10;        PJAssertionError.prototype.constructor = PJAssertionError;&amp;#10;        msg = (msg || &quot;Assertion failed.&quot;);&amp;#10;        if ((! comp)) {&amp;#10;            throw new PJAssertionError(msg);&amp;#10;        }&amp;#10;    }&amp;#10;    container[&quot;_assert&quot;] = _assert;&amp;#10;    return container;&amp;#10;}&amp;#10;_pj = {};&amp;#10;_pj_snippets(_pj);&amp;#10;num_games = 30;&amp;#10;_pj._assert(((num_games % 2) === 0), null);&amp;#10;npc_starts = [];&amp;#10;for (var game, _pj_c = 0, _pj_a = util.range(Number.parseInt((num_games / 2))), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    game = _pj_a[_pj_c];&amp;#10;    npc_starts.push(true);&amp;#10;    npc_starts.push(false);&amp;#10;}&amp;#10;Math.random.shuffle(npc_starts);&amp;#10;game = 0;&amp;#10;num_wins = 0;&amp;#10;visibility = 1;&amp;#10;section = 1;&amp;#10;practice_turns.finished = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="num_games = 30 # must be even&amp;#10;assert(num_games % 2 == 0)&amp;#10;&amp;#10;# generate shuffled list of who starts each game&amp;#10;npc_starts = []&amp;#10;for game in range(int(num_games/2)):&amp;#10;    npc_starts.append(True)&amp;#10;    npc_starts.append(False)&amp;#10;random.shuffle(npc_starts)&amp;#10;&amp;#10;game = 0 # initialize game counter&amp;#10;num_wins = 0 # initialize win counter&amp;#10;visibility = 1 # pieces are visible for Section 1&amp;#10;section = 1 # variable for experiment section&amp;#10;&amp;#10;practice_turns.finished = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="var _pj;&amp;#10;function _pj_snippets(container) {&amp;#10;    function _assert(comp, msg) {&amp;#10;        function PJAssertionError(message) {&amp;#10;            this.name = &quot;PJAssertionError&quot;;&amp;#10;            this.message = (message || &quot;Custom error PJAssertionError&quot;);&amp;#10;            if (((typeof Error.captureStackTrace) === &quot;function&quot;)) {&amp;#10;                Error.captureStackTrace(this, this.constructor);&amp;#10;            } else {&amp;#10;                this.stack = new Error(message).stack;&amp;#10;            }&amp;#10;        }&amp;#10;        PJAssertionError.prototype = Object.create(Error.prototype);&amp;#10;        PJAssertionError.prototype.constructor = PJAssertionError;&amp;#10;        msg = (msg || &quot;Assertion failed.&quot;);&amp;#10;        if ((! comp)) {&amp;#10;            throw new PJAssertionError(msg);&amp;#10;        }&amp;#10;    }&amp;#10;    container[&quot;_assert&quot;] = _assert;&amp;#10;    return container;&amp;#10;}&amp;#10;_pj = {};&amp;#10;_pj_snippets(_pj);&amp;#10;num_games = 2;&amp;#10;_pj._assert(((num_games % 2) === 0), null);&amp;#10;npc_starts = [];&amp;#10;for (var game, _pj_c = 0, _pj_a = util.range(Number.parseInt((num_games / 2))), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    game = _pj_a[_pj_c];&amp;#10;    npc_starts.push(true);&amp;#10;    npc_starts.push(false);&amp;#10;}&amp;#10;Math.random.shuffle(npc_starts);&amp;#10;game = 0;&amp;#10;num_wins = 0;&amp;#10;visibility = 1;&amp;#10;section = 1;&amp;#10;practice_turns.finished = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="num_games = 2 # must be even&amp;#10;assert(num_games % 2 == 0)&amp;#10;&amp;#10;# generate shuffled list of who starts each game&amp;#10;npc_starts = []&amp;#10;for game in range(int(num_games/2)):&amp;#10;    npc_starts.append(True)&amp;#10;    npc_starts.append(False)&amp;#10;random.shuffle(npc_starts)&amp;#10;&amp;#10;game = 0 # initialize game counter&amp;#10;num_wins = 0 # initialize win counter&amp;#10;visibility = 1 # pieces are visible for Section 1&amp;#10;section = 1 # variable for experiment section&amp;#10;&amp;#10;practice_turns.finished = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -1407,8 +1407,8 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="game_idxs = [];&amp;#10;for (var game, _pj_c = 0, _pj_a = util.range(num_games), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    game = _pj_a[_pj_c];&amp;#10;    game_idxs.push((game + 1));&amp;#10;}&amp;#10;Math.random.shuffle(game_idxs);&amp;#10;game_idx = 0;&amp;#10;section = 2;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="# shuffle order of reference games&amp;#10;game_idxs = []&amp;#10;for game in range(num_games):&amp;#10;    game_idxs.append(game + 1)&amp;#10;random.shuffle(game_idxs)&amp;#10;&amp;#10;game_idx = 0 # initialize game index counter&amp;#10;section = 2 # variable for experiment section" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="game_idxs = [];&amp;#10;for (var game, _pj_c = 0, _pj_a = util.range(num_games), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    game = _pj_a[_pj_c];&amp;#10;    game_idxs.push((game + 1));&amp;#10;}&amp;#10;Math.random.shuffle(game_idxs);&amp;#10;game_idx = 0;&amp;#10;section = 2;&amp;#10;move_duration = 0.75;&amp;#10;end_pause_duration = (0.75 * 0.75);&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="# shuffle order of reference games&amp;#10;game_idxs = []&amp;#10;for game in range(num_games):&amp;#10;    game_idxs.append(game + 1)&amp;#10;random.shuffle(game_idxs)&amp;#10;&amp;#10;game_idx = 0 # initialize game index counter&amp;#10;section = 2 # variable for experiment section&amp;#10;move_duration = 0.75 # how long moves take&amp;#10;end_pause_duration = 0.75*0.75 # game-end pause amt" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -1962,7 +1962,7 @@
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
-        <Param val="pause_duration" valType="code" updates="constant" name="stopVal"/>
+        <Param val="pause_duration * 0.75" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="list" updates="constant" name="vertices"/>
@@ -2008,7 +2008,7 @@
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
-        <Param val="pause_duration" valType="code" updates="constant" name="stopVal"/>
+        <Param val="pause_duration * 0.75" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="list" updates="constant" name="vertices"/>
@@ -2189,8 +2189,8 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="section = 3;&amp;#10;npc_starts = [];&amp;#10;for (var game, _pj_c = 0, _pj_a = util.range(Number.parseInt((num_games / 2))), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    game = _pj_a[_pj_c];&amp;#10;    npc_starts.push(true);&amp;#10;    npc_starts.push(false);&amp;#10;}&amp;#10;Math.random.shuffle(npc_starts);&amp;#10;game = 0;&amp;#10;num_wins = 0;&amp;#10;visibility = 1;&amp;#10;section = 3;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="section = 3 # variable for experiment section&amp;#10;&amp;#10;# generate shuffled list of who starts each game&amp;#10;npc_starts = []&amp;#10;for game in range(int(num_games/2)):&amp;#10;    npc_starts.append(True)&amp;#10;    npc_starts.append(False)&amp;#10;random.shuffle(npc_starts)&amp;#10;&amp;#10;game = 0 # initialize game counter&amp;#10;num_wins = 0 # initialize win counter&amp;#10;visibility = 1 # pieces are visible for Section 3&amp;#10;section = 3 # variable for experiment section" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="section = 3;&amp;#10;npc_starts = [];&amp;#10;for (var game, _pj_c = 0, _pj_a = util.range(Number.parseInt((num_games / 2))), _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    game = _pj_a[_pj_c];&amp;#10;    npc_starts.push(true);&amp;#10;    npc_starts.push(false);&amp;#10;}&amp;#10;Math.random.shuffle(npc_starts);&amp;#10;game = 0;&amp;#10;num_wins = 0;&amp;#10;visibility = 1;&amp;#10;section = 3;&amp;#10;move_duration = 1;&amp;#10;end_pause_duration = 0.75;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="section = 3 # variable for experiment section&amp;#10;&amp;#10;# generate shuffled list of who starts each game&amp;#10;npc_starts = []&amp;#10;for game in range(int(num_games/2)):&amp;#10;    npc_starts.append(True)&amp;#10;    npc_starts.append(False)&amp;#10;random.shuffle(npc_starts)&amp;#10;&amp;#10;game = 0 # initialize game counter&amp;#10;num_wins = 0 # initialize win counter&amp;#10;visibility = 1 # pieces are visible for Section 3&amp;#10;section = 3 # variable for experiment section&amp;#10;move_duration = 1 # how long moves take&amp;#10;end_pause_duration = 0.75 # game-end pause amt" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -2364,7 +2364,7 @@
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
-        <Param val="whole_game_duration" valType="code" updates="constant" name="stopVal"/>
+        <Param val="whole_game_duration * 0.75" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="list" updates="constant" name="vertices"/>
