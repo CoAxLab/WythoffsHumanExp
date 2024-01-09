@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Tue Jan  9 12:21:55 2024
+    on Tue Jan  9 12:44:14 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -2696,6 +2696,10 @@ for thisPractice_game in practice_games:
             df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
             df.loc[len(df) - 1, 'session'] = expInfo['session']
             df.loc[len(df) - 1, 'section'] = section
+            if section == 4 and int(expInfo['session']) % 2 == 0:
+                df.loc[len(df) - 1, 'type'] = 'euc'
+            if section == 4 and int(expInfo['session']) % 2 == 1:
+                df.loc[len(df) - 1, 'type'] = 'nim'
             df.loc[len(df) - 1, 'game'] = game
             df.loc[len(df) - 1, 'move_num'] = move_num
             df.loc[len(df) - 1, 'player'] = 'AI'
@@ -3999,6 +4003,10 @@ for thisGame in games:
             df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
             df.loc[len(df) - 1, 'session'] = expInfo['session']
             df.loc[len(df) - 1, 'section'] = section
+            if section == 4 and int(expInfo['session']) % 2 == 0:
+                df.loc[len(df) - 1, 'type'] = 'euc'
+            if section == 4 and int(expInfo['session']) % 2 == 1:
+                df.loc[len(df) - 1, 'type'] = 'nim'
             df.loc[len(df) - 1, 'game'] = game
             df.loc[len(df) - 1, 'move_num'] = move_num
             df.loc[len(df) - 1, 'player'] = 'AI'
@@ -6922,6 +6930,10 @@ for thisMore_game in more_games:
             df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
             df.loc[len(df) - 1, 'session'] = expInfo['session']
             df.loc[len(df) - 1, 'section'] = section
+            if section == 4 and int(expInfo['session']) % 2 == 0:
+                df.loc[len(df) - 1, 'type'] = 'euc'
+            if section == 4 and int(expInfo['session']) % 2 == 1:
+                df.loc[len(df) - 1, 'type'] = 'nim'
             df.loc[len(df) - 1, 'game'] = game
             df.loc[len(df) - 1, 'move_num'] = move_num
             df.loc[len(df) - 1, 'player'] = 'AI'
@@ -7564,7 +7576,7 @@ for thisDouble_click_4 in double_click_4:
 
 
 # set up handler to look after randomisation of conditions etc
-new_games = data.TrialHandler(nReps=5.0, method='random', 
+new_games = data.TrialHandler(nReps=num_games, method='random', 
     extraInfo=expInfo, originPath=-1,
     trialList=[None],
     seed=None, name='new_games')
@@ -8222,6 +8234,10 @@ for thisNew_game in new_games:
             df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
             df.loc[len(df) - 1, 'session'] = expInfo['session']
             df.loc[len(df) - 1, 'section'] = section
+            if section == 4 and int(expInfo['session']) % 2 == 0:
+                df.loc[len(df) - 1, 'type'] = 'euc'
+            if section == 4 and int(expInfo['session']) % 2 == 1:
+                df.loc[len(df) - 1, 'type'] = 'nim'
             df.loc[len(df) - 1, 'game'] = game
             df.loc[len(df) - 1, 'move_num'] = move_num
             df.loc[len(df) - 1, 'player'] = 'AI'
@@ -8666,7 +8682,7 @@ for thisNew_game in new_games:
     routineTimer.reset()
     thisExp.nextEntry()
     
-# completed 5.0 repeats of 'new_games'
+# completed num_games repeats of 'new_games'
 
 
 # --- Prepare to start Routine "end_screen" ---
