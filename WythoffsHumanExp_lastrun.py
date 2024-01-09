@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Fri Jan  5 16:46:37 2024
+    on Tue Jan  9 12:21:55 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -389,6 +389,33 @@ for r in range(15):
         elif min(r,c) / max(r,c) > (1 + math.sqrt(5)) / 2:
             optimal_moves_euclid.append((r,c))
 
+def euclid_move(pos1, pos2):
+    (r1, c1) = pos1
+    (r2, c2) = pos2
+    
+    if r2 >= r1 or c2 >= c1: return False
+    
+    elif r1 == 0 or c1 == 0:
+        
+        if r1 == 0 and c2 < c1: return True
+        else: return False
+        if c1 == 0 and r2 < r1: return True
+        else: return False
+    
+    else:
+        if r1 == c1:
+            if   r1 == 0 and c2 == c1: return True
+            elif c2 == 0 and r2 == r1: return True
+            else: return False
+        
+        if r1 > c1:
+            if (r1 - r2) % c1 == 0: return True
+            else: return False
+        
+        if c1 > r1:
+            if (c1 - c2) % r1 == 0: return True
+            else: return False
+
 
 npc = visual.ShapeStim(
     win=win, name='npc',
@@ -554,6 +581,33 @@ for r in range(15):
             optimal_moves_euclid.append((r,c))
         elif min(r,c) / max(r,c) > (1 + math.sqrt(5)) / 2:
             optimal_moves_euclid.append((r,c))
+
+def euclid_move(pos1, pos2):
+    (r1, c1) = pos1
+    (r2, c2) = pos2
+    
+    if r2 >= r1 or c2 >= c1: return False
+    
+    elif r1 == 0 or c1 == 0:
+        
+        if r1 == 0 and c2 < c1: return True
+        else: return False
+        if c1 == 0 and r2 < r1: return True
+        else: return False
+    
+    else:
+        if r1 == c1:
+            if   r1 == 0 and c2 == c1: return True
+            elif c2 == 0 and r2 == r1: return True
+            else: return False
+        
+        if r1 > c1:
+            if (r1 - r2) % c1 == 0: return True
+            else: return False
+        
+        if c1 > r1:
+            if (c1 - c2) % r1 == 0: return True
+            else: return False
 
 
 npc = visual.ShapeStim(
@@ -930,6 +984,33 @@ for r in range(15):
         elif min(r,c) / max(r,c) > (1 + math.sqrt(5)) / 2:
             optimal_moves_euclid.append((r,c))
 
+def euclid_move(pos1, pos2):
+    (r1, c1) = pos1
+    (r2, c2) = pos2
+    
+    if r2 >= r1 or c2 >= c1: return False
+    
+    elif r1 == 0 or c1 == 0:
+        
+        if r1 == 0 and c2 < c1: return True
+        else: return False
+        if c1 == 0 and r2 < r1: return True
+        else: return False
+    
+    else:
+        if r1 == c1:
+            if   r1 == 0 and c2 == c1: return True
+            elif c2 == 0 and r2 == r1: return True
+            else: return False
+        
+        if r1 > c1:
+            if (r1 - r2) % c1 == 0: return True
+            else: return False
+        
+        if c1 > r1:
+            if (c1 - c2) % r1 == 0: return True
+            else: return False
+
 
 npc = visual.ShapeStim(
     win=win, name='npc',
@@ -1095,6 +1176,33 @@ for r in range(15):
             optimal_moves_euclid.append((r,c))
         elif min(r,c) / max(r,c) > (1 + math.sqrt(5)) / 2:
             optimal_moves_euclid.append((r,c))
+
+def euclid_move(pos1, pos2):
+    (r1, c1) = pos1
+    (r2, c2) = pos2
+    
+    if r2 >= r1 or c2 >= c1: return False
+    
+    elif r1 == 0 or c1 == 0:
+        
+        if r1 == 0 and c2 < c1: return True
+        else: return False
+        if c1 == 0 and r2 < r1: return True
+        else: return False
+    
+    else:
+        if r1 == c1:
+            if   r1 == 0 and c2 == c1: return True
+            elif c2 == 0 and r2 == r1: return True
+            else: return False
+        
+        if r1 > c1:
+            if (r1 - r2) % c1 == 0: return True
+            else: return False
+        
+        if c1 > r1:
+            if (c1 - c2) % r1 == 0: return True
+            else: return False
 
 
 npc = visual.ShapeStim(
@@ -2208,7 +2316,8 @@ for thisPractice_game in practice_games:
                     if row_new >= 0 and col_new >= 0:
                         if row_new==row or col_new==col or (section != 4 and row-row_new == col-col_new):
                             if row_new != row or col_new != col:
-                                continueRoutine = False
+                                if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move(move):
+                                    continueRoutine = False
             
             # draw game board
             for square in squares:
@@ -2304,6 +2413,10 @@ for thisPractice_game in practice_games:
             df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
             df.loc[len(df) - 1, 'session'] = expInfo['session']
             df.loc[len(df) - 1, 'section'] = section
+            if section == 4 and int(expInfo['session']) % 2 == 0:
+                df.loc[len(df) - 1, 'type'] = 'euc'
+            if section == 4 and int(expInfo['session']) % 2 == 1:
+                df.loc[len(df) - 1, 'type'] = 'nim'
             df.loc[len(df) - 1, 'game'] = game
             df.loc[len(df) - 1, 'move_num'] = move_num
             df.loc[len(df) - 1, 'player'] = 'human'
@@ -2462,27 +2575,30 @@ for thisPractice_game in practice_games:
         
         for r in range (row): # vertical moves
             move = (r, col)
-            moves.append(move)
-            if move in optimal_moves:
-                Q_table.append(1)
-            else:
-                Q_table.append(0)
+            if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move(move):
+                moves.append(move)
+                if move in optimal_moves:
+                    Q_table.append(1)
+                else:
+                    Q_table.append(0)
             
         for c in range (col): # horiz moves
             move = (row, c)
-            moves.append(move)
-            if move in optimal_moves:
-                Q_table.append(1)
-            else:
-                Q_table.append(0)
+            if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move(move):
+                moves.append(move)
+                if move in optimal_moves:
+                    Q_table.append(1)
+                else:
+                    Q_table.append(0)
             
         for d in range(1, min(row, col) + 1): # diag moves
             move = (row - d, col - d)
-            if section != 4: moves.append(move)
-            if move in optimal_moves:
-                if section != 4: Q_table.append(1)
-            else:
-                if section != 4: Q_table.append(0)
+            if section != 4:
+                moves.append(move)
+                if move in optimal_moves:
+                    Q_table.append(1)
+                else:
+                    Q_table.append(0)
         
         # action selection
         if len(moves) > 0:
@@ -3503,7 +3619,8 @@ for thisGame in games:
                     if row_new >= 0 and col_new >= 0:
                         if row_new==row or col_new==col or (section != 4 and row-row_new == col-col_new):
                             if row_new != row or col_new != col:
-                                continueRoutine = False
+                                if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move(move):
+                                    continueRoutine = False
             
             # draw game board
             for square in squares:
@@ -3599,6 +3716,10 @@ for thisGame in games:
             df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
             df.loc[len(df) - 1, 'session'] = expInfo['session']
             df.loc[len(df) - 1, 'section'] = section
+            if section == 4 and int(expInfo['session']) % 2 == 0:
+                df.loc[len(df) - 1, 'type'] = 'euc'
+            if section == 4 and int(expInfo['session']) % 2 == 1:
+                df.loc[len(df) - 1, 'type'] = 'nim'
             df.loc[len(df) - 1, 'game'] = game
             df.loc[len(df) - 1, 'move_num'] = move_num
             df.loc[len(df) - 1, 'player'] = 'human'
@@ -3757,27 +3878,30 @@ for thisGame in games:
         
         for r in range (row): # vertical moves
             move = (r, col)
-            moves.append(move)
-            if move in optimal_moves:
-                Q_table.append(1)
-            else:
-                Q_table.append(0)
+            if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move(move):
+                moves.append(move)
+                if move in optimal_moves:
+                    Q_table.append(1)
+                else:
+                    Q_table.append(0)
             
         for c in range (col): # horiz moves
             move = (row, c)
-            moves.append(move)
-            if move in optimal_moves:
-                Q_table.append(1)
-            else:
-                Q_table.append(0)
+            if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move(move):
+                moves.append(move)
+                if move in optimal_moves:
+                    Q_table.append(1)
+                else:
+                    Q_table.append(0)
             
         for d in range(1, min(row, col) + 1): # diag moves
             move = (row - d, col - d)
-            if section != 4: moves.append(move)
-            if move in optimal_moves:
-                if section != 4: Q_table.append(1)
-            else:
-                if section != 4: Q_table.append(0)
+            if section != 4:
+                moves.append(move)
+                if move in optimal_moves:
+                    Q_table.append(1)
+                else:
+                    Q_table.append(0)
         
         # action selection
         if len(moves) > 0:
@@ -6418,7 +6542,8 @@ for thisMore_game in more_games:
                     if row_new >= 0 and col_new >= 0:
                         if row_new==row or col_new==col or (section != 4 and row-row_new == col-col_new):
                             if row_new != row or col_new != col:
-                                continueRoutine = False
+                                if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move(move):
+                                    continueRoutine = False
             
             # draw game board
             for square in squares:
@@ -6514,6 +6639,10 @@ for thisMore_game in more_games:
             df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
             df.loc[len(df) - 1, 'session'] = expInfo['session']
             df.loc[len(df) - 1, 'section'] = section
+            if section == 4 and int(expInfo['session']) % 2 == 0:
+                df.loc[len(df) - 1, 'type'] = 'euc'
+            if section == 4 and int(expInfo['session']) % 2 == 1:
+                df.loc[len(df) - 1, 'type'] = 'nim'
             df.loc[len(df) - 1, 'game'] = game
             df.loc[len(df) - 1, 'move_num'] = move_num
             df.loc[len(df) - 1, 'player'] = 'human'
@@ -6672,27 +6801,30 @@ for thisMore_game in more_games:
         
         for r in range (row): # vertical moves
             move = (r, col)
-            moves.append(move)
-            if move in optimal_moves:
-                Q_table.append(1)
-            else:
-                Q_table.append(0)
+            if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move(move):
+                moves.append(move)
+                if move in optimal_moves:
+                    Q_table.append(1)
+                else:
+                    Q_table.append(0)
             
         for c in range (col): # horiz moves
             move = (row, c)
-            moves.append(move)
-            if move in optimal_moves:
-                Q_table.append(1)
-            else:
-                Q_table.append(0)
+            if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move(move):
+                moves.append(move)
+                if move in optimal_moves:
+                    Q_table.append(1)
+                else:
+                    Q_table.append(0)
             
         for d in range(1, min(row, col) + 1): # diag moves
             move = (row - d, col - d)
-            if section != 4: moves.append(move)
-            if move in optimal_moves:
-                if section != 4: Q_table.append(1)
-            else:
-                if section != 4: Q_table.append(0)
+            if section != 4:
+                moves.append(move)
+                if move in optimal_moves:
+                    Q_table.append(1)
+                else:
+                    Q_table.append(0)
         
         # action selection
         if len(moves) > 0:
@@ -7710,7 +7842,8 @@ for thisNew_game in new_games:
                     if row_new >= 0 and col_new >= 0:
                         if row_new==row or col_new==col or (section != 4 and row-row_new == col-col_new):
                             if row_new != row or col_new != col:
-                                continueRoutine = False
+                                if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move(move):
+                                    continueRoutine = False
             
             # draw game board
             for square in squares:
@@ -7806,6 +7939,10 @@ for thisNew_game in new_games:
             df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
             df.loc[len(df) - 1, 'session'] = expInfo['session']
             df.loc[len(df) - 1, 'section'] = section
+            if section == 4 and int(expInfo['session']) % 2 == 0:
+                df.loc[len(df) - 1, 'type'] = 'euc'
+            if section == 4 and int(expInfo['session']) % 2 == 1:
+                df.loc[len(df) - 1, 'type'] = 'nim'
             df.loc[len(df) - 1, 'game'] = game
             df.loc[len(df) - 1, 'move_num'] = move_num
             df.loc[len(df) - 1, 'player'] = 'human'
@@ -7964,27 +8101,30 @@ for thisNew_game in new_games:
         
         for r in range (row): # vertical moves
             move = (r, col)
-            moves.append(move)
-            if move in optimal_moves:
-                Q_table.append(1)
-            else:
-                Q_table.append(0)
+            if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move(move):
+                moves.append(move)
+                if move in optimal_moves:
+                    Q_table.append(1)
+                else:
+                    Q_table.append(0)
             
         for c in range (col): # horiz moves
             move = (row, c)
-            moves.append(move)
-            if move in optimal_moves:
-                Q_table.append(1)
-            else:
-                Q_table.append(0)
+            if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move(move):
+                moves.append(move)
+                if move in optimal_moves:
+                    Q_table.append(1)
+                else:
+                    Q_table.append(0)
             
         for d in range(1, min(row, col) + 1): # diag moves
             move = (row - d, col - d)
-            if section != 4: moves.append(move)
-            if move in optimal_moves:
-                if section != 4: Q_table.append(1)
-            else:
-                if section != 4: Q_table.append(0)
+            if section != 4:
+                moves.append(move)
+                if move in optimal_moves:
+                    Q_table.append(1)
+                else:
+                    Q_table.append(0)
         
         # action selection
         if len(moves) > 0:
