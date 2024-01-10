@@ -1537,7 +1537,7 @@
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
-        <Param val="Click the button below when you are ready to start visualizing games and recording winners." valType="str" updates="set every repeat" name="text"/>
+        <Param val="Click the button below when you are ready to start the section." valType="str" updates="set every repeat" name="text"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="1" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
@@ -1548,8 +1548,8 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="if (((Number.parseInt(expInfo[&quot;session&quot;]) % 2) === 0)) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="# skip recall instructions if imagining&amp;#10;if int(expInfo['session']) % 2 == 0:&amp;#10;    continueRoutine = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="if (((Number.parseInt(expInfo[&quot;session&quot;]) % 3) !== 1)) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="# skip instructions if not recall condition&amp;#10;if int(expInfo['session']) % 3 != 1:&amp;#10;    continueRoutine = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -1689,8 +1689,8 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="if (((Number.parseInt(expInfo[&quot;session&quot;]) % 2) === 1)) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="# skip recall instructions if recalling&amp;#10;if int(expInfo['session']) % 2 == 1:&amp;#10;    continueRoutine = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="if (((Number.parseInt(expInfo[&quot;session&quot;]) % 3) !== 0)) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="# skip instructions if not imagination condition&amp;#10;if int(expInfo['session']) % 3 != 0:&amp;#10;    continueRoutine = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -1830,8 +1830,8 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="new psychoJS.eventManager.Mouse({&quot;visible&quot;: false});&amp;#10;visibility = (Number.parseInt(expInfo[&quot;session&quot;]) % 2);&amp;#10;practice_turns.finished = false;&amp;#10;move_idx = 0;&amp;#10;df_1 = df[(df.section === 1)];&amp;#10;ref_df = df_1[(df_1.game === game_idxs[game_idx])];&amp;#10;ref_df = ref_df.reset_index();&amp;#10;console.log(ref_df.to_string());&amp;#10;row = ref_df.loc[[move_idx, &quot;start_row&quot;]];&amp;#10;col = ref_df.loc[[move_idx, &quot;start_col&quot;]];&amp;#10;row_new = row;&amp;#10;col_new = col;&amp;#10;winner = ref_df.loc[[(ref_df.length - 1), &quot;winner&quot;]];&amp;#10;if ((winner === &quot;human&quot;)) {&amp;#10;    player_won = true;&amp;#10;} else {&amp;#10;    player_won = false;&amp;#10;}&amp;#10;if ((visibility === 0)) {&amp;#10;    whole_game_duration = ((util.sum(ref_df[&quot;DT&quot;]) + ref_df[&quot;DT&quot;].length) + 0.75);&amp;#10;    prompt_duration = Math.random.uniform(0, (whole_game_duration - 0.75));&amp;#10;    post_blink_duration = ((whole_game_duration - prompt_duration) - 0.75);&amp;#10;}&amp;#10;if ((ref_df.loc[[move_idx, &quot;player&quot;]] === &quot;AI&quot;)) {&amp;#10;    npc_start = true;&amp;#10;    piece_color = &quot;chestnut&quot;;&amp;#10;    if ((blinks[game_idx] === false)) {&amp;#10;        blink_color = &quot;chestnut&quot;;&amp;#10;    } else {&amp;#10;        blink_color = &quot;dodgerblue&quot;;&amp;#10;    }&amp;#10;} else {&amp;#10;    npc_start = false;&amp;#10;    piece_color = &quot;dodgerblue&quot;;&amp;#10;    if ((blinks[game_idx] === false)) {&amp;#10;        blink_color = &quot;dodgerblue&quot;;&amp;#10;    } else {&amp;#10;        blink_color = &quot;chestnut&quot;;&amp;#10;    }&amp;#10;}&amp;#10;game_idx = (game_idx + 1);&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="event.Mouse(visible=False)&amp;#10;&amp;#10;# Make sure replay/imagination shows correctly&amp;#10;visibility = int(expInfo['session']) % 2&amp;#10;practice_turns.finished = False&amp;#10;&amp;#10;move_idx = 0&amp;#10;&amp;#10;# select reference game data frame&amp;#10;df_1 = df[df.section == 1]&amp;#10;ref_df = df_1[df_1.game == game_idxs[game_idx]]&amp;#10;ref_df = ref_df.reset_index()&amp;#10;print(ref_df.to_string())&amp;#10;#print('move_idx: ' + str(move_idx))&amp;#10;&amp;#10;# set starting position&amp;#10;row = ref_df.loc[move_idx, 'start_row']&amp;#10;col = ref_df.loc[move_idx, 'start_col']&amp;#10;row_new = row&amp;#10;col_new = col&amp;#10;#print('row: '+ str(row))&amp;#10;#print('col: '+ str(col))&amp;#10;&amp;#10;winner = ref_df.loc[len(ref_df) - 1, 'winner']&amp;#10;if winner == 'human':&amp;#10;    player_won = True&amp;#10;else:&amp;#10;    player_won = False&amp;#10;&amp;#10;if visibility == 0:&amp;#10;    # we add 0.75s for the end_pause and 1s for every move&amp;#10;    whole_game_duration = sum(ref_df['DT']) + len(ref_df['DT']) + 0.75&amp;#10;    prompt_duration = random.uniform(0, whole_game_duration - 0.75)&amp;#10;    post_blink_duration = whole_game_duration - prompt_duration - 0.75&amp;#10;&amp;#10;if ref_df.loc[move_idx, 'player'] == 'AI':&amp;#10;    npc_start = True&amp;#10;    piece_color = 'chestnut'&amp;#10;    if blinks[game_idx] == False:&amp;#10;        blink_color = 'chestnut'&amp;#10;    else:&amp;#10;        blink_color = 'dodgerblue'&amp;#10;else:&amp;#10;    npc_start = False&amp;#10;    piece_color = 'dodgerblue'&amp;#10;    if blinks[game_idx] == False:&amp;#10;        blink_color = 'dodgerblue'&amp;#10;    else:&amp;#10;        blink_color = 'chestnut'&amp;#10;&amp;#10;# advance game idx counter&amp;#10;game_idx = game_idx + 1" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="new psychoJS.eventManager.Mouse({&quot;visible&quot;: false});&amp;#10;if (((Number.parseInt(expInfo[&quot;session&quot;]) % 3) === 0)) {&amp;#10;    visibility = 0;&amp;#10;}&amp;#10;if (((Number.parseInt(expInfo[&quot;session&quot;]) % 3) === 1)) {&amp;#10;    visibility = 1;&amp;#10;}&amp;#10;if (((Number.parseInt(expInfo[&quot;session&quot;]) % 3) === 2)) {&amp;#10;    visibility = 0;&amp;#10;}&amp;#10;practice_turns.finished = false;&amp;#10;move_idx = 0;&amp;#10;df_1 = df[(df.section === 1)];&amp;#10;ref_df = df_1[(df_1.game === game_idxs[game_idx])];&amp;#10;ref_df = ref_df.reset_index();&amp;#10;console.log(ref_df.to_string());&amp;#10;row = ref_df.loc[[move_idx, &quot;start_row&quot;]];&amp;#10;col = ref_df.loc[[move_idx, &quot;start_col&quot;]];&amp;#10;row_new = row;&amp;#10;col_new = col;&amp;#10;winner = ref_df.loc[[(ref_df.length - 1), &quot;winner&quot;]];&amp;#10;if ((winner === &quot;human&quot;)) {&amp;#10;    player_won = true;&amp;#10;} else {&amp;#10;    player_won = false;&amp;#10;}&amp;#10;if ((visibility === 0)) {&amp;#10;    whole_game_duration = ((util.sum(ref_df[&quot;DT&quot;]) + ref_df[&quot;DT&quot;].length) + 0.75);&amp;#10;    prompt_duration = Math.random.uniform(0, (whole_game_duration - 0.75));&amp;#10;    post_blink_duration = ((whole_game_duration - prompt_duration) - 0.75);&amp;#10;}&amp;#10;if ((ref_df.loc[[move_idx, &quot;player&quot;]] === &quot;AI&quot;)) {&amp;#10;    npc_start = true;&amp;#10;    piece_color = &quot;chestnut&quot;;&amp;#10;    if (((blinks[game_idx] === true) &amp;&amp; ((Number.parseInt(expInfo[&quot;session&quot;]) % 3) === 0))) {&amp;#10;        blink_color = &quot;dodgerblue&quot;;&amp;#10;    } else {&amp;#10;        blink_color = &quot;chestnut&quot;;&amp;#10;    }&amp;#10;} else {&amp;#10;    npc_start = false;&amp;#10;    piece_color = &quot;dodgerblue&quot;;&amp;#10;    if (((blinks[game_idx] === true) &amp;&amp; ((Number.parseInt(expInfo[&quot;session&quot;]) % 3) === 0))) {&amp;#10;        blink_color = &quot;dodgerblue&quot;;&amp;#10;    } else {&amp;#10;        blink_color = &quot;chestnut&quot;;&amp;#10;    }&amp;#10;}&amp;#10;game_idx = (game_idx + 1);&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="event.Mouse(visible=False)&amp;#10;&amp;#10;# Make sure replay/imagination shows correctly&amp;#10;if int(expInfo['session']) % 3 == 0:&amp;#10;    visibility = 0&amp;#10;if int(expInfo['session']) % 3 == 1:&amp;#10;    visibility = 1&amp;#10;if int(expInfo['session']) % 3 == 2:&amp;#10;    visibility = 0&amp;#10;#visibility = int(expInfo['session']) % 2&amp;#10;practice_turns.finished = False&amp;#10;&amp;#10;move_idx = 0&amp;#10;&amp;#10;# select reference game data frame&amp;#10;df_1 = df[df.section == 1]&amp;#10;ref_df = df_1[df_1.game == game_idxs[game_idx]]&amp;#10;ref_df = ref_df.reset_index()&amp;#10;print(ref_df.to_string())&amp;#10;#print('move_idx: ' + str(move_idx))&amp;#10;&amp;#10;# set starting position&amp;#10;row = ref_df.loc[move_idx, 'start_row']&amp;#10;col = ref_df.loc[move_idx, 'start_col']&amp;#10;row_new = row&amp;#10;col_new = col&amp;#10;#print('row: '+ str(row))&amp;#10;#print('col: '+ str(col))&amp;#10;&amp;#10;winner = ref_df.loc[len(ref_df) - 1, 'winner']&amp;#10;if winner == 'human':&amp;#10;    player_won = True&amp;#10;else:&amp;#10;    player_won = False&amp;#10;&amp;#10;if visibility == 0:&amp;#10;    # we add 0.75s for the end_pause and 1s for every move&amp;#10;    whole_game_duration = sum(ref_df['DT']) + len(ref_df['DT']) + 0.75&amp;#10;    prompt_duration = random.uniform(0, whole_game_duration - 0.75)&amp;#10;    post_blink_duration = whole_game_duration - prompt_duration - 0.75&amp;#10;&amp;#10;if ref_df.loc[move_idx, 'player'] == 'AI':&amp;#10;    npc_start = True&amp;#10;    piece_color = 'chestnut'&amp;#10;    if blinks[game_idx] == True and int(expInfo['session']) % 3 == 0:&amp;#10;        blink_color = 'dodgerblue'&amp;#10;    else:&amp;#10;        blink_color = 'chestnut'&amp;#10;else:&amp;#10;    npc_start = False&amp;#10;    piece_color = 'dodgerblue'&amp;#10;    if blinks[game_idx] == True and int(expInfo['session']) % 3 == 0:&amp;#10;        blink_color = 'dodgerblue'&amp;#10;    else:&amp;#10;        blink_color = 'chestnut'&amp;#10;&amp;#10;# advance game idx counter&amp;#10;game_idx = game_idx + 1" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="for square in squares:&amp;#10;    square.draw()" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="for (var square, _pj_c = 0, _pj_a = squares, _pj_b = _pj_a.length; (_pj_c &lt; _pj_b); _pj_c += 1) {&amp;#10;    square = _pj_a[_pj_c];&amp;#10;    square.draw();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -2869,6 +2869,147 @@
       </PolygonComponent>
     </Routine>
     <Routine name="post_blink_2"/>
+    <Routine name="instruct_blink">
+      <CodeComponent name="blink_instruct_code" plugin="None">
+        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="if (((Number.parseInt(expInfo[&quot;session&quot;]) % 3) !== 2)) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="# skip instructions if not blink condition&amp;#10;if int(expInfo['session']) % 3 != 2:&amp;#10;    continueRoutine = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="blink_instruct_code" valType="code" updates="None" name="name"/>
+      </CodeComponent>
+      <TextComponent name="blink_title" plugin="None">
+        <Param val="white" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Open Sans" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="0.1" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="blink_title" valType="code" updates="None" name="name"/>
+        <Param val="1" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, 0.35)" valType="list" updates="constant" name="pos"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="Experiment Section 2 Instructions" valType="str" updates="constant" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="1.5" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
+      <PolygonComponent name="blink_button" plugin="None">
+        <Param val="center" valType="str" updates="constant" name="anchor"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="white" valType="color" updates="constant" name="fillColor"/>
+        <Param val="linear" valType="str" updates="constant" name="interpolate"/>
+        <Param val="silver" valType="color" updates="constant" name="lineColor"/>
+        <Param val="8" valType="num" updates="constant" name="lineWidth"/>
+        <Param val="4" valType="int" updates="constant" name="nVertices"/>
+        <Param val="blink_button" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, -0.35)" valType="list" updates="constant" name="pos"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="rectangle" valType="str" updates="None" name="shape"/>
+        <Param val="(0.25, 0.1)" valType="list" updates="constant" name="size"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="list" updates="constant" name="vertices"/>
+      </PolygonComponent>
+      <TextComponent name="blink_ready" plugin="None">
+        <Param val="gray" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Open Sans" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="0.05" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="blink_ready" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, -0.35)" valType="list" updates="constant" name="pos"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="ready!" valType="str" updates="constant" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
+      <MouseComponent name="blink_mouse" plugin="None">
+        <Param val="blink_button" valType="list" updates="constant" name="clickable"/>
+        <Param val="" valType="list" updates="constant" name="correctAns"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="valid click" valType="str" updates="constant" name="forceEndRoutineOnPress"/>
+        <Param val="blink_mouse" valType="code" updates="None" name="name"/>
+        <Param val="True" valType="bool" updates="constant" name="newClicksOnly"/>
+        <Param val="never" valType="str" updates="None" name="saveMouseState"/>
+        <Param val="" valType="list" updates="constant" name="saveParamsClickable"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="False" valType="bool" updates="constant" name="storeCorrect"/>
+        <Param val="False" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="mouse onset" valType="str" updates="constant" name="timeRelativeTo"/>
+      </MouseComponent>
+      <TextComponent name="blink_text" plugin="None">
+        <Param val="black" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Open Sans" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="0.05" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="blink_text" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="In this section you will detect piece &quot;blinks&quot;.&amp;#10;&amp;#10;You will watch unmoving game pieces which may or may not blink (briefly change color). After some time, you will be asked if the game piece blinked. The game board will transition to the question screen automatically.&amp;#10;&amp;#10;Please pay attention and respond as best you can!" valType="str" updates="set every repeat" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="1.175" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
+    </Routine>
   </Routines>
   <Flow>
     <Routine name="setup_instruct"/>
@@ -2951,6 +3092,7 @@
     <LoopTerminator name="games"/>
     <Routine name="instruct_recall"/>
     <Routine name="instruct_imagine"/>
+    <Routine name="instruct_blink"/>
     <LoopInitiator loopType="TrialHandler" name="double_click_2">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="None" valType="str"/>
