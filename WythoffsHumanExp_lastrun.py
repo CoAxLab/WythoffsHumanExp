@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Tue Jan  9 15:40:51 2024
+    on Wed Jan 10 12:36:47 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -804,6 +804,22 @@ intervention_red_piece = visual.ShapeStim(
 # --- Initialize components for Routine "imagination_prompt" ---
 prompt_piece = visual.ShapeStim(
     win=win, name='prompt_piece',
+    size=(1/19, 1/19), vertices='circle',
+    ori=0.0, pos=[0,0], anchor='center',
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=-1.0, interpolate=True)
+
+# --- Initialize components for Routine "blink" ---
+blink_piece = visual.ShapeStim(
+    win=win, name='blink_piece',
+    size=(1/19, 1/19), vertices='circle',
+    ori=0.0, pos=[0,0], anchor='center',
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=-1.0, interpolate=True)
+
+# --- Initialize components for Routine "post_blink" ---
+post_blink_piece = visual.ShapeStim(
+    win=win, name='post_blink_piece',
     size=(1/19, 1/19), vertices='circle',
     ori=0.0, pos=[0,0], anchor='center',
     lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
@@ -4831,6 +4847,13 @@ for thisDouble_click_2 in double_click_2:
     section = 2 # variable for experiment section
     move_duration = 0.75 # how long moves take
     end_pause_duration = 0.75*0.75 # game-end pause amt
+    
+    # generate balanced shuffled blinks for distractor
+    blinks = []
+    for game in range(int(num_games/2)):
+        blinks.append(True)
+        blinks.append(False)
+    random.shuffle(blinks)
     # setup some python lists for storing info about the mouse_2
     mouse_2.clicked_name = []
     gotValidClick = False  # until a click is received
@@ -5044,15 +5067,25 @@ for thisIntervention_game in intervention_games:
         player_won = False
     
     if visibility == 0:
-        # we add 0.75 for the end_pause
-        whole_game_duration = sum(ref_df['DT']) + 0.75
+        # we add 0.75s for the end_pause and 1s for every move
+        whole_game_duration = sum(ref_df['DT']) + len(ref_df['DT']) + 0.75
+        prompt_duration = random.uniform(0, whole_game_duration - 0.75)
+        post_blink_duration = whole_game_duration - prompt_duration - 0.75
     
     if ref_df.loc[move_idx, 'player'] == 'AI':
         npc_start = True
         piece_color = 'chestnut'
+        if blinks[game_idx] == False:
+            blink_color = 'chestnut'
+        else:
+            blink_color = 'dodgerblue'
     else:
         npc_start = False
         piece_color = 'dodgerblue'
+        if blinks[game_idx] == False:
+            blink_color = 'dodgerblue'
+        else:
+            blink_color = 'chestnut'
     
     # advance game idx counter
     game_idx = game_idx + 1
@@ -5263,7 +5296,7 @@ for thisIntervention_game in intervention_games:
         # if prompt_piece is stopping this frame...
         if prompt_piece.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > prompt_piece.tStartRefresh + whole_game_duration * 0.75-frameTolerance:
+            if tThisFlipGlobal > prompt_piece.tStartRefresh + prompt_duration * 0.75-frameTolerance:
                 # keep track of stop time/frame for later
                 prompt_piece.tStop = t  # not accounting for scr refresh
                 prompt_piece.frameNStop = frameN  # exact frame index
@@ -5296,6 +5329,194 @@ for thisIntervention_game in intervention_games:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     # the Routine "imagination_prompt" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
+    
+    # --- Prepare to start Routine "blink" ---
+    continueRoutine = True
+    # update component parameters for each repeat
+    # Run 'Begin Routine' code from blink_code
+    event.Mouse(visible=False)
+    
+    if visibility == 1:
+        continueRoutine = False
+    blink_piece.setFillColor(blink_color)
+    blink_piece.setPos(((col-7)/17, (15-row-8)/17))
+    blink_piece.setLineColor(blink_color)
+    # keep track of which components have finished
+    blinkComponents = [blink_piece]
+    for thisComponent in blinkComponents:
+        thisComponent.tStart = None
+        thisComponent.tStop = None
+        thisComponent.tStartRefresh = None
+        thisComponent.tStopRefresh = None
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    # reset timers
+    t = 0
+    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+    frameN = -1
+    
+    # --- Run Routine "blink" ---
+    routineForceEnded = not continueRoutine
+    while continueRoutine:
+        # get current time
+        t = routineTimer.getTime()
+        tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        # Run 'Each Frame' code from blink_code
+        for square in squares:
+            square.draw()
+        
+        # *blink_piece* updates
+        
+        # if blink_piece is starting this frame...
+        if blink_piece.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            blink_piece.frameNStart = frameN  # exact frame index
+            blink_piece.tStart = t  # local t and not account for scr refresh
+            blink_piece.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(blink_piece, 'tStartRefresh')  # time at next scr refresh
+            # update status
+            blink_piece.status = STARTED
+            blink_piece.setAutoDraw(True)
+        
+        # if blink_piece is active this frame...
+        if blink_piece.status == STARTED:
+            # update params
+            pass
+        
+        # if blink_piece is stopping this frame...
+        if blink_piece.status == STARTED:
+            # is it time to stop? (based on global clock, using actual start)
+            if tThisFlipGlobal > blink_piece.tStartRefresh + end_pause_duration-frameTolerance:
+                # keep track of stop time/frame for later
+                blink_piece.tStop = t  # not accounting for scr refresh
+                blink_piece.frameNStop = frameN  # exact frame index
+                # update status
+                blink_piece.status = FINISHED
+                blink_piece.setAutoDraw(False)
+        
+        # check for quit (typically the Esc key)
+        if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+            core.quit()
+            if eyetracker:
+                eyetracker.setConnectionState(False)
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            routineForceEnded = True
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in blinkComponents:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    # --- Ending Routine "blink" ---
+    for thisComponent in blinkComponents:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
+    # the Routine "blink" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
+    
+    # --- Prepare to start Routine "post_blink" ---
+    continueRoutine = True
+    # update component parameters for each repeat
+    # Run 'Begin Routine' code from post_blink_code
+    event.Mouse(visible=False)
+    
+    if visibility == 1:
+        continueRoutine = False
+    post_blink_piece.setFillColor(piece_color)
+    post_blink_piece.setPos(((col-7)/17, (15-row-8)/17))
+    post_blink_piece.setLineColor(piece_color)
+    # keep track of which components have finished
+    post_blinkComponents = [post_blink_piece]
+    for thisComponent in post_blinkComponents:
+        thisComponent.tStart = None
+        thisComponent.tStop = None
+        thisComponent.tStartRefresh = None
+        thisComponent.tStopRefresh = None
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    # reset timers
+    t = 0
+    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+    frameN = -1
+    
+    # --- Run Routine "post_blink" ---
+    routineForceEnded = not continueRoutine
+    while continueRoutine:
+        # get current time
+        t = routineTimer.getTime()
+        tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        # Run 'Each Frame' code from post_blink_code
+        for square in squares:
+            square.draw()
+        
+        # *post_blink_piece* updates
+        
+        # if post_blink_piece is starting this frame...
+        if post_blink_piece.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            post_blink_piece.frameNStart = frameN  # exact frame index
+            post_blink_piece.tStart = t  # local t and not account for scr refresh
+            post_blink_piece.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(post_blink_piece, 'tStartRefresh')  # time at next scr refresh
+            # update status
+            post_blink_piece.status = STARTED
+            post_blink_piece.setAutoDraw(True)
+        
+        # if post_blink_piece is active this frame...
+        if post_blink_piece.status == STARTED:
+            # update params
+            pass
+        
+        # if post_blink_piece is stopping this frame...
+        if post_blink_piece.status == STARTED:
+            # is it time to stop? (based on global clock, using actual start)
+            if tThisFlipGlobal > post_blink_piece.tStartRefresh + post_blink_duration * 0.75-frameTolerance:
+                # keep track of stop time/frame for later
+                post_blink_piece.tStop = t  # not accounting for scr refresh
+                post_blink_piece.frameNStop = frameN  # exact frame index
+                # update status
+                post_blink_piece.status = FINISHED
+                post_blink_piece.setAutoDraw(False)
+        
+        # check for quit (typically the Esc key)
+        if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+            core.quit()
+            if eyetracker:
+                eyetracker.setConnectionState(False)
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            routineForceEnded = True
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in post_blinkComponents:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    # --- Ending Routine "post_blink" ---
+    for thisComponent in post_blinkComponents:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
+    # the Routine "post_blink" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
     
     # set up handler to look after randomisation of conditions etc
