@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Wed Jan 10 14:38:16 2024
+    on Wed Jan 10 15:15:22 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -5279,17 +5279,17 @@ for thisIntervention_game in intervention_games:
     if ref_df.loc[move_idx, 'player'] == 'AI':
         npc_start = True
         piece_color = 'chestnut'
-        if blinks[game_idx] == True and int(expInfo['session']) % 3 == 0:
+        if (int(expInfo['session']) % 3 == 2) and (blinks[game_idx] == True):
             blink_color = 'dodgerblue'
         else:
             blink_color = 'chestnut'
     else:
         npc_start = False
         piece_color = 'dodgerblue'
-        if blinks[game_idx] == True and int(expInfo['session']) % 3 == 0:
-            blink_color = 'dodgerblue'
-        else:
+        if (int(expInfo['session']) % 3 == 2) and (blinks[game_idx] == True):
             blink_color = 'chestnut'
+        else:
+            blink_color = 'dodgerblue'
     
     # advance game idx counter
     game_idx = game_idx + 1
