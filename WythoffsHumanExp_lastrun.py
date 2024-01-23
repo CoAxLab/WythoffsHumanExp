@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Wed Jan 10 15:15:22 2024
+    on Tue Jan 23 16:58:27 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -129,6 +129,7 @@ defaultKeyboard = keyboard.Keyboard(backend='iohub')
 # Make game board tiles for rendering later
 
 squares = []
+square_coords = []
 
 for row in range(15):
     for col in range(15):
@@ -138,8 +139,8 @@ for row in range(15):
         else:
             color = 'darkgray'
         
-        x_loc = ((15 - row) - 8) / 17
-        y_loc = (col - 7) / 17
+        y_loc = ((15 - row) - 8) / 17
+        x_loc = (col - 7) / 17
         
         squares.append(
             visual.Rect(
@@ -148,6 +149,7 @@ for row in range(15):
                 height = 1/17,
                 pos = (x_loc, y_loc),
                 fillColor = color))
+        square_coords.append((row, col))
 title_text = visual.TextStim(win=win, name='title_text',
     text="Wythoff's Game Experiment",
     font='Open Sans',
@@ -905,7 +907,7 @@ end_red = visual.ShapeStim(
 
 # --- Initialize components for Routine "who_won" ---
 who_won_title = visual.TextStim(win=win, name='who_won_title',
-    text='Who won?',
+    text='Was there a blink?',
     font='Open Sans',
     pos=(0, 0.3), height=0.1, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=1.0, 
@@ -918,7 +920,7 @@ opponent_button = visual.Rect(
     lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
     opacity=None, depth=-2.0, interpolate=True)
 opponent_text = visual.TextStim(win=win, name='opponent_text',
-    text='opponent',
+    text='no blink',
     font='Open Sans',
     pos=(-0.3, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='gray', colorSpace='rgb', opacity=None, 
@@ -931,7 +933,7 @@ me_button = visual.Rect(
     lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
     opacity=None, depth=-4.0, interpolate=True)
 me_text = visual.TextStim(win=win, name='me_text',
-    text='me',
+    text='blink',
     font='Open Sans',
     pos=(0.3, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='gray', colorSpace='rgb', opacity=None, 
@@ -1136,6 +1138,70 @@ button_text = visual.TextStim(win=win, name='button_text',
 next_mouse = event.Mouse(win=win)
 x, y = [None, None]
 next_mouse.mouseClock = core.Clock()
+
+# --- Initialize components for Routine "instruct_euclid" ---
+euclid_title = visual.TextStim(win=win, name='euclid_title',
+    text='Experiment Section 4 Instructions',
+    font='Open Sans',
+    pos=(0, 0.35), height=0.1, wrapWidth=1.5, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=1.0, 
+    languageStyle='LTR',
+    depth=-1.0);
+euclid_button = visual.Rect(
+    win=win, name='euclid_button',
+    width=(0.25, 0.1)[0], height=(0.25, 0.1)[1],
+    ori=0.0, pos=(0, -0.35), anchor='center',
+    lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
+    opacity=None, depth=-2.0, interpolate=True)
+euclid_ready = visual.TextStim(win=win, name='euclid_ready',
+    text='ready!',
+    font='Open Sans',
+    pos=(0, -0.35), height=0.05, wrapWidth=None, ori=0.0, 
+    color='gray', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-3.0);
+euclid_mouse = event.Mouse(win=win)
+x, y = [None, None]
+euclid_mouse.mouseClock = core.Clock()
+euclid_text = visual.TextStim(win=win, name='euclid_text',
+    text='',
+    font='Open Sans',
+    pos=(0, 0), height=0.05, wrapWidth=1.175, ori=0.0, 
+    color='black', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-5.0);
+
+# --- Initialize components for Routine "instruct_nim" ---
+nim_title = visual.TextStim(win=win, name='nim_title',
+    text='Experiment Section 4 Instructions',
+    font='Open Sans',
+    pos=(0, 0.35), height=0.1, wrapWidth=1.5, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=1.0, 
+    languageStyle='LTR',
+    depth=-1.0);
+nim_button = visual.Rect(
+    win=win, name='nim_button',
+    width=(0.25, 0.1)[0], height=(0.25, 0.1)[1],
+    ori=0.0, pos=(0, -0.35), anchor='center',
+    lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
+    opacity=None, depth=-2.0, interpolate=True)
+nim_ready = visual.TextStim(win=win, name='nim_ready',
+    text='ready!',
+    font='Open Sans',
+    pos=(0, -0.35), height=0.05, wrapWidth=None, ori=0.0, 
+    color='gray', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-3.0);
+nim_mouse = event.Mouse(win=win)
+x, y = [None, None]
+nim_mouse.mouseClock = core.Clock()
+nim_text = visual.TextStim(win=win, name='nim_text',
+    text='',
+    font='Open Sans',
+    pos=(0, 0), height=0.05, wrapWidth=1.175, ori=0.0, 
+    color='black', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-5.0);
 
 # --- Initialize components for Routine "section_4" ---
 title_4 = visual.TextStim(win=win, name='title_4',
@@ -2329,6 +2395,24 @@ for thisPractice_game in practice_games:
         
         mouse_still = True
         mouse_start = mouse.getPos()
+        
+        moves = []
+        for r in range (row): # vertical moves
+            move = (r, col)
+            if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move((row,col), move):
+                moves.append(move)
+        
+        for c in range (col): # horiz moves
+            move = (row, c)
+            if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move((row,col), move):
+                moves.append(move)
+        
+        for d in range(1, min(row, col) + 1): # diag moves
+            move = (row - d, col - d)
+            if section != 4:
+                moves.append(move)
+        
+        
         piece.setPos(((col-7)/17, (15-row-8)/17))
         # setup some python lists for storing info about the mouse
         mouse.x = []
@@ -2380,7 +2464,21 @@ for thisPractice_game in practice_games:
                                     continueRoutine = False
             
             # draw game board
-            for square in squares:
+            for i, square in enumerate(squares):
+                if square_coords[i] == (0,0):
+                    square.fillColor = 'lightgreen'
+                    square.draw()
+                elif square_coords[i] in moves:
+                    square.lineWidth == 1
+                    #if sum(square_coords[i]) % 2 == 0:
+                        #square.fillColor = 'gray'
+                    #else:
+                        #square.fillColor = 'dimgray'
+                else:
+                    if sum(square_coords[i]) % 2 == 0:
+                        square.fillColor = 'lightgray'
+                    else:
+                        square.fillColor = 'darkgray'
                 square.draw()
             
             # *piece* updates
@@ -3232,7 +3330,7 @@ for thisDouble_click_1 in double_click_1:
     gotValidClick = False  # until a click is received
     section_1_text.setText('Click the button below when you are ready to start playing.')
     # Run 'Begin Routine' code from section_1_code
-    num_games = 2 # must be even
+    num_games = 30 # must be even
     assert(num_games % 2 == 0)
     
     # generate shuffled list of who starts each game
@@ -3636,6 +3734,24 @@ for thisGame in games:
         
         mouse_still = True
         mouse_start = mouse.getPos()
+        
+        moves = []
+        for r in range (row): # vertical moves
+            move = (r, col)
+            if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move((row,col), move):
+                moves.append(move)
+        
+        for c in range (col): # horiz moves
+            move = (row, c)
+            if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move((row,col), move):
+                moves.append(move)
+        
+        for d in range(1, min(row, col) + 1): # diag moves
+            move = (row - d, col - d)
+            if section != 4:
+                moves.append(move)
+        
+        
         piece.setPos(((col-7)/17, (15-row-8)/17))
         # setup some python lists for storing info about the mouse
         mouse.x = []
@@ -3687,7 +3803,21 @@ for thisGame in games:
                                     continueRoutine = False
             
             # draw game board
-            for square in squares:
+            for i, square in enumerate(squares):
+                if square_coords[i] == (0,0):
+                    square.fillColor = 'lightgreen'
+                    square.draw()
+                elif square_coords[i] in moves:
+                    square.lineWidth == 1
+                    #if sum(square_coords[i]) % 2 == 0:
+                        #square.fillColor = 'gray'
+                    #else:
+                        #square.fillColor = 'dimgray'
+                else:
+                    if sum(square_coords[i]) % 2 == 0:
+                        square.fillColor = 'lightgray'
+                    else:
+                        square.fillColor = 'darkgray'
                 square.draw()
             
             # *piece* updates
@@ -6940,6 +7070,24 @@ for thisMore_game in more_games:
         
         mouse_still = True
         mouse_start = mouse.getPos()
+        
+        moves = []
+        for r in range (row): # vertical moves
+            move = (r, col)
+            if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move((row,col), move):
+                moves.append(move)
+        
+        for c in range (col): # horiz moves
+            move = (row, c)
+            if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move((row,col), move):
+                moves.append(move)
+        
+        for d in range(1, min(row, col) + 1): # diag moves
+            move = (row - d, col - d)
+            if section != 4:
+                moves.append(move)
+        
+        
         piece.setPos(((col-7)/17, (15-row-8)/17))
         # setup some python lists for storing info about the mouse
         mouse.x = []
@@ -6991,7 +7139,21 @@ for thisMore_game in more_games:
                                     continueRoutine = False
             
             # draw game board
-            for square in squares:
+            for i, square in enumerate(squares):
+                if square_coords[i] == (0,0):
+                    square.fillColor = 'lightgreen'
+                    square.draw()
+                elif square_coords[i] in moves:
+                    square.lineWidth == 1
+                    #if sum(square_coords[i]) % 2 == 0:
+                        #square.fillColor = 'gray'
+                    #else:
+                        #square.fillColor = 'dimgray'
+                else:
+                    if sum(square_coords[i]) % 2 == 0:
+                        square.fillColor = 'lightgray'
+                    else:
+                        square.fillColor = 'darkgray'
                 square.draw()
             
             # *piece* updates
@@ -7816,6 +7978,338 @@ for thisMore_game in more_games:
 # completed num_games repeats of 'more_games'
 
 
+# --- Prepare to start Routine "instruct_euclid" ---
+continueRoutine = True
+# update component parameters for each repeat
+# Run 'Begin Routine' code from euclid_code
+# skip instructions if not Euclid condition
+if int(expInfo['session']) % 2 != 0:
+    continueRoutine = False
+# setup some python lists for storing info about the euclid_mouse
+euclid_mouse.clicked_name = []
+gotValidClick = False  # until a click is received
+euclid_text.setText('In this section you will play a new game called "Euclid".\n\nThe rules of Euclid are the same as the rules of Wythoff\'s (the game you\'ve been playing) except diagonal moves aren\'t possible, and distance moved must be a multiple of the minimum coordinate of the current board position (the top left coordinate is 0,0).\n\nPlease play as best you can!')
+# keep track of which components have finished
+instruct_euclidComponents = [euclid_title, euclid_button, euclid_ready, euclid_mouse, euclid_text]
+for thisComponent in instruct_euclidComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+frameN = -1
+
+# --- Run Routine "instruct_euclid" ---
+routineForceEnded = not continueRoutine
+while continueRoutine:
+    # get current time
+    t = routineTimer.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *euclid_title* updates
+    
+    # if euclid_title is starting this frame...
+    if euclid_title.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        euclid_title.frameNStart = frameN  # exact frame index
+        euclid_title.tStart = t  # local t and not account for scr refresh
+        euclid_title.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(euclid_title, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        euclid_title.status = STARTED
+        euclid_title.setAutoDraw(True)
+    
+    # if euclid_title is active this frame...
+    if euclid_title.status == STARTED:
+        # update params
+        pass
+    
+    # *euclid_button* updates
+    
+    # if euclid_button is starting this frame...
+    if euclid_button.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        euclid_button.frameNStart = frameN  # exact frame index
+        euclid_button.tStart = t  # local t and not account for scr refresh
+        euclid_button.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(euclid_button, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        euclid_button.status = STARTED
+        euclid_button.setAutoDraw(True)
+    
+    # if euclid_button is active this frame...
+    if euclid_button.status == STARTED:
+        # update params
+        pass
+    
+    # *euclid_ready* updates
+    
+    # if euclid_ready is starting this frame...
+    if euclid_ready.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        euclid_ready.frameNStart = frameN  # exact frame index
+        euclid_ready.tStart = t  # local t and not account for scr refresh
+        euclid_ready.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(euclid_ready, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        euclid_ready.status = STARTED
+        euclid_ready.setAutoDraw(True)
+    
+    # if euclid_ready is active this frame...
+    if euclid_ready.status == STARTED:
+        # update params
+        pass
+    # *euclid_mouse* updates
+    
+    # if euclid_mouse is starting this frame...
+    if euclid_mouse.status == NOT_STARTED and t >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        euclid_mouse.frameNStart = frameN  # exact frame index
+        euclid_mouse.tStart = t  # local t and not account for scr refresh
+        euclid_mouse.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(euclid_mouse, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        euclid_mouse.status = STARTED
+        euclid_mouse.mouseClock.reset()
+        prevButtonState = euclid_mouse.getPressed()  # if button is down already this ISN'T a new click
+    if euclid_mouse.status == STARTED:  # only update if started and not finished!
+        buttons = euclid_mouse.getPressed()
+        if buttons != prevButtonState:  # button state changed?
+            prevButtonState = buttons
+            if sum(buttons) > 0:  # state changed to a new click
+                # check if the mouse was inside our 'clickable' objects
+                gotValidClick = False
+                clickableList = environmenttools.getFromNames(euclid_button, namespace=locals())
+                for obj in clickableList:
+                    # is this object clicked on?
+                    if obj.contains(euclid_mouse):
+                        gotValidClick = True
+                        euclid_mouse.clicked_name.append(obj.name)
+                if gotValidClick:  
+                    continueRoutine = False  # end routine on response
+    
+    # *euclid_text* updates
+    
+    # if euclid_text is starting this frame...
+    if euclid_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        euclid_text.frameNStart = frameN  # exact frame index
+        euclid_text.tStart = t  # local t and not account for scr refresh
+        euclid_text.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(euclid_text, 'tStartRefresh')  # time at next scr refresh
+        # add timestamp to datafile
+        thisExp.timestampOnFlip(win, 'euclid_text.started')
+        # update status
+        euclid_text.status = STARTED
+        euclid_text.setAutoDraw(True)
+    
+    # if euclid_text is active this frame...
+    if euclid_text.status == STARTED:
+        # update params
+        pass
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+        if eyetracker:
+            eyetracker.setConnectionState(False)
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        routineForceEnded = True
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in instruct_euclidComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# --- Ending Routine "instruct_euclid" ---
+for thisComponent in instruct_euclidComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+# store data for thisExp (ExperimentHandler)
+thisExp.nextEntry()
+# the Routine "instruct_euclid" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
+
+# --- Prepare to start Routine "instruct_nim" ---
+continueRoutine = True
+# update component parameters for each repeat
+# Run 'Begin Routine' code from nim_code
+# skip instructions if not Nim condition
+if int(expInfo['session']) % 2 != 1:
+    continueRoutine = False
+# setup some python lists for storing info about the nim_mouse
+nim_mouse.clicked_name = []
+gotValidClick = False  # until a click is received
+nim_text.setText('In this section you play a new game called "Euclid".\n\nThe rules of Nim are the same as the rules of Wythoff\'s (the game you\'ve been playing) except diagonal moves aren\'t possible.\n\nPlease play as best you can!')
+# keep track of which components have finished
+instruct_nimComponents = [nim_title, nim_button, nim_ready, nim_mouse, nim_text]
+for thisComponent in instruct_nimComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+frameN = -1
+
+# --- Run Routine "instruct_nim" ---
+routineForceEnded = not continueRoutine
+while continueRoutine:
+    # get current time
+    t = routineTimer.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *nim_title* updates
+    
+    # if nim_title is starting this frame...
+    if nim_title.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        nim_title.frameNStart = frameN  # exact frame index
+        nim_title.tStart = t  # local t and not account for scr refresh
+        nim_title.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(nim_title, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        nim_title.status = STARTED
+        nim_title.setAutoDraw(True)
+    
+    # if nim_title is active this frame...
+    if nim_title.status == STARTED:
+        # update params
+        pass
+    
+    # *nim_button* updates
+    
+    # if nim_button is starting this frame...
+    if nim_button.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        nim_button.frameNStart = frameN  # exact frame index
+        nim_button.tStart = t  # local t and not account for scr refresh
+        nim_button.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(nim_button, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        nim_button.status = STARTED
+        nim_button.setAutoDraw(True)
+    
+    # if nim_button is active this frame...
+    if nim_button.status == STARTED:
+        # update params
+        pass
+    
+    # *nim_ready* updates
+    
+    # if nim_ready is starting this frame...
+    if nim_ready.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        nim_ready.frameNStart = frameN  # exact frame index
+        nim_ready.tStart = t  # local t and not account for scr refresh
+        nim_ready.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(nim_ready, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        nim_ready.status = STARTED
+        nim_ready.setAutoDraw(True)
+    
+    # if nim_ready is active this frame...
+    if nim_ready.status == STARTED:
+        # update params
+        pass
+    # *nim_mouse* updates
+    
+    # if nim_mouse is starting this frame...
+    if nim_mouse.status == NOT_STARTED and t >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        nim_mouse.frameNStart = frameN  # exact frame index
+        nim_mouse.tStart = t  # local t and not account for scr refresh
+        nim_mouse.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(nim_mouse, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        nim_mouse.status = STARTED
+        nim_mouse.mouseClock.reset()
+        prevButtonState = nim_mouse.getPressed()  # if button is down already this ISN'T a new click
+    if nim_mouse.status == STARTED:  # only update if started and not finished!
+        buttons = nim_mouse.getPressed()
+        if buttons != prevButtonState:  # button state changed?
+            prevButtonState = buttons
+            if sum(buttons) > 0:  # state changed to a new click
+                # check if the mouse was inside our 'clickable' objects
+                gotValidClick = False
+                clickableList = environmenttools.getFromNames(nim_button, namespace=locals())
+                for obj in clickableList:
+                    # is this object clicked on?
+                    if obj.contains(nim_mouse):
+                        gotValidClick = True
+                        nim_mouse.clicked_name.append(obj.name)
+                if gotValidClick:  
+                    continueRoutine = False  # end routine on response
+    
+    # *nim_text* updates
+    
+    # if nim_text is starting this frame...
+    if nim_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        nim_text.frameNStart = frameN  # exact frame index
+        nim_text.tStart = t  # local t and not account for scr refresh
+        nim_text.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(nim_text, 'tStartRefresh')  # time at next scr refresh
+        # add timestamp to datafile
+        thisExp.timestampOnFlip(win, 'nim_text.started')
+        # update status
+        nim_text.status = STARTED
+        nim_text.setAutoDraw(True)
+    
+    # if nim_text is active this frame...
+    if nim_text.status == STARTED:
+        # update params
+        pass
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+        if eyetracker:
+            eyetracker.setConnectionState(False)
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        routineForceEnded = True
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in instruct_nimComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# --- Ending Routine "instruct_nim" ---
+for thisComponent in instruct_nimComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+# store data for thisExp (ExperimentHandler)
+thisExp.nextEntry()
+# the Routine "instruct_nim" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
+
 # set up handler to look after randomisation of conditions etc
 double_click_4 = data.TrialHandler(nReps=2.0, method='sequential', 
     extraInfo=expInfo, originPath=-1,
@@ -7855,7 +8349,7 @@ for thisDouble_click_4 in double_click_4:
     # setup some python lists for storing info about the mouse_4
     mouse_4.clicked_name = []
     gotValidClick = False  # until a click is received
-    section_4_text.setText('In this last section you will be playing a game with new rules. Click the button below when you are ready to view the rules for the new game.')
+    section_4_text.setText('Click the button below when you are ready to start the section.')
     # keep track of which components have finished
     section_4Components = [title_4, button_4, button_4_text, mouse_4, section_4_text]
     for thisComponent in section_4Components:
@@ -8244,6 +8738,24 @@ for thisNew_game in new_games:
         
         mouse_still = True
         mouse_start = mouse.getPos()
+        
+        moves = []
+        for r in range (row): # vertical moves
+            move = (r, col)
+            if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move((row,col), move):
+                moves.append(move)
+        
+        for c in range (col): # horiz moves
+            move = (row, c)
+            if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move((row,col), move):
+                moves.append(move)
+        
+        for d in range(1, min(row, col) + 1): # diag moves
+            move = (row - d, col - d)
+            if section != 4:
+                moves.append(move)
+        
+        
         piece.setPos(((col-7)/17, (15-row-8)/17))
         # setup some python lists for storing info about the mouse
         mouse.x = []
@@ -8295,7 +8807,21 @@ for thisNew_game in new_games:
                                     continueRoutine = False
             
             # draw game board
-            for square in squares:
+            for i, square in enumerate(squares):
+                if square_coords[i] == (0,0):
+                    square.fillColor = 'lightgreen'
+                    square.draw()
+                elif square_coords[i] in moves:
+                    square.lineWidth == 1
+                    #if sum(square_coords[i]) % 2 == 0:
+                        #square.fillColor = 'gray'
+                    #else:
+                        #square.fillColor = 'dimgray'
+                else:
+                    if sum(square_coords[i]) % 2 == 0:
+                        square.fillColor = 'lightgray'
+                    else:
+                        square.fillColor = 'darkgray'
                 square.draw()
             
             # *piece* updates
