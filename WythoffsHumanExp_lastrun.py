@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Tue Jan 23 16:58:27 2024
+    on Wed Jan 24 16:09:02 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -2469,16 +2469,18 @@ for thisPractice_game in practice_games:
                     square.fillColor = 'lightgreen'
                     square.draw()
                 elif square_coords[i] in moves:
-                    square.lineWidth == 1
-                    #if sum(square_coords[i]) % 2 == 0:
-                        #square.fillColor = 'gray'
-                    #else:
-                        #square.fillColor = 'dimgray'
-                else:
+            #        square.lineWidth = 1
+            #        square.lineColor = 'black'
                     if sum(square_coords[i]) % 2 == 0:
-                        square.fillColor = 'lightgray'
+                        square.fillColor = (0.6550, 0.6550, 0.8550)
                     else:
-                        square.fillColor = 'darkgray'
+                        square.fillColor = (0.3255, 0.3255, 0.5255)
+                    square.draw()
+            #    else:
+            #        if sum(square_coords[i]) % 2 == 0:
+            #            square.fillColor = 'lightgray'
+            #        else:
+            #            square.fillColor = 'darkgray'
                 square.draw()
             
             # *piece* updates
@@ -2585,6 +2587,15 @@ for thisPractice_game in practice_games:
             df.loc[len(df) - 1, 'RT'] = RT
             df.loc[len(df) - 1, 'DT'] = timer.getTime()
             #print(df.to_string())
+        
+        for i, square in enumerate(squares):
+            if square_coords[i] == (0,0):
+                square.fillColor = 'lightgreen'
+            else:
+                if sum(square_coords[i]) % 2 == 0:
+                    square.fillColor = 'lightgray'
+                else:
+                    square.fillColor = 'darkgray'
         # store data for practice_turns (TrialHandler)
         practice_turns.addData('mouse.x', mouse.x)
         practice_turns.addData('mouse.y', mouse.y)
@@ -3808,16 +3819,18 @@ for thisGame in games:
                     square.fillColor = 'lightgreen'
                     square.draw()
                 elif square_coords[i] in moves:
-                    square.lineWidth == 1
-                    #if sum(square_coords[i]) % 2 == 0:
-                        #square.fillColor = 'gray'
-                    #else:
-                        #square.fillColor = 'dimgray'
-                else:
+            #        square.lineWidth = 1
+            #        square.lineColor = 'black'
                     if sum(square_coords[i]) % 2 == 0:
-                        square.fillColor = 'lightgray'
+                        square.fillColor = (0.6550, 0.6550, 0.8550)
                     else:
-                        square.fillColor = 'darkgray'
+                        square.fillColor = (0.3255, 0.3255, 0.5255)
+                    square.draw()
+            #    else:
+            #        if sum(square_coords[i]) % 2 == 0:
+            #            square.fillColor = 'lightgray'
+            #        else:
+            #            square.fillColor = 'darkgray'
                 square.draw()
             
             # *piece* updates
@@ -3924,6 +3937,15 @@ for thisGame in games:
             df.loc[len(df) - 1, 'RT'] = RT
             df.loc[len(df) - 1, 'DT'] = timer.getTime()
             #print(df.to_string())
+        
+        for i, square in enumerate(squares):
+            if square_coords[i] == (0,0):
+                square.fillColor = 'lightgreen'
+            else:
+                if sum(square_coords[i]) % 2 == 0:
+                    square.fillColor = 'lightgray'
+                else:
+                    square.fillColor = 'darkgray'
         # store data for turns (TrialHandler)
         turns.addData('mouse.x', mouse.x)
         turns.addData('mouse.y', mouse.y)
@@ -7144,16 +7166,18 @@ for thisMore_game in more_games:
                     square.fillColor = 'lightgreen'
                     square.draw()
                 elif square_coords[i] in moves:
-                    square.lineWidth == 1
-                    #if sum(square_coords[i]) % 2 == 0:
-                        #square.fillColor = 'gray'
-                    #else:
-                        #square.fillColor = 'dimgray'
-                else:
+            #        square.lineWidth = 1
+            #        square.lineColor = 'black'
                     if sum(square_coords[i]) % 2 == 0:
-                        square.fillColor = 'lightgray'
+                        square.fillColor = (0.6550, 0.6550, 0.8550)
                     else:
-                        square.fillColor = 'darkgray'
+                        square.fillColor = (0.3255, 0.3255, 0.5255)
+                    square.draw()
+            #    else:
+            #        if sum(square_coords[i]) % 2 == 0:
+            #            square.fillColor = 'lightgray'
+            #        else:
+            #            square.fillColor = 'darkgray'
                 square.draw()
             
             # *piece* updates
@@ -7260,6 +7284,15 @@ for thisMore_game in more_games:
             df.loc[len(df) - 1, 'RT'] = RT
             df.loc[len(df) - 1, 'DT'] = timer.getTime()
             #print(df.to_string())
+        
+        for i, square in enumerate(squares):
+            if square_coords[i] == (0,0):
+                square.fillColor = 'lightgreen'
+            else:
+                if sum(square_coords[i]) % 2 == 0:
+                    square.fillColor = 'lightgray'
+                else:
+                    square.fillColor = 'darkgray'
         # store data for more_turns (TrialHandler)
         more_turns.addData('mouse.x', mouse.x)
         more_turns.addData('mouse.y', mouse.y)
@@ -8812,16 +8845,18 @@ for thisNew_game in new_games:
                     square.fillColor = 'lightgreen'
                     square.draw()
                 elif square_coords[i] in moves:
-                    square.lineWidth == 1
-                    #if sum(square_coords[i]) % 2 == 0:
-                        #square.fillColor = 'gray'
-                    #else:
-                        #square.fillColor = 'dimgray'
-                else:
+            #        square.lineWidth = 1
+            #        square.lineColor = 'black'
                     if sum(square_coords[i]) % 2 == 0:
-                        square.fillColor = 'lightgray'
+                        square.fillColor = (0.6550, 0.6550, 0.8550)
                     else:
-                        square.fillColor = 'darkgray'
+                        square.fillColor = (0.3255, 0.3255, 0.5255)
+                    square.draw()
+            #    else:
+            #        if sum(square_coords[i]) % 2 == 0:
+            #            square.fillColor = 'lightgray'
+            #        else:
+            #            square.fillColor = 'darkgray'
                 square.draw()
             
             # *piece* updates
@@ -8928,6 +8963,15 @@ for thisNew_game in new_games:
             df.loc[len(df) - 1, 'RT'] = RT
             df.loc[len(df) - 1, 'DT'] = timer.getTime()
             #print(df.to_string())
+        
+        for i, square in enumerate(squares):
+            if square_coords[i] == (0,0):
+                square.fillColor = 'lightgreen'
+            else:
+                if sum(square_coords[i]) % 2 == 0:
+                    square.fillColor = 'lightgray'
+                else:
+                    square.fillColor = 'darkgray'
         # store data for turns_4 (TrialHandler)
         turns_4.addData('mouse.x', mouse.x)
         turns_4.addData('mouse.y', mouse.y)
