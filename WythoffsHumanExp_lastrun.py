@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Wed Jan 24 16:09:02 2024
+    on Thu Jan 25 09:51:00 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -134,7 +134,9 @@ square_coords = []
 for row in range(15):
     for col in range(15):
         
-        if (row + col) % 2 == 0:
+        if (row, col) == (0, 0):
+            color = 'lightgreen'
+        elif (row + col) % 2 == 0:
             color = 'lightgray'
         else:
             color = 'darkgray'
@@ -1609,6 +1611,25 @@ routineTimer.reset()
 # --- Prepare to start Routine "tutorial" ---
 continueRoutine = True
 # update component parameters for each repeat
+# Run 'Begin Routine' code from tutorial_code
+row = 4
+col = 7
+
+moves = []
+for r in range (row): # vertical moves
+    move = (r, col)
+    if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move((row,col), move):
+        moves.append(move)
+
+for c in range (col): # horiz moves
+    move = (row, c)
+    if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move((row,col), move):
+        moves.append(move)
+
+for d in range(1, min(row, col) + 1): # diag moves
+    move = (row - d, col - d)
+    if section != 4:
+        moves.append(move)
 # setup some python lists for storing info about the tutorial_mouse
 tutorial_mouse.clicked_name = []
 gotValidClick = False  # until a click is received
@@ -1636,7 +1657,14 @@ while continueRoutine:
     frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
     # update/draw components on each frame
     # Run 'Each Frame' code from tutorial_code
-    for square in squares:
+    for i, square in enumerate(squares):
+        if square_coords[i] == (0,0):
+            square.fillColor = 'lightgreen'
+        elif square_coords[i] in moves:
+            if sum(square_coords[i]) % 2 == 0:
+                square.fillColor = (0.6550, 0.8550, 0.6550)
+            else:
+                square.fillColor = (0.3255, 0.5255, 0.3255)
         square.draw()
     
     # *board_outline* updates
@@ -1997,6 +2025,15 @@ while continueRoutine:
 for thisComponent in tutorialComponents:
     if hasattr(thisComponent, "setAutoDraw"):
         thisComponent.setAutoDraw(False)
+# Run 'End Routine' code from tutorial_code
+for i, square in enumerate(squares):
+    if square_coords[i] == (0,0):
+        square.fillColor = 'lightgreen'
+    else:
+        if sum(square_coords[i]) % 2 == 0:
+            square.fillColor = 'lightgray'
+        else:
+            square.fillColor = 'darkgray'
 # store data for thisExp (ExperimentHandler)
 thisExp.nextEntry()
 # the Routine "tutorial" was not non-slip safe, so reset the non-slip timer
@@ -2467,20 +2504,11 @@ for thisPractice_game in practice_games:
             for i, square in enumerate(squares):
                 if square_coords[i] == (0,0):
                     square.fillColor = 'lightgreen'
-                    square.draw()
                 elif square_coords[i] in moves:
-            #        square.lineWidth = 1
-            #        square.lineColor = 'black'
                     if sum(square_coords[i]) % 2 == 0:
-                        square.fillColor = (0.6550, 0.6550, 0.8550)
+                        square.fillColor = (0.6550, 0.8550, 0.6550)
                     else:
-                        square.fillColor = (0.3255, 0.3255, 0.5255)
-                    square.draw()
-            #    else:
-            #        if sum(square_coords[i]) % 2 == 0:
-            #            square.fillColor = 'lightgray'
-            #        else:
-            #            square.fillColor = 'darkgray'
+                        square.fillColor = (0.3255, 0.5255, 0.3255)
                 square.draw()
             
             # *piece* updates
@@ -3341,7 +3369,7 @@ for thisDouble_click_1 in double_click_1:
     gotValidClick = False  # until a click is received
     section_1_text.setText('Click the button below when you are ready to start playing.')
     # Run 'Begin Routine' code from section_1_code
-    num_games = 30 # must be even
+    num_games = 2 # must be even
     assert(num_games % 2 == 0)
     
     # generate shuffled list of who starts each game
@@ -3817,20 +3845,11 @@ for thisGame in games:
             for i, square in enumerate(squares):
                 if square_coords[i] == (0,0):
                     square.fillColor = 'lightgreen'
-                    square.draw()
                 elif square_coords[i] in moves:
-            #        square.lineWidth = 1
-            #        square.lineColor = 'black'
                     if sum(square_coords[i]) % 2 == 0:
-                        square.fillColor = (0.6550, 0.6550, 0.8550)
+                        square.fillColor = (0.6550, 0.8550, 0.6550)
                     else:
-                        square.fillColor = (0.3255, 0.3255, 0.5255)
-                    square.draw()
-            #    else:
-            #        if sum(square_coords[i]) % 2 == 0:
-            #            square.fillColor = 'lightgray'
-            #        else:
-            #            square.fillColor = 'darkgray'
+                        square.fillColor = (0.3255, 0.5255, 0.3255)
                 square.draw()
             
             # *piece* updates
@@ -7164,20 +7183,11 @@ for thisMore_game in more_games:
             for i, square in enumerate(squares):
                 if square_coords[i] == (0,0):
                     square.fillColor = 'lightgreen'
-                    square.draw()
                 elif square_coords[i] in moves:
-            #        square.lineWidth = 1
-            #        square.lineColor = 'black'
                     if sum(square_coords[i]) % 2 == 0:
-                        square.fillColor = (0.6550, 0.6550, 0.8550)
+                        square.fillColor = (0.6550, 0.8550, 0.6550)
                     else:
-                        square.fillColor = (0.3255, 0.3255, 0.5255)
-                    square.draw()
-            #    else:
-            #        if sum(square_coords[i]) % 2 == 0:
-            #            square.fillColor = 'lightgray'
-            #        else:
-            #            square.fillColor = 'darkgray'
+                        square.fillColor = (0.3255, 0.5255, 0.3255)
                 square.draw()
             
             # *piece* updates
@@ -8187,7 +8197,7 @@ if int(expInfo['session']) % 2 != 1:
 # setup some python lists for storing info about the nim_mouse
 nim_mouse.clicked_name = []
 gotValidClick = False  # until a click is received
-nim_text.setText('In this section you play a new game called "Euclid".\n\nThe rules of Nim are the same as the rules of Wythoff\'s (the game you\'ve been playing) except diagonal moves aren\'t possible.\n\nPlease play as best you can!')
+nim_text.setText('In this section you play a new game called "Nim".\n\nThe rules of Nim are the same as the rules of Wythoff\'s (the game you\'ve been playing) except diagonal moves aren\'t possible.\n\nPlease play as best you can!')
 # keep track of which components have finished
 instruct_nimComponents = [nim_title, nim_button, nim_ready, nim_mouse, nim_text]
 for thisComponent in instruct_nimComponents:
@@ -8843,20 +8853,11 @@ for thisNew_game in new_games:
             for i, square in enumerate(squares):
                 if square_coords[i] == (0,0):
                     square.fillColor = 'lightgreen'
-                    square.draw()
                 elif square_coords[i] in moves:
-            #        square.lineWidth = 1
-            #        square.lineColor = 'black'
                     if sum(square_coords[i]) % 2 == 0:
-                        square.fillColor = (0.6550, 0.6550, 0.8550)
+                        square.fillColor = (0.6550, 0.8550, 0.6550)
                     else:
-                        square.fillColor = (0.3255, 0.3255, 0.5255)
-                    square.draw()
-            #    else:
-            #        if sum(square_coords[i]) % 2 == 0:
-            #            square.fillColor = 'lightgray'
-            #        else:
-            #            square.fillColor = 'darkgray'
+                        square.fillColor = (0.3255, 0.5255, 0.3255)
                 square.draw()
             
             # *piece* updates
