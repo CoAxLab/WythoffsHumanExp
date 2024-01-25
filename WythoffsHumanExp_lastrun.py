@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Thu Jan 25 09:51:00 2024
+    on Thu Jan 25 11:15:26 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -410,7 +410,7 @@ def euclid_move(pos1, pos2):
     
     else:
         if r1 == c1:
-            if r1 == 0 and c2 == c1: return True
+            if r2 == 0 and c2 == c1: return True
             if c2 == 0 and r2 == r1: return True
             return False
         
@@ -606,7 +606,7 @@ def euclid_move(pos1, pos2):
     
     else:
         if r1 == c1:
-            if r1 == 0 and c2 == c1: return True
+            if r2 == 0 and c2 == c1: return True
             if c2 == 0 and r2 == r1: return True
             return False
         
@@ -1059,7 +1059,7 @@ def euclid_move(pos1, pos2):
     
     else:
         if r1 == c1:
-            if r1 == 0 and c2 == c1: return True
+            if r2 == 0 and c2 == c1: return True
             if c2 == 0 and r2 == r1: return True
             return False
         
@@ -1319,7 +1319,7 @@ def euclid_move(pos1, pos2):
     
     else:
         if r1 == c1:
-            if r1 == 0 and c2 == c1: return True
+            if r2 == 0 and c2 == c1: return True
             if c2 == 0 and r2 == r1: return True
             return False
         
