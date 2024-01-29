@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Thu Jan 25 11:15:26 2024
+    on Mon Jan 29 16:39:51 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -33,29 +33,6 @@ import sys  # to get file system encoding
 import psychopy.iohub as io
 from psychopy.hardware import keyboard
 
-# Run 'Before Experiment' code from setup_code
-import numpy as np
-import pandas as pd
-
-# create tidy DataFrame to hold game record
-df = pd.DataFrame()
-df['session'] = []
-df['section'] = []
-df['type'] = []
-df['game'] = []
-df['ref_game'] = []
-df['move_num'] = []
-df['player'] = []
-df['start_row'] = []
-df['start_col'] = []
-df['end_row'] = []
-df['end_col'] = []
-df['RT'] = []
-df['DT'] = []
-df['winner'] = []
-df['chosen_winner'] = []
-df = df.astype('object')
-#print(df)
 
 
 # Ensure that relative paths start from the same directory as this script
@@ -1442,6 +1419,9 @@ continueRoutine = True
 # update component parameters for each repeat
 # Run 'Begin Routine' code from setup_code
 import random
+import numpy as np
+import pandas as pd
+
 
 npc_starts = [False, True, False]
 num_games = len(npc_starts)
@@ -1452,6 +1432,26 @@ visibility = 1 # pieces are visible for Section 0/1
 section = 0 # variable for experiment section
 move_duration = 1 # how long moves take
 end_pause_duration = 0.75 # game-end pause amt
+
+# create tidy DataFrame to hold game record
+df = pd.DataFrame()
+df['session'] = []
+df['section'] = []
+df['type'] = []
+df['game'] = []
+df['ref_game'] = []
+df['move_num'] = []
+df['player'] = []
+df['start_row'] = []
+df['start_col'] = []
+df['end_row'] = []
+df['end_col'] = []
+df['RT'] = []
+df['DT'] = []
+df['winner'] = []
+df['chosen_winner'] = []
+df = df.astype('object')
+#print(df)
 # setup some python lists for storing info about the start_mouse
 start_mouse.clicked_name = []
 gotValidClick = False  # until a click is received
@@ -3369,7 +3369,7 @@ for thisDouble_click_1 in double_click_1:
     gotValidClick = False  # until a click is received
     section_1_text.setText('Click the button below when you are ready to start playing.')
     # Run 'Begin Routine' code from section_1_code
-    num_games = 2 # must be even
+    num_games = 4 # must be even
     assert(num_games % 2 == 0)
     
     # generate shuffled list of who starts each game
