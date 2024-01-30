@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Tue Jan 30 13:29:27 2024
+    on Tue Jan 30 13:36:26 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -2451,7 +2451,19 @@ for thisPractice_game in practice_games:
             if section != 4:
                 moves.append(move)
         
-        
+        for i, square in enumerate(squares):
+            if square_coords[i] == (0,0):
+                square.fillColor = 'lightgreen'
+            elif section > 0 or game > 2:
+                if sum(square_coords[i]) % 2 == 0:
+                    square.fillColor = 'lightgray'
+                else:
+                    square.fillColor = 'darkgray'
+            elif square_coords[i] in moves:
+                if sum(square_coords[i]) % 2 == 0:
+                    square.fillColor = (0.6550, 0.8550, 0.6550)
+                else:
+                    square.fillColor = (0.3255, 0.5255, 0.3255)
         piece.setPos(((col-7)/17, (15-row-8)/17))
         # setup some python lists for storing info about the mouse
         mouse.x = []
@@ -2503,19 +2515,7 @@ for thisPractice_game in practice_games:
                                     continueRoutine = False
             
             # draw game board
-            for i, square in enumerate(squares):
-                if square_coords[i] == (0,0):
-                    square.fillColor = 'lightgreen'
-                elif section > 0 or game > 2:
-                    if sum(square_coords[i]) % 2 == 0:
-                        square.fillColor = 'lightgray'
-                    else:
-                        square.fillColor = 'darkgray'
-                elif square_coords[i] in moves:
-                    if sum(square_coords[i]) % 2 == 0:
-                        square.fillColor = (0.6550, 0.8550, 0.6550)
-                    else:
-                        square.fillColor = (0.3255, 0.5255, 0.3255)
+            for square in squares:
                 square.draw()
             
             # *piece* updates
@@ -3798,7 +3798,19 @@ for thisGame in games:
             if section != 4:
                 moves.append(move)
         
-        
+        for i, square in enumerate(squares):
+            if square_coords[i] == (0,0):
+                square.fillColor = 'lightgreen'
+            elif section > 0 or game > 2:
+                if sum(square_coords[i]) % 2 == 0:
+                    square.fillColor = 'lightgray'
+                else:
+                    square.fillColor = 'darkgray'
+            elif square_coords[i] in moves:
+                if sum(square_coords[i]) % 2 == 0:
+                    square.fillColor = (0.6550, 0.8550, 0.6550)
+                else:
+                    square.fillColor = (0.3255, 0.5255, 0.3255)
         piece.setPos(((col-7)/17, (15-row-8)/17))
         # setup some python lists for storing info about the mouse
         mouse.x = []
@@ -3850,19 +3862,7 @@ for thisGame in games:
                                     continueRoutine = False
             
             # draw game board
-            for i, square in enumerate(squares):
-                if square_coords[i] == (0,0):
-                    square.fillColor = 'lightgreen'
-                elif section > 0 or game > 2:
-                    if sum(square_coords[i]) % 2 == 0:
-                        square.fillColor = 'lightgray'
-                    else:
-                        square.fillColor = 'darkgray'
-                elif square_coords[i] in moves:
-                    if sum(square_coords[i]) % 2 == 0:
-                        square.fillColor = (0.6550, 0.8550, 0.6550)
-                    else:
-                        square.fillColor = (0.3255, 0.5255, 0.3255)
+            for square in squares:
                 square.draw()
             
             # *piece* updates
@@ -7142,7 +7142,19 @@ for thisMore_game in more_games:
             if section != 4:
                 moves.append(move)
         
-        
+        for i, square in enumerate(squares):
+            if square_coords[i] == (0,0):
+                square.fillColor = 'lightgreen'
+            elif section > 0 or game > 2:
+                if sum(square_coords[i]) % 2 == 0:
+                    square.fillColor = 'lightgray'
+                else:
+                    square.fillColor = 'darkgray'
+            elif square_coords[i] in moves:
+                if sum(square_coords[i]) % 2 == 0:
+                    square.fillColor = (0.6550, 0.8550, 0.6550)
+                else:
+                    square.fillColor = (0.3255, 0.5255, 0.3255)
         piece.setPos(((col-7)/17, (15-row-8)/17))
         # setup some python lists for storing info about the mouse
         mouse.x = []
@@ -7194,19 +7206,7 @@ for thisMore_game in more_games:
                                     continueRoutine = False
             
             # draw game board
-            for i, square in enumerate(squares):
-                if square_coords[i] == (0,0):
-                    square.fillColor = 'lightgreen'
-                elif section > 0 or game > 2:
-                    if sum(square_coords[i]) % 2 == 0:
-                        square.fillColor = 'lightgray'
-                    else:
-                        square.fillColor = 'darkgray'
-                elif square_coords[i] in moves:
-                    if sum(square_coords[i]) % 2 == 0:
-                        square.fillColor = (0.6550, 0.8550, 0.6550)
-                    else:
-                        square.fillColor = (0.3255, 0.5255, 0.3255)
+            for square in squares:
                 square.draw()
             
             # *piece* updates
@@ -8818,7 +8818,19 @@ for thisNew_game in new_games:
             if section != 4:
                 moves.append(move)
         
-        
+        for i, square in enumerate(squares):
+            if square_coords[i] == (0,0):
+                square.fillColor = 'lightgreen'
+            elif section > 0 or game > 2:
+                if sum(square_coords[i]) % 2 == 0:
+                    square.fillColor = 'lightgray'
+                else:
+                    square.fillColor = 'darkgray'
+            elif square_coords[i] in moves:
+                if sum(square_coords[i]) % 2 == 0:
+                    square.fillColor = (0.6550, 0.8550, 0.6550)
+                else:
+                    square.fillColor = (0.3255, 0.5255, 0.3255)
         piece.setPos(((col-7)/17, (15-row-8)/17))
         # setup some python lists for storing info about the mouse
         mouse.x = []
@@ -8870,19 +8882,7 @@ for thisNew_game in new_games:
                                     continueRoutine = False
             
             # draw game board
-            for i, square in enumerate(squares):
-                if square_coords[i] == (0,0):
-                    square.fillColor = 'lightgreen'
-                elif section > 0 or game > 2:
-                    if sum(square_coords[i]) % 2 == 0:
-                        square.fillColor = 'lightgray'
-                    else:
-                        square.fillColor = 'darkgray'
-                elif square_coords[i] in moves:
-                    if sum(square_coords[i]) % 2 == 0:
-                        square.fillColor = (0.6550, 0.8550, 0.6550)
-                    else:
-                        square.fillColor = (0.3255, 0.5255, 0.3255)
+            for square in squares:
                 square.draw()
             
             # *piece* updates
