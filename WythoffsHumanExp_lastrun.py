@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Tue Jan 30 13:36:26 2024
+    on Tue Jan 30 13:44:07 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -2651,7 +2651,6 @@ for thisPractice_game in practice_games:
         #timer.reset()
         
         if npc_start or visibility == 0:
-            npc_start = False
             continueRoutine = False
         moving_piece.setOpacity(visibility)
         # keep track of which components have finished
@@ -2813,6 +2812,11 @@ for thisPractice_game in practice_games:
             action = np.random.choice(len(moves),p=probs)
             (row_new, col_new) = moves[action]
             # better to use np.random.Generator.choice
+        
+        # choose fixed move if move 1 and starting
+        if npc_start == True:
+            (row_new, col_new) = start_locs[game-1][1]
+            npc_start = False
         npc.setPos(((col-7)/17, (15-row-8)/17))
         # keep track of which components have finished
         npc_waitComponents = [npc]
@@ -3998,7 +4002,6 @@ for thisGame in games:
         #timer.reset()
         
         if npc_start or visibility == 0:
-            npc_start = False
             continueRoutine = False
         moving_piece.setOpacity(visibility)
         # keep track of which components have finished
@@ -4160,6 +4163,11 @@ for thisGame in games:
             action = np.random.choice(len(moves),p=probs)
             (row_new, col_new) = moves[action]
             # better to use np.random.Generator.choice
+        
+        # choose fixed move if move 1 and starting
+        if npc_start == True:
+            (row_new, col_new) = start_locs[game-1][1]
+            npc_start = False
         npc.setPos(((col-7)/17, (15-row-8)/17))
         # keep track of which components have finished
         npc_waitComponents = [npc]
@@ -6044,7 +6052,6 @@ for thisIntervention_game in intervention_games:
         #timer.reset()
         
         if npc_start or visibility == 0:
-            npc_start = False
             continueRoutine = False
         moving_piece.setOpacity(visibility)
         # keep track of which components have finished
@@ -7342,7 +7349,6 @@ for thisMore_game in more_games:
         #timer.reset()
         
         if npc_start or visibility == 0:
-            npc_start = False
             continueRoutine = False
         moving_piece.setOpacity(visibility)
         # keep track of which components have finished
@@ -7504,6 +7510,11 @@ for thisMore_game in more_games:
             action = np.random.choice(len(moves),p=probs)
             (row_new, col_new) = moves[action]
             # better to use np.random.Generator.choice
+        
+        # choose fixed move if move 1 and starting
+        if npc_start == True:
+            (row_new, col_new) = start_locs[game-1][1]
+            npc_start = False
         npc.setPos(((col-7)/17, (15-row-8)/17))
         # keep track of which components have finished
         npc_waitComponents = [npc]
@@ -9018,7 +9029,6 @@ for thisNew_game in new_games:
         #timer.reset()
         
         if npc_start or visibility == 0:
-            npc_start = False
             continueRoutine = False
         moving_piece.setOpacity(visibility)
         # keep track of which components have finished
@@ -9180,6 +9190,11 @@ for thisNew_game in new_games:
             action = np.random.choice(len(moves),p=probs)
             (row_new, col_new) = moves[action]
             # better to use np.random.Generator.choice
+        
+        # choose fixed move if move 1 and starting
+        if npc_start == True:
+            (row_new, col_new) = start_locs[game-1][1]
+            npc_start = False
         npc.setPos(((col-7)/17, (15-row-8)/17))
         # keep track of which components have finished
         npc_waitComponents = [npc]
