@@ -3146,7 +3146,7 @@
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
-        <Param val="In this section you will play a new game called &quot;Euclid&quot;.&amp;#10;&amp;#10;The rules of Euclid are the same as the rules of Wythoff's (the game you've been playing) except diagonal moves aren't possible, and distance moved must be a multiple of the minimum coordinate of the current board position (the top left coordinate is 0,0).&amp;#10;&amp;#10;Please play as best you can!" valType="str" updates="set every repeat" name="text"/>
+        <Param val="In this section you will play a new game called &quot;Euclid&quot;.&amp;#10;&amp;#10;The rules of Euclid are the same as the rules of Wythoff's (the game you've been playing) except diagonal moves aren't possible. Also, the number of spaces moved in the upwards direction must be a multiple of how many spaces you are from reaching the left edge. Spaces moved in the left direction must be a multiple of how many spaces you are from reaching the top edge. Moves past the edge aren't possible.&amp;#10;&amp;#10;Please play as best you can!" valType="str" updates="set every repeat" name="text"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="1.175" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
