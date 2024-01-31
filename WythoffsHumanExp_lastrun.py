@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Tue Jan 30 13:44:07 2024
+    on Wed Jan 31 13:39:54 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -2240,11 +2240,10 @@ for thisPractice_game in practice_games:
     
     #row = random.randint(0,14)
     #col = random.randint(0,14)
+    #while row == col == 0:
+    #    row = random.randint(0,14)
+    #    col = random.randint(0,14)
     (row, col) = start_locs[game-1][0]
-    
-    while row == col == 0:
-        row = random.randint(0,14)
-        col = random.randint(0,14)
     
     row_new = row
     col_new = col
@@ -3354,7 +3353,7 @@ for thisPractice_game in practice_games:
 
 
 # set up handler to look after randomisation of conditions etc
-double_click_1 = data.TrialHandler(nReps=2.0, method='sequential', 
+double_click_1 = data.TrialHandler(nReps=1.0, method='sequential', 
     extraInfo=expInfo, originPath=-1,
     trialList=[None],
     seed=None, name='double_click_1')
@@ -3380,15 +3379,22 @@ for thisDouble_click_1 in double_click_1:
     gotValidClick = False  # until a click is received
     section_1_text.setText('Click the button below when you are ready to start playing.')
     # Run 'Begin Routine' code from section_1_code
-    num_games = 4 # must be even
+    num_games = 2 # must be even
     assert(num_games % 2 == 0)
     
     # generate shuffled list of who starts each game
-    npc_starts = []
-    for game in range(int(num_games/2)):
-        npc_starts.append(True)
-        npc_starts.append(False)
-    random.shuffle(npc_starts)
+    #npc_starts = []
+    #for game in range(int(num_games/2)):
+    #    npc_starts.append(True)
+    #    npc_starts.append(False)
+    #random.shuffle(npc_starts)
+    
+    #npc_starts = [True, True, False, False, False, True, True, True, False, True, False, False, True, False, True, True, False, False, False, True, False, False, True, True, False, True, False, False, True, True]
+    #start_locs = [[(9, 6), (7, 4)], [(13, 2), (7, 2)], [(4, 12)], [(7, 2)], [(12, 3)], [(7, 10), (7, 8)], [(2, 14), (2, 7)], [(8, 10), (7, 10)], [(12, 7)], [(1, 12), (1, 5)], [(4, 2)], [(11, 1)], [(8, 13), (5, 13)], [(1, 3)], [(4, 8), (4, 7)], [(6, 14), (6, 5)], [(8, 4)], [(5, 6)], [(6, 4)], [(4, 3), (2, 3)], [(2, 5)], [(9, 11)], [(1, 14), (1, 6)], [(3, 10), (3, 5)], [(2, 9)], [(8, 10), (8, 1)], [(10, 11)], [(3, 11)], [(4, 7), (2, 5)], [(7, 9), (7, 1)]]
+    
+    npc_starts = [True, False]
+    start_locs = [[(9, 6), (7, 4)], [(4, 12)]]
+    
     
     game = 0 # initialize game counter
     num_wins = 0 # initialize win counter
@@ -3549,7 +3555,7 @@ for thisDouble_click_1 in double_click_1:
     # store data for double_click_1 (TrialHandler)
     # the Routine "section_1" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
-# completed 2.0 repeats of 'double_click_1'
+# completed 1.0 repeats of 'double_click_1'
 
 
 # set up handler to look after randomisation of conditions etc
@@ -3591,11 +3597,10 @@ for thisGame in games:
     
     #row = random.randint(0,14)
     #col = random.randint(0,14)
+    #while row == col == 0:
+    #    row = random.randint(0,14)
+    #    col = random.randint(0,14)
     (row, col) = start_locs[game-1][0]
-    
-    while row == col == 0:
-        row = random.randint(0,14)
-        col = random.randint(0,14)
     
     row_new = row
     col_new = col
@@ -5205,7 +5210,7 @@ thisExp.nextEntry()
 routineTimer.reset()
 
 # set up handler to look after randomisation of conditions etc
-double_click_2 = data.TrialHandler(nReps=2.0, method='sequential', 
+double_click_2 = data.TrialHandler(nReps=1.0, method='sequential', 
     extraInfo=expInfo, originPath=-1,
     trialList=[None],
     seed=None, name='double_click_2')
@@ -5401,7 +5406,7 @@ for thisDouble_click_2 in double_click_2:
     # store data for double_click_2 (TrialHandler)
     # the Routine "section_2" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
-# completed 2.0 repeats of 'double_click_2'
+# completed 1.0 repeats of 'double_click_2'
 
 
 # set up handler to look after randomisation of conditions etc
@@ -6704,7 +6709,7 @@ for thisIntervention_game in intervention_games:
 
 
 # set up handler to look after randomisation of conditions etc
-double_click_3 = data.TrialHandler(nReps=2.0, method='sequential', 
+double_click_3 = data.TrialHandler(nReps=1.0, method='sequential', 
     extraInfo=expInfo, originPath=-1,
     trialList=[None],
     seed=None, name='double_click_3')
@@ -6726,12 +6731,18 @@ for thisDouble_click_3 in double_click_3:
     continueRoutine = True
     # update component parameters for each repeat
     # Run 'Begin Routine' code from code_3
-    # generate shuffled list of who starts each game
-    npc_starts = []
-    for game in range(int(num_games/2)):
-        npc_starts.append(True)
-        npc_starts.append(False)
-    random.shuffle(npc_starts)
+    ## generate shuffled list of who starts each game
+    #npc_starts = []
+    #for game in range(int(num_games/2)):
+    #    npc_starts.append(True)
+    #    npc_starts.append(False)
+    #random.shuffle(npc_starts)
+    
+    #npc_starts = [True, False, False, True, False, False, False, False, True, True, False, True, True, False, True, True, True, True, False, True, False, False, False, False, True, False, True, False, True, True]
+    #start_locs = [[(11, 8), (8, 8)], [(3, 12)], [(14, 13)], [(11, 14), (11, 3)], [(9, 5)], [(10, 13)], [(8, 6)], [(5, 6)], [(12, 7), (12, 2)], [(7, 13), (1, 13)], [(14, 10)], [(2, 7), (2, 6)], [(9, 3), (6, 0)], [(8, 9)], [(10, 2), (0, 2)], [(10, 4), (8, 4)], [(3, 1), (2, 1)], [(1, 4), (1, 0)], [(6, 8)], [(4, 5), (3, 5)], [(2, 1)], [(5, 1)], [(9, 12)], [(8, 7)], [(3, 13), (3, 5)], [(1, 6)], [(5, 11), (3, 9)], [(8, 6)], [(2, 12), (0, 12)], [(1, 14), (1, 9)]]
+    npc_starts = [True, False]
+    start_locs = [[(11, 8), (8, 8)], [(3, 12)]]
+    
     
     game = 0 # initialize game counter
     num_wins = 0 # initialize win counter
@@ -6896,7 +6907,7 @@ for thisDouble_click_3 in double_click_3:
     # store data for double_click_3 (TrialHandler)
     # the Routine "section_3" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
-# completed 2.0 repeats of 'double_click_3'
+# completed 1.0 repeats of 'double_click_3'
 
 
 # set up handler to look after randomisation of conditions etc
@@ -6938,11 +6949,10 @@ for thisMore_game in more_games:
     
     #row = random.randint(0,14)
     #col = random.randint(0,14)
+    #while row == col == 0:
+    #    row = random.randint(0,14)
+    #    col = random.randint(0,14)
     (row, col) = start_locs[game-1][0]
-    
-    while row == col == 0:
-        row = random.randint(0,14)
-        col = random.randint(0,14)
     
     row_new = row
     col_new = col
@@ -8384,7 +8394,7 @@ thisExp.nextEntry()
 routineTimer.reset()
 
 # set up handler to look after randomisation of conditions etc
-double_click_4 = data.TrialHandler(nReps=2.0, method='sequential', 
+double_click_4 = data.TrialHandler(nReps=1.0, method='sequential', 
     extraInfo=expInfo, originPath=-1,
     trialList=[None],
     seed=None, name='double_click_4')
@@ -8406,12 +8416,27 @@ for thisDouble_click_4 in double_click_4:
     continueRoutine = True
     # update component parameters for each repeat
     # Run 'Begin Routine' code from code_4
-    # generate shuffled list of who starts each game
-    npc_starts = []
-    for game in range(int(num_games/2)):
-        npc_starts.append(True)
-        npc_starts.append(False)
-    random.shuffle(npc_starts)
+    ## generate shuffled list of who starts each game
+    #npc_starts = []
+    #for game in range(int(num_games/2)):
+    #    npc_starts.append(True)
+    #    npc_starts.append(False)
+    #random.shuffle(npc_starts)
+    
+    #if int(expInfo['session']) % 2 == 1: # Nim
+    #    npc_starts = [True, False, True, False, False, True, False, True, True, True, True, False, False, False, True, True, False, False, True, True, False, False, False, True, False, True, False, True, True, False]
+    #    start_locs = [[(2, 10), (1, 10)], [(7, 11)], [(2, 10), (2, 6)], [(10, 4)], [(12, 7)], [(14, 4), (4, 4)], [(5, 14)], [(2, 1), (1, 1)], [(5, 11), (5, 5)], [(8, 10), (8, 8)], [(10, 14), (4, 14)], [(8, 11)], [(12, 9)], [(5, 14)], [(7, 8), (7, 4)], [(7, 4), (1, 4)], [(11, 2)], [(6, 9)], [(5, 9), (0, 9)], [(11, 10), (11, 5)], [(10, 12)], [(5, 9)], [(1, 8)], [(4, 13), (2, 13)], [(3, 7)], [(9, 8), (8, 8)], [(8, 13)], [(13, 1), (1, 1)], [(4, 13), (4, 1)], [(6, 13)]]
+    #else: # Euclid
+    #    npc_starts = [False, True, True, False, False, True, True, True, False, False, True, False, False, True, False, True, False, True, False, False, False, True, False, False, True, True, True, True, True, False]
+    #    start_locs = [[(11, 8)], [(4, 9), (4, 1)], [(13, 14), (13, 1)], [(4, 2)], [(14, 2)], [(7, 13), (7, 6)], [(14, 8), (6, 8)], [(14, 5), (4, 5)], [(1, 8)], [(7, 11)], [(5, 13), (5, 8)], [(8, 11)], [(7, 6)], [(1, 7), (1, 2)], [(3, 14)], [(7, 10), (7, 3)], [(7, 11)], [(4, 14), (4, 6)], [(10, 2)], [(6, 12)], [(13, 7)], [(1, 9), (1, 8)], [(12, 1)], [(14, 13)], [(7, 4), (3, 4)], [(8, 9), (8, 1)], [(9, 14), (9, 5)], [(5, 3), (2, 3)], [(12, 4), (0, 4)], [(14, 9)]]
+    
+    if int(expInfo['session']) % 2 == 1: # Nim
+        npc_starts = [True, False]
+        start_locs = [[(2, 10), (1, 10)], [(7, 11)]]
+    else: # Euclid
+        npc_starts = [False, True]
+        start_locs = [[(11, 8)], [(4, 9), (4, 1)]]
+    
     
     game = 0 # initialize game counter
     num_wins = 0 # initialize win counter
@@ -8576,7 +8601,7 @@ for thisDouble_click_4 in double_click_4:
     # store data for double_click_4 (TrialHandler)
     # the Routine "section_4" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
-# completed 2.0 repeats of 'double_click_4'
+# completed 1.0 repeats of 'double_click_4'
 
 
 # set up handler to look after randomisation of conditions etc
@@ -8618,11 +8643,10 @@ for thisNew_game in new_games:
     
     #row = random.randint(0,14)
     #col = random.randint(0,14)
+    #while row == col == 0:
+    #    row = random.randint(0,14)
+    #    col = random.randint(0,14)
     (row, col) = start_locs[game-1][0]
-    
-    while row == col == 0:
-        row = random.randint(0,14)
-        col = random.randint(0,14)
     
     row_new = row
     col_new = col
