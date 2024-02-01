@@ -2021,15 +2021,15 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="choice_mouse.setPos({&quot;newPos&quot;: [0, 0]});&amp;#10;new psychoJS.eventManager.Mouse({&quot;visible&quot;: true});&amp;#10;timer = new core.Clock();&amp;#10;timer.reset();&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="choice_mouse.setPos(newPos=(0,0))&amp;#10;event.Mouse(visible=True)&amp;#10;&amp;#10;timer = core.Clock()&amp;#10;timer.reset()" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="if (((Number.parseInt(expInfo[&quot;session&quot;]) % 3) === 2)) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;choice_mouse.setPos({&quot;newPos&quot;: [0, 0]});&amp;#10;new psychoJS.eventManager.Mouse({&quot;visible&quot;: true});&amp;#10;timer = new core.Clock();&amp;#10;timer.reset();&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="if int(expInfo['session']) % 3 == 2:&amp;#10;    continueRoutine = False&amp;#10;&amp;#10;choice_mouse.setPos(newPos=(0,0))&amp;#10;event.Mouse(visible=True)&amp;#10;&amp;#10;timer = core.Clock()&amp;#10;timer.reset()" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="if ((npc_start === false)) {&amp;#10;    df = df.push(new pd.Series({&quot;dtype&quot;: &quot;object&quot;}));&amp;#10;    df.loc[[(df.length - 1), &quot;session&quot;]] = expInfo[&quot;session&quot;];&amp;#10;    df.loc[[(df.length - 1), &quot;section&quot;]] = section;&amp;#10;    if ((visibility === 0)) {&amp;#10;        df.loc[[(df.length - 1), &quot;type&quot;]] = &quot;img&quot;;&amp;#10;    } else {&amp;#10;        df.loc[[(df.length - 1), &quot;type&quot;]] = &quot;mem&quot;;&amp;#10;    }&amp;#10;    df.loc[[(df.length - 1), &quot;game&quot;]] = game_idx;&amp;#10;    df.loc[[(df.length - 1), &quot;ref_game&quot;]] = game_idxs[(game_idx - 1)];&amp;#10;    df.loc[[(df.length - 1), &quot;start_row&quot;]] = ref_df.loc[[0, &quot;start_row&quot;]];&amp;#10;    df.loc[[(df.length - 1), &quot;start_col&quot;]] = ref_df.loc[[0, &quot;start_col&quot;]];&amp;#10;    if ((choice_mouse.clicked_name[0] === &quot;me_button&quot;)) {&amp;#10;        df.loc[[(df.length - 1), &quot;chosen_winner&quot;]] = &quot;human&quot;;&amp;#10;    } else {&amp;#10;        df.loc[[(df.length - 1), &quot;chosen_winner&quot;]] = &quot;AI&quot;;&amp;#10;    }&amp;#10;    df.loc[[(df.length - 1), &quot;DT&quot;]] = timer.getTime();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="if npc_start == False:&amp;#10;    df = df.append(pd.Series(dtype = 'object'), ignore_index = True)&amp;#10;    df.loc[len(df) - 1, 'session'] = expInfo['session']&amp;#10;    df.loc[len(df) - 1, 'section'] = section&amp;#10;    if visibility == 0:&amp;#10;        df.loc[len(df) - 1, 'type'] = 'img'&amp;#10;    else:&amp;#10;        df.loc[len(df) - 1, 'type'] = 'mem'&amp;#10;    df.loc[len(df) - 1, 'game'] = game_idx&amp;#10;    df.loc[len(df) - 1, 'ref_game'] = game_idxs[game_idx - 1]&amp;#10;    df.loc[len(df) - 1, 'start_row'] = ref_df.loc[0, 'start_row']&amp;#10;    df.loc[len(df) - 1, 'start_col'] = ref_df.loc[0, 'start_col']&amp;#10;    if choice_mouse.clicked_name[0] == 'me_button':&amp;#10;        df.loc[len(df) - 1, 'chosen_winner'] = 'human'&amp;#10;    else:&amp;#10;        df.loc[len(df) - 1, 'chosen_winner'] = 'AI'&amp;#10;    df.loc[len(df) - 1, 'DT'] = timer.getTime()" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="if (((Number.parseInt(expInfo[&quot;session&quot;]) % 3) !== 2)) {&amp;#10;    df = df.push(new pd.Series({&quot;dtype&quot;: &quot;object&quot;}));&amp;#10;    df.loc[[(df.length - 1), &quot;session&quot;]] = expInfo[&quot;session&quot;];&amp;#10;    df.loc[[(df.length - 1), &quot;section&quot;]] = section;&amp;#10;    if (((Number.parseInt(expInfo[&quot;session&quot;]) % 3) === 0)) {&amp;#10;        df.loc[[(df.length - 1), &quot;type&quot;]] = &quot;img&quot;;&amp;#10;    } else {&amp;#10;        df.loc[[(df.length - 1), &quot;type&quot;]] = &quot;rep&quot;;&amp;#10;    }&amp;#10;    df.loc[[(df.length - 1), &quot;game&quot;]] = game_idx;&amp;#10;    df.loc[[(df.length - 1), &quot;ref_game&quot;]] = game_idxs[(game_idx - 1)];&amp;#10;    df.loc[[(df.length - 1), &quot;start_row&quot;]] = ref_df.loc[[0, &quot;start_row&quot;]];&amp;#10;    df.loc[[(df.length - 1), &quot;start_col&quot;]] = ref_df.loc[[0, &quot;start_col&quot;]];&amp;#10;    df.loc[[(df.length - 1), &quot;winner&quot;]] = ref_df.loc[[0, &quot;winner&quot;]];&amp;#10;    if ((choice_mouse.clicked_name[0] === &quot;me_button&quot;)) {&amp;#10;        df.loc[[(df.length - 1), &quot;chosen_winner&quot;]] = &quot;human&quot;;&amp;#10;    } else {&amp;#10;        df.loc[[(df.length - 1), &quot;chosen_winner&quot;]] = &quot;AI&quot;;&amp;#10;    }&amp;#10;    df.loc[[(df.length - 1), &quot;DT&quot;]] = timer.getTime();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="if int(expInfo['session']) % 3 != 2:&amp;#10;    df = df.append(pd.Series(dtype = 'object'), ignore_index = True)&amp;#10;    df.loc[len(df) - 1, 'session'] = expInfo['session']&amp;#10;    df.loc[len(df) - 1, 'section'] = section&amp;#10;    if int(expInfo['session']) % 3 == 0:&amp;#10;        df.loc[len(df) - 1, 'type'] = 'img'&amp;#10;    else:&amp;#10;        df.loc[len(df) - 1, 'type'] = 'rep'&amp;#10;    df.loc[len(df) - 1, 'game'] = game_idx&amp;#10;    df.loc[len(df) - 1, 'ref_game'] = game_idxs[game_idx - 1]&amp;#10;    df.loc[len(df) - 1, 'start_row'] = ref_df.loc[0, 'start_row']&amp;#10;    df.loc[len(df) - 1, 'start_col'] = ref_df.loc[0, 'start_col']&amp;#10;    df.loc[len(df) - 1, 'winner'] = ref_df.loc[0, 'winner']&amp;#10;    if choice_mouse.clicked_name[0] == 'me_button':&amp;#10;        df.loc[len(df) - 1, 'chosen_winner'] = 'human'&amp;#10;    else:&amp;#10;        df.loc[len(df) - 1, 'chosen_winner'] = 'AI'&amp;#10;    df.loc[len(df) - 1, 'DT'] = timer.getTime()" valType="extendedCode" updates="constant" name="End Routine"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="who_won_code" valType="code" updates="None" name="name"/>
       </CodeComponent>
@@ -2054,7 +2054,7 @@
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
-        <Param val="Was there a blink?" valType="str" updates="constant" name="text"/>
+        <Param val="Who won?" valType="str" updates="constant" name="text"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
@@ -2106,7 +2106,7 @@
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
-        <Param val="no blink" valType="str" updates="constant" name="text"/>
+        <Param val="opponent" valType="str" updates="constant" name="text"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
@@ -2158,7 +2158,7 @@
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
-        <Param val="blink" valType="str" updates="constant" name="text"/>
+        <Param val="me" valType="str" updates="constant" name="text"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
@@ -3292,6 +3292,174 @@
         <Param val="1.175" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
     </Routine>
+    <Routine name="blink_response">
+      <CodeComponent name="blink_resp_code" plugin="None">
+        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="if (((Number.parseInt(expInfo[&quot;session&quot;]) % 3) !== 2)) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;blink_choice_mouse.setPos({&quot;newPos&quot;: [0, 0]});&amp;#10;new psychoJS.eventManager.Mouse({&quot;visible&quot;: true});&amp;#10;timer = new core.Clock();&amp;#10;timer.reset();&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="if int(expInfo['session']) % 3 != 2:&amp;#10;    continueRoutine = False&amp;#10;&amp;#10;blink_choice_mouse.setPos(newPos=(0,0))&amp;#10;event.Mouse(visible=True)&amp;#10;&amp;#10;timer = core.Clock()&amp;#10;timer.reset()" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
+        <Param val="if (((Number.parseInt(expInfo[&quot;session&quot;]) % 3) === 2)) {&amp;#10;    df = df.push(new pd.Series({&quot;dtype&quot;: &quot;object&quot;}));&amp;#10;    df.loc[[(df.length - 1), &quot;session&quot;]] = expInfo[&quot;session&quot;];&amp;#10;    df.loc[[(df.length - 1), &quot;section&quot;]] = section;&amp;#10;    df.loc[[(df.length - 1), &quot;type&quot;]] = &quot;dis&quot;;&amp;#10;    df.loc[[(df.length - 1), &quot;game&quot;]] = game_idx;&amp;#10;    df.loc[[(df.length - 1), &quot;ref_game&quot;]] = game_idxs[(game_idx - 1)];&amp;#10;    df.loc[[(df.length - 1), &quot;start_row&quot;]] = ref_df.loc[[0, &quot;start_row&quot;]];&amp;#10;    df.loc[[(df.length - 1), &quot;start_col&quot;]] = ref_df.loc[[0, &quot;start_col&quot;]];&amp;#10;    if ((blinks[game_idx] === true)) {&amp;#10;        df.loc[[(df.length - 1), &quot;winner&quot;]] = &quot;blink&quot;;&amp;#10;    } else {&amp;#10;        df.loc[[(df.length - 1), &quot;winner&quot;]] = &quot;no_blink&quot;;&amp;#10;    }&amp;#10;    if ((choice_mouse.clicked_name[0] === &quot;yes_blink_button&quot;)) {&amp;#10;        df.loc[[(df.length - 1), &quot;chosen_winner&quot;]] = &quot;blink&quot;;&amp;#10;    } else {&amp;#10;        df.loc[[(df.length - 1), &quot;chosen_winner&quot;]] = &quot;no_blink&quot;;&amp;#10;    }&amp;#10;    df.loc[[(df.length - 1), &quot;DT&quot;]] = timer.getTime();&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="if int(expInfo['session']) % 3 == 2:&amp;#10;    df = df.append(pd.Series(dtype = 'object'), ignore_index = True)&amp;#10;    df.loc[len(df) - 1, 'session'] = expInfo['session']&amp;#10;    df.loc[len(df) - 1, 'section'] = section&amp;#10;    df.loc[len(df) - 1, 'type'] = 'dis'&amp;#10;    df.loc[len(df) - 1, 'game'] = game_idx&amp;#10;    df.loc[len(df) - 1, 'ref_game'] = game_idxs[game_idx - 1]&amp;#10;    df.loc[len(df) - 1, 'start_row'] = ref_df.loc[0, 'start_row']&amp;#10;    df.loc[len(df) - 1, 'start_col'] = ref_df.loc[0, 'start_col']&amp;#10;    if blinks[game_idx] == True:&amp;#10;        df.loc[len(df) - 1, 'winner'] = 'blink'&amp;#10;    else:&amp;#10;        df.loc[len(df) - 1, 'winner'] = 'no_blink'&amp;#10;    if choice_mouse.clicked_name[0] == 'yes_blink_button':&amp;#10;        df.loc[len(df) - 1, 'chosen_winner'] = 'blink'&amp;#10;    else:&amp;#10;        df.loc[len(df) - 1, 'chosen_winner'] = 'no_blink'&amp;#10;    df.loc[len(df) - 1, 'DT'] = timer.getTime()" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="blink_resp_code" valType="code" updates="None" name="name"/>
+      </CodeComponent>
+      <TextComponent name="blink_resp_title" plugin="None">
+        <Param val="white" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Open Sans" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="0.1" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="blink_resp_title" valType="code" updates="None" name="name"/>
+        <Param val="1" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, 0.3)" valType="list" updates="constant" name="pos"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="Was there a blink?" valType="str" updates="constant" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
+      <PolygonComponent name="no_blink_button" plugin="None">
+        <Param val="center" valType="str" updates="constant" name="anchor"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="white" valType="color" updates="constant" name="fillColor"/>
+        <Param val="linear" valType="str" updates="constant" name="interpolate"/>
+        <Param val="silver" valType="color" updates="constant" name="lineColor"/>
+        <Param val="8" valType="num" updates="constant" name="lineWidth"/>
+        <Param val="4" valType="int" updates="constant" name="nVertices"/>
+        <Param val="no_blink_button" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(-0.3, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="rectangle" valType="str" updates="None" name="shape"/>
+        <Param val="(0.25, 0.1)" valType="list" updates="constant" name="size"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="list" updates="constant" name="vertices"/>
+      </PolygonComponent>
+      <TextComponent name="no_blink_text" plugin="None">
+        <Param val="gray" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Open Sans" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="0.05" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="no_blink_text" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(-0.3, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="no blink" valType="str" updates="constant" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
+      <PolygonComponent name="yes_blink_button" plugin="None">
+        <Param val="center" valType="str" updates="constant" name="anchor"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="white" valType="color" updates="constant" name="fillColor"/>
+        <Param val="linear" valType="str" updates="constant" name="interpolate"/>
+        <Param val="silver" valType="color" updates="constant" name="lineColor"/>
+        <Param val="8" valType="num" updates="constant" name="lineWidth"/>
+        <Param val="4" valType="int" updates="constant" name="nVertices"/>
+        <Param val="yes_blink_button" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0.3, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="rectangle" valType="str" updates="None" name="shape"/>
+        <Param val="(0.25, 0.1)" valType="list" updates="constant" name="size"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="list" updates="constant" name="vertices"/>
+      </PolygonComponent>
+      <TextComponent name="yes_blink_text" plugin="None">
+        <Param val="gray" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Open Sans" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="0.05" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="yes_blink_text" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0.3, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="blink" valType="str" updates="constant" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
+      <MouseComponent name="blink_choice_mouse" plugin="None">
+        <Param val="no_blink_button, yes_blink_button" valType="list" updates="constant" name="clickable"/>
+        <Param val="" valType="list" updates="constant" name="correctAns"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="valid click" valType="str" updates="constant" name="forceEndRoutineOnPress"/>
+        <Param val="blink_choice_mouse" valType="code" updates="None" name="name"/>
+        <Param val="True" valType="bool" updates="constant" name="newClicksOnly"/>
+        <Param val="never" valType="str" updates="None" name="saveMouseState"/>
+        <Param val="" valType="list" updates="constant" name="saveParamsClickable"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="False" valType="bool" updates="constant" name="storeCorrect"/>
+        <Param val="False" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="mouse onset" valType="str" updates="constant" name="timeRelativeTo"/>
+      </MouseComponent>
+    </Routine>
   </Routines>
   <Flow>
     <Routine name="setup_instruct"/>
@@ -3421,6 +3589,7 @@
     <LoopTerminator name="intervention_moves"/>
     <Routine name="end_pause"/>
     <Routine name="who_won"/>
+    <Routine name="blink_response"/>
     <LoopTerminator name="intervention_games"/>
     <LoopInitiator loopType="TrialHandler" name="double_click_3">
       <Param name="Selected rows" updates="None" val="" valType="str"/>

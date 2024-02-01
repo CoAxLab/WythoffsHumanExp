@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Thu Feb  1 09:04:54 2024
+    on Thu Feb  1 10:52:13 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -886,7 +886,7 @@ end_red = visual.ShapeStim(
 
 # --- Initialize components for Routine "who_won" ---
 who_won_title = visual.TextStim(win=win, name='who_won_title',
-    text='Was there a blink?',
+    text='Who won?',
     font='Open Sans',
     pos=(0, 0.3), height=0.1, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=1.0, 
@@ -899,7 +899,7 @@ opponent_button = visual.Rect(
     lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
     opacity=None, depth=-2.0, interpolate=True)
 opponent_text = visual.TextStim(win=win, name='opponent_text',
-    text='no blink',
+    text='opponent',
     font='Open Sans',
     pos=(-0.3, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='gray', colorSpace='rgb', opacity=None, 
@@ -912,7 +912,7 @@ me_button = visual.Rect(
     lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
     opacity=None, depth=-4.0, interpolate=True)
 me_text = visual.TextStim(win=win, name='me_text',
-    text='blink',
+    text='me',
     font='Open Sans',
     pos=(0.3, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='gray', colorSpace='rgb', opacity=None, 
@@ -921,6 +921,44 @@ me_text = visual.TextStim(win=win, name='me_text',
 choice_mouse = event.Mouse(win=win)
 x, y = [None, None]
 choice_mouse.mouseClock = core.Clock()
+
+# --- Initialize components for Routine "blink_response" ---
+blink_resp_title = visual.TextStim(win=win, name='blink_resp_title',
+    text='Was there a blink?',
+    font='Open Sans',
+    pos=(0, 0.3), height=0.1, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=1.0, 
+    languageStyle='LTR',
+    depth=-1.0);
+no_blink_button = visual.Rect(
+    win=win, name='no_blink_button',
+    width=(0.25, 0.1)[0], height=(0.25, 0.1)[1],
+    ori=0.0, pos=(-0.3, 0), anchor='center',
+    lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
+    opacity=None, depth=-2.0, interpolate=True)
+no_blink_text = visual.TextStim(win=win, name='no_blink_text',
+    text='no blink',
+    font='Open Sans',
+    pos=(-0.3, 0), height=0.05, wrapWidth=None, ori=0.0, 
+    color='gray', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-3.0);
+yes_blink_button = visual.Rect(
+    win=win, name='yes_blink_button',
+    width=(0.25, 0.1)[0], height=(0.25, 0.1)[1],
+    ori=0.0, pos=(0.3, 0), anchor='center',
+    lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
+    opacity=None, depth=-4.0, interpolate=True)
+yes_blink_text = visual.TextStim(win=win, name='yes_blink_text',
+    text='blink',
+    font='Open Sans',
+    pos=(0.3, 0), height=0.05, wrapWidth=None, ori=0.0, 
+    color='gray', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-5.0);
+blink_choice_mouse = event.Mouse(win=win)
+x, y = [None, None]
+blink_choice_mouse.mouseClock = core.Clock()
 
 # --- Initialize components for Routine "section_3" ---
 title_3 = visual.TextStim(win=win, name='title_3',
@@ -6516,6 +6554,9 @@ for thisIntervention_game in intervention_games:
     continueRoutine = True
     # update component parameters for each repeat
     # Run 'Begin Routine' code from who_won_code
+    if int(expInfo['session']) % 3 == 2:
+        continueRoutine = False
+    
     choice_mouse.setPos(newPos=(0,0))
     event.Mouse(visible=True)
     
@@ -6691,18 +6732,19 @@ for thisIntervention_game in intervention_games:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     # Run 'End Routine' code from who_won_code
-    if npc_start == False:
+    if int(expInfo['session']) % 3 != 2:
         df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
         df.loc[len(df) - 1, 'session'] = expInfo['session']
         df.loc[len(df) - 1, 'section'] = section
-        if visibility == 0:
+        if int(expInfo['session']) % 3 == 0:
             df.loc[len(df) - 1, 'type'] = 'img'
         else:
-            df.loc[len(df) - 1, 'type'] = 'mem'
+            df.loc[len(df) - 1, 'type'] = 'rep'
         df.loc[len(df) - 1, 'game'] = game_idx
         df.loc[len(df) - 1, 'ref_game'] = game_idxs[game_idx - 1]
         df.loc[len(df) - 1, 'start_row'] = ref_df.loc[0, 'start_row']
         df.loc[len(df) - 1, 'start_col'] = ref_df.loc[0, 'start_col']
+        df.loc[len(df) - 1, 'winner'] = ref_df.loc[0, 'winner']
         if choice_mouse.clicked_name[0] == 'me_button':
             df.loc[len(df) - 1, 'chosen_winner'] = 'human'
         else:
@@ -6710,6 +6752,210 @@ for thisIntervention_game in intervention_games:
         df.loc[len(df) - 1, 'DT'] = timer.getTime()
     # store data for intervention_games (TrialHandler)
     # the Routine "who_won" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
+    
+    # --- Prepare to start Routine "blink_response" ---
+    continueRoutine = True
+    # update component parameters for each repeat
+    # Run 'Begin Routine' code from blink_resp_code
+    if int(expInfo['session']) % 3 != 2:
+        continueRoutine = False
+    
+    blink_choice_mouse.setPos(newPos=(0,0))
+    event.Mouse(visible=True)
+    
+    timer = core.Clock()
+    timer.reset()
+    # setup some python lists for storing info about the blink_choice_mouse
+    blink_choice_mouse.clicked_name = []
+    gotValidClick = False  # until a click is received
+    # keep track of which components have finished
+    blink_responseComponents = [blink_resp_title, no_blink_button, no_blink_text, yes_blink_button, yes_blink_text, blink_choice_mouse]
+    for thisComponent in blink_responseComponents:
+        thisComponent.tStart = None
+        thisComponent.tStop = None
+        thisComponent.tStartRefresh = None
+        thisComponent.tStopRefresh = None
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    # reset timers
+    t = 0
+    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+    frameN = -1
+    
+    # --- Run Routine "blink_response" ---
+    routineForceEnded = not continueRoutine
+    while continueRoutine:
+        # get current time
+        t = routineTimer.getTime()
+        tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        
+        # *blink_resp_title* updates
+        
+        # if blink_resp_title is starting this frame...
+        if blink_resp_title.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            blink_resp_title.frameNStart = frameN  # exact frame index
+            blink_resp_title.tStart = t  # local t and not account for scr refresh
+            blink_resp_title.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(blink_resp_title, 'tStartRefresh')  # time at next scr refresh
+            # update status
+            blink_resp_title.status = STARTED
+            blink_resp_title.setAutoDraw(True)
+        
+        # if blink_resp_title is active this frame...
+        if blink_resp_title.status == STARTED:
+            # update params
+            pass
+        
+        # *no_blink_button* updates
+        
+        # if no_blink_button is starting this frame...
+        if no_blink_button.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            no_blink_button.frameNStart = frameN  # exact frame index
+            no_blink_button.tStart = t  # local t and not account for scr refresh
+            no_blink_button.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(no_blink_button, 'tStartRefresh')  # time at next scr refresh
+            # update status
+            no_blink_button.status = STARTED
+            no_blink_button.setAutoDraw(True)
+        
+        # if no_blink_button is active this frame...
+        if no_blink_button.status == STARTED:
+            # update params
+            pass
+        
+        # *no_blink_text* updates
+        
+        # if no_blink_text is starting this frame...
+        if no_blink_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            no_blink_text.frameNStart = frameN  # exact frame index
+            no_blink_text.tStart = t  # local t and not account for scr refresh
+            no_blink_text.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(no_blink_text, 'tStartRefresh')  # time at next scr refresh
+            # update status
+            no_blink_text.status = STARTED
+            no_blink_text.setAutoDraw(True)
+        
+        # if no_blink_text is active this frame...
+        if no_blink_text.status == STARTED:
+            # update params
+            pass
+        
+        # *yes_blink_button* updates
+        
+        # if yes_blink_button is starting this frame...
+        if yes_blink_button.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            yes_blink_button.frameNStart = frameN  # exact frame index
+            yes_blink_button.tStart = t  # local t and not account for scr refresh
+            yes_blink_button.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(yes_blink_button, 'tStartRefresh')  # time at next scr refresh
+            # update status
+            yes_blink_button.status = STARTED
+            yes_blink_button.setAutoDraw(True)
+        
+        # if yes_blink_button is active this frame...
+        if yes_blink_button.status == STARTED:
+            # update params
+            pass
+        
+        # *yes_blink_text* updates
+        
+        # if yes_blink_text is starting this frame...
+        if yes_blink_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            yes_blink_text.frameNStart = frameN  # exact frame index
+            yes_blink_text.tStart = t  # local t and not account for scr refresh
+            yes_blink_text.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(yes_blink_text, 'tStartRefresh')  # time at next scr refresh
+            # update status
+            yes_blink_text.status = STARTED
+            yes_blink_text.setAutoDraw(True)
+        
+        # if yes_blink_text is active this frame...
+        if yes_blink_text.status == STARTED:
+            # update params
+            pass
+        # *blink_choice_mouse* updates
+        
+        # if blink_choice_mouse is starting this frame...
+        if blink_choice_mouse.status == NOT_STARTED and t >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            blink_choice_mouse.frameNStart = frameN  # exact frame index
+            blink_choice_mouse.tStart = t  # local t and not account for scr refresh
+            blink_choice_mouse.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(blink_choice_mouse, 'tStartRefresh')  # time at next scr refresh
+            # update status
+            blink_choice_mouse.status = STARTED
+            blink_choice_mouse.mouseClock.reset()
+            prevButtonState = blink_choice_mouse.getPressed()  # if button is down already this ISN'T a new click
+        if blink_choice_mouse.status == STARTED:  # only update if started and not finished!
+            buttons = blink_choice_mouse.getPressed()
+            if buttons != prevButtonState:  # button state changed?
+                prevButtonState = buttons
+                if sum(buttons) > 0:  # state changed to a new click
+                    # check if the mouse was inside our 'clickable' objects
+                    gotValidClick = False
+                    clickableList = environmenttools.getFromNames([no_blink_button, yes_blink_button], namespace=locals())
+                    for obj in clickableList:
+                        # is this object clicked on?
+                        if obj.contains(blink_choice_mouse):
+                            gotValidClick = True
+                            blink_choice_mouse.clicked_name.append(obj.name)
+                    if gotValidClick:  
+                        continueRoutine = False  # end routine on response
+        
+        # check for quit (typically the Esc key)
+        if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+            core.quit()
+            if eyetracker:
+                eyetracker.setConnectionState(False)
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            routineForceEnded = True
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in blink_responseComponents:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    # --- Ending Routine "blink_response" ---
+    for thisComponent in blink_responseComponents:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
+    # Run 'End Routine' code from blink_resp_code
+    if int(expInfo['session']) % 3 == 2:
+        df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
+        df.loc[len(df) - 1, 'session'] = expInfo['session']
+        df.loc[len(df) - 1, 'section'] = section
+        df.loc[len(df) - 1, 'type'] = 'dis'
+        df.loc[len(df) - 1, 'game'] = game_idx
+        df.loc[len(df) - 1, 'ref_game'] = game_idxs[game_idx - 1]
+        df.loc[len(df) - 1, 'start_row'] = ref_df.loc[0, 'start_row']
+        df.loc[len(df) - 1, 'start_col'] = ref_df.loc[0, 'start_col']
+        if blinks[game_idx] == True:
+            df.loc[len(df) - 1, 'winner'] = 'blink'
+        else:
+            df.loc[len(df) - 1, 'winner'] = 'no_blink'
+        if choice_mouse.clicked_name[0] == 'yes_blink_button':
+            df.loc[len(df) - 1, 'chosen_winner'] = 'blink'
+        else:
+            df.loc[len(df) - 1, 'chosen_winner'] = 'no_blink'
+        df.loc[len(df) - 1, 'DT'] = timer.getTime()
+    # store data for intervention_games (TrialHandler)
+    # the Routine "blink_response" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
 # completed num_games repeats of 'intervention_games'
 
