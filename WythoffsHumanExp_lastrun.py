@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Thu Feb  1 08:25:34 2024
+    on Thu Feb  1 09:04:54 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -5453,7 +5453,7 @@ for thisIntervention_game in intervention_games:
     # select reference game data frame
     df_1 = df[df.section == 1]
     ref_df = df_1[df_1.game == game_idxs[game_idx]]
-    ref_df = ref_df.reset_index()
+    ref_df = ref_df.reset_index(drop=True)
     print(ref_df.to_string())
     #print('move_idx: ' + str(move_idx))
     
@@ -6167,6 +6167,8 @@ for thisIntervention_game in intervention_games:
         # update component parameters for each repeat
         # Run 'Begin Routine' code from intervention_wait_code
         event.Mouse(visible=False)
+        
+        npc_start = False # hope this won't cause a bug
         
         if practice_turns.finished or visibility == 0:
             continueRoutine = False
