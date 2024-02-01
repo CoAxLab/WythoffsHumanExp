@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Wed Jan 31 13:39:54 2024
+    on Thu Feb  1 08:25:34 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -5233,10 +5233,13 @@ for thisDouble_click_2 in double_click_2:
     # update component parameters for each repeat
     # Run 'Begin Routine' code from section_2_code
     # shuffle order of reference games
-    game_idxs = []
-    for game in range(num_games):
-        game_idxs.append(game + 1)
-    random.shuffle(game_idxs)
+    #game_idxs = []
+    #for game in range(num_games):
+    #    game_idxs.append(game + 1)
+    #random.shuffle(game_idxs)
+    
+    #game_idxs = [6, 20, 12, 4, 11, 7, 24, 9, 29, 21, 15, 25, 27, 1, 19, 8, 18, 3, 2, 13, 10, 28, 17, 14, 23, 22, 16, 26, 5, 30]
+    game_idxs = [2, 1]
     
     game_idx = 0 # initialize game index counter
     section = 2 # variable for experiment section
@@ -5244,11 +5247,12 @@ for thisDouble_click_2 in double_click_2:
     end_pause_duration = 0.75*0.75 # game-end pause amt
     
     # generate balanced shuffled blinks for distractor
-    blinks = []
-    for game in range(int(num_games/2)):
-        blinks.append(True)
-        blinks.append(False)
-    random.shuffle(blinks)
+    #blinks = []
+    #for game in range(int(num_games/2)):
+    #    blinks.append(True)
+    #    blinks.append(False)
+    #random.shuffle(blinks)
+    blinks = [True, False, False, True, True, True, True, True, False, False, False, True, False, True, False, False, False, True, False, True, True, False, True, True, False, True, False, False, False, True]
     # setup some python lists for storing info about the mouse_2
     mouse_2.clicked_name = []
     gotValidClick = False  # until a click is received
@@ -8071,7 +8075,7 @@ if int(expInfo['session']) % 2 != 0:
 # setup some python lists for storing info about the euclid_mouse
 euclid_mouse.clicked_name = []
 gotValidClick = False  # until a click is received
-euclid_text.setText('In this section you will play a new game called "Euclid".\n\nThe rules of Euclid are the same as the rules of Wythoff\'s (the game you\'ve been playing) except diagonal moves aren\'t possible, and distance moved must be a multiple of the minimum coordinate of the current board position (the top left coordinate is 0,0).\n\nPlease play as best you can!')
+euclid_text.setText('In this section you will play a new game called "Euclid".\n\nThe rules of Euclid are the same as the rules of Wythoff\'s (the game you\'ve been playing) except diagonal moves aren\'t possible. Also, the number of spaces moved in the upwards direction must be a multiple of how many spaces you are from reaching the left edge. Spaces moved in the left direction must be a multiple of how many spaces you are from reaching the top edge. Moves past the edge aren\'t possible.\n\nPlease play as best you can!')
 # keep track of which components have finished
 instruct_euclidComponents = [euclid_title, euclid_button, euclid_ready, euclid_mouse, euclid_text]
 for thisComponent in instruct_euclidComponents:
