@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Thu Feb  1 10:52:13 2024
+    on Fri Feb  2 10:44:19 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -6949,7 +6949,7 @@ for thisIntervention_game in intervention_games:
             df.loc[len(df) - 1, 'winner'] = 'blink'
         else:
             df.loc[len(df) - 1, 'winner'] = 'no_blink'
-        if choice_mouse.clicked_name[0] == 'yes_blink_button':
+        if blink_choice_mouse.clicked_name[0] == 'yes_blink_button':
             df.loc[len(df) - 1, 'chosen_winner'] = 'blink'
         else:
             df.loc[len(df) - 1, 'chosen_winner'] = 'no_blink'
