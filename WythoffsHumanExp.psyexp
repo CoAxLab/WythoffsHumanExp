@@ -2771,7 +2771,7 @@
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
-        <Param val="Click the button below when you are ready to start the section." valType="str" updates="set every repeat" name="text"/>
+        <Param val="Click the button below when you are ready to start the final section." valType="str" updates="set every repeat" name="text"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="1" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
@@ -3016,8 +3016,8 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="if (((Number.parseInt(expInfo[&quot;session&quot;]) % 2) !== 0)) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="# skip instructions if not Euclid condition&amp;#10;if int(expInfo['session']) % 2 != 0:&amp;#10;    continueRoutine = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="if (((Number.parseInt(expInfo[&quot;session&quot;]) % 2) !== 0)) {&amp;#10;    continueRoutine = false;&amp;#10;} else {&amp;#10;    npc_starts = [false, true, false];&amp;#10;    start_locs = [[[14, 3]], [[10, 11], [10, 1]], [[4, 10]]];&amp;#10;    game = 0;&amp;#10;    num_wins = 0;&amp;#10;    visibility = 1;&amp;#10;    section = (- 4);&amp;#10;    move_duration = 1;&amp;#10;    end_pause_duration = 0.75;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="# skip instructions if not Euclid condition&amp;#10;if int(expInfo['session']) % 2 != 0:&amp;#10;    continueRoutine = False&amp;#10;else:&amp;#10;    npc_starts = [False, True, False]&amp;#10;    start_locs = [[(14, 3)], [(10, 11), (10, 1)], [(4, 10)]]&amp;#10;&amp;#10;    game = 0 # initialize game counter&amp;#10;    num_wins = 0 # initialize win counter&amp;#10;    visibility = 1 # pieces are visible for Section 3&amp;#10;    section = -4 # variable for experiment section&amp;#10;    move_duration = 1 # how long moves take&amp;#10;    end_pause_duration = 0.75 # game-end pause amt" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -3157,8 +3157,8 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="if (((Number.parseInt(expInfo[&quot;session&quot;]) % 2) !== 1)) {&amp;#10;    continueRoutine = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="# skip instructions if not Nim condition&amp;#10;if int(expInfo['session']) % 2 != 1:&amp;#10;    continueRoutine = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="if (((Number.parseInt(expInfo[&quot;session&quot;]) % 2) !== 1)) {&amp;#10;    continueRoutine = false;&amp;#10;} else {&amp;#10;    npc_starts = [false, true, false];&amp;#10;    start_locs = [[[2, 6]], [[2, 8], [2, 2]], [[4, 13]]];&amp;#10;    game = 0;&amp;#10;    num_wins = 0;&amp;#10;    visibility = 1;&amp;#10;    section = (- 4);&amp;#10;    move_duration = 1;&amp;#10;    end_pause_duration = 0.75;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="# skip instructions if not Nim condition&amp;#10;if int(expInfo['session']) % 2 != 1:&amp;#10;    continueRoutine = False&amp;#10;else:&amp;#10;    npc_starts = [False, True, False]&amp;#10;    start_locs = [[(2, 6)], [(2, 8), (2, 2)], [(4, 13)]]&amp;#10;    &amp;#10;    game = 0 # initialize game counter&amp;#10;    num_wins = 0 # initialize win counter&amp;#10;    visibility = 1 # pieces are visible for Section 3&amp;#10;    section = -4 # variable for experiment section&amp;#10;    move_duration = 1 # how long moves take&amp;#10;    end_pause_duration = 0.75 # game-end pause amt" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
@@ -3637,6 +3637,37 @@
     <LoopTerminator name="more_games"/>
     <Routine name="instruct_euclid"/>
     <Routine name="instruct_nim"/>
+    <LoopInitiator loopType="TrialHandler" name="tutorial_games">
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+      <Param name="conditions" updates="None" val="None" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="" valType="file"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="isTrials" updates="None" val="False" valType="bool"/>
+      <Param name="loopType" updates="None" val="random" valType="str"/>
+      <Param name="nReps" updates="None" val="3" valType="num"/>
+      <Param name="name" updates="None" val="tutorial_games" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+    </LoopInitiator>
+    <Routine name="countdown"/>
+    <LoopInitiator loopType="TrialHandler" name="tutorial_turns">
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+      <Param name="conditions" updates="None" val="None" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="" valType="file"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="isTrials" updates="None" val="False" valType="bool"/>
+      <Param name="loopType" updates="None" val="sequential" valType="str"/>
+      <Param name="nReps" updates="None" val="15" valType="num"/>
+      <Param name="name" updates="None" val="tutorial_turns" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+    </LoopInitiator>
+    <Routine name="select_move"/>
+    <Routine name="make_move"/>
+    <Routine name="npc_wait"/>
+    <Routine name="npc_move"/>
+    <LoopTerminator name="tutorial_turns"/>
+    <Routine name="end_pause"/>
+    <Routine name="feedback"/>
+    <LoopTerminator name="tutorial_games"/>
     <LoopInitiator loopType="TrialHandler" name="double_click_4">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="None" valType="str"/>
