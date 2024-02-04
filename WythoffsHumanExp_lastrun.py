@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Sat Feb  3 15:25:56 2024
+    on Sun Feb  4 15:32:50 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -1171,7 +1171,7 @@ euclid_button = visual.Rect(
     lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
     opacity=None, depth=-2.0, interpolate=True)
 euclid_ready = visual.TextStim(win=win, name='euclid_ready',
-    text='ready!',
+    text='do tutorial',
     font='Open Sans',
     pos=(0, -0.35), height=0.05, wrapWidth=None, ori=0.0, 
     color='gray', colorSpace='rgb', opacity=None, 
@@ -1183,7 +1183,7 @@ euclid_mouse.mouseClock = core.Clock()
 euclid_text = visual.TextStim(win=win, name='euclid_text',
     text='',
     font='Open Sans',
-    pos=(0, 0), height=0.05, wrapWidth=1.175, ori=0.0, 
+    pos=(0, 0), height=0.05, wrapWidth=1.25, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-5.0);
@@ -1203,7 +1203,7 @@ nim_button = visual.Rect(
     lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
     opacity=None, depth=-2.0, interpolate=True)
 nim_ready = visual.TextStim(win=win, name='nim_ready',
-    text='ready!',
+    text='do tutorial',
     font='Open Sans',
     pos=(0, -0.35), height=0.05, wrapWidth=None, ori=0.0, 
     color='gray', colorSpace='rgb', opacity=None, 
@@ -3107,9 +3107,9 @@ for thisPractice_game in practice_games:
             df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
             df.loc[len(df) - 1, 'session'] = expInfo['session']
             df.loc[len(df) - 1, 'section'] = section
-            if section == 4 and int(expInfo['session']) % 2 == 0:
+            if abs(section) == 4 and int(expInfo['session']) % 2 == 0:
                 df.loc[len(df) - 1, 'type'] = 'euc'
-            if section == 4 and int(expInfo['session']) % 2 == 1:
+            if abs(section) == 4 and int(expInfo['session']) % 2 == 1:
                 df.loc[len(df) - 1, 'type'] = 'nim'
             df.loc[len(df) - 1, 'game'] = game
             df.loc[len(df) - 1, 'move_num'] = move_num
@@ -4468,9 +4468,9 @@ for thisGame in games:
             df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
             df.loc[len(df) - 1, 'session'] = expInfo['session']
             df.loc[len(df) - 1, 'section'] = section
-            if section == 4 and int(expInfo['session']) % 2 == 0:
+            if abs(section) == 4 and int(expInfo['session']) % 2 == 0:
                 df.loc[len(df) - 1, 'type'] = 'euc'
-            if section == 4 and int(expInfo['session']) % 2 == 1:
+            if abs(section) == 4 and int(expInfo['session']) % 2 == 1:
                 df.loc[len(df) - 1, 'type'] = 'nim'
             df.loc[len(df) - 1, 'game'] = game
             df.loc[len(df) - 1, 'move_num'] = move_num
@@ -8042,9 +8042,9 @@ for thisMore_game in more_games:
             df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
             df.loc[len(df) - 1, 'session'] = expInfo['session']
             df.loc[len(df) - 1, 'section'] = section
-            if section == 4 and int(expInfo['session']) % 2 == 0:
+            if abs(section) == 4 and int(expInfo['session']) % 2 == 0:
                 df.loc[len(df) - 1, 'type'] = 'euc'
-            if section == 4 and int(expInfo['session']) % 2 == 1:
+            if abs(section) == 4 and int(expInfo['session']) % 2 == 1:
                 df.loc[len(df) - 1, 'type'] = 'nim'
             df.loc[len(df) - 1, 'game'] = game
             df.loc[len(df) - 1, 'move_num'] = move_num
@@ -8514,7 +8514,7 @@ else:
 # setup some python lists for storing info about the euclid_mouse
 euclid_mouse.clicked_name = []
 gotValidClick = False  # until a click is received
-euclid_text.setText('In this section you will play a new game called "Euclid".\n\nThe rules of Euclid are the same as the rules of Wythoff\'s (the game you\'ve been playing) except diagonal moves aren\'t possible. Also, the number of spaces moved in the upwards direction must be a multiple of how many spaces you are from reaching the left edge. Spaces moved in the left direction must be a multiple of how many spaces you are from reaching the top edge. Moves past the edge aren\'t possible.\n\nPlease play as best you can!')
+euclid_text.setText('In this section you will play a new game called "Euclid".\n\nThe rules of Euclid are the same as the rules of Wythoff\'s (the game you\'ve been playing) except:\n1) Diagonal moves aren’t possible.\n2) You move by ‘subtracting’ a multiple of one coordinate value from the other while staying within the grid.\n3) The top left goal square is (0,0).\n4) You can still move as many spaces as you like along the top and left edges.\n\nPlease play as best you can!')
 # keep track of which components have finished
 instruct_euclidComponents = [euclid_title, euclid_button, euclid_ready, euclid_mouse, euclid_text]
 for thisComponent in instruct_euclidComponents:
@@ -8691,7 +8691,7 @@ else:
 # setup some python lists for storing info about the nim_mouse
 nim_mouse.clicked_name = []
 gotValidClick = False  # until a click is received
-nim_text.setText('In this section you play a new game called "Nim".\n\nThe rules of Nim are the same as the rules of Wythoff\'s (the game you\'ve been playing) except diagonal moves aren\'t possible.\n\nPlease play as best you can!')
+nim_text.setText('In this section you will play a new game called "Nim".\n\nThe rules of Nim are the same as the rules of Wythoff\'s (the game you\'ve been playing) except diagonal moves aren\'t possible.\n\nPlease play as best you can!')
 # keep track of which components have finished
 instruct_nimComponents = [nim_title, nim_button, nim_ready, nim_mouse, nim_text]
 for thisComponent in instruct_nimComponents:
@@ -9551,9 +9551,9 @@ for thisTutorial_game in tutorial_games:
             df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
             df.loc[len(df) - 1, 'session'] = expInfo['session']
             df.loc[len(df) - 1, 'section'] = section
-            if section == 4 and int(expInfo['session']) % 2 == 0:
+            if abs(section) == 4 and int(expInfo['session']) % 2 == 0:
                 df.loc[len(df) - 1, 'type'] = 'euc'
-            if section == 4 and int(expInfo['session']) % 2 == 1:
+            if abs(section) == 4 and int(expInfo['session']) % 2 == 1:
                 df.loc[len(df) - 1, 'type'] = 'nim'
             df.loc[len(df) - 1, 'game'] = game
             df.loc[len(df) - 1, 'move_num'] = move_num
@@ -10919,9 +10919,9 @@ for thisNew_game in new_games:
             df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
             df.loc[len(df) - 1, 'session'] = expInfo['session']
             df.loc[len(df) - 1, 'section'] = section
-            if section == 4 and int(expInfo['session']) % 2 == 0:
+            if abs(section) == 4 and int(expInfo['session']) % 2 == 0:
                 df.loc[len(df) - 1, 'type'] = 'euc'
-            if section == 4 and int(expInfo['session']) % 2 == 1:
+            if abs(section) == 4 and int(expInfo['session']) % 2 == 1:
                 df.loc[len(df) - 1, 'type'] = 'nim'
             df.loc[len(df) - 1, 'game'] = game
             df.loc[len(df) - 1, 'move_num'] = move_num
