@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Mon Feb  5 12:56:32 2024
+    on Mon Feb  5 13:09:35 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -248,7 +248,7 @@ up_left_arrow = visual.ShapeStim(
     opacity=None, depth=-14.0, interpolate=True)
 box_3 = visual.Rect(
     win=win, name='box_3',
-    width=(6/17, 7/17)[0], height=(6/17, 7/17)[1],
+    width=(6/17, 8/17)[0], height=(6/17, 8/17)[1],
     ori=0.0, pos=(8/17/2, 1/17/2), anchor='center',
     lineWidth=20.0,     colorSpace='rgb',  lineColor='black', fillColor='black',
     opacity=None, depth=-15.0, interpolate=True)
@@ -272,6 +272,19 @@ text_4 = visual.TextStim(win=win, name='text_4',
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-18.0);
+box_5 = visual.Rect(
+    win=win, name='box_5',
+    width=(16/17, 2/17)[0], height=(16/17, 2/17)[1],
+    ori=0.0, pos=(0, -13/17/2), anchor='center',
+    lineWidth=20.0,     colorSpace='rgb',  lineColor='black', fillColor='black',
+    opacity=None, depth=-19.0, interpolate=True)
+text_5 = visual.TextStim(win=win, name='text_5',
+    text='5) Available moves are highlighted in green\nfor only the first 2 of 3 tutorial games.',
+    font='Open Sans',
+    pos=(0/17/2, -13/17/2), height=0.05, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-20.0);
 
 # --- Initialize components for Routine "practice_info" ---
 title_0 = visual.TextStim(win=win, name='title_0',
@@ -1837,7 +1850,7 @@ for d in range(1, min(row, col) + 1): # diag moves
 tutorial_mouse.clicked_name = []
 gotValidClick = False  # until a click is received
 # keep track of which components have finished
-tutorialComponents = [board_outline, begin_button, begin_text, tutorial_mouse, tutorial_title, box_1, text_1, arrow, box_2, text_2, tutorial_piece, left_arrow, up_arrow, up_left_arrow, box_3, text_3, box_4, text_4]
+tutorialComponents = [board_outline, begin_button, begin_text, tutorial_mouse, tutorial_title, box_1, text_1, arrow, box_2, text_2, tutorial_piece, left_arrow, up_arrow, up_left_arrow, box_3, text_3, box_4, text_4, box_5, text_5]
 for thisComponent in tutorialComponents:
     thisComponent.tStart = None
     thisComponent.tStop = None
@@ -2201,6 +2214,42 @@ while continueRoutine:
     
     # if text_4 is active this frame...
     if text_4.status == STARTED:
+        # update params
+        pass
+    
+    # *box_5* updates
+    
+    # if box_5 is starting this frame...
+    if box_5.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        box_5.frameNStart = frameN  # exact frame index
+        box_5.tStart = t  # local t and not account for scr refresh
+        box_5.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(box_5, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        box_5.status = STARTED
+        box_5.setAutoDraw(True)
+    
+    # if box_5 is active this frame...
+    if box_5.status == STARTED:
+        # update params
+        pass
+    
+    # *text_5* updates
+    
+    # if text_5 is starting this frame...
+    if text_5.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        text_5.frameNStart = frameN  # exact frame index
+        text_5.tStart = t  # local t and not account for scr refresh
+        text_5.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(text_5, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        text_5.status = STARTED
+        text_5.setAutoDraw(True)
+    
+    # if text_5 is active this frame...
+    if text_5.status == STARTED:
         # update params
         pass
     
