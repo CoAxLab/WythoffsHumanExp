@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Sun Feb  4 15:32:50 2024
+    on Mon Feb  5 12:56:32 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -1171,7 +1171,7 @@ euclid_button = visual.Rect(
     lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
     opacity=None, depth=-2.0, interpolate=True)
 euclid_ready = visual.TextStim(win=win, name='euclid_ready',
-    text='do tutorial',
+    text='do tutorial!',
     font='Open Sans',
     pos=(0, -0.35), height=0.05, wrapWidth=None, ori=0.0, 
     color='gray', colorSpace='rgb', opacity=None, 
@@ -1203,7 +1203,7 @@ nim_button = visual.Rect(
     lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
     opacity=None, depth=-2.0, interpolate=True)
 nim_ready = visual.TextStim(win=win, name='nim_ready',
-    text='do tutorial',
+    text='do tutorial!',
     font='Open Sans',
     pos=(0, -0.35), height=0.05, wrapWidth=None, ori=0.0, 
     color='gray', colorSpace='rgb', opacity=None, 
@@ -5684,8 +5684,8 @@ for thisIntervention_game in intervention_games:
     if visibility == 0:
         # we add 0.75s for the end_pause and 1s for every move
         whole_game_duration = sum(ref_df['DT']) + len(ref_df['DT']) + 0.75
-        prompt_duration = random.uniform(0, whole_game_duration - 0.75)
-        post_blink_duration = whole_game_duration - prompt_duration - 0.75
+        prompt_duration = random.uniform(0.5/0.75, whole_game_duration - 1.0/0.75)
+        post_blink_duration = whole_game_duration - prompt_duration - 0.5/0.75
     
     if ref_df.loc[move_idx, 'player'] == 'AI':
         npc_start = True
@@ -5973,7 +5973,7 @@ for thisIntervention_game in intervention_games:
     
     # --- Run Routine "blink" ---
     routineForceEnded = not continueRoutine
-    while continueRoutine:
+    while continueRoutine and routineTimer.getTime() < 0.5:
         # get current time
         t = routineTimer.getTime()
         tThisFlip = win.getFutureFlipTime(clock=routineTimer)
@@ -6005,7 +6005,7 @@ for thisIntervention_game in intervention_games:
         # if blink_piece is stopping this frame...
         if blink_piece.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > blink_piece.tStartRefresh + end_pause_duration-frameTolerance:
+            if tThisFlipGlobal > blink_piece.tStartRefresh + 0.5-frameTolerance:
                 # keep track of stop time/frame for later
                 blink_piece.tStop = t  # not accounting for scr refresh
                 blink_piece.frameNStop = frameN  # exact frame index
@@ -6037,8 +6037,11 @@ for thisIntervention_game in intervention_games:
     for thisComponent in blinkComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    # the Routine "blink" was not non-slip safe, so reset the non-slip timer
-    routineTimer.reset()
+    # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
+    if routineForceEnded:
+        routineTimer.reset()
+    else:
+        routineTimer.addTime(-0.500000)
     
     # --- Prepare to start Routine "post_blink" ---
     continueRoutine = True
