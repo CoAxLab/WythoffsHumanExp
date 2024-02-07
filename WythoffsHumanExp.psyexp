@@ -1635,7 +1635,7 @@
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
         <Param val="Experiment Section 2 Instructions" valType="str" updates="constant" name="text"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
-        <Param val="1.5" valType="num" updates="constant" name="wrapWidth"/>
+        <Param val="1.75" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
       <PolygonComponent name="recall_button" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
@@ -1776,7 +1776,7 @@
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
         <Param val="Experiment Section 2 Instructions" valType="str" updates="constant" name="text"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
-        <Param val="1.5" valType="num" updates="constant" name="wrapWidth"/>
+        <Param val="1.75" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
       <PolygonComponent name="imagine_button" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
@@ -2962,7 +2962,7 @@
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
         <Param val="Experiment Section 2 Instructions" valType="str" updates="constant" name="text"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
-        <Param val="1.5" valType="num" updates="constant" name="wrapWidth"/>
+        <Param val="1.75" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
       <PolygonComponent name="blink_button" plugin="None">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
@@ -3076,7 +3076,7 @@
         <Param val="euclid_title" valType="code" updates="None" name="name"/>
         <Param val="1" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(0, 0.35)" valType="list" updates="constant" name="pos"/>
+        <Param val="(0, 0.4)" valType="list" updates="constant" name="pos"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
@@ -3102,7 +3102,7 @@
         <Param val="euclid_button" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(0, -0.35)" valType="list" updates="constant" name="pos"/>
+        <Param val="(0, -0.4)" valType="list" updates="constant" name="pos"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="rectangle" valType="str" updates="None" name="shape"/>
         <Param val="(0.25, 0.1)" valType="list" updates="constant" name="size"/>
@@ -3128,7 +3128,7 @@
         <Param val="euclid_ready" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(0, -0.35)" valType="list" updates="constant" name="pos"/>
+        <Param val="(0, -0.4)" valType="list" updates="constant" name="pos"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>

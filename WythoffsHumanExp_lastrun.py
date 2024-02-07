@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Wed Feb  7 12:16:26 2024
+    on Wed Feb  7 14:34:24 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -100,6 +100,38 @@ eyetracker = None
 
 # create a default keyboard (e.g. to check for escape)
 defaultKeyboard = keyboard.Keyboard(backend='iohub')
+
+# --- Initialize components for Routine "instruct_euclid" ---
+euclid_title = visual.TextStim(win=win, name='euclid_title',
+    text='Experiment Section 4 Instructions',
+    font='Open Sans',
+    pos=(0, 0.4), height=0.1, wrapWidth=1.75, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=1.0, 
+    languageStyle='LTR',
+    depth=0.0);
+euclid_button = visual.Rect(
+    win=win, name='euclid_button',
+    width=(0.25, 0.1)[0], height=(0.25, 0.1)[1],
+    ori=0.0, pos=(0, -0.4), anchor='center',
+    lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
+    opacity=None, depth=-1.0, interpolate=True)
+euclid_ready = visual.TextStim(win=win, name='euclid_ready',
+    text='practice!',
+    font='Open Sans',
+    pos=(0, -0.4), height=0.05, wrapWidth=None, ori=0.0, 
+    color='gray', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-2.0);
+euclid_mouse = event.Mouse(win=win)
+x, y = [None, None]
+euclid_mouse.mouseClock = core.Clock()
+euclid_text = visual.TextStim(win=win, name='euclid_text',
+    text='',
+    font='Open Sans',
+    pos=(0, 0), height=0.04, wrapWidth=1.3, ori=0.0, 
+    color='black', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-4.0);
 
 # --- Initialize components for Routine "setup_instruct" ---
 # Run 'Begin Experiment' code from setup_code
@@ -682,7 +714,7 @@ next_mouse.mouseClock = core.Clock()
 recall_title = visual.TextStim(win=win, name='recall_title',
     text='Experiment Section 2 Instructions',
     font='Open Sans',
-    pos=(0, 0.3), height=0.1, wrapWidth=1.5, ori=0.0, 
+    pos=(0, 0.3), height=0.1, wrapWidth=1.75, ori=0.0, 
     color='white', colorSpace='rgb', opacity=1.0, 
     languageStyle='LTR',
     depth=-1.0);
@@ -714,7 +746,7 @@ recall_text = visual.TextStim(win=win, name='recall_text',
 imagine_title = visual.TextStim(win=win, name='imagine_title',
     text='Experiment Section 2 Instructions',
     font='Open Sans',
-    pos=(0, 0.35), height=0.1, wrapWidth=1.5, ori=0.0, 
+    pos=(0, 0.35), height=0.1, wrapWidth=1.75, ori=0.0, 
     color='white', colorSpace='rgb', opacity=1.0, 
     languageStyle='LTR',
     depth=-1.0);
@@ -746,7 +778,7 @@ imagine_text = visual.TextStim(win=win, name='imagine_text',
 blink_title = visual.TextStim(win=win, name='blink_title',
     text='Experiment Section 2 Instructions',
     font='Open Sans',
-    pos=(0, 0.35), height=0.1, wrapWidth=1.5, ori=0.0, 
+    pos=(0, 0.35), height=0.1, wrapWidth=1.75, ori=0.0, 
     color='white', colorSpace='rgb', opacity=1.0, 
     languageStyle='LTR',
     depth=-1.0);
@@ -1173,20 +1205,20 @@ next_mouse.mouseClock = core.Clock()
 euclid_title = visual.TextStim(win=win, name='euclid_title',
     text='Experiment Section 4 Instructions',
     font='Open Sans',
-    pos=(0, 0.35), height=0.1, wrapWidth=1.75, ori=0.0, 
+    pos=(0, 0.4), height=0.1, wrapWidth=1.75, ori=0.0, 
     color='white', colorSpace='rgb', opacity=1.0, 
     languageStyle='LTR',
     depth=0.0);
 euclid_button = visual.Rect(
     win=win, name='euclid_button',
     width=(0.25, 0.1)[0], height=(0.25, 0.1)[1],
-    ori=0.0, pos=(0, -0.35), anchor='center',
+    ori=0.0, pos=(0, -0.4), anchor='center',
     lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
     opacity=None, depth=-1.0, interpolate=True)
 euclid_ready = visual.TextStim(win=win, name='euclid_ready',
     text='practice!',
     font='Open Sans',
-    pos=(0, -0.35), height=0.05, wrapWidth=None, ori=0.0, 
+    pos=(0, -0.4), height=0.05, wrapWidth=None, ori=0.0, 
     color='gray', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-2.0);
@@ -1628,6 +1660,185 @@ end_mouse.mouseClock = core.Clock()
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
 routineTimer = core.Clock()  # to track time remaining of each (possibly non-slip) routine 
+
+# --- Prepare to start Routine "instruct_euclid" ---
+continueRoutine = True
+# update component parameters for each repeat
+# setup some python lists for storing info about the euclid_mouse
+euclid_mouse.clicked_name = []
+gotValidClick = False  # until a click is received
+euclid_text.setText('In this section you will play a new game called “Euclid”:\n\n1. Your goal is to get to the top left space.\n2. You cannot move diagonally.\n3. To move up, the number of spaces you can move must be a multiple of the number of spaces to the left edge (e.g., if you are 2 spaces from the left edge, you can only move up 2, 4, 6, 8, etc. spaces).\n4. To move left, the number of spaces you can move must be a multiple of the number of spaces to the top edge (e.g., if you are 3 spaces from the top edge, you can only move left 3, 6, 9, etc. spaces).\n5. When you get to an edge (top or left), you can move as many spaces as you like.\n\nPlease play as best as you can.')
+# Run 'Begin Routine' code from euclid_code
+euclid_text.alignText = 'left'
+
+# skip instructions if not Euclid condition
+if int(expInfo['session']) % 2 != 0:
+    continueRoutine = False
+else:
+    npc_starts = [False, True, False]
+    start_locs = [[(14, 3)], [(10, 11), (10, 1)], [(4, 10)]]
+    num_games = len(npc_starts)
+    
+    game = 0 # initialize game counter
+    num_wins = 0 # initialize win counter
+    visibility = 1 # pieces are visible for Section 3
+    section = -4 # variable for experiment section
+    move_duration = 1 # how long moves take
+    end_pause_duration = 0.75 # game-end pause amt
+# keep track of which components have finished
+instruct_euclidComponents = [euclid_title, euclid_button, euclid_ready, euclid_mouse, euclid_text]
+for thisComponent in instruct_euclidComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+frameN = -1
+
+# --- Run Routine "instruct_euclid" ---
+routineForceEnded = not continueRoutine
+while continueRoutine:
+    # get current time
+    t = routineTimer.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *euclid_title* updates
+    
+    # if euclid_title is starting this frame...
+    if euclid_title.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        euclid_title.frameNStart = frameN  # exact frame index
+        euclid_title.tStart = t  # local t and not account for scr refresh
+        euclid_title.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(euclid_title, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        euclid_title.status = STARTED
+        euclid_title.setAutoDraw(True)
+    
+    # if euclid_title is active this frame...
+    if euclid_title.status == STARTED:
+        # update params
+        pass
+    
+    # *euclid_button* updates
+    
+    # if euclid_button is starting this frame...
+    if euclid_button.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        euclid_button.frameNStart = frameN  # exact frame index
+        euclid_button.tStart = t  # local t and not account for scr refresh
+        euclid_button.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(euclid_button, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        euclid_button.status = STARTED
+        euclid_button.setAutoDraw(True)
+    
+    # if euclid_button is active this frame...
+    if euclid_button.status == STARTED:
+        # update params
+        pass
+    
+    # *euclid_ready* updates
+    
+    # if euclid_ready is starting this frame...
+    if euclid_ready.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        euclid_ready.frameNStart = frameN  # exact frame index
+        euclid_ready.tStart = t  # local t and not account for scr refresh
+        euclid_ready.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(euclid_ready, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        euclid_ready.status = STARTED
+        euclid_ready.setAutoDraw(True)
+    
+    # if euclid_ready is active this frame...
+    if euclid_ready.status == STARTED:
+        # update params
+        pass
+    # *euclid_mouse* updates
+    
+    # if euclid_mouse is starting this frame...
+    if euclid_mouse.status == NOT_STARTED and t >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        euclid_mouse.frameNStart = frameN  # exact frame index
+        euclid_mouse.tStart = t  # local t and not account for scr refresh
+        euclid_mouse.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(euclid_mouse, 'tStartRefresh')  # time at next scr refresh
+        # update status
+        euclid_mouse.status = STARTED
+        euclid_mouse.mouseClock.reset()
+        prevButtonState = euclid_mouse.getPressed()  # if button is down already this ISN'T a new click
+    if euclid_mouse.status == STARTED:  # only update if started and not finished!
+        buttons = euclid_mouse.getPressed()
+        if buttons != prevButtonState:  # button state changed?
+            prevButtonState = buttons
+            if sum(buttons) > 0:  # state changed to a new click
+                # check if the mouse was inside our 'clickable' objects
+                gotValidClick = False
+                clickableList = environmenttools.getFromNames(euclid_button, namespace=locals())
+                for obj in clickableList:
+                    # is this object clicked on?
+                    if obj.contains(euclid_mouse):
+                        gotValidClick = True
+                        euclid_mouse.clicked_name.append(obj.name)
+                if gotValidClick:  
+                    continueRoutine = False  # end routine on response
+    
+    # *euclid_text* updates
+    
+    # if euclid_text is starting this frame...
+    if euclid_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        euclid_text.frameNStart = frameN  # exact frame index
+        euclid_text.tStart = t  # local t and not account for scr refresh
+        euclid_text.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(euclid_text, 'tStartRefresh')  # time at next scr refresh
+        # add timestamp to datafile
+        thisExp.timestampOnFlip(win, 'euclid_text.started')
+        # update status
+        euclid_text.status = STARTED
+        euclid_text.setAutoDraw(True)
+    
+    # if euclid_text is active this frame...
+    if euclid_text.status == STARTED:
+        # update params
+        pass
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+        if eyetracker:
+            eyetracker.setConnectionState(False)
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        routineForceEnded = True
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in instruct_euclidComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# --- Ending Routine "instruct_euclid" ---
+for thisComponent in instruct_euclidComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+# store data for thisExp (ExperimentHandler)
+thisExp.nextEntry()
+# the Routine "instruct_euclid" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
 
 # --- Prepare to start Routine "setup_instruct" ---
 continueRoutine = True
@@ -3634,7 +3845,7 @@ for thisDouble_click_1 in double_click_1:
     gotValidClick = False  # until a click is received
     section_1_text.setText('Click the button below when you are ready to start playing.')
     # Run 'Begin Routine' code from section_1_code
-    num_games = 2 # must be even
+    num_games = 30 # must be even
     assert(num_games % 2 == 0)
     
     # generate shuffled list of who starts each game
@@ -3644,10 +3855,10 @@ for thisDouble_click_1 in double_click_1:
     #    npc_starts.append(False)
     #random.shuffle(npc_starts)
     
-    #npc_starts = [True, True, False, False, False, True, True, True, False, True, False, False, True, False, True, True, False, False, False, True, False, False, True, True, False, True, False, False, True, True]
-    #start_locs = [[(9, 6), (7, 4)], [(13, 2), (7, 2)], [(4, 12)], [(7, 2)], [(12, 3)], [(7, 10), (7, 8)], [(2, 14), (2, 7)], [(8, 10), (7, 10)], [(12, 7)], [(1, 12), (1, 5)], [(4, 2)], [(11, 1)], [(8, 13), (5, 13)], [(1, 3)], [(4, 8), (4, 7)], [(6, 14), (6, 5)], [(8, 4)], [(5, 6)], [(6, 4)], [(4, 3), (2, 3)], [(2, 5)], [(9, 11)], [(1, 14), (1, 6)], [(3, 10), (3, 5)], [(2, 9)], [(8, 10), (8, 1)], [(10, 11)], [(3, 11)], [(4, 7), (2, 5)], [(7, 9), (7, 1)]]
-    npc_starts = [True, False]
-    start_locs = [[(9, 6), (7, 4)], [(4, 12)]]
+    npc_starts = [True, True, False, False, False, True, True, True, False, True, False, False, True, False, True, True, False, False, False, True, False, False, True, True, False, True, False, False, True, True]
+    start_locs = [[(9, 6), (7, 4)], [(13, 2), (7, 2)], [(4, 12)], [(7, 2)], [(12, 3)], [(7, 10), (7, 8)], [(2, 14), (2, 7)], [(8, 10), (7, 10)], [(12, 7)], [(1, 12), (1, 5)], [(4, 2)], [(11, 1)], [(8, 13), (5, 13)], [(1, 3)], [(4, 8), (4, 7)], [(6, 14), (6, 5)], [(8, 4)], [(5, 6)], [(6, 4)], [(4, 3), (2, 3)], [(2, 5)], [(9, 11)], [(1, 14), (1, 6)], [(3, 10), (3, 5)], [(2, 9)], [(8, 10), (8, 1)], [(10, 11)], [(3, 11)], [(4, 7), (2, 5)], [(7, 9), (7, 1)]]
+    #npc_starts = [True, False]
+    #start_locs = [[(9, 6), (7, 4)], [(4, 12)]]
     
     
     game = 0 # initialize game counter
@@ -5496,8 +5707,8 @@ for thisDouble_click_2 in double_click_2:
     #    game_idxs.append(game + 1)
     #random.shuffle(game_idxs)
     
-    #game_idxs = [6, 20, 12, 4, 11, 7, 24, 9, 29, 21, 15, 25, 27, 1, 19, 8, 18, 3, 2, 13, 10, 28, 17, 14, 23, 22, 16, 26, 5, 30]
-    game_idxs = [2, 1]
+    game_idxs = [6, 20, 12, 4, 11, 7, 24, 9, 29, 21, 15, 25, 27, 1, 19, 8, 18, 3, 2, 13, 10, 28, 17, 14, 23, 22, 16, 26, 5, 30]
+    #game_idxs = [2, 1]
     
     game_idx = 0 # initialize game index counter
     section = 2 # variable for experiment section
@@ -7217,10 +7428,10 @@ for thisDouble_click_3 in double_click_3:
     #    npc_starts.append(False)
     #random.shuffle(npc_starts)
     
-    #npc_starts = [False, False, True, True, True, True, False, True, False, True, True, True, True, True, False, False, True, False, False, False, False, False, True, False, False, False, True, False, True, True]
-    #start_locs = [[(2, 4)], [(7, 14)], [(11, 7), (5, 7)], [(8, 10), (8, 2)], [(4, 8), (3, 7)], [(6, 10), (6, 0)], [(6, 11)], [(7, 9), (3, 5)], [(5, 11)], [(14, 10), (12, 8)], [(12, 3), (5, 3)], [(10, 8), (10, 6)], [(1, 13), (1, 12)], [(13, 9), (5, 1)], [(4, 6)], [(13, 9)], [(14, 11), (7, 4)], [(9, 13)], [(6, 5)], [(9, 11)], [(13, 9)], [(6, 13)], [(12, 14), (12, 8)], [(13, 4)], [(9, 4)], [(2, 6)], [(4, 5), (3, 5)], [(12, 5)], [(12, 11), (12, 1)], [(6, 13), (5, 13)]]
-    npc_starts = [True, False]
-    start_locs = [[(11, 8), (8, 8)], [(3, 12)]]
+    npc_starts = [False, False, True, True, True, True, False, True, False, True, True, True, True, True, False, False, True, False, False, False, False, False, True, False, False, False, True, False, True, True]
+    start_locs = [[(2, 4)], [(7, 14)], [(11, 7), (5, 7)], [(8, 10), (8, 2)], [(4, 8), (3, 7)], [(6, 10), (6, 0)], [(6, 11)], [(7, 9), (3, 5)], [(5, 11)], [(14, 10), (12, 8)], [(12, 3), (5, 3)], [(10, 8), (10, 6)], [(1, 13), (1, 12)], [(13, 9), (5, 1)], [(4, 6)], [(13, 9)], [(14, 11), (7, 4)], [(9, 13)], [(6, 5)], [(9, 11)], [(13, 9)], [(6, 13)], [(12, 14), (12, 8)], [(13, 4)], [(9, 4)], [(2, 6)], [(4, 5), (3, 5)], [(12, 5)], [(12, 11), (12, 1)], [(6, 13), (5, 13)]]
+    #npc_starts = [True, False]
+    #start_locs = [[(11, 8), (8, 8)], [(3, 12)]]
     
     
     game = 0 # initialize game counter
@@ -10085,20 +10296,20 @@ for thisDouble_click_4 in double_click_4:
     #    npc_starts.append(False)
     #random.shuffle(npc_starts)
     
-    #if int(expInfo['session']) % 2 == 1: # Nim
-    #    npc_starts = [True, False, True, False, False, True, False, True, True, True, True, False, False, False, True, True, False, False, True, True, False, False, False, True, False, True, False, True, True, False]
-    #    start_locs = [[(2, 10), (1, 10)], [(7, 11)], [(2, 10), (2, 6)], [(10, 4)], [(12, 7)], [(14, 4), (4, 4)], [(5, 14)], [(2, 1), (1, 1)], [(5, 11), (5, 5)], [(8, 10), (8, 8)], [(10, 14), (4, 14)], [(8, 11)], [(12, 9)], [(5, 14)], [(7, 8), (7, 4)], [(7, 4), (1, 4)], [(11, 2)], [(6, 9)], [(5, 9), (0, 9)], [(11, 10), (11, 5)], [(10, 12)], [(5, 9)], [(1, 8)], [(4, 13), (2, 13)], [(3, 7)], [(9, 8), (8, 8)], [(8, 13)], [(13, 1), (1, 1)], [(4, 13), (4, 1)], [(6, 13)]]
-    #else: # Euclid
-    #    npc_starts = [False, True, True, False, False, True, True, True, False, False, True, False, False, True, False, True, False, True, False, False, False, True, False, False, True, True, True, True, True, False]
-    #    start_locs = [[(11, 8)], [(4, 9), (4, 1)], [(13, 14), (13, 1)], [(4, 2)], [(14, 2)], [(7, 13), (7, 6)], [(14, 8), (6, 8)], [(14, 5), (4, 5)], [(1, 8)], [(7, 11)], [(5, 13), (5, 8)], [(8, 11)], [(7, 6)], [(1, 7), (1, 2)], [(3, 14)], [(7, 10), (7, 3)], [(7, 11)], [(4, 14), (4, 6)], [(10, 2)], [(6, 12)], [(13, 7)], [(1, 9), (1, 8)], [(12, 1)], [(14, 13)], [(7, 4), (3, 4)], [(8, 9), (8, 1)], [(9, 14), (9, 5)], [(5, 3), (2, 3)], [(12, 4), (0, 4)], [(14, 9)]]
-    
-    # below code block is for shorter debuging times
     if int(expInfo['session']) % 2 == 1: # Nim
-        npc_starts = [True, False]
-        start_locs = [[(2, 10), (1, 10)], [(7, 11)]]
+        npc_starts = [True, False, True, False, False, True, False, True, True, True, True, False, False, False, True, True, False, False, True, True, False, False, False, True, False, True, False, True, True, False]
+        start_locs = [[(2, 10), (1, 10)], [(7, 11)], [(2, 10), (2, 6)], [(10, 4)], [(12, 7)], [(14, 4), (4, 4)], [(5, 14)], [(2, 1), (1, 1)], [(5, 11), (5, 5)], [(8, 10), (8, 8)], [(10, 14), (4, 14)], [(8, 11)], [(12, 9)], [(5, 14)], [(7, 8), (7, 4)], [(7, 4), (1, 4)], [(11, 2)], [(6, 9)], [(5, 9), (0, 9)], [(11, 10), (11, 5)], [(10, 12)], [(5, 9)], [(1, 8)], [(4, 13), (2, 13)], [(3, 7)], [(9, 8), (8, 8)], [(8, 13)], [(13, 1), (1, 1)], [(4, 13), (4, 1)], [(6, 13)]]
     else: # Euclid
-        npc_starts = [False, True]
-        start_locs = [[(11, 8)], [(4, 9), (4, 1)]]
+        npc_starts = [False, True, True, False, False, True, True, True, False, False, True, False, False, True, False, True, False, True, False, False, False, True, False, False, True, True, True, True, True, False]
+        start_locs = [[(11, 8)], [(4, 9), (4, 1)], [(13, 14), (13, 1)], [(4, 2)], [(14, 2)], [(7, 13), (7, 6)], [(14, 8), (6, 8)], [(14, 5), (4, 5)], [(1, 8)], [(7, 11)], [(5, 13), (5, 8)], [(8, 11)], [(7, 6)], [(1, 7), (1, 2)], [(3, 14)], [(7, 10), (7, 3)], [(7, 11)], [(4, 14), (4, 6)], [(10, 2)], [(6, 12)], [(13, 7)], [(1, 9), (1, 8)], [(12, 1)], [(14, 13)], [(7, 4), (3, 4)], [(8, 9), (8, 1)], [(9, 14), (9, 5)], [(5, 3), (2, 3)], [(12, 4), (0, 4)], [(14, 9)]]
+    
+    ## below code block is for shorter debuging times
+    #if int(expInfo['session']) % 2 == 1: # Nim
+    #    npc_starts = [True, False]
+    #    start_locs = [[(2, 10), (1, 10)], [(7, 11)]]
+    #else: # Euclid
+    #    npc_starts = [False, True]
+    #    start_locs = [[(11, 8)], [(4, 9), (4, 1)]]
     
     num_games = len(npc_starts)
     
