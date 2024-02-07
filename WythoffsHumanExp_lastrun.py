@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Mon Feb  5 13:09:35 2024
+    on Wed Feb  7 09:22:42 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -274,12 +274,12 @@ text_4 = visual.TextStim(win=win, name='text_4',
     depth=-18.0);
 box_5 = visual.Rect(
     win=win, name='box_5',
-    width=(16/17, 2/17)[0], height=(16/17, 2/17)[1],
+    width=(16.5/17, 2/17)[0], height=(16.5/17, 2/17)[1],
     ori=0.0, pos=(0, -13/17/2), anchor='center',
     lineWidth=20.0,     colorSpace='rgb',  lineColor='black', fillColor='black',
     opacity=None, depth=-19.0, interpolate=True)
 text_5 = visual.TextStim(win=win, name='text_5',
-    text='5) Available moves are highlighted in green\nfor only the first 2 of 3 tutorial games.',
+    text='5) Available moves are highlighted in green\nfor only the first 2 of 3 practice games.',
     font='Open Sans',
     pos=(0/17/2, -13/17/2), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -1173,7 +1173,7 @@ next_mouse.mouseClock = core.Clock()
 euclid_title = visual.TextStim(win=win, name='euclid_title',
     text='Experiment Section 4 Instructions',
     font='Open Sans',
-    pos=(0, 0.35), height=0.1, wrapWidth=1.5, ori=0.0, 
+    pos=(0, 0.35), height=0.1, wrapWidth=1.75, ori=0.0, 
     color='white', colorSpace='rgb', opacity=1.0, 
     languageStyle='LTR',
     depth=-1.0);
@@ -1184,7 +1184,7 @@ euclid_button = visual.Rect(
     lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
     opacity=None, depth=-2.0, interpolate=True)
 euclid_ready = visual.TextStim(win=win, name='euclid_ready',
-    text='do tutorial!',
+    text='practice!',
     font='Open Sans',
     pos=(0, -0.35), height=0.05, wrapWidth=None, ori=0.0, 
     color='gray', colorSpace='rgb', opacity=None, 
@@ -1196,7 +1196,7 @@ euclid_mouse.mouseClock = core.Clock()
 euclid_text = visual.TextStim(win=win, name='euclid_text',
     text='',
     font='Open Sans',
-    pos=(0, 0), height=0.05, wrapWidth=1.25, ori=0.0, 
+    pos=(0, 0), height=0.05, wrapWidth=1.3, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-5.0);
@@ -1216,7 +1216,7 @@ nim_button = visual.Rect(
     lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
     opacity=None, depth=-2.0, interpolate=True)
 nim_ready = visual.TextStim(win=win, name='nim_ready',
-    text='do tutorial!',
+    text='practice!',
     font='Open Sans',
     pos=(0, -0.35), height=0.05, wrapWidth=None, ori=0.0, 
     color='gray', colorSpace='rgb', opacity=None, 
@@ -2759,9 +2759,9 @@ for thisPractice_game in practice_games:
                 col_new = round((mouse_x * 17) + 7)
                 if row_new <= row and col_new <= col:
                     if row_new >= 0 and col_new >= 0:
-                        if row_new==row or col_new==col or (section != 4 and row-row_new == col-col_new):
+                        if row_new==row or col_new==col or (abs(section) != 4 and row-row_new == col-col_new):
                             if row_new != row or col_new != col:
-                                if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move((row,col), (row_new,col_new)):
+                                if abs(section) != 4 or int(expInfo['session']) % 2 == 1 or euclid_move((row,col), (row_new,col_new)):
                                     continueRoutine = False
             
             # draw game board
@@ -3646,7 +3646,6 @@ for thisDouble_click_1 in double_click_1:
     
     #npc_starts = [True, True, False, False, False, True, True, True, False, True, False, False, True, False, True, True, False, False, False, True, False, False, True, True, False, True, False, False, True, True]
     #start_locs = [[(9, 6), (7, 4)], [(13, 2), (7, 2)], [(4, 12)], [(7, 2)], [(12, 3)], [(7, 10), (7, 8)], [(2, 14), (2, 7)], [(8, 10), (7, 10)], [(12, 7)], [(1, 12), (1, 5)], [(4, 2)], [(11, 1)], [(8, 13), (5, 13)], [(1, 3)], [(4, 8), (4, 7)], [(6, 14), (6, 5)], [(8, 4)], [(5, 6)], [(6, 4)], [(4, 3), (2, 3)], [(2, 5)], [(9, 11)], [(1, 14), (1, 6)], [(3, 10), (3, 5)], [(2, 9)], [(8, 10), (8, 1)], [(10, 11)], [(3, 11)], [(4, 7), (2, 5)], [(7, 9), (7, 1)]]
-    
     npc_starts = [True, False]
     start_locs = [[(9, 6), (7, 4)], [(4, 12)]]
     
@@ -4120,9 +4119,9 @@ for thisGame in games:
                 col_new = round((mouse_x * 17) + 7)
                 if row_new <= row and col_new <= col:
                     if row_new >= 0 and col_new >= 0:
-                        if row_new==row or col_new==col or (section != 4 and row-row_new == col-col_new):
+                        if row_new==row or col_new==col or (abs(section) != 4 and row-row_new == col-col_new):
                             if row_new != row or col_new != col:
-                                if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move((row,col), (row_new,col_new)):
+                                if abs(section) != 4 or int(expInfo['session']) % 2 == 1 or euclid_move((row,col), (row_new,col_new)):
                                     continueRoutine = False
             
             # draw game board
@@ -7697,9 +7696,9 @@ for thisMore_game in more_games:
                 col_new = round((mouse_x * 17) + 7)
                 if row_new <= row and col_new <= col:
                     if row_new >= 0 and col_new >= 0:
-                        if row_new==row or col_new==col or (section != 4 and row-row_new == col-col_new):
+                        if row_new==row or col_new==col or (abs(section) != 4 and row-row_new == col-col_new):
                             if row_new != row or col_new != col:
-                                if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move((row,col), (row_new,col_new)):
+                                if abs(section) != 4 or int(expInfo['session']) % 2 == 1 or euclid_move((row,col), (row_new,col_new)):
                                     continueRoutine = False
             
             # draw game board
@@ -8566,7 +8565,7 @@ else:
 # setup some python lists for storing info about the euclid_mouse
 euclid_mouse.clicked_name = []
 gotValidClick = False  # until a click is received
-euclid_text.setText('In this section you will play a new game called "Euclid".\n\nThe rules of Euclid are the same as the rules of Wythoff\'s (the game you\'ve been playing) except:\n1) Diagonal moves aren’t possible.\n2) You move by ‘subtracting’ a multiple of one coordinate value from the other while staying within the grid.\n3) The top left goal square is (0,0).\n4) You can still move as many spaces as you like along the top and left edges.\n\nPlease play as best you can!')
+euclid_text.setText('In this section you will play a new game called "Euclid".\n\nEuclid’s rules are the same as Wythoff\'s rules except:\n1) Diagonal moves aren’t possible.\n2) The number of spaces you move towards the top edge must be a multiple of your distance from the left edge (or vice versa).\n3) You can still move as many spaces as you like along the top and left edges.\n\nPlease play as best you can!')
 # keep track of which components have finished
 instruct_euclidComponents = [euclid_title, euclid_button, euclid_ready, euclid_mouse, euclid_text]
 for thisComponent in instruct_euclidComponents:
@@ -8743,7 +8742,7 @@ else:
 # setup some python lists for storing info about the nim_mouse
 nim_mouse.clicked_name = []
 gotValidClick = False  # until a click is received
-nim_text.setText('In this section you will play a new game called "Nim".\n\nThe rules of Nim are the same as the rules of Wythoff\'s (the game you\'ve been playing) except diagonal moves aren\'t possible.\n\nPlease play as best you can!')
+nim_text.setText('In this section you will play a new game called "Nim".\n\nEuclid’s rules are the same as Wythoff\'s rules except diagonal moves aren\'t possible.\n\nPlease play as best you can!')
 # keep track of which components have finished
 instruct_nimComponents = [nim_title, nim_button, nim_ready, nim_mouse, nim_text]
 for thisComponent in instruct_nimComponents:
@@ -9206,9 +9205,9 @@ for thisTutorial_game in tutorial_games:
                 col_new = round((mouse_x * 17) + 7)
                 if row_new <= row and col_new <= col:
                     if row_new >= 0 and col_new >= 0:
-                        if row_new==row or col_new==col or (section != 4 and row-row_new == col-col_new):
+                        if row_new==row or col_new==col or (abs(section) != 4 and row-row_new == col-col_new):
                             if row_new != row or col_new != col:
-                                if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move((row,col), (row_new,col_new)):
+                                if abs(section) != 4 or int(expInfo['session']) % 2 == 1 or euclid_move((row,col), (row_new,col_new)):
                                     continueRoutine = False
             
             # draw game board
@@ -10091,6 +10090,7 @@ for thisDouble_click_4 in double_click_4:
     #    npc_starts = [False, True, True, False, False, True, True, True, False, False, True, False, False, True, False, True, False, True, False, False, False, True, False, False, True, True, True, True, True, False]
     #    start_locs = [[(11, 8)], [(4, 9), (4, 1)], [(13, 14), (13, 1)], [(4, 2)], [(14, 2)], [(7, 13), (7, 6)], [(14, 8), (6, 8)], [(14, 5), (4, 5)], [(1, 8)], [(7, 11)], [(5, 13), (5, 8)], [(8, 11)], [(7, 6)], [(1, 7), (1, 2)], [(3, 14)], [(7, 10), (7, 3)], [(7, 11)], [(4, 14), (4, 6)], [(10, 2)], [(6, 12)], [(13, 7)], [(1, 9), (1, 8)], [(12, 1)], [(14, 13)], [(7, 4), (3, 4)], [(8, 9), (8, 1)], [(9, 14), (9, 5)], [(5, 3), (2, 3)], [(12, 4), (0, 4)], [(14, 9)]]
     
+    # below code block is for shorter debuging times
     if int(expInfo['session']) % 2 == 1: # Nim
         npc_starts = [True, False]
         start_locs = [[(2, 10), (1, 10)], [(7, 11)]]
@@ -10574,9 +10574,9 @@ for thisNew_game in new_games:
                 col_new = round((mouse_x * 17) + 7)
                 if row_new <= row and col_new <= col:
                     if row_new >= 0 and col_new >= 0:
-                        if row_new==row or col_new==col or (section != 4 and row-row_new == col-col_new):
+                        if row_new==row or col_new==col or (abs(section) != 4 and row-row_new == col-col_new):
                             if row_new != row or col_new != col:
-                                if section != 4 or int(expInfo['session']) % 2 == 1 or euclid_move((row,col), (row_new,col_new)):
+                                if abs(section) != 4 or int(expInfo['session']) % 2 == 1 or euclid_move((row,col), (row_new,col_new)):
                                     continueRoutine = False
             
             # draw game board
