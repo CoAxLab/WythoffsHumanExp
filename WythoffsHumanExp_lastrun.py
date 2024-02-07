@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Wed Feb  7 09:22:42 2024
+    on Wed Feb  7 12:16:26 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -1176,30 +1176,30 @@ euclid_title = visual.TextStim(win=win, name='euclid_title',
     pos=(0, 0.35), height=0.1, wrapWidth=1.75, ori=0.0, 
     color='white', colorSpace='rgb', opacity=1.0, 
     languageStyle='LTR',
-    depth=-1.0);
+    depth=0.0);
 euclid_button = visual.Rect(
     win=win, name='euclid_button',
     width=(0.25, 0.1)[0], height=(0.25, 0.1)[1],
     ori=0.0, pos=(0, -0.35), anchor='center',
     lineWidth=8.0,     colorSpace='rgb',  lineColor='silver', fillColor='white',
-    opacity=None, depth=-2.0, interpolate=True)
+    opacity=None, depth=-1.0, interpolate=True)
 euclid_ready = visual.TextStim(win=win, name='euclid_ready',
     text='practice!',
     font='Open Sans',
     pos=(0, -0.35), height=0.05, wrapWidth=None, ori=0.0, 
     color='gray', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
-    depth=-3.0);
+    depth=-2.0);
 euclid_mouse = event.Mouse(win=win)
 x, y = [None, None]
 euclid_mouse.mouseClock = core.Clock()
 euclid_text = visual.TextStim(win=win, name='euclid_text',
     text='',
     font='Open Sans',
-    pos=(0, 0), height=0.05, wrapWidth=1.3, ori=0.0, 
+    pos=(0, 0), height=0.04, wrapWidth=1.3, ori=0.0, 
     color='black', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
-    depth=-5.0);
+    depth=-4.0);
 
 # --- Initialize components for Routine "instruct_nim" ---
 nim_title = visual.TextStim(win=win, name='nim_title',
@@ -7217,8 +7217,8 @@ for thisDouble_click_3 in double_click_3:
     #    npc_starts.append(False)
     #random.shuffle(npc_starts)
     
-    #npc_starts = [True, False, False, True, False, False, False, False, True, True, False, True, True, False, True, True, True, True, False, True, False, False, False, False, True, False, True, False, True, True]
-    #start_locs = [[(11, 8), (8, 8)], [(3, 12)], [(14, 13)], [(11, 14), (11, 3)], [(9, 5)], [(10, 13)], [(8, 6)], [(5, 6)], [(12, 7), (12, 2)], [(7, 13), (1, 13)], [(14, 10)], [(2, 7), (2, 6)], [(9, 3), (6, 0)], [(8, 9)], [(10, 2), (0, 2)], [(10, 4), (8, 4)], [(3, 1), (2, 1)], [(1, 4), (1, 0)], [(6, 8)], [(4, 5), (3, 5)], [(2, 1)], [(5, 1)], [(9, 12)], [(8, 7)], [(3, 13), (3, 5)], [(1, 6)], [(5, 11), (3, 9)], [(8, 6)], [(2, 12), (0, 12)], [(1, 14), (1, 9)]]
+    #npc_starts = [False, False, True, True, True, True, False, True, False, True, True, True, True, True, False, False, True, False, False, False, False, False, True, False, False, False, True, False, True, True]
+    #start_locs = [[(2, 4)], [(7, 14)], [(11, 7), (5, 7)], [(8, 10), (8, 2)], [(4, 8), (3, 7)], [(6, 10), (6, 0)], [(6, 11)], [(7, 9), (3, 5)], [(5, 11)], [(14, 10), (12, 8)], [(12, 3), (5, 3)], [(10, 8), (10, 6)], [(1, 13), (1, 12)], [(13, 9), (5, 1)], [(4, 6)], [(13, 9)], [(14, 11), (7, 4)], [(9, 13)], [(6, 5)], [(9, 11)], [(13, 9)], [(6, 13)], [(12, 14), (12, 8)], [(13, 4)], [(9, 4)], [(2, 6)], [(4, 5), (3, 5)], [(12, 5)], [(12, 11), (12, 1)], [(6, 13), (5, 13)]]
     npc_starts = [True, False]
     start_locs = [[(11, 8), (8, 8)], [(3, 12)]]
     
@@ -8547,7 +8547,13 @@ for thisMore_game in more_games:
 # --- Prepare to start Routine "instruct_euclid" ---
 continueRoutine = True
 # update component parameters for each repeat
+# setup some python lists for storing info about the euclid_mouse
+euclid_mouse.clicked_name = []
+gotValidClick = False  # until a click is received
+euclid_text.setText('In this section you will play a new game called “Euclid”:\n\n1. Your goal is to get to the top left space.\n2. You cannot move diagonally.\n3. To move up, the number of spaces you can move must be a multiple of the number of spaces to the left edge (e.g., if you are 2 spaces from the left edge, you can only move up 2, 4, 6, 8, etc. spaces).\n4. To move left, the number of spaces you can move must be a multiple of the number of spaces to the top edge (e.g., if you are 3 spaces from the top edge, you can only move left 3, 6, 9, etc. spaces).\n5. When you get to an edge (top or left), you can move as many spaces as you like.\n\nPlease play as best as you can.')
 # Run 'Begin Routine' code from euclid_code
+euclid_text.alignText = 'left'
+
 # skip instructions if not Euclid condition
 if int(expInfo['session']) % 2 != 0:
     continueRoutine = False
@@ -8562,10 +8568,6 @@ else:
     section = -4 # variable for experiment section
     move_duration = 1 # how long moves take
     end_pause_duration = 0.75 # game-end pause amt
-# setup some python lists for storing info about the euclid_mouse
-euclid_mouse.clicked_name = []
-gotValidClick = False  # until a click is received
-euclid_text.setText('In this section you will play a new game called "Euclid".\n\nEuclid’s rules are the same as Wythoff\'s rules except:\n1) Diagonal moves aren’t possible.\n2) The number of spaces you move towards the top edge must be a multiple of your distance from the left edge (or vice versa).\n3) You can still move as many spaces as you like along the top and left edges.\n\nPlease play as best you can!')
 # keep track of which components have finished
 instruct_euclidComponents = [euclid_title, euclid_button, euclid_ready, euclid_mouse, euclid_text]
 for thisComponent in instruct_euclidComponents:
@@ -8742,7 +8744,7 @@ else:
 # setup some python lists for storing info about the nim_mouse
 nim_mouse.clicked_name = []
 gotValidClick = False  # until a click is received
-nim_text.setText('In this section you will play a new game called "Nim".\n\nEuclid’s rules are the same as Wythoff\'s rules except diagonal moves aren\'t possible.\n\nPlease play as best you can!')
+nim_text.setText('In this section you will play a new game called "Nim".\n\nNim’s rules are the same as Wythoff\'s rules except diagonal moves aren\'t possible.\n\nPlease play as best you can!')
 # keep track of which components have finished
 instruct_nimComponents = [nim_title, nim_button, nim_ready, nim_mouse, nim_text]
 for thisComponent in instruct_nimComponents:
