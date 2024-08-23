@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Mon Aug  5 10:06:45 2024
+    on Fri Aug 23 10:18:55 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -376,11 +376,10 @@ for i in range(15):
     optimal_moves_nim.append((i,i))
 
 optimal_moves_euclid = []
-for r in range(15):
-    for c in range(15):
-        if  r == c == 0:
-            optimal_moves_euclid.append((r,c))
-        elif min(r,c) / max(r,c) > (1 + math.sqrt(5)) / 2:
+optimal_moves_euclid.append((0,0))
+for r in range(1,15):
+    for c in range(1,15):
+        if max(r,c) / min(r,c) < (1 + math.sqrt(5)) / 2:
             optimal_moves_euclid.append((r,c))
 
 def euclid_move(pos1, pos2):
@@ -572,11 +571,10 @@ for i in range(15):
     optimal_moves_nim.append((i,i))
 
 optimal_moves_euclid = []
-for r in range(15):
-    for c in range(15):
-        if  r == c == 0:
-            optimal_moves_euclid.append((r,c))
-        elif min(r,c) / max(r,c) > (1 + math.sqrt(5)) / 2:
+optimal_moves_euclid.append((0,0))
+for r in range(1,15):
+    for c in range(1,15):
+        if max(r,c) / min(r,c) < (1 + math.sqrt(5)) / 2:
             optimal_moves_euclid.append((r,c))
 
 def euclid_move(pos1, pos2):
@@ -1063,11 +1061,10 @@ for i in range(15):
     optimal_moves_nim.append((i,i))
 
 optimal_moves_euclid = []
-for r in range(15):
-    for c in range(15):
-        if  r == c == 0:
-            optimal_moves_euclid.append((r,c))
-        elif min(r,c) / max(r,c) > (1 + math.sqrt(5)) / 2:
+optimal_moves_euclid.append((0,0))
+for r in range(1,15):
+    for c in range(1,15):
+        if max(r,c) / min(r,c) < (1 + math.sqrt(5)) / 2:
             optimal_moves_euclid.append((r,c))
 
 def euclid_move(pos1, pos2):
@@ -1291,11 +1288,10 @@ for i in range(15):
     optimal_moves_nim.append((i,i))
 
 optimal_moves_euclid = []
-for r in range(15):
-    for c in range(15):
-        if  r == c == 0:
-            optimal_moves_euclid.append((r,c))
-        elif min(r,c) / max(r,c) > (1 + math.sqrt(5)) / 2:
+optimal_moves_euclid.append((0,0))
+for r in range(1,15):
+    for c in range(1,15):
+        if max(r,c) / min(r,c) < (1 + math.sqrt(5)) / 2:
             optimal_moves_euclid.append((r,c))
 
 def euclid_move(pos1, pos2):
@@ -1487,11 +1483,10 @@ for i in range(15):
     optimal_moves_nim.append((i,i))
 
 optimal_moves_euclid = []
-for r in range(15):
-    for c in range(15):
-        if  r == c == 0:
-            optimal_moves_euclid.append((r,c))
-        elif min(r,c) / max(r,c) > (1 + math.sqrt(5)) / 2:
+optimal_moves_euclid.append((0,0))
+for r in range(1,15):
+    for c in range(1,15):
+        if max(r,c) / min(r,c) < (1 + math.sqrt(5)) / 2:
             optimal_moves_euclid.append((r,c))
 
 def euclid_move(pos1, pos2):
@@ -2855,7 +2850,7 @@ for thisPractice_game in practice_games:
         # Run 'End Routine' code from code
         if npc_start == False:
             move_num = move_num + 1
-            df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
+            df.loc[len(df)] = pd.Series(dtype = 'object')
             df.loc[len(df) - 1, 'session'] = expInfo['session']
             df.loc[len(df) - 1, 'section'] = section
             if abs(section) == 4 and int(expInfo['session']) % 2 == 0:
@@ -4215,7 +4210,7 @@ for thisGame in games:
         # Run 'End Routine' code from code
         if npc_start == False:
             move_num = move_num + 1
-            df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
+            df.loc[len(df)] = pd.Series(dtype = 'object')
             df.loc[len(df) - 1, 'session'] = expInfo['session']
             df.loc[len(df) - 1, 'section'] = section
             if abs(section) == 4 and int(expInfo['session']) % 2 == 0:
@@ -7792,7 +7787,7 @@ for thisMore_game in more_games:
         # Run 'End Routine' code from code
         if npc_start == False:
             move_num = move_num + 1
-            df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
+            df.loc[len(df)] = pd.Series(dtype = 'object')
             df.loc[len(df) - 1, 'session'] = expInfo['session']
             df.loc[len(df) - 1, 'section'] = section
             if abs(section) == 4 and int(expInfo['session']) % 2 == 0:
@@ -9303,7 +9298,7 @@ for thisTutorial_game in tutorial_games:
         # Run 'End Routine' code from code
         if npc_start == False:
             move_num = move_num + 1
-            df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
+            df.loc[len(df)] = pd.Series(dtype = 'object')
             df.loc[len(df) - 1, 'session'] = expInfo['session']
             df.loc[len(df) - 1, 'section'] = section
             if abs(section) == 4 and int(expInfo['session']) % 2 == 0:
@@ -10672,7 +10667,7 @@ for thisNew_game in new_games:
         # Run 'End Routine' code from code
         if npc_start == False:
             move_num = move_num + 1
-            df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
+            df.loc[len(df)] = pd.Series(dtype = 'object')
             df.loc[len(df) - 1, 'session'] = expInfo['session']
             df.loc[len(df) - 1, 'section'] = section
             if abs(section) == 4 and int(expInfo['session']) % 2 == 0:
