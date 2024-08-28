@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2023.1.3),
-    on Fri Aug 23 10:18:55 2024
+    on Wed Aug 28 10:30:13 2024
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -79,7 +79,7 @@ win = visual.Window(
     backgroundImage='', backgroundFit='none',
     blendMode='avg', useFBO=True, 
     units='height')
-win.mouseVisible = False
+win.mouseVisible = True
 # store frame rate of monitor if we can measure it
 expInfo['frameRate'] = win.getActualFrameRate()
 if expInfo['frameRate'] != None:
@@ -3148,7 +3148,7 @@ for thisPractice_game in practice_games:
         # Run 'End Routine' code from wait_code
         if practice_turns.finished == False:
             move_num = move_num + 1
-            df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
+            df.loc[len(df)] = pd.Series(dtype = 'object')
             df.loc[len(df) - 1, 'session'] = expInfo['session']
             df.loc[len(df) - 1, 'section'] = section
             if abs(section) == 4 and int(expInfo['session']) % 2 == 0:
@@ -4508,7 +4508,7 @@ for thisGame in games:
         # Run 'End Routine' code from wait_code
         if practice_turns.finished == False:
             move_num = move_num + 1
-            df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
+            df.loc[len(df)] = pd.Series(dtype = 'object')
             df.loc[len(df) - 1, 'session'] = expInfo['session']
             df.loc[len(df) - 1, 'section'] = section
             if abs(section) == 4 and int(expInfo['session']) % 2 == 0:
@@ -6955,7 +6955,7 @@ for thisIntervention_game in intervention_games:
             thisComponent.setAutoDraw(False)
     # Run 'End Routine' code from who_won_code
     if int(expInfo['session']) % 3 != 2:
-        df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
+        df.loc[len(df)] = pd.Series(dtype = 'object')
         df.loc[len(df) - 1, 'session'] = expInfo['session']
         df.loc[len(df) - 1, 'section'] = section
         if int(expInfo['session']) % 3 == 0:
@@ -7159,7 +7159,7 @@ for thisIntervention_game in intervention_games:
             thisComponent.setAutoDraw(False)
     # Run 'End Routine' code from blink_resp_code
     if int(expInfo['session']) % 3 == 2:
-        df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
+        df.loc[len(df)] = pd.Series(dtype = 'object')
         df.loc[len(df) - 1, 'session'] = expInfo['session']
         df.loc[len(df) - 1, 'section'] = section
         df.loc[len(df) - 1, 'type'] = 'dis'
@@ -8085,7 +8085,7 @@ for thisMore_game in more_games:
         # Run 'End Routine' code from wait_code
         if practice_turns.finished == False:
             move_num = move_num + 1
-            df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
+            df.loc[len(df)] = pd.Series(dtype = 'object')
             df.loc[len(df) - 1, 'session'] = expInfo['session']
             df.loc[len(df) - 1, 'section'] = section
             if abs(section) == 4 and int(expInfo['session']) % 2 == 0:
@@ -9596,7 +9596,7 @@ for thisTutorial_game in tutorial_games:
         # Run 'End Routine' code from wait_code
         if practice_turns.finished == False:
             move_num = move_num + 1
-            df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
+            df.loc[len(df)] = pd.Series(dtype = 'object')
             df.loc[len(df) - 1, 'session'] = expInfo['session']
             df.loc[len(df) - 1, 'section'] = section
             if abs(section) == 4 and int(expInfo['session']) % 2 == 0:
@@ -10965,7 +10965,7 @@ for thisNew_game in new_games:
         # Run 'End Routine' code from wait_code
         if practice_turns.finished == False:
             move_num = move_num + 1
-            df = df.append(pd.Series(dtype = 'object'), ignore_index = True)
+            df.loc[len(df)] = pd.Series(dtype = 'object')
             df.loc[len(df) - 1, 'session'] = expInfo['session']
             df.loc[len(df) - 1, 'section'] = section
             if abs(section) == 4 and int(expInfo['session']) % 2 == 0:
